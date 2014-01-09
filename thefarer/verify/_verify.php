@@ -1,0 +1,1 @@
+<?php if (isset($_SESSION['ID'])==FALSE) { header("Location:".$config_basedir."account/login/?fail=needlogin"); die(); } ?>

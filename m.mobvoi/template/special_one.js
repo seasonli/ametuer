@@ -1,0 +1,7 @@
+(function() {
+	var script = document.createElement("script");
+	script.setAttribute("type", "text/html");
+	script.setAttribute("id", "wrapper_special_one");
+	script.innerHTML = '<ul class="cards"> <li class="cards_card"> <div class="cards_card_triple left"> <br/> <p><span class="layout-666">{ body[0].content[5] } 今日</span></p> <p><span class="{ if body[0].content[0] == "success" }layout-orange{ /if }">{ body[0].content[6] }</span></p> <br/> <p><span class="layout-22px layout-bold layout-666">{ body[0].title }</span></p> </div> <div class="cards_card_triple center layout-right"> <br/><br/> <p><span class="layout-32px layout-bold layout-666">{ body[0].content[1] }°</span></p> <p><span class="layout-18px layout-bold layout-999">{ body[0].content[2] }°</span></p> <p><span>{ body[0].content[8] }</span></p> </div> <div class="cards_card_triple right layout-center"> <br/> <p><img src="{ body[0].img_url }" style="width: 72px" /></p> </div> <div class="clear"></div> { each body as val i } { if i != 0} <div class="cards_card_five center layout-12px layout-666 layout-center"> <br/> <p><span>{ val.content[5] }</span></p> <p><span { if val.content[0] == "success" }class="layout-orange"{ /if }>{ val.content[6] }</span></p> <p><img src="{ val.img_url }" style="width: 24px" /></p> <p><span>{ val.content[1] }°</span></p> <p><span class="layout-999">{ val.content[2] }°</span></p> </div> { /if } { /each } <div class="clear"></div> </li> </ul>';
+	document.head.appendChild(script);
+}) ()

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.1.01.js"></script>
+</head>
+
+<body>
+  <div class="necker">
+  </div>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="necker">
+    <div class="banner dial" data-tel="{ answer.hotel_info.phone }">
+      <p><span class="layout-fleft layout-22px layout-bold" style="line-height: 22px; width: 80%">{ answer.hotel_info.hotel_name }</span><div class="clear"></div></p>
+      <p><span class="layout-16px">{ answer.hotel_info.star_name }</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="layout-12px">电话: { answer.hotel_info.phone }</span></p>
+      <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />
+    </div>
+    <div class="div1">
+      <div class="div1_left">
+        <div class="div1_left_div1" onClick="window.location.href='{ answer.hotel_info.comment_url }'"><p><span class="layout-orange">{ answer.hotel_info.rating }%</span><span> 好评率</span><span class="layout-fright"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/arrowright.png" style="width: 20px" /></span><span class="layout-orange layout-fright">{ answer.hotel_info.comment_count } 条点评</span></p></div>
+        <div class="div1_left_div1" onClick='$("body").prepend(template.render("alert", response))'><p><span>酒店详细介绍及交通指南</span><span class="layout-fright"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/arrowright.png" style="width: 20px" /></span></p></div>
+      </div>
+      <div class="div1_right">
+        <img src="{ answer.hotel_info.img_url }" />
+      </div>
+    </div>
+    <div class="clear"></div>
+    <div class="div2">
+      <div class="div2_div1 point">
+        <p><span>{ answer.hotel_info.address }</span><span class="layout-fright layout-right layout-666"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" /></span><div class="clear"></div></p>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/html" id="wrapper">
+    { if answer.room_array.length > 0 }
+      <ul class="cards"> 
+        { each answer.room_array as val i }
+          <li class="cards_card" onClick="window.location.href='{ val.bookUrl }'">
+            <div class="cards_card_icon left">
+              <p>
+                { if val.img_url == "" || !val.img_url }
+                  <img src="http://www.elongstatic.com/hotels/pic/room_no.png" />
+                { else }
+                  <img src="{ val.img_url }" />
+                { /if }
+              </p>   
+            </div> 
+            <div class="cards_card_icon right">
+              <p><span class="layout-16px">{ val.room_name }</span><span class="layout-fright layout-orange layout-20px">{ if val.current_alloment == "-1" }售罄{ else }￥{ val.price }{ /if }</span></p>      
+              <p><span class="layout-666">{ val.bed_type }</span></p>
+              <p><span class="layout-12px layout-999">{ val.description }</span></p>
+            </div>      
+            <div class="clear"></div>
+          </li>
+        { /each }
+      </ul>
+    { else }
+      <ul class="cards"> 
+        <li class="cards_card">
+          <div class="cards_card_entire">
+            <p><span>由于该酒店的担保条件，您需要跳转至艺龙查看该房间信息</span></p>
+          </div>
+          <div class="cards_card_entire">
+            <p><button type="button" onClick="window.location.href='{ answer.elong_url }'">跳转至艺龙</button></p>
+          </div>
+        </li>  
+      </ul>    
+    { /if }
+  </script>
+
+  <script type="text/html" id="alert">
+    <div onclick="$(this).remove()" class="alert" style="display: block">
+      <div class="alert_entire layout-16px">
+        <div>酒店详细介绍及交通指南</div>
+      </div>
+      <div class="alert_entire">
+        { if answer.hotel_info.traffic }<li><span class="layout-16px">交通<br/></span><span class="layout-666 layout-12px">{ each answer.hotel_info.traffic.split("\n") as val i }{ val }<br/>{ /each }</span></li>{ /if }
+      </div>
+      <div class="alert_entire">
+        { if answer.hotel_info.general_amenities  }<li><span class="layout-16px">设施<br/></span><span class="layout-666 layout-12px">{ each answer.hotel_info.general_amenities.split("\n") as val i }{ val }<br/>{ /each }</span></li>{ /if }
+      </div>
+      <div class="alert_entire">
+        { if answer.hotel_info.dining_amenities }<li><span class="layout-16px">餐饮<br/></span><span class="layout-666 layout-12px">{ each answer.hotel_info.dining_amenities.split("\n") as val i }{ val }<br/>{ /each }</span></li>{ /if }
+      </div>
+      <div class="alert_entire">
+        { if answer.hotel_info.recreation_amenities }<li><span class="layout-16px">娱乐<br/></span><span class="layout-666 layout-12px">{ each answer.hotel_info.recreation_amenities.split("\n") as val i }{ val }<br/>{ /each }</span></li>{ /if }
+      </div>
+      <div class="alert_entire">
+        { if answer.hotel_info.conference_amenities }<li><span class="layout-16px">会议<br/></span><span class="layout-666 layout-12px">{ each answer.hotel_info.conference_amenities.split("\n") as val i }{ val }<br/>{ /each }</span></li>{ /if }
+      </div>
+      <div class="alert_entire">
+        { if answer.hotel_info.introduction }<li><span class="layout-16px">简介<br/></span><span class="layout-666 layout-12px">{ each answer.hotel_info.introduction.split("\n") as val i }{ val }<br/>{ /each }</span></li>{ /if }
+      </div>
+      <div class="alert_entire">
+        <li><button type="button">关闭</button></li>
+      </div>
+    </div>
+  </script>
+
+  <script>
+//    var response = ${content};
+    var response = {"location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.hotel","query":"undefined","remote_ip":"192.168.10.30","answer":{"hotel_info":{"img_url":"http://www.elongstatic.com/gp1/M00/52/17/pYYBAFIuUSuAdGyFAAAhAilr664033.png?v=20130725125902","comment_count":18,"star_name":"经济型酒店","phone":"021-63226675","hotel_id":"00201980","comment_url":"http://m.elong.com/hotel/CommentList?hotelid=00201980","lng":121.478024125,"credit_cards":"牡丹卡,金穗卡,长城卡,龙卡,太平洋卡,东方卡","general_amenities":"送餐服务、叫醒服务、商务中心、前台贵重物品保险柜、公共区域免费Wi-Fi","hotel_name":"上海为波宾馆（人民广场店）","recreation_amenities":"","trading_area":"人民广场","dining_amenities":"","traffic":"宾馆地处上海市中心繁华地带，位于西藏中路与延安东路交叉口北侧，紧邻大世界、人民广场，购物、出行十分便利。距离地铁8号线大世界站4号口约220米；距离地铁1号、2号、8号线人民广场站1号口约300米；距离上海站约3.9公里；距离上海南站约12公里；距离上海虹桥站约19.4公里；距离上海虹桥国际机场（1号航站楼）约14.7公里；距离上海浦东国际机场约44.2公里。","address":"上海市黄浦区西藏中路66号（近延安东路）","description":"宾馆开业时间2008年7月1日，新近装修时间2011年2月，全部装修，主楼高3层，客房总数66间（套）。","conference_amenities":"","rating":57,"introduction":"　　上海为波宾馆（人民广场店）地处上海市中心繁华地带，位于西藏中路与延安东路交叉口北侧，紧邻大世界、人民广场，邻近南京路步行街、豫园、城隍庙、淮海路商业街、外滩，地理位置优越，购物、出行十分便利。宾馆拥有标准间、大床间、商务标准间、商务大床间、标准三人间等多种房型，房间内配有空调、独立卫生间、24小时冷热水、免费光纤上网等设施，部分房间还配有液晶电脑，环境温馨，是商务、旅游人士的理想居停之所。\n　　宾馆开业时间2008年7月1日，新近装修时间2011年2月，全部装修，主楼高3层，客房总数66间（套）。\n【温馨提示】：\n1、宾馆不能接待外宾；\n2、宾馆无停车场。","lat":31.229743094},"elong_url":"http://hotel.elong.com/search/list_cn_0201.html?HotelName=%E4%B8%8A%E6%B5%B7%E4%B8%BA%E6%B3%A2%E5%AE%BE%E9%A6%86%EF%BC%88%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&aioVal=%E4%B8%8A%E6%B5%B7%E4%B8%BA%E6%B3%A2%E5%AE%BE%E9%A6%86%EF%BC%88%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89","status":"success","room_array":[{"img_url":"http://www.elongstatic.com/hotels/pic/room_no.png","rateplan_id":"147578","bed_type":"双床（110cm*200cm）","price":248,"current_alloment":0,"plan":"不含早","bookUrl":"http://m.mobvoi.com/search/book/hotel?departureDate=2013-10-18&starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&remote_ip=192.168.10.30&query=%E9%99%84%E8%BF%91%E7%9A%84%E9%85%92%E5%BA%97&cityCode=0201&appkey=wechat_browser&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&lng=121.478024125&hotelId=00201980&city=%E4%B8%8A%E6%B5%B7&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%85%89%E7%BA%A4%2C%E6%97%A0%E7%AA%97&hotelAddress=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%A5%BF%E8%97%8F%E4%B8%AD%E8%B7%AF66%E5%8F%B7%EF%BC%88%E8%BF%91%E5%BB%B6%E5%AE%89%E4%B8%9C%E8%B7%AF%EF%BC%89&remoteIP=58.247.4.206&hotelName=%E4%B8%8A%E6%B5%B7%E4%B8%BA%E6%B3%A2%E5%AE%BE%E9%A6%86%EF%BC%88%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&roomName=%E6%A0%87%E5%87%86%E9%97%B4%28%E6%97%A0%E7%AA%97%29&hotelPhone=021-63226675&arrivalDate=2013-10-17&query_type=book&baiduLat=31.2355994240866&lat=31.229743094&roomTypeId=0004&bookingRuleDesc=&ratePlanId=147578&customerType=Chinese&task=public.hotel&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A812.11.20%E8%87%B320.12.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A818%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%872%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A5%E5%89%8D1%E6%97%A5%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&price=248&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fhotels%2Fpic%2Froom_no.png&msg_id=ba51520d-a9c3-4dbc-97f0-06461b5f173f&bedType=%E5%8F%8C%E5%BA%8A%EF%BC%88110cm*200cm%EF%BC%89&output=json&baiduLng=121.4845817082355","guarantee_rule_desc":"担保条件：在12.11.20至20.12.31 入住 如果在18:00至6:00到店，或预订房量超过2间，需要您提供信用卡担保。客人入住日前1日前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","description":"免费上网,光纤,无窗","room_name":"标准间(无窗)","hotel_name":"上海为波宾馆（人民广场店）"},{"img_url":"http://www.elongstatic.com/hotels/pic/room_no.png","rateplan_id":"147578","bed_type":"大床（150cm*200cm）","price":228,"current_alloment":0,"plan":"不含早","bookUrl":"http://m.mobvoi.com/search/book/hotel?departureDate=2013-10-18&starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&remote_ip=192.168.10.30&query=%E9%99%84%E8%BF%91%E7%9A%84%E9%85%92%E5%BA%97&cityCode=0201&appkey=wechat_browser&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&lng=121.478024125&hotelId=00201980&city=%E4%B8%8A%E6%B5%B7&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%85%89%E7%BA%A4%2C%E6%97%A0%E7%AA%97&hotelAddress=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%A5%BF%E8%97%8F%E4%B8%AD%E8%B7%AF66%E5%8F%B7%EF%BC%88%E8%BF%91%E5%BB%B6%E5%AE%89%E4%B8%9C%E8%B7%AF%EF%BC%89&remoteIP=58.247.4.206&hotelName=%E4%B8%8A%E6%B5%B7%E4%B8%BA%E6%B3%A2%E5%AE%BE%E9%A6%86%EF%BC%88%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&roomName=%E5%A4%A7%E5%BA%8A%E9%97%B4%28%E6%97%A0%E7%AA%97%29&hotelPhone=021-63226675&arrivalDate=2013-10-17&query_type=book&baiduLat=31.2355994240866&lat=31.229743094&roomTypeId=0005&bookingRuleDesc=&ratePlanId=147578&customerType=Chinese&task=public.hotel&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A812.11.20%E8%87%B320.12.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A818%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%872%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A5%E5%89%8D1%E6%97%A5%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&price=228&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fhotels%2Fpic%2Froom_no.png&msg_id=ba51520d-a9c3-4dbc-97f0-06461b5f173f&bedType=%E5%A4%A7%E5%BA%8A%EF%BC%88150cm*200cm%EF%BC%89&output=json&baiduLng=121.4845817082355","guarantee_rule_desc":"担保条件：在12.11.20至20.12.31 入住 如果在18:00至6:00到店，或预订房量超过2间，需要您提供信用卡担保。客人入住日前1日前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","description":"免费上网,光纤,无窗","room_name":"大床间(无窗)","hotel_name":"上海为波宾馆（人民广场店）"},{"img_url":"http://www.elongstatic.com/gp1/M00/54/5F/pIYBAFIwIIyAZ0RPAAAKuDvIYuk420.png?v=20130911155026","rateplan_id":"147578","bed_type":"双床（110cm*200cm）","price":268,"current_alloment":0,"plan":"不含早","bookUrl":"http://m.mobvoi.com/search/book/hotel?departureDate=2013-10-18&starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&remote_ip=192.168.10.30&query=%E9%99%84%E8%BF%91%E7%9A%84%E9%85%92%E5%BA%97&cityCode=0201&appkey=wechat_browser&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&lng=121.478024125&hotelId=00201980&city=%E4%B8%8A%E6%B5%B7&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%85%89%E7%BA%A4%2C%E6%97%A0%E7%AA%97&hotelAddress=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%A5%BF%E8%97%8F%E4%B8%AD%E8%B7%AF66%E5%8F%B7%EF%BC%88%E8%BF%91%E5%BB%B6%E5%AE%89%E4%B8%9C%E8%B7%AF%EF%BC%89&remoteIP=58.247.4.206&hotelName=%E4%B8%8A%E6%B5%B7%E4%B8%BA%E6%B3%A2%E5%AE%BE%E9%A6%86%EF%BC%88%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&roomName=%E5%95%86%E5%8A%A1%E6%A0%87%E5%87%86%E9%97%B4%28%E6%97%A0%E7%AA%97%29&hotelPhone=021-63226675&arrivalDate=2013-10-17&query_type=book&baiduLat=31.2355994240866&lat=31.229743094&roomTypeId=0002&bookingRuleDesc=&ratePlanId=147578&customerType=Chinese&task=public.hotel&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A812.11.20%E8%87%B320.12.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A818%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%872%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A5%E5%89%8D1%E6%97%A5%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&price=268&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2F54%2F5F%2FpIYBAFIwIIyAZ0RPAAAKuDvIYuk420.png%3Fv%3D20130911155026&msg_id=ba51520d-a9c3-4dbc-97f0-06461b5f173f&bedType=%E5%8F%8C%E5%BA%8A%EF%BC%88110cm*200cm%EF%BC%89&output=json&baiduLng=121.4845817082355","guarantee_rule_desc":"担保条件：在12.11.20至20.12.31 入住 如果在18:00至6:00到店，或预订房量超过2间，需要您提供信用卡担保。客人入住日前1日前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","description":"免费上网,光纤,无窗","room_name":"商务标准间(无窗)","hotel_name":"上海为波宾馆（人民广场店）"},{"img_url":"http://www.elongstatic.com/gp1/M00/A8/B1/o4YBAFIwIIqAay3rAAAL3q54EBw859.png?v=20130911155024","rateplan_id":"147578","bed_type":"大床（150cm*200cm）","price":248,"current_alloment":0,"plan":"不含早","bookUrl":"http://m.mobvoi.com/search/book/hotel?departureDate=2013-10-18&starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&remote_ip=192.168.10.30&query=%E9%99%84%E8%BF%91%E7%9A%84%E9%85%92%E5%BA%97&cityCode=0201&appkey=wechat_browser&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&lng=121.478024125&hotelId=00201980&city=%E4%B8%8A%E6%B5%B7&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%85%89%E7%BA%A4%2C%E6%97%A0%E7%AA%97&hotelAddress=%E4%B8%8A%E6%B5%B7%E5%B8%82%E9%BB%84%E6%B5%A6%E5%8C%BA%E8%A5%BF%E8%97%8F%E4%B8%AD%E8%B7%AF66%E5%8F%B7%EF%BC%88%E8%BF%91%E5%BB%B6%E5%AE%89%E4%B8%9C%E8%B7%AF%EF%BC%89&remoteIP=58.247.4.206&hotelName=%E4%B8%8A%E6%B5%B7%E4%B8%BA%E6%B3%A2%E5%AE%BE%E9%A6%86%EF%BC%88%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E5%BA%97%EF%BC%89&roomName=%E5%95%86%E5%8A%A1%E5%A4%A7%E5%BA%8A%E9%97%B4%28%E6%97%A0%E7%AA%97%29&hotelPhone=021-63226675&arrivalDate=2013-10-17&query_type=book&baiduLat=31.2355994240866&lat=31.229743094&roomTypeId=0001&bookingRuleDesc=&ratePlanId=147578&customerType=Chinese&task=public.hotel&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A812.11.20%E8%87%B320.12.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A818%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%872%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A5%E5%89%8D1%E6%97%A5%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&price=248&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2FA8%2FB1%2Fo4YBAFIwIIqAay3rAAAL3q54EBw859.png%3Fv%3D20130911155024&msg_id=ba51520d-a9c3-4dbc-97f0-06461b5f173f&bedType=%E5%A4%A7%E5%BA%8A%EF%BC%88150cm*200cm%EF%BC%89&output=json&baiduLng=121.4845817082355","guarantee_rule_desc":"担保条件：在12.11.20至20.12.31 入住 如果在18:00至6:00到店，或预订房量超过2间，需要您提供信用卡担保。客人入住日前1日前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","description":"免费上网,光纤,无窗","room_name":"商务大床间(无窗)","hotel_name":"上海为波宾馆（人民广场店）"}]},"appkey":"wechat_browser","params":[{"value":"上海","keyname":"城市","key":"city"},{"value":"2013-10-17","keyname":"入住日期","key":"checkin"},{"value":"2013-10-18","keyname":"退房日期","key":"checkout"},{"value":"UNDEFINED","keyname":"排序条件","key":"ranking_condition"}],"taskName":"找酒店","version":"undefined","msg_id":"ba51520d-a9c3-4dbc-97f0-06461b5f173f","user_id":"undefined","query_type":"detail"};
+    $(".necker").html(template.render("necker", response));
+    $(".wrapper").html(template.render("wrapper", response));
+    $(".dial").click(function() {
+      new chumenwenwen.dial($(this).attr("data-tel"), "");
+    })    
+    $(".point").click(function() {
+      new chumenwenwen.map.jumpToMap("point", [[response.answer.hotel_info.hotel_name, response.answer.hotel_info.baidu_lat, response.answer.hotel_info.baidu_lng]], "");
+    })     
+  </script>
+</body>
+</html>

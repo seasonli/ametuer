@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>微云文件</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<script>window.g_start_time = new Date();</script>
+<link rel="stylesheet" href="http://imgcache.qq.com/vipstyle/nr/box/web/css/weixin-v2.css?v1202" />
+</head>
+
+<body class="main-view link-view ">
+
+<!-- header -->
+<div id="header" class="header">
+    <a class="logo" href="http://www.weiyun.com/?WYTAG=weiyun.share.mobile" target="_blank"></a>
+        <a class="download" id='share_download' href="javascript:save_to_weiyun('');"><span>保存到微云</span></a>
+    </div>
+
+<!--这里是单文件-->
+<div id="app" class="app-inner">
+    <div class="file-info" id="file-info">
+        <i class="icon-multifile" style="background:none">
+            <img id="file_type" src="http://imgcache.qq.com/vipstyle/nr/box/icon/apk.png" width="80" height="96">
+        </i>
+        <h3 class="ui-title">wenwen10001_wandoujia.apk</h3>
+        <p class="ui-text">4.9M · 13次下载</p>
+        <a id="share_open" class="ui-btn-blue btn-oneline" href="javascript:download_multi_file();">打 开</a>    </div>
+</div>
+<iframe name="batch_download" id="batch_download" style="display:none"></iframe>
+<script type="text/javascript">
+//根据用户不同的网络类型，设置需要提示的文件大小
+var user_network_type = '3g',
+    notice_size = 3*(1024*1024);
+try{
+    if(navigator.connection){
+        user_network_type = navigator.connection.type;
+    }
+}
+catch(e){};
+
+if(user_network_type == 2 || user_network_type == 'wifi'){
+    notice_size = 15*(1024*1024);
+}
+//判断文件大小
+var file_size = 5140741;
+var file_suffix="apk";
+var anroidapk='';
+//判断是否是 apk文件
+if(file_suffix =='apk'){
+    if(!navigator.userAgent.match('Android')){
+        try{
+            anroidapk='此文件在您的设备上无法打开，<br/>建议您保存至微云中查看（不消耗流量）。';
+            //调整打开和保存到微云的位置
+            var $download=document.getElementById('share_download');
+            $download.innerHTML='<span>打&nbsp;开</span>';
+            var download_href=$download.href;
+            var $btn=document.getElementById('share_open');
+            $btn.innerHTML="保存到微云";
+            $download.href=$btn.href;
+            $btn.href=download_href;
+        }catch(e){
+
+        }
+    }else{
+        anroidapk='点击打开，即可将此应用安装到您的手机';
+    }
+}
+if(file_suffix =='apk'){
+    var str = anroidapk;
+    var p = document.createElement('p');
+    p.className = 'ui-text';
+    p.innerHTML = str;
+    document.getElementById('file-info').appendChild(p);
+}else if(file_size > notice_size){
+    var str = '文件较大，打开需要较长时间。<br />建议您保存至微云中查看（不消耗流量）。';
+    var p = document.createElement('p');
+    p.className = 'ui-text';
+    p.innerHTML = str;
+    document.getElementById('file-info').appendChild(p);
+}
+</script>
+
+
+<!-- 遮罩 -->
+<div class="ui-mask hide"></div>
+
+<!-- 保存浮层 -->
+<div class="ui-pop file-pop hide">
+
+    <!-- 状态一 saving -->
+    <div class="ui-tips file-saving hide"><i class="ui-icon icon-sync" style="background:none;"></i>正在保存</div>
+
+    <!-- 状态二 saved -->
+    <div class="file-saved hide">
+        <p class="ui-tips"><i class="ui-icon icon-saved"></i>保存成功</p>
+        <a class="ui-btn" href="http://www.weiyun.com/d/?WYTAG=weiyun.share.mobile" target="_blank">下载微云</a>
+
+    </div>
+
+    <!-- 状态三 save err -->
+    <div id="save-error-d" class="ui-tips file-save-fail hide">
+        <p class="ui-tips" id="save-error-p"><i class="ui-icon icon-save-err"></i>保存出错</p>
+        <p class="ui-text" id="save-error"></p>
+    </div>
+
+    <!-- 关闭按钮移到了这里 -->
+    <a class="ui-icon ui-pop-close hide" href="#">&times;</a>
+
+</div>
+
+
+<script type="text/javascript" src="http://imgcache.qq.com/club/qqdisk/web/js/lib/zepto-1.0.0.min.js?max_age=604800"></script>
+
+<!-- 新增文件 -->
+<script type="text/javascript" src="weiyun.js"></script>
+<script type="text/javascript">
+//页面初始化
+var shareInfo = {"ret":0,"sharekey":"a6bd57ef8c32f537f14c6a6e4927d93d","filename":"wenwen10001_wandoujia.apk","createtime":"2013-12-21 12:01:38","dir_list":[],"dlskey":"7992796593cc6421690091f08ad382f6ffaf8e9a06cd3595480b60616ee85d00fd86cdaf8c795f78","downcnt":13,"file_list":[{"file_id":"f6091a46-b1fe-405e-a4ff-1104e5fa44df","file_name":"wenwen10001_wandoujia.apk","file_size":"5140741"}],"note_info":null,"pdir_key":"5eb72560238fa366a34f2c0a5fcaa2ac","res_type":0,"safetype":0,"share_flag":0,"share_key":"a6bd57ef8c32f537f14c6a6e4927d93d","sharename":"wenwen10001_wandoujia.apk","short_url":"http:\/\/url.cn\/MPFzR7","show_store":true,"storecnt":1,"uin":1613084510,"viewcnt":186,"virusdesc":"","virusname":""};
+QQDISK_MOBILE_OUTLINK.init(shareInfo);
+//测速
+window.onload = function(){
+    var img = new Image(),
+        now = new Date(),
+        loaded_time = now - window.g_start_time;
+    img.onload = img.onerror = img.onabort = function () {
+        this.onload = this.onerror = this.onabort = null;
+        delete img;
+    };
+    img.src = 'http://isdspeed.qq.com/cgi-bin/r.cgi?flag1=7830&flag2=4&flag3=5&1='+loaded_time;
+};
+</script>
+<script type='text/javascript' src='http://pingjs.qq.com/tcss.ping.js'></script>
+<script>
+(function() {
+    if (typeof pgvMain == 'function') {
+        pgvMain("", {
+            tagParamName: 'WYTAG',
+            virtualURL: '',
+            virtualDomain: "share.weiyun.com"
+        });
+    }
+})();
+</script>
+
+</body>
+</html>

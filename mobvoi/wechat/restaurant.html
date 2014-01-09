@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 查餐馆</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+</head>
+
+
+<body>
+  <div class="wrapper">
+  </div>
+</body>
+</html>
+
+<script type="text/html" id="wrapper_restaurant">
+  <ul class="cards">
+    <li class="cards_card result">
+      <div class="cards_card_entire">
+        <p><span class="layout-444">为您搜索到 “{ query }”</span></p>
+        <p><span id="total" class="layout-999"> 条结果</span></p>
+      </div>
+    </li>
+  </ul>
+  <ul class="cards">
+    { each answer as val i }
+      <li class="cards_card" onClick="window.location.href='{ val.detail_url }'">
+       <div class="cards_card_img left">
+          <p>
+            <img class="layout-block" src="{ val.img_url }" />
+          </p>   
+        </div> 
+        <div class="cards_card_img right">
+          <p>
+            <span class="flag">
+            { val.name }
+            { if val.deal }
+              <img src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/img/h5-flag-groupcoupon.png" />
+            { /if }
+            { if val.coupon }
+              <img src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/img/h5-flag-deal.png" />
+            { /if }
+            </span></p>
+          <p>
+            <span class="rating rating{ i } layout-fleft" data-rating="{ val.rating }">
+              <span class="rating_indicator rating_indicator{ i }"></span>
+            </span>
+          </p> 
+          <p><span class="layout-16px layout-999 layout-fright">人均￥{ val.price }</span></p>
+        </div>
+        <div class="cards_card_img right layout-999">
+          <p>
+            <span>{ each val.dp_category.split("|") as val1 i1 } { val1 } { /each }</span>
+            <span class="layout-fright">{ if val.my_distance > 0 }{ val.my_distance }m { /if }</span></p>
+        </div>
+        <div class="clear"></div>
+      </li>
+    { /each }
+  </ul>
+</script>
+
+<script>
+  var response = {"session_id":"public.restaurant@f5ab6a508f1d9b34f0ef21d2c2b24ede","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.restaurant","query":"上海的俄罗斯餐馆","remote_ip":"58.247.4.206","answer":[{"img_url":"http://i3.dpfile.com/pc/04ad55ee9d79b52c2d006e1a4238681b(278x200)/thumb.jpg","detail_url":"http://dpurl.cn/p/pmniaVuBSe","dp_id":"14171156","phone":"15102163904","dp_category":"咖啡厅","tag":"普陀区|中山北路/甘泉地区","target_distance":-1,"lng":121.42657769482777,"8684_id":"","discount":0,"id":"dianping-14171156","my_distance":6884,"price":0,"source":"dianping","rating_count":3,"opening_time":"","address":"新村路660号","priority":0,"name":"普京咖啡-思想俄罗斯","third_tag":"","rating":0,"mobvoi_category_1":"","mobvoi_category_3":"","lat":31.271023022799298,"mobvoi_category_2":""},{"img_url":"http://i2.dpfile.com/2008-03-28/415266_b.jpg(278x200)/thumb.jpg","detail_url":"http://dpurl.cn/p/Br2Ntu4fNW","dp_id":"500164","phone":"021-58797138","dp_category":"自助餐|婚宴酒店","tag":"浦东新区|陆家嘴","target_distance":-1,"lng":121.50629053886495,"8684_id":"","discount":0,"id":"dianping-500164","my_distance":2397,"price":297,"source":"dianping","rating_count":1244,"opening_time":"","address":"世纪大道1号东方明珠电视塔","priority":0,"name":"东方明珠旋转餐厅","third_tag":"","rating":3,"mobvoi_category_1":"","mobvoi_category_3":"","lat":31.245524879990906,"mobvoi_category_2":""},{"img_url":"http://i3.dpfile.com/pc/99d5de2a26a33f049408b34516bc15ea(278x200)/thumb.jpg","detail_url":"http://dpurl.cn/p/FH75--Vypm","dp_id":"5407448","phone":"021-55127007","dp_category":"西餐","tag":"虹口区|海宁路/七浦路","target_distance":-1,"lng":121.4983908188343,"8684_id":"","discount":0,"id":"dianping-5407448","my_distance":3149,"price":113,"source":"dianping","rating_count":96,"opening_time":"","address":"沙泾路10号1933老场坊1号楼308室","priority":0,"name":"红场俄式西餐厅","third_tag":"","rating":4,"mobvoi_category_1":"","mobvoi_category_3":"","lat":31.260103037636604,"mobvoi_category_2":""},{"img_url":"http://i3.dpfile.com/2009-07-05/2286333_b.jpg(278x200)/thumb.jpg","detail_url":"http://dpurl.cn/p/pzJfza7CCc","dp_id":"2801554","phone":"13817778890","dp_category":"酒吧","tag":"卢湾区|瑞金宾馆区|打浦桥","target_distance":-1,"lng":121.47541318144654,"8684_id":"","discount":0,"id":"dianping-2801554","my_distance":2356,"price":86,"source":"dianping","rating_count":132,"opening_time":"","address":"泰康路248弄11号后门","priority":0,"name":"BELL BAR","third_tag":"","rating":4,"mobvoi_category_1":"","mobvoi_category_3":"","lat":31.21472297576689,"mobvoi_category_2":""},{"img_url":"http://i1.dpfile.com/pc/0acdca327e69cc639ec3299cf4417b1e(278x200)/thumb.jpg","detail_url":"http://dpurl.cn/p/RNQndzGCdQ","phone":"021-63088757","dp_category":"火锅","tag":"黄浦区|人民广场|南京东路","target_distance":-1,"lng":121.48443665235723,"id":"dianping-6609265","deal":{"deal_count":2,"deals":[{"id":"1-256304","description":"香港荣哥火锅!仅售668元,价值1353元超值海鲜3-4人套餐!生猛海鲜,新鲜味美,量多实在!好吃又实惠的海鲜火锅就在荣哥!","url":"http://dpurl.cn/p/5UiQySXtAD"},{"id":"1-5002954","description":"香港荣哥火锅!仅售488元,价值1097元3-4人套餐!奢华环境,高端火锅料理,精选上等食材,定会让您不虚此行!","url":"http://dpurl.cn/p/n2z3rxdwVa"}]},"opening_time":"","priority":0,"name":"香港荣哥火锅","third_tag":"","coupon":{"coupon_id":197861,"coupon_url":"http://dpurl.cn/p/fwCEFp97AV","coupon_description":"超值龙虾海鲜套餐特价518元"},"lat":31.23916877182678,"mobvoi_category_3":"","mobvoi_category_2":"","dp_id":"6609265","8684_id":"","discount":0,"price":167,"my_distance":541,"rating_count":115,"source":"dianping","address":"广西北路237号","rating":5,"mobvoi_category_1":""}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"上海","keyname":"城市","key":"city"},{"value":"俄罗斯餐馆","keyname":"类别","key":"type"}],"taskName":"查餐馆","highlight_query":"为您找到<span class=\"highlight\">上海<\/span>的<span class=\"highlight\">俄罗斯餐馆<\/span>","version":"undefined","page":{"total":5,"start":0,"length":5},"msg_id":"2bc729cf-a23a-48cd-ae63-577410bea24e","user_id":"undefined","query_type":"text"};
+
+  $(".wrapper").html(template.render("wrapper_restaurant", response));
+  $("#total").prepend(response.answer.length)
+
+  for (var i = 0; i < response.answer.length; i ++) {
+    var rating = $(".rating" + i).attr("data-rating") * 21.6;
+    $(".rating_indicator" + i).css("width", rating + "px");
+  }
+</script>
+<script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>

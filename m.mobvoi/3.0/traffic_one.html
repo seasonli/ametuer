@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="/css/chumenwenwen.2.0.css" >
+  <script src="/js/chumenwenwen.3.0.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+  </div>
+  <script type="text/html" id="wrapper_traffic_one">
+    <ul class="cards">
+      { each body as val i }
+        <li class="cards_card arrowright gotoLink" data-link="{ val.link_url }">
+          <div class="cards_card_triple left">
+            <p><span class="layout-999">{ val.content[6] }</span></p>
+            <p><span class="layout-666">{ val.content[7] }</span></p>          
+          </div> 
+          <div class="cards_card_triple center">
+            <p><span class="layout-green">{ val.content[2] }</span> <span>{ val.content[0] }</span></p>
+            <p><span>{ val.content[3] }</span> <span>{ val.content[1] }</span></p>
+          </div>
+          <div class="cards_card_triple right">
+            <p><span class="layout-orange">{ val.content[5] }</span></p>
+          </div>        
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":["上海","兰州","08:50","13:14","2013-12-20","28小时24分","快速","K376/K377","http://m.tieyou.com/buy/home.html?from=上海&to=兰州&yupiao=&ymd=20131220&checi=K376/K377&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes"],"img_url":"","title":"上海-兰州","link_url":"http://touch.qunar.com/trainDetail.jsp?startstation=上海&endstation=兰州&searchType=twoStation&number=K376/K377","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["上海南","兰州","11:54","12:40","2013-12-20","24小时46分","特快","T112/T113","http://m.tieyou.com/buy/home.html?from=上海南&to=兰州&yupiao=&ymd=20131220&checi=T112/T113&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes"],"img_url":"","title":"上海南-兰州","link_url":"http://touch.qunar.com/trainDetail.jsp?startstation=上海南&endstation=兰州&searchType=twoStation&number=T112/T113","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["上海","兰州","15:42","15:05","2013-12-20","23小时23分","特快","T116/T117","http://m.tieyou.com/buy/home.html?from=上海&to=兰州&yupiao=&ymd=20131220&checi=T116/T117&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes"],"img_url":"","title":"上海-兰州","link_url":"http://touch.qunar.com/trainDetail.jsp?startstation=上海&endstation=兰州&searchType=twoStation&number=T116/T117","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["上海","兰州","19:36","16:47","2013-12-20","21小时11分","特快","T164/T165","http://m.tieyou.com/buy/home.html?from=上海&to=兰州&yupiao=&ymd=20131220&checi=T164/T165&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes"],"img_url":"","title":"上海-兰州","link_url":"http://touch.qunar.com/trainDetail.jsp?startstation=上海&endstation=兰州&searchType=twoStation&number=T164/T165","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["上海","兰州","20:26","19:51","2013-12-20","23小时25分","特快","T52/T53","http://m.tieyou.com/buy/home.html?from=上海&to=兰州&yupiao=&ymd=20131220&checi=T52/T53&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes"],"img_url":"","title":"上海-兰州","link_url":"http://touch.qunar.com/trainDetail.jsp?startstation=上海&endstation=兰州&searchType=twoStation&number=T52/T53","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.train@8782ad10f9be302229d03f7ea852dff4","query":"上海到兰州的火车","appkey":"debug","need_check_location":false,"recommendation_query":[],"type":"traffic_one","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"version":"9999","schema":"listview","more":{"show_number":5,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"page":{"total":5,"start":0,"length":5},"user_id":"","query_type":"text","pc_option":{"options":[]},"task":"public.train","task_name":"查火车","params":[{"value":"上海","keyname":"出发站","key":"from"},{"value":"兰州","keyname":"到达站","key":"to"},{"value":"火车","keyname":"火车类型","key":"type"}],"search_query":"为您查找到从<font color='#21ad93'> 上海 <\/font>去<font color='#21ad93'> 兰州 <\/font>的<font color='#21ad93'> 火车 <\/font>","source":"","address":"中国,新疆维吾尔自治区,乌鲁木齐市,沙依巴克区,滨河南路,,43.8108,87.6098","msg_id":"13d93ae4-031b-4467-99d2-79e778070f42","method":"getBodyAnswer","output":"app","is_show_header":true}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  <script src="/js/chumenwenwen.renderHTML.3.0.js"></script>
+</body>
+</html>

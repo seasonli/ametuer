@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.2.0.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="necker">
+  </div>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="necker">
+    <div class="banner gotoDial" data-tel="{ phone.split(",")[0] }">
+      <p><span class="layout-fleft layout-22px layout-bold" style="line-height: 22px; width: 80%">{ name }</span><div class="clear"></div></p>
+      { if phone != "" }<p><span class="layout-12px">电话: { phone }</span></p>
+      <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />{ /if }
+    </div>
+  </script>
+
+  <script type="text/html" id="wrapper">
+    <ul class="cards">
+      <li class="cards_img showMap markMap layout-fff" style="height: 240px">[[[{ baidu_lat }, { baidu_lng }]]]</li>
+      <li class="cards_card">
+        <div class="cards_card_entire">
+          <p><button class="gotoMark layout-bwhite layout-left layout-blue layout-bold" type="button" data-point="{ name }, { baidu_lat }, { baidu_lng }">获取路线<img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" style="margin-left: 5px; height: 12px"></button></p>
+        </div>
+      </li>
+    </ul>
+  </script>
+
+  <script> 
+//    var response = ${content}
+    var response = {"parking":"","detail_url":"http://api.map.baidu.com/place/detail?uid=a7c56ee079c81db0a3acc4fa&output=html&source=placeapi_v2","phone":"12","dp_category":"","lng":121.486245,"baidu_lng":121.486245,"ali_lat":0,"id":"baidu-a7c56ee079c81db0a3acc4fa","baidu_lat":31.235713,"opening_time":"","priority":0,"description":"","name":"中国建设银行第一支行","third_tag":"","my_lng":121.48479060128,"lat":31.235713,"mobvoi_category_3":"","ali_lng":0,"main_tag":"","mobvoi_category_2":"","dp_id":"","my_lat":31.234309729773,"8684_id":"","discount":0,"my_distance":208,"price":0,"traffic":"","source":"baidu","rating_count":0,"address":"黄浦区延安东路700号","rating":0,"mobvoi_category_1":"","secondary_tag":""};
+    
+    $(".necker").html(template.render("necker", response));
+    $(".wrapper").html(template.render("wrapper", response));
+
+    var CMWW = new chumenwenwen(), mapObj = {
+      map: [],
+      point: []
+    }, renderObj = [];
+    (function() {
+      var $div = $("<div>").attr("data-event", "CMWW").append($(".necker").prop("outerHTML") + $(".wrapper").prop("outerHTML"));
+      $(".necker, .wrapper").remove();
+      $("body").prepend($div);
+    }) ()
+
+    renderStyle();
+
+    $(".gotoDial").click(function() {
+      if($(this).attr("data-tel") && $.trim($(this).attr("data-tel")) != "") {
+        CMWW.jump.dial($.trim($(this).attr("data-tel")));
+      }
+    })
+    $(".gotoMark").click(function() {
+      if($(this).attr("data-point") && $(this).attr("data-point") != "") {
+        new chumenwenwen().jump.mark([eval("[" + "'" + $.trim($(this).attr("data-point").split(",")[0]) + "','" + $.trim($(this).attr("data-point").split(",")[1]) + "','" + $.trim($(this).attr("data-point").split(",")[2]) + "']")]);
+      }
+    });
+    $('[data-event="CMWW"]').delegate(".gotoLink", "click", function() {
+      if($.trim($(this).attr("data-link")) != "") {
+        window.location.href = $(this).attr("data-link");
+      }
+    })    
+    if(browser.versions.chumenwenwen == false) {
+      new chumenwenwen().brower();
+    }
+  </script>
+</body>
+</html>

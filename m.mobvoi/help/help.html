@@ -1,0 +1,226 @@
+<!--<!DOCTYPE HTML>-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>功能大全 出门问问</title>
+  <link rel="stylesheet" href="css/help.css" >
+  <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/js/jquery.1.10.2.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+</head>
+
+<body>
+  <div class="corner"></div>
+  <div class="bottom"></div>
+  <div class="point"></div>
+
+  <div class="slogan">听得懂，查得到，出门问一问</div>
+  <div class="sider">
+  </div>
+  <div class="tablet">
+    <span class="newest" onClick='togglePage("newest")'>最新</span>
+    <span class="hot" onClick='togglePage("hot")'>最热</span>
+    <span class="all" onClick='togglePage("all")'>所有功能</span>
+  </div> 
+  <div class="wrapper">
+  </div>
+  <div class="footer">
+  </div>
+</body>
+</html>
+
+<script type="text/html" id="sider_newest">
+  { each newest as val i }
+    <div class="rope" data-css-color="{ i }">{ val.title }</div>
+  { /each }
+</script>
+<script type="text/html" id="wrapper_newest">
+  <div class="bars">
+    { each newest as val i }
+      <ul class="bars_bar">
+        { each newest[i].content as val1 i1 }
+          <li class="bars_bar_onebox { if val1.hot == 'true' }hot{ /if }" >
+            <div class="bars_bar_onebox_title">{ val1.task_name }<br/><span>“{ val1.thumb_example }”<span></div>
+            { if newest[i].content[i1].examples }
+              <div class="bars_bar_onebox_content">
+                { each newest[i].content[i1].examples as val2 i2 }
+                  “{ val2 }”<br/>
+                { /each }
+              </div>
+            { /if }
+          </li>
+        { /each }
+      </ul>
+    { /each }
+  </div>
+</script>
+<script type="text/text" id="footer_newest">
+  <div class="lines">
+    { each newest as val i }
+       <div class="lines_line">
+        <div class="lines_line_border"></div>
+        <div class="lines_line_point" data-css-color="{ i }"></div>
+        <div class="lines_line_text" data-css-color="{ i }">{ val.title }</div>
+      </div>     
+    { /each }
+  </div>
+</script>
+
+<script type="text/html" id="sider_hot">
+  { each hot as val i }
+    <div class="rope" data-css-color="{ i }">{ val.title }</div>
+  { /each }
+</script>
+<script type="text/html" id="wrapper_hot">
+  <div class="bars">
+    { each hot as val i }
+      <ul class="bars_bar">
+        { each hot[i].content as val1 i1 }
+          <li class="bars_bar_onebox">
+            <div class="bars_bar_onebox_title">{ val1.task_name }<br/><span>“{ val1.thumb_example }”<span></div>
+            { if hot[i].content[i1].examples }
+              <div class="bars_bar_onebox_content">
+                { each hot[i].content[i1].examples as val2 i2 }
+                  “{ val2 }”<br/>
+                { /each }
+              </div>
+            { /if }
+          </li>
+        { /each }
+      </ul>
+    { /each }
+  </div>
+</script>
+<script type="text/text" id="footer_hot">
+  <div class="lines">
+    { each hot as val i }
+       <div class="lines_line">
+        <div class="lines_line_border"></div>
+        <div class="lines_line_point" data-css-color="{ i }"></div>
+        <div class="lines_line_text" data-css-color="{ i }">{ val.title }</div>
+      </div>     
+    { /each }
+  </div>
+</script>
+
+<script type="text/html" id="sider_all">
+  { each all as val i }
+    <div class="rope" data-css-color="{ i }">{ val.title }</div>
+  { /each }
+</script>
+<script type="text/html" id="wrapper_all">
+  <div class="bars">
+    { each all as val i }
+      <ul class="bars_bar">
+        { each all[i].content as val1 i1 }
+          <li class="bars_bar_onebox { if val1.hot == 'true' }hot{ /if }">
+            <div class="bars_bar_onebox_title">{ val1.task_name }<br/><span>“{ val1.thumb_example }”<span></div>
+            { if all[i].content[i1].examples }
+              <div class="bars_bar_onebox_content">
+                { each all[i].content[i1].examples as val2 i2 }
+                  “{ val2 }”<br/>
+                { /each }
+              </div>
+            { /if }
+          </li>
+        { /each }
+      </ul>
+    { /each }
+  </div>
+</script>
+<script type="text/text" id="footer_all">
+  <div class="lines">
+    { each all as val i }
+       <div class="lines_line">
+        <div class="lines_line_border"></div>
+        <div class="lines_line_point" data-css-color="{ i }"></div>
+        <div class="lines_line_text" data-css-color="{ i }">{ val.title }</div>
+      </div>     
+    { /each }
+  </div>
+</script>
+
+<script>
+  /*
+  web功能介绍 Edited by SeasonLi and updated at 2013/10/18
+  
+  说明
+  newest 最新功能
+  hot 最热功能
+  all 所有功能
+
+  content[] -> task_name 功能名称
+  content[] -> thumb_exapmle 例句
+  content[] -> examples[] 点击后展示的例句，没有该字段则点击后不高亮不展开
+  content[] -> hot[] 值为"true"时在最新/所有功能页面显示hot标签
+  */
+  var response = {
+    "newest": [
+      {
+        "title": "九月新上线", 
+        "content": [
+          {"task_name": "点播音乐", "thumb_example": "来一首王菲的红豆", "examples": ["伤心的时候能听什么歌", "来点泰勒斯威夫特的歌", "我想听最初的梦想", "来首爵士乐听听"], "hot": "true"}, {"task_name": "听新闻，相声，小说", "thumb_example": "今天有什么新闻", "examples": ["给我来段郭德纲的相声", "我想听一段鬼故事"], "hot": "true"}, {"task_name": "查旅游攻略", "thumb_example": "查一下曼谷的攻略", "examples": ["杭州西湖有什么好玩的", "马尔代夫的游记", "我想去普吉岛旅游"]}, {"task_name": "查地铁", "thumb_example": "北京一号线的首末班车时间", "examples": ["上海静安寺附近的地铁站", "我周围有什么地铁线路", "苏州一号线相门站的发车时间"], "hot": "true"}, {"task_name": "查星座运势", "thumb_example": "狮子座最近运势如何", "examples": ["白羊座本周爱情运势","天蝎座下周工作运怎么样"], "hot": "true"}, {"task_name": "查指定商区", "thumb_example": "苏州观前街", "examples": ["北京天安门", "上海人民广场"]}, {"task_name": "找代驾", "thumb_example": "找下上海静安区附近的酒后代驾", "examples": ["首都国际机场附近的长途代驾师傅", "有没有驾驶陪练", "我要一个商务代驾"]}
+        ]
+      }, {
+        "title": "八月", 
+        "content": [
+          {"task_name": "查团购", "thumb_example": "附近有哪些日料团购", "examples": ["附近有哪些日料团购", "广州黄浦区周围足浴的团购", "有没有巫山烤鱼的团购啊"], "hot": "true"}, {"task_name": "查菜谱", "thumb_example": "豆腐可以做什么菜", "examples": ["东坡肉怎么做"]}, {"task_name": "查电影详情，电影院信息", "thumb_example": "我要看《环太平洋》的影片信息", "examples": ["附近哪家电影院在放《速度与激情6》"], "hot": "true"}, {"task_name": "听新闻，相声，小说", "thumb_example": "今天有什么新闻", "examples": ["给我来段郭德纲的相声", "我想听一段鬼故事"]}, {"task_name": "查帅哥美女", "thumb_example": "找下附近的美女", "examples": ["南京的帅哥"], "hot": "true"}, {"task_name": "43国语言翻译", "thumb_example": "翻译成英语我饿了", "examples": ["用日语翻译你今天好吗", "你好用韩语怎么翻译"]}, {"task_name": "查航班实时信息", "thumb_example": "MU2701会晚点吗", "examples": ["CA1323什么时候到达"]}
+        ]
+      }, {
+        "title": "七月", 
+        "content": [
+          {"task_name": "听笑话", "thumb_example": "来段笑话", "examples": ["我心情不好", "我好无聊啊"], "hot": "true"}, {"task_name": "快递单号查询", "thumb_example": "我的快递到了没有", "examples": ["我要查顺丰快递"]}, {"task_name": "手机归属地查询", "thumb_example": "查询手机归属地"}, {"task_name": "查景点，打折门票", "thumb_example": "济南有什么著名景点", "examples": ["附近的打折景点", "苏州的旅游景点有什么打折门票"], "hot": "true"}, {"task_name": "违章信息查询", "thumb_example": "查下我的车违章了没", "examples": ["我的车最近有没有闯红灯"]}
+        ]
+      }
+    ], "hot": [
+      {
+        "title": "最热功能", 
+        "content": [
+          {"task_name": "查团购", "thumb_example": "附近有哪些日料团购", "examples": ["附近有哪些日料团购", "广州黄浦区周围足浴的团购", "有没有巫山烤鱼的团购啊"]}, {"task_name": "查周边商户信息", "thumb_example": "附近有没有工行的atm", "examples": ["附近有没有工行的atm", "我想买束花，哪里有花店", "查下离我最近的公共厕所", "哪里可以做足浴"]}, {"task_name": "查餐厅", "thumb_example": "附近人均200左右的泰国菜", "examples": ["上海人民广场附近人均100左右的泰国菜", "附近适合商务聚餐的饭店", "离我最近的自助餐"]}, {"task_name": "导航", "thumb_example": "开车去火车站的路线", "examples": ["开车去火车站的路线", "怎么走路去人民广场", "去火车站怎么坐公交车"]}, {"task_name": "查帅哥美女", "thumb_example": "找下附近的美女", "examples": ["南京的帅哥"]}, {"task_name": "点播音乐", "thumb_example": "来一首王菲的红豆", "examples": ["伤心的时候能听什么歌", "来点泰勒斯威夫特的歌", "我想听最初的梦想", "来首爵士乐听听"]}, {"task_name": "听笑话，看搞笑图", "thumb_example": "来段笑话", "examples": ["我心情不好", "我好无聊", "来张搞笑图吧"]}, {"task_name": "查地铁", "thumb_example": "一号线的首末班车时间", "examples": ["上海静安寺附近的地铁站", "我周围有什么地铁线路", "苏州一号线相门站的发车时间"]}, {"task_name": "查火车票", "thumb_example": "今天最晚一班回上海的火车", "examples": ["下周二从南昌到长沙的动车，下午3点左右发车", "帮我查下G104次高铁", "今天下午3点到5点间有没有动车去苏州"]}, {"task_name": "查景点，打折门票", "thumb_example": "济南有什么著名景点", "examples": ["附近的打折景点", "苏州的旅游景点有什么打折门票"]}, {"task_name": "查酒店", "thumb_example": "附近的三星级酒店", "examples": ["杭州南站附近的快捷酒店，今晚入住", "附近哪些酒店有wifi", "周围人均200左右的旅馆"]}, {"task_name": "听新闻，相声，小说", "thumb_example": "今天有什么新闻", "examples": ["给我来段郭德纲的相声", "我想听一段鬼故事"]}, {"task_name": "查世界、本地天气", "thumb_example": "伦敦明天天气怎么样", "examples": ["周末我这会下雨吗", "今天北京PM是多少", "下周石家庄天气如何"]}, {"task_name": "查星座运势", "thumb_example": "狮子座最近运势如何", "examples": ["狮子座最近运势如何", "白羊座本周爱情运势", "天蝎座下周工作运怎么样"]}, {"task_name": "43国语言翻译", "thumb_example": "翻译成英语我饿了", "examples": ["用日语翻译你今天好吗", "你好用韩语怎么翻译"]}
+        ]
+      }
+    ], "all": [
+      {
+        "title": "城市出行类", 
+        "content": [
+          {"task_name": "查长途汽车时刻、价格", "thumb_example": "汉口到十堰的长途汽车有哪几班", "examples": ["下午去珠海的客车，哪一班最便宜", "8月3号从太原到大同的汽车"]}, {"task_name": "查路况信息", "thumb_example": "苏州干将路现在堵吗", "examples": ["上海内环路现在堵成什么样了"]}, {"task_name": "查限行", "thumb_example": "今天北京限行尾号是什么", "examples": ["我想知道北京今天限行的信息"]}, {"task_name": "违章信息查询", "thumb_example": "查下我的车违章了没", "examples": ["我的车最近有没有闯红灯"]}, {"task_name": "导航", "thumb_example": "开车去火车站的路线", "examples": ["开车去火车站的路线", "怎么走路去人民广场", "去火车站怎么坐公交车"], "hot": "true"}, {"task_name": "我在哪里", "thumb_example": "我在哪里"}
+        ]
+      }, {
+        "title": "旅游类", 
+        "content": [
+          {"task_name": "查飞机票时刻、价格", "thumb_example": "下周二早上去深圳的东航机票", "examples": ["明天去北京的航班，哪一班最便宜"]}, {"task_name": "查航班实时信息", "thumb_example": "MU2701会晚点吗", "examples": ["CA1323什么时候到达"]}, {"task_name": "查火车票", "thumb_example": "今天最晚一班回上海的火车", "examples": ["下周二从南昌到长沙的动车，下午3点左右发车", "帮我查下G104次高铁", "今天下午3点到5点间有没有动车去苏州"], "hot": "true"}, {"task_name": "查景点，打折门票", "thumb_example": "济南有什么著名景点", "examples": ["附近的打折景点", "苏州的旅游景点有什么打折门票"], "hot": "true"}
+        ]
+      }, {
+        "title": "周边类", 
+        "content": [
+          {"task_name": "查酒店", "thumb_example": "附近的三星级酒店", "examples": ["杭州南站附近的快捷酒店，今晚入住", "附近哪些酒店有wifi", "周围人均200左右的旅馆"], "hot": "true"}, {"task_name": "查餐厅", "thumb_example": "附近人均200左右的泰国菜", "examples": ["上海人民广场附近人均100左右的泰国菜", "附近适合商务聚餐的饭店", "离我最近的自助餐"]}, {"task_name": "查周边商户信息", "thumb_example": "附近有没有工行的atm", "examples": ["附近有没有工行的atm", "我想买束花，哪里有花店", "查下离我最近的公共厕所", "哪里可以做足浴"], "hot": "true"}
+        ]
+      }, {
+        "title": "优惠类", 
+        "content": [
+          {"task_name": "查团购", "thumb_example": "附近有哪些日料团购", "examples": ["附近有哪些日料团购", "广州黄浦区周围足浴的团购", "有没有巫山烤鱼的团购啊"], "hot": "true"}, {"task_name": "查优惠券", "thumb_example": "给我一张麦当劳优惠券", "examples": ["肯德基优惠券"]}
+        ]
+      }, {
+        "title": "饮食类", 
+        "content": [
+          {"task_name": "查菜谱", "thumb_example": "豆腐可以做什么菜", "examples": ["东坡肉怎么做"]}, {"task_name": "查餐厅榜单", "thumb_example": "北京有什么推荐的美食", "examples": ["上海哪里的餐厅好吃"], "hot": "true"}
+        ]
+      }, {
+        "title": "娱乐类", 
+        "content": [
+          {"task_name": "查电影详情，电影院信息", "thumb_example": "我要看《环太平洋》的影片信息", "examples": ["附近哪家电影院在放《速度与激情6》"], "hot": "true"}, {"task_name": "听新闻，相声，小说", "thumb_example": "今天有什么新闻", "examples": ["给我来段郭德纲的相声", "我想听一段鬼故事"], "hot": "true"}, {"task_name": "查帅哥美女", "thumb_example": "找下附近的美女", "examples": ["南京的帅哥"], "hot": "true"}, {"task_name": "听笑话", "thumb_example": "来段笑话", "examples": ["我心情不好", "我好无聊啊"], "hot": "true"}
+        ]
+      }, {
+        "title": "生活类", 
+        "content": [
+          {"task_name": "43国语言翻译", "thumb_example": "翻译成英语我饿了", "examples": ["用日语翻译你今天好吗", "你好用韩语怎么翻译"], "hot": "true"}, {"task_name": "查世界、本地天气", "thumb_example": "伦敦明天天气怎么样", "examples": ["周末我这会下雨吗", "今天北京PM是多少", "下周石家庄天气如何"], "hot": "true"}, {"task_name": "快递单号查询", "thumb_example": "我的快递到了没有", "examples": ["我要查顺丰快递"]}, {"task_name": "手机归属地查询", "thumb_example": "查询手机归属地"}, {"task_name": "现在几点", "thumb_example": "现在几点了"}, {"task_name": "查电话黄页", "thumb_example": "麦当劳的订餐电话", "examples": ["老娘舅的送餐电话是多少"]}
+        ]
+      }
+    ]
+  }
+</script>
+<script src="js/help.js"></script>

@@ -1,0 +1,7 @@
+(function() {
+	var script = document.createElement("script");
+	script.setAttribute("type", "text/html");
+	script.setAttribute("id", "wrapper_traffic_two");
+	script.innerHTML = '<ul class="cards"> { each body as val i } <li class="cards_card toggle gotoToggle"> <div class="cards_card_entire layout-12px layout-999"> <p><span><img src="{ val.img_url }" style="width: 20px" /> { val.title }</span></p> </div> <div class="cards_card_double left"> <p><span class="layout-green">{ val.content[0] } </span><span>{ val.content[1] }</span></p> <p><span>{ val.content[4] }</span> <span>{ val.content[5] }</p> </div> <div class="cards_card_double right"> <p><span class="layout-16px layout-orange">{ val.content[2] }</span> <span class="layout-12px layout-999">{ val.content[3] }</span></p> </div> <div class="clear"></div> </li> <li class="cards_toggle gotoToggled"> { each body[i].children as val1 i1 } <div class="cards_card_triple left layout-666 gotoLink" data-link="{ val1.link_url }"> <p><span>{ val1.title }</span></p> </div> <div class="cards_card_triple center layout-orange gotoLink" data-link="{ val1.link_url }"> <p><span>{ val1.content[0] }</span></p> </div> <div class="cards_card_triple right layout-blue gotoLink" data-link="{ val1.link_url }"> <p><span>{ val1.content[1] }</span></p> </div> <div class="clear"></div> { /each } </li> } { /each } </ul>';
+	document.head.appendChild(script);
+}) ()

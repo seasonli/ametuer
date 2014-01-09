@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_poi_four">
+    <ul class="cards">
+      { each body as val i }
+        <li class="cards_card gotoLink" { if val.action.navigation.is_enable == true }style="border: 0"{ /if } data-link="{ val.link_url }">
+          <div class="cards_card_img left">
+            <p><img src="{ val.img_url }" /></p>   
+          </div> 
+          <div class="cards_card_img right">
+            <p><span class="layout-16px">
+              { if val.title.length > 12 }{ val.title.substr(0, 10) }…{ else }{ val.title }{ /if }
+              { if val.content[0] == "true" }<img style="width: 16px" src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/flag-deal.png" />{ /if }
+              { if val.content[1] == "true" }<img style="width: 16px" src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/flag-groupcoupon.png" />{ /if }
+            </span></p>
+          </div>
+          <div class="cards_card_img right">
+            { if val.content[2] != "" }
+              <p><span class="rating layout-fleft">{ val.content[2] }</span></p>
+            { /if }
+            <p><span class="layout-fleft layout-12px layout-999">{ val.content[3] }</span></p>
+            <div class="clear"></div>
+            <p><span class="layout-12px layout-999">{ val.content[4] }</span></p>
+            <p><span class="layout-fright layout-12px layout-999">{ val.content[5] }</span></p>
+          </div>    
+          <div class="clear"></div>
+        </li>
+        { if val.action.navigation.is_enable == true }
+          <li class="cards_card" style="padding: 0">
+            <div class="cards_card_triple left">
+              <p><button class="little dial" data-tel={ val.action.phone }></button></p>         
+            </div> 
+            <div class="cards_card_triple center">
+              <p><button id="point_{ i }" class="little point" data-mode="driving"></button></p>
+            </div>
+            <div class="cards_card_triple right">
+              <p><button class="little share"></button></p>
+            </div>
+            <div class="clear"></div>         
+          </li>
+        { /if }
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":["false","false","5.0","","1.9km","","39.924999","116.421552"],"img_url":"http://site.weidaijia.cn/static/user/2013/0531/user_1011593_13699709255798.png_small","title":"况师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=VTEBZQNhAGcFMVY7AGI=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","4.0","","2.3km","","39.903167","116.425345"],"img_url":"http://site.weidaijia.cn/static/user/2013/1113/user_1030691_13843360859176.png_small","title":"陈师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=Wz9UMARkA2UBNVc6VTY=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","5.0","","3.4km","","39.896922","116.371062"],"img_url":"http://site.weidaijia.cn/static/user/2013/1023/user_1027614_13825172665552.png_small","title":"汪师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=AmYAZFQ1CmsDN1I3UDY=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","5.0","","4.3km","","39.952729","116.395966"],"img_url":"http://site.weidaijia.cn/static/user/2013/0712/user_1011718_13736156992814.png_small","title":"李师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=UzdRNQJgA2NXZVM2UTQ=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","4.0","",">5km","","39.933825","116.349984"],"img_url":"http://site.weidaijia.cn/static/user/2013/1114/user_1030862_13844178631379.png_small","title":"贺师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=AWVSNlIyC20FPwRmUDA=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","5.0","",">5km","","39.883706","116.357861"],"img_url":"http://site.weidaijia.cn/static/user/2013/0626/user_1011593_13722294235509.png_small","title":"邓师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=Wj4AZF48UTMANlQyUjE=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","5.0","",">5km","","39.891452","116.469253"],"img_url":"http://site.weidaijia.cn/static/user/2013/1023/user_1027613_13825172794107.png_small","title":"张师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=UDQFYVc2C2oANABlBGU=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","5.0","",">5km","","39.95703","116.354086"],"img_url":"http://site.weidaijia.cn/static/user/2013/1012/user_1026064_13815425811835.png_small","title":"林师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=UjYBZQVkAmJRYwNhBWM=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","5.0","",">5km","","39.937623","116.472423"],"img_url":"http://site.weidaijia.cn/static/user/2013/0812/user_1011718_13762977728969.png_small","title":"马师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=VzNVMVMxUT8EN1YwUzY=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["false","false","5.0","",">5km","","39.890906","116.480141"],"img_url":"http://site.weidaijia.cn/static/user/2013/0613/user_1011593_13710948449848.png_small","title":"谷师傅","link_url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=B2MFYQRmCm5RZlcxUjg=","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.daijia@7878609770b8a41cce8a3e796e05f28a","task":"public.daijia","query":"北京代驾","task_name":"找代驾","appkey":"wechat_chumenwenwen","need_check_location":true,"params":[{"value":"北京市","keyname":"城市","key":"city"},{"value":"代驾","keyname":"代驾类型","key":"daijia_type"}],"type":"poi_four","recommendation_query":[],"search_query":"为您找到<font color='#21ad93'> 北京 <\/font><font color='#21ad93'>代驾 <\/font>的师傅","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"listview","more":{"show_number":5,"action":"jump","is_need":true},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":10,"start":0,"length":10},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"7eb84f21-d742-4446-bdfd-622f438cdf5b","user_id":"undefined","query_type":"text","output":"app","is_show_header":false}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>

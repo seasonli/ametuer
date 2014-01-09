@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Seach Users to Group</title>
+    <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/bootstrap.2.3.2.css" />
+    <script src="http://onebox.oss.aliyuncs.com/js/jquery.1.10.2.min.js"></script>
+
+
+
+
+
+
+    <link rel="stylesheet" href="http://www.weiyuyi.com/oss/assets/css/searchUser.css" />
+    <link rel="stylesheet" href="http://www.weiyuyi.com/oss/assets/css/jquery.ui.theme.css" />
+    <link rel="stylesheet" href="http://www.weiyuyi.com/oss/assets/css/jquery.ui.core.css" />
+    <link rel="stylesheet" href="http://www.weiyuyi.com/oss/assets/css/jquery.ui.datepicker.css" />
+    <script src="http://onebox.oss.aliyuncs.com/js/urlPrefix.js"></script>
+    <script src="http://www.weiyuyi.com/oss/assets/js/ui/jquery.ui.core.js"></script>
+    <script src="http://www.weiyuyi.com/oss/assets/js/ui/jquery.ui.widget.js"></script>
+    <script src="http://www.weiyuyi.com/oss/assets/js/ui/jquery.ui.datepicker.js"></script>
+  </head>
+  <body>
+    <div class="dialog" id="dialogTask">
+      <div class="dialog_content">
+        <div class="dialog_content_close" onClick="$(this).parent().parent().hide()">X</div>
+        <div class="dialog_content_title">选择Task</div>
+        <div class="dialog_content_content"></div>
+        <div class="dialog_content_confirm">
+          <button class="btn btn-success" onClick="confirmDialogTask()">确认</button>
+        </div>
+      </div>
+    </div>
+    <div class="dialog" id="dialogCity">
+      <div class="dialog_content">
+        <div class="dialog_content_close" onClick="$(this).parent().parent().hide()">X</div>
+        <div class="dialog_content_title">选择城市</div>
+        <div class="dialog_content_content"></div>
+        <div class="dialog_content_confirm">
+          <button class="btn btn-success" onClick="confirmDialogCity()">确认</button>
+        </div>
+      </div>
+    </div>
+    <div class="necker">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a id="groupNull" href="javascript:(void:0)">不添加用户</a>
+        </li>
+        <li>
+          <a id="groupAll" href="javascript:(void:0)">添加所有用户</a>
+        </li>
+        <li>
+          <a id="groupSpecific" href="javascript:(void:0)">按条件添加用户</a>
+        </li>
+      </ul>
+    </div>
+    <form method="POST" onSubmit="return checkForm()">
+      <input type="hidden" name="wechat_group[wechat_app_id]" />
+      <div class="clear"></div>
+      <div class="wrapper" id="search">
+        <div class="wrapper_title">Search<span></div>
+        <ul class="wrapper_picker" id="searchPicker">
+          <li class="checkbox"><input id="dateNavBool" type="checkbox" onClick="toggleNav('date')" />时间范围</li>
+          <li class="checkbox"><input id="cityNavBool" type="checkbox" onClick="toggleNav('city')" />所在城市</li>
+          <li class="checkbox"><input id="taskNavBool" type="checkbox" onClick="toggleNav('task')" />Tasks</li>
+          <li class="checkbox"><input id="genderNavBool" type="checkbox" onClick="toggleNav('gender')" />用户性别</li>
+        </ul> 
+        <div class="clear"></div>
+        <div class="wrapper_content">
+          <script type="text/html" id="wrapper_dateNav">
+            <nav class="wrapper_content_nav" id="dateNav">
+              <div class="wrapper_content_nav_close" onClick="toggleNav('date')">X</div>
+              <div class="wrapper_content_nav_title">时间范围</div>
+              <div class="wrapper_content_nav_content" style="padding: 10px">
+              <input type="hidden" name="wechat_group[wechat_user_updated_at]" />
+              <input type="text" id="fromDate" placeholder="起始日期" onChange="invertDate()" />
+                <select id="fromTime" onChange="invertDate()">
+                  <option value="00:00">00:00</option>
+                  <option value="01:00">01:00</option>
+                  <option value="02:00">02:00</option>
+                  <option value="03:00">03:00</option>
+                  <option value="04:00">04:00</option>
+                  <option value="05:00">05:00</option>
+                  <option value="06:00">06:00</option>
+                  <option value="07:00">07:00</option>
+                  <option value="08:00">08:00</option>
+                  <option value="09:00">09:00</option>
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="12:00">12:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                  <option value="17:00">17:00</option>
+                  <option value="18:00">18:00</option>
+                  <option value="19:00">19:00</option>
+                  <option value="20:00">20:00</option>
+                  <option value="21:00">21:00</option>
+                  <option value="22:00">22:00</option>
+                  <option value="23:00">23:00</option>
+                </select>
+                <!--<input type="text" id="toDate" placeholder="结束日期" />
+                <select id="toTime">
+                  <option value="00:00">00:00</option>
+                  <option value="01:00">01:00</option>
+                  <option value="02:00">02:00</option>
+                  <option value="03:00">03:00</option>
+                  <option value="04:00">04:00</option>
+                  <option value="05:00">05:00</option>
+                  <option value="06:00">06:00</option>
+                  <option value="07:00">07:00</option>
+                  <option value="08:00">08:00</option>
+                  <option value="09:00">09:00</option>
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="12:00">12:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                  <option value="17:00">17:00</option>
+                  <option value="18:00">18:00</option>
+                  <option value="19:00">19:00</option>
+                  <option value="20:00">20:00</option>
+                  <option value="21:00">21:00</option>
+                  <option value="22:00">22:00</option>
+                  <option value="23:00">23:00</option>
+                </select>-->
+              </div>
+            </nav>
+          </script>
+          <script type="text/html" id="wrapper_cityNav">
+            <nav class="wrapper_content_nav" id="cityNav">
+              <div class="wrapper_content_nav_close" onClick="toggleNav('city')">X</div>
+              <div class="wrapper_content_nav_title">所在城市</div>
+              <div class="wrapper_content_nav_content"></div>          
+              <button class="btn btn-info" type="button" onClick="openDialogCity()">选择城市</button>
+            </nav>
+          </script>
+          <script type="text/html" id="wrapper_taskNav">
+            <nav class="wrapper_content_nav" id="taskNav">
+              <div class="wrapper_content_nav_close" onClick="toggleNav('task')">X</div>
+              <div class="wrapper_content_nav_title">Tasks</div>
+              <div class="wrapper_content_nav_content">
+                <li class="radio"><input name="wechat_group[wechat_log_qa_classifications_operation]" value="or" type="radio" checked/>Or</li>
+                <li class="radio"><input name="wechat_group[wechat_log_qa_classifications_operation]" value="and" type="radio" />And</li>
+              </div>
+              <div class="wrapper_content_nav_content"></div>
+              <button class="btn btn-info" type="button" onClick="openDialogTask()">选择Tasks</button>
+            </nav>
+          </script>
+          <script type="text/html" id="wrapper_genderNav">
+            <nav class="wrapper_content_nav" id="genderNav">
+              <div class="wrapper_content_nav_close" onClick="toggleNav('gender')">X</div>
+              <div class="wrapper_content_nav_title">用户性别</div>
+              <div class="wrapper_content_nav_content" style="padding: 10px">
+                <select id="gender" name="wechat_group[wechat_user_wechat_sex]">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </nav>
+          </script>
+          <script type="text/html" id="wrapper_eliminateNav">
+            <nav class="wrapper_content_nav" id="eliminateNav">
+              <div class="wrapper_content_nav_close" onClick="toggleNav('eliminate')">X</div>
+              <div class="wrapper_content_nav_title">排除分组中出现过的用户</div>
+              <div class="wrapper_content_nav_content"></div>          
+              <button class="btn btn-info" type="button" onClick="openDialogEliminate()">选择分组</button>
+            </nav>
+          </script>
+          <script type="text/html" id="wrapper_mergeNav">
+            <nav class="wrapper_content_nav" id="mergeNav">
+              <div class="wrapper_content_nav_close" onClick="toggleNav('merge')">X</div>
+              <div class="wrapper_content_nav_title">合并分组中出现过的用户</div>
+              <div class="wrapper_content_nav_content"></div>          
+              <button class="btn btn-info" type="button" onClick="openDialogMerge()">选择分组</button>
+            </nav>
+          </script>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="legger">
+        <div>
+          <input type="text" name="wechat_group[name]" placeholder="分组名称" style="width: 360px" />
+        </div>
+        <div>
+          <input class="btn btn-success" type="submit" value="确认" />
+        </div>        
+      </div>      
+    </form>
+    <script src="js/searchUser.js"></script>
+
+
+
+
+    
+  </body>
+</html>

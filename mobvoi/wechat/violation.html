@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 查违章</title>
+  <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/h5-layout.1.01.css" >
+  <script src="http://onebox.oss.aliyuncs.com/js/urlPrefix-d.js"></script>
+  <script src="http://onebox.oss.aliyuncs.com/js/zepto.1.0.min.js"></script>
+  <script src="http://onebox.oss.aliyuncs.com/js/template.syntax.1.0.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_violation_create">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">您只需输入一次车牌信息，以后将为您自动查询违章信息</span></p>
+        </div>
+      </li>
+      <form id="form" method="GET">
+        <input name="output" value="html_page" type="hidden" />
+        <input id="request" name="request" value="create" type="hidden" />
+        <input id="user_id" name="user_id" type="hidden" />
+        <input id="appkey" name="appkey" type="hidden" />
+        <input id="version" name="version" type="hidden" />
+        <input id="msg_id" name="msg_id" type="hidden" />
+        <li class="cards_card">
+          <div class="cards_card_double left">
+            <p><input id="cityname" name="cityname" type="text" placeholder="所在城市" onkeydown="if(event.keyCode==13) {gotoDetail(this.value)}" onInput="verifyForm(0, 'cityname')" onPropertychange="verifyForm(0, 'cityname')" /></p>
+          </div>
+         <div class="cards_card_double right">
+            <p><label class="green" onClick="gotoDetail($('#cityname').val())">确认城市</label></p>
+          </div>
+          <div class="cards_card_double left" style="display: none">
+            <p><input id="hphm" name="hphm" type="text" placeholder="车牌号" onInput="verifyForm(0, 'hphm')" onPropertychange="verifyForm(0, 'hphm')" /></p>
+          </div>
+          <div class="cards_card_double right" style="display: none">
+            <p><label>&nbsp;</label></p>
+          </div>
+          <div class="cards_card_double left" style="display: none">
+            <p>
+              <select name="hpzl">
+                <option value="02">小型车</option>
+                <option value="01">大型车</option>
+                <option value="03">使馆汽车</option>
+                <option value="04">领馆汽车</option>
+                <option value="05">境外汽车</option>
+                <option value="06">外籍汽车</option>
+                <option value="07">两,三轮摩托车</option>
+                <option value="08">轻便摩托车</option>
+                <option value="09">使馆摩托车</option>
+                <option value="10">领馆摩托车</option>
+                <option value="11">境外摩托车</option>
+                <option value="12">外籍摩托车</option>
+                <option value="13">低速车</option>
+                <option value="14">拖拉机</option>
+                <option value="15">挂车</option>
+                <option value="16">教练汽车</option>
+                <option value="17">教练摩托车</option>
+                <option value="18">试验汽车</option>
+                <option value="19">试验摩托车</option>
+                <option value="20">临时入境汽车</option>
+                <option value="21">临时入境摩托车</option>
+                <option value="22">临时行驶车</option>
+                <option value="23">警用汽车</option>
+                <option value="24">警用摩托</option>
+                <option value="99">其他</option>
+              </select>
+            </p>
+          </div>
+          <div class="clear"></div>
+          <div id="wrapperInput"></div>
+          <div class="cards_card_double left" style="display: none">
+            <p><input type="button" value="确认" onClick="submitForm()" /></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+      </form>
+    </ul>
+  </script>
+
+  <script type="text/html" id="wrapper_violation_result">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">为您搜索到 “违章信息”</span></p>
+          <p><span id="total" class="layout-999"> 条结果</span></p>
+        </div>
+      </li>
+      { each answer[0].content.result.lists as val i }
+        <li class="cards_card">
+          <div class="cards_card_entire">
+            <p><span class="layout-19px">{ val.date }</span></p>
+            <p><span class="layout-999">{ val.area }</span></p> 
+            <p><span class="layout-17px layout-green">扣分：{ val.fen }</span></p> 
+            <p><span class="layout-17px layout-orange">罚款：{ val.money }</span></p>    
+            <p><span>{ val.act }</span></p> 
+          </div>
+        </li>
+      { /each }
+      <li class="cards_card">
+        <div class="cards_card_entire">
+          <p><button onClick="window.location.href='{answer[0].url}'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p>
+        </div>
+      </li>
+    </ul>
+  </script>
+
+  <script type="text/html" id="wrapper_violation_complied">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">我们在系统中已经有了您的信息，您不需要重复输入你的车牌信息</span></p>
+        </div>
+      </li>
+      <li class="cards_card">
+        <div class="cards_card_entire">
+          <p><button onClick="window.location.href='{answer[0].url}'" class="layout-bgreen layout-fff">点击查看我的违章信息</button></p>
+        </div>
+      </li>   
+    </ul>
+  </script>
+
+  <script type="text/html" id="wrapper_violation_error">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">抱歉，出现了一点问题，我们会尽快修复！</span></p>
+        </div>
+      </li>   
+    </ul>
+  </script>
+
+  <script>
+    var verifyFormArray = {};
+    verifyFormArray.hphm = false;
+
+    var response = {"session_id":"public.violation@9bafff9ffa15d233bf5d74087bea4ded","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.violation","query":"查违章","remote_ip":"127.0.0.1","answer":[{"content":"user not found","status":404,"request":"html_city","url":"http://m.mobvoi.com/search/pc/violation?hphm=&appkey=wechat_browser&classno=&city=&version=undefined&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&hpzl=&registno=&request=html_city&msg_id=35018a94-322c-4e76-9bef-6a4306c94a50&engineno=&user_id=viola&query_type=pcc&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"35018a94-322c-4e76-9bef-6a4306c94a50","user_id":"viola","query_type":"text"};
+    // var response = {"session_id":"public.violation@b3f190f314a9e89968d17dcb510fa27b","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.violation","query":"查违章","remote_ip":"127.0.0.1","answer":[{"content":{"result":{"hphm":"贵AVG902","hpzl":"02","province":"GZ","lists":[{"area":"沪昆高速公路1806公里500米","money":"100","fen":"6","code":"16361","date":"2013-04-19 11:46:00","act":"驾驶中型以上载客载货汽车、校车、危险物品运输车辆以外的其他机动车在高速公路上行驶超过规定时速20%以上未达到50%的"},{"area":"北环西路","money":"200","fen":"0","code":"10393","date":"2012-09-12 15:30:00","act":"机动车违反规定停放、临时停车且驾驶人不在现场，妨碍其它车辆、行人通行的"},{"area":"清水江路","money":"200","fen":"3","code":"13440","date":"2012-08-24 09:47:00","act":"机动车违反禁令标志指示的"},{"area":"上瑞线2460公里700米","money":"200","fen":"0","code":"10393","date":"2012-08-22 09:05:00","act":"机动车违反规定停放、临时停车且驾驶人不在现场，妨碍其它车辆、行人通行的"},{"area":"贵溪路与瑞金路交叉口","money":"-","fen":"-","code":"80130","date":"2012-07-31 14:05:00","act":"在禁止通行的时间、路段、车道内行驶的"},{"area":"花阁路","money":"200","fen":"0","code":"10393","date":"2012-07-17 11:30:00","act":"机动车违反规定停放、临时停车且驾驶人不在现场，妨碍其它车辆、行人通行的"},{"area":"中华路与延安路交叉口","money":"-","fen":"-","code":"80130","date":"2012-06-19 19:04:00","act":"在禁止通行的时间、路段、车道内行驶的"},{"area":"都司路与中华南路交叉口北南","money":"100","fen":"2","code":"82060","date":"2012-04-13 11:40:00","act":"违反警令、禁止、警告标志、标线的"},{"area":"中华北路与沙河街交叉口","money":"-","fen":"-","code":"80130","date":"2013-05-21 16:39:00","act":"在禁止通行的时间、路段、车道内行驶的"}],"city":"GZ"},"reason":"查询成功","resultcode":"200"},"status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E8%B4%B5AVG902&appkey=undefined&classno=&version=undefined&city=GZ&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&hpzl=02&registno=&request=html_update&msg_id=undefined&engineno=180914&user_id=undefined&query_type=pcc&cityname=%E8%B4%B5%E5%B7%9E&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"42fdc0c0-4f73-47c4-8e58-fd57b994d5e4","user_id":"violation1","query_type":"text"};
+    // var response = {"session_id":"public.violation@9ece230f75b12000313d89f85b541031","location":{"street":"浦城路","province":"上海市","lng":121.51699475254,"streetNumber":"171号","sublocality":"浦东新区","lat":31.235293003762,"city":"上海","country":"中国"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"127.0.0.1","answer":[{"content":"update html","status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E8%B4%B5AVG902&appkey=wechat_browser&classno=&version=undefined&city=GZ&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%2C%E6%B5%A6%E5%9F%8E%E8%B7%AF%2C171%E5%8F%B7%2C31.235293003762%2C121.51699475254&hpzl=02&registno=&request=html_update&msg_id=f4db662d-f211-4450-bcad-0f169588eab7&engineno=180914&user_id=violation1&query_type=pcc&cityname=%E8%B4%B5%E5%B7%9E&output=html_page","info":{"need":{"lastdigitofengineno":6,"engineno":"180914"},"hpzl":"02","hphm":"贵AVG902","cityname":"贵州","city":"GZ"}}],"appkey":"wechat_browser","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"f4db662d-f211-4450-bcad-0f169588eab7","user_id":"violation1","query_type":"pcc"};
+    // var response = {"session_id":"public.violation@20ff0aa2b236dec8282ee881994d8102","location":{"street":"undefined","province":"undefined","lng":0,"streetNumber":"undefined","sublocality":"undefined","lat":0,"city":"undefined","country":"undefined"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"127.0.0.1","answer":[{"content":"update html","status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E9%84%82AFK912&appkey=wechat_browser&classno=50795&version=undefined&city=FB&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=6cc9c29b-3bcd-4acd-af85-f8c94d123047&engineno=&user_id=violation4&query_type=pcc&cityname=%E6%AD%A6%E6%B1%89&output=html_page","info":{"need":{"lastdigitofclassno":5,"classno":"50795"},"hpzl":"02","hphm":"鄂AFK912","cityname":"武汉","city":"FB"}}],"appkey":"wechat_browser","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"6cc9c29b-3bcd-4acd-af85-f8c94d123047","user_id":"violation4","query_type":"pcc"};
+    // var response = {"session_id":"public.violation@2a0bbf9d2f2f6f74c5bf9c728591285c","location":{"street":"undefined","province":"undefined","lng":0,"streetNumber":"undefined","sublocality":"undefined","lat":0,"city":"undefined","country":"undefined"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"127.0.0.1","answer":[{"content":"duplicate user","status":403,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=33333333333&appkey=wechat_browser&classno=&version=undefined&city=SH&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=35018a94-322c-4e76-9bef-6a4306c94a50&engineno=333333333333333333&user_id=viola&query_type=pcc&cityname=%E4%B8%8A%E6%B5%B7&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"35018a94-322c-4e76-9bef-6a4306c94a50","user_id":"viola","query_type":"undefined"};
+    // var response = {"session_id":"public.violation@4b33f16566c93526d5620165973abafa","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.violation","query":"违章","remote_ip":"127.0.0.1","answer":[{"content":{"result":[],"reason":"车辆识别代号匹配错误，请仔细核对！","resultcode":"203"},"status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E9%99%95a655q8&appkey=wechat_browser&classno=lvvda12a69d116354&version=undefined&city=SX_XA&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=12b89e0b-05e3-49c6-9555-bc014e94c26b&engineno=&user_id=violation11&query_type=pcc&cityname=%E8%A5%BF%E5%AE%89&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"20dd2017-f632-4545-ba91-06a25fa6bec4","user_id":"violation11","query_type":"text"}
+
+    switch (response.answer[0].status) {
+      case 404: // 未建立用户档案->显示表单
+      $(".wrapper").html($("#wrapper_violation_create").html());
+      break;
+      case 200: // 查询成功
+      if (response.answer[0].content != "update html") { // 查询成功->显示结果
+        $(".wrapper").html(template.render("wrapper_violation_result", response));
+        if (response.answer[0].content.resultcode == "200" ) {
+          if (response.answer[0].content.result.lists.length > 0) {
+            $("#total").prepend(response.answer[0].content.result.lists.length);
+          } else {
+            $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">没有您的违章信息</span></p></div></li>')
+          }
+        } else {
+          $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">' + response.answer[0].content.reason + '</span></p></div></li>')
+        }
+      } else { // 查询成功->更新表单
+        $(".wrapper").html($("#wrapper_violation_create").html());
+        $("#cityname").val(response.answer[0].info.cityname); 
+        initializeDetail(response.answer[0].info.cityname); 
+        $("#hphm").val(response.answer[0].info.hphm); verifyFormArray.hphm = true;
+        $("#hpzl").val(response.answer[0].info.hpzl);
+        $("#request").val("update");  
+      }
+      break;
+      case 403: // 重复创建用户
+        $(".wrapper").html(template.render("wrapper_violation_complied", response));
+      break;
+      case 500:
+      case 501:
+      case 502:
+      case 503:
+        $(".wrapper").html(template.render("wrapper_violation_error", response));
+      break;
+    }
+
+    $("#user_id").val(response.user_id);
+    $("#msg_id").val(response.msg_id);
+    $("#version").val(response.version);
+    $("#appkey").val(response.appkey);
+
+    function initializeDetail (value) {
+      $.ajax ({
+        async: false,
+        type: "GET",
+        url: urlPrefix + "/search/pc/violation?request=html_create&user_id=" + response.user_id + "&msg_id=" + response.msg_id + "&version=" + response.version + "&appkey=" + response.appkey + "&cityname=" + value,
+        dataType: "json",
+        success: function (rawData) {
+          var action = urlPrefix + "/search/pc/violation";
+          $("#form").attr("action", action);
+          $(".cards_card_double").show();
+          $("#wrapperInput").html("");
+          for (var idx in rawData.answer[0].info.need) {
+            var placeholder;
+            switch (idx) {
+              case "lastdigitofclassno":
+              verifyFormArray.lastdigitofclassno = true;
+              placeholder = "车架号";
+              if (rawData.answer[0].info.need[idx] != 0) {
+                placeholder = placeholder + "后" + rawData.answer[0].info.need[idx] + "位";
+              }
+              $("#wrapperInput").append('<div class="cards_card_double left"><p><input value="' + response.answer[0].info.need.classno + '" id="' + idx + '" name="' + idx + '" type="text" placeholder="' + placeholder + '" onInput="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" onPropertychange="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" /></p></div><div class="cards_card_double right"><p><label id="' + idx + '_verify">&nbsp;</label></p></div>');
+              break;
+              case "lastdigitofengineno":
+              verifyFormArray.lastdigitofengineno = true;
+              placeholder = "发动机号";
+              if (rawData.answer[0].info.need[idx] != 0) {
+                placeholder = placeholder + "后" + rawData.answer[0].info.need[idx] + "位";
+              }
+              $("#wrapperInput").append('<div class="cards_card_double left"><p><input value="' + response.answer[0].info.need.engineno + '" id="' + idx + '" name="' + idx + '" type="text" placeholder="' + placeholder + '" onInput="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" onPropertychange="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" /></p></div><div class="cards_card_double right"><p><label id="' + idx + '_verify">&nbsp;</label></p></div>');
+              break;
+              case "lastdigitofregistno":
+              verifyFormArray.lastdigitofregistno = true;
+              placeholder = "登记证书号";
+              if (rawData.answer[0].info.need[idx] != 0) {
+                placeholder = placeholder + "后" + rawData.answer[0].info.need[idx] + "位";
+              }
+              $("#wrapperInput").append('<div class="cards_card_double left"><p><input value="' + response.answer[0].info.need.registno + '" id="' + idx + '" name="' + idx + '" type="text" placeholder="' + placeholder + '" onInput="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" onPropertychange="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" /></p></div><div class="cards_card_double right"><p><label id="' + idx + '_verify">&nbsp;</label></p></div>');
+              break;
+            }
+          }
+          $("#wrapperInput").append('<div class="clear"></div>')
+        },
+      })   
+    }
+    function gotoDetail (value) {
+      $("#hphm").val("");
+      verifyFormArray.hphm = false;      
+      delete verifyFormArray.lastdigitofclassn;
+      delete verifyFormArray.lastdigitofengineno;
+      delete verifyFormArray.lastdigitofregistno;
+      if (value != "") {
+        $.ajax ({
+          async: false,
+          type: "GET",
+          url: urlPrefix + "/search/pc/violation?request=html_create&user_id=" + response.user_id + "&msg_id=" + response.msg_id + "&version=" + response.version + "&appkey=" + response.appkey + "&cityname=" + value,
+          dataType: "json",
+          success: function (rawData) {
+            if (rawData.answer[0].status == 504 ) {
+              alert("抱歉，城市暂不支持")
+            } else {
+              var action = urlPrefix + "/search/pc/violation";
+              $("#form").attr("action", action)
+              $(".cards_card_double").show()
+              $("#wrapperInput").html("");
+              for (var idx in rawData.answer[0].info.need) {
+                var placeholder;
+                switch (idx) {
+                  case "lastdigitofclassno":
+                  verifyFormArray.lastdigitofclassno = false;
+                  placeholder = "车架号";
+                  if (rawData.answer[0].info.need[idx] != 0) {
+                    placeholder = placeholder + "后" + rawData.answer[0].info.need[idx] + "位";
+                  }
+                  $("#wrapperInput").append('<div class="cards_card_double left"><p><input id="' + idx + '" name="' + idx + '" type="text" placeholder="' + placeholder + '" onInput="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" onPropertychange="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" /></p></div><div class="cards_card_double right"><p><label id="' + idx + '_verify">&nbsp;</label></p></div>');
+                  break;
+                  case "lastdigitofengineno":
+                  verifyFormArray.lastdigitofengineno = false;
+                  placeholder = "发动机号";
+                  if (rawData.answer[0].info.need[idx] != 0) {
+                    placeholder = placeholder + "后" + rawData.answer[0].info.need[idx] + "位";
+                  }
+                  $("#wrapperInput").append('<div class="cards_card_double left"><p><input id="' + idx + '" name="' + idx + '" type="text" placeholder="' + placeholder + '" onInput="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" onPropertychange="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" /></p></div><div class="cards_card_double right"><p><label id="' + idx + '_verify">&nbsp;</label></p></div>');
+                  break;
+                  case "lastdigitofregistno":
+                  verifyFormArray.lastdigitofregistno = false;
+                  placeholder = "登记证书号";
+                  if (rawData.answer[0].info.need[idx] != 0) {
+                    placeholder = placeholder + "后" + rawData.answer[0].info.need[idx] + "位";
+                  }
+                  $("#wrapperInput").append('<div class="cards_card_double left"><p><input id="' + idx + '" name="' + idx + '" type="text" placeholder="' + placeholder + '" onInput="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" onPropertychange="verifyForm(' + rawData.answer[0].info.need[idx] + ', \'' + idx + '\')" /></p></div><div class="cards_card_double right"><p><label id="' + idx + '_verify">&nbsp;</label></p></div>');
+                  break;
+                }
+              }
+              $("#wrapperInput").append('<div class="clear"></div>')
+            }
+          },
+        })
+      }
+    }
+    function verifyForm (n, name) {
+      var lable = name + "_verify";
+      if (n != 0 && $("#" + name).val().length != n) {
+        eval("verifyFormArray." + name + "=false")
+        $("#" + lable).html("请输入" + $("#" + name).attr("placeholder"));
+      }
+      else if (n == 0 && $("#" + name).val().length == 0) {
+        eval("verifyFormArray." + name + "=false")
+      }
+      else {
+        eval("verifyFormArray." + name + "=true")
+        $("#" + lable).html("ok")
+      }
+    }
+    function submitForm () {
+      var boolError = 0;
+      for (var idx in verifyFormArray) {
+        if (verifyFormArray[idx] == false) {
+          boolError = 1;
+          break;
+        }
+      }
+      if (boolError == 1) {
+        alert("仍有未填写完成的项目");
+      }
+      else {
+        $("#lastdigitofclassno").attr("name", "classno");
+        $("#lastdigitofengineno").attr("name", "engineno");
+        $("#lastdigitofregistno").attr("name", "registno");
+        document.getElementById("form").submit();   
+      }    
+    }
+  </script>
+</body>
+</html>
+
+

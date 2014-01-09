@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_special_two">
+    <ul class="cards">
+      { each body as val i }
+        <li class="cards_img gotoLink" data-link="{ val.link_url }">
+          <img src="{ val.img_url }" />
+        </li>    
+        <li class="cards_card gotoLink" data-link="{ val.link_url }">
+          <div class="cards_card_entire">
+            <p><span>{ val.content[0] }</span></p>   
+          </div>
+          <div class="cards_card_double left layout-12px layout-999">
+            <p><span>{ val.content[1] }</span></p>   
+          </div>
+          <div class="cards_card_double right layout-999 layout-12px layout-right">
+            <p><span>{ val.content[2] }</span></p>
+          </div>
+          { each body[i].children as val1 i1 }
+            <div class="cards_card_quarter center layout-12px layout-666 layout-center gotoLink" data-link="{ val1.link_url }">
+              <p><img src="{ val1.img_url }" style="width: 36px" /></p>
+              <p><span>{ val1.title }</span></p>
+            </div>
+          { /each }
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"img_url":"http://file4.mafengwo.net/M00/8A/6D/wKgBm07mDZb_QY-RAAI0vnSz2AE63.mdd.w600.jpeg","content":[],"title":"旅游攻略","link_url":"http://m.mafengwo.cn/mdd/10065","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_1.png","content":[],"title":"景点","link_url":"http://m.mafengwo.cn/gl/content.php?pid=1429","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_4.png","content":[],"title":"住宿","link_url":"http://m.mafengwo.cn/gl/content.php?pid=3697","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_3.png","content":[],"title":"美食","link_url":"http://m.mafengwo.cn/gl/content.php?pid=1432","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_2.png","content":[],"title":"购物","link_url":"http://m.mafengwo.cn/gl/content.php?pid=3699","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_6.png","content":[],"title":"行程","link_url":"http://m.mafengwo.cn/gl/content.php?pid=3694","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_7.png","content":[],"title":"交通","link_url":"http://m.mafengwo.cn/gl/content.php?pid=3695","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_9.png","content":[],"title":"娱乐","link_url":"http://m.mafengwo.cn/gl/content.php?pid=1431","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_15.png","content":[],"title":"概况","link_url":"http://m.mafengwo.cn/gl/content.php?pid=1427","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]},{"img_url":"http://images.mafengwo.net/mobile/images/poi_icon/i_14.png","content":[],"title":"贴士","link_url":"http://m.mafengwo.cn/gl/content.php?pid=1433","res_url":"","action":{"share":{"content":"","is_screen":true,"title":"","link_url":""},"phone":"","is_show":false,"navigation":{"start_point":"","end_point":"","start":"","type":"驾车","is_enable":false,"end":"","coor_type":"BAIDU"}},"children":[]}]}],"header":{"session_id":"public.travelguide@c288084464507970ba7256c341d322a4","task":"public.travelguide","query":"北京攻略","task_name":"旅游攻略","appkey":"wechat_chumenwenwen","need_check_location":false,"params":[{"value":"北京","keyname":"目的地","key":"destination"},{"value":"攻略","keyname":"类型","key":"type"}],"type":"special_two","recommendation_query":[],"search_query":"为您找到北京的旅游攻略","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"version":"3.0.2","schema":"listview","more":{"show_number":0,"action":"jump","is_need":false},"source":"","share_option":{"content":"","is_screen":true,"title":"","link_url":""},"address":"中国,上海市,上海,黄浦区,西藏南路,2号,31.234309729773,121.48479060028","page":{"total":1,"start":0,"length":1},"msg_id":"0379c66b-ac09-4d06-8e5a-b2c2774cdea8","user_id":"","query_type":"text","is_show_header":true,"output":"app"}},"relevant":[]}],"status":"success"}
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+</body>
+</html>

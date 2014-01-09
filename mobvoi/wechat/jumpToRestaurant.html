@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>饭票获取中……</title>
+    <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.01.css" >
+    <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+    <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>    
+  </head>
+
+  <body>
+    <div class="wrapper">
+    </div>
+    <script src="http://api.map.baidu.com/api?v2.0&ak=342fa60a35f6c77db6449090a7007787"></script>
+    <script>
+      var GEO = {}; 
+      GEO.bd = {};
+      GEO.gg = {};
+      GEO.bd.location = new BMap.Geolocation();
+
+      var QUERY = {};
+      var waitTimes = 0;
+
+      GEO.bd.location.getCurrentPosition(function(p) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+          GEO.bd.lat = p.point.lat;
+          GEO.bd.lng = p.point.lng;
+          GEO.bd.position = new BMap.Point(p.point.lng, p.point.lat);
+          GEO.bd.geocoder = new BMap.Geocoder();
+          GEO.bd.geocoder.getLocation(GEO.bd.position, function(r) {
+            GEO.bd.province = r.addressComponents.province;
+            GEO.bd.city = r.addressComponents.city.replace(/市/, "");
+            GEO.bd.district = r.addressComponents.district;
+            GEO.bd.street = r.addressComponents.street;
+            GEO.bd.streetNumber = r.addressComponents.streetNumber;
+            QUERY.address = "中国," + GEO.bd.province + "," + GEO.bd.city + "," + GEO.bd.district + "," + GEO.bd.street + "," + GEO.bd.streetNumber + "," + GEO.bd.lat + "," + GEO.bd.lng;
+            GEO.bd.status = true; // make sure adress has been valued
+          }); 
+        }
+        else {
+          GEO.bd.status = false;
+        }        
+      }, {enableHighAccuracy: true} );
+
+      jumpToRestaurant();
+
+      function jumpToRestaurant() {
+        if(GEO.bd.status == true) {
+          window.location.href = "http://m.mobvoi.com/search/qa/?query=附近的餐馆&appkey=wechat_chumenwenwen&address=" + QUERY.address + "&output=html_page"; 
+        } else {
+          if(waitTimes < 5) {
+            waitTimes ++;
+            setTimeout("jumpToRestaurant()", 1000);
+          } else {
+            alert("failed");
+          }
+        }
+      }
+    </script>  
+  </body>
+</html>

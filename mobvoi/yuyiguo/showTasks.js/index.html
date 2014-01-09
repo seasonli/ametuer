@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>weiyuyi.showGroup.js DEMO</title>
+    <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/bootstrap.2.3.2.css" />
+    <script src="http://onebox.oss.aliyuncs.com/js/jquery.1.10.2.min.js"></script>
+    <style>
+
+
+    </style>
+  </head>
+  <body>
+    <div id="div1" style="width: 960px"></div>
+    <form id="form1">
+    </form>
+    <script src="http://www.weiyuyi.com/oss/assets/js/yuyiguo.tree.js"></script>
+    <script>
+      new tree().init(
+        {
+          appId: "weiyuyi-2",
+          type: "checkbox",
+          container: "div1",
+          form: "form1",
+          name: "tasks[]",
+          spread: true
+        });
+    </script>
+  </body>
+</html>

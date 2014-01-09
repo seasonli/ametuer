@@ -1,0 +1,16 @@
+#tree_window {
+  column-count: 2;
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-gap: 10px;
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
+  white-space: nowrap;     
+  background: transparent;  
+}
+#tree_window li { display: block; list-style-type: none; padding: 0 0 0 25px; width: 240px; line-height: 30px; }
+#tree_window span { display: inline-block; }
+#tree_window span.on { margin: 0 10px 0 -22px; }
+#tree_window img { display: inline-block; vertical-align: middle; width: 12px; }
+#tree_window label { display: inline-block; margin-right: 5px; font-size: 14px; }
+#tree_window ul { display: none; margin: 0 0 20px 6px; padding: 0; border-left: 1px dotted #bbbbbb; }

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Parse Track URL</title>
+  <style>
+    * {
+      font-family: Arial, Microsoft JhengHei, Microsoft YaHei;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <input id="download" type="text" placeholder="weiyun share url: (example: http://share.weiyun.com/a6bd57ef8c32f537f14c6a6e4927d93d)" style="width: 720px" />
+    <br/>
+    <input id="label" type="text" placeholder="lable:" />
+  </h1>
+  <button id="parse" type="button">Parse</button>
+  <br/></br>
+  <div id="URL"></div>
+  <script>
+    document.getElementById("parse").onclick = function() {
+      var label = document.getElementById("label").value;
+      var key = document.getElementById("download").value.split("http://share.weiyun.com/")[1];
+      var URL = "http://mobvoi-one-box.oss.aliyuncs.com/web/redirectToDownload.html?label=" + label + "&key=" + key;
+      document.getElementById("URL").innerHTML = URL;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>下载出门问问</title>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.2.0.js"></script>
+</head>
+<body style="background: url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/download.png) no-repeat #f0f0f0; background-size: 100%">
+  <div style="position: absolute; left: 0; top: 185px; width: 100%; ">
+    <div style="margin: 0 auto; width: 160px; height: 40px" onClick="window.location.href='http://res.mobvoi.com/apk/chumenwenwen'"></div>
+  </div>
+  <script>
+  	var CMWW = new chumenwenwen();
+  	CMWW.share.init({title: $("title").html(), desc: $("title").html(), img: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png", url: window.location.href});
+  	CMWW.share.wechatReady();
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 找美女</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_beauty">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">为你推荐
+            { each params as val i}{ if val.key == "gender" }{ if val.value == "男" }帅哥{ else if val.value == "女" }美女{ /if }{ else if val.key == "city" }{ val.value }的{ /if }{ /each }
+          </span></p>
+          <p><span id="total" class="layout-999"> 1 条结果</span></p>
+        </div>
+      </li>
+    </ul>
+    <ul class="cards">
+      <li class="cards_img" onClick="window.location.href='{ answer[0].url }'">
+        <img src="{ answer[0].pic_url }" />
+      </li>    
+      <li class="cards_card" onClick="window.location.href='{ answer[0].url }'">
+        <div class="cards_card_entire">
+          <p><span>{ answer[0].title }</span></p>
+      </li>
+    </ul>
+  </script>
+
+  <script>
+    var response = {"session_id":"public.beauty@944bf668b95a9bb3ac74278ca086d89a","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.beauty","query":"来一个上海的美女","remote_ip":"127.0.0.1, 58.247.4.206","answer":[{"title":"推荐\u201cVivi\u201d 女生24岁 上海市 身高163cm、学历大专","status":"success","url":"http://duiai.com/585130?co=YTozOntzOjQ6ImZyb20iO3M6OToid2VpeGluYXBwIjtzOjM6InZlciI7czo2OiJtb2JpbGUiO3M6NjoiYXV0aGlkIjtzOjQzOiJ3ZWl4aW5fMjM2MDM2ODAtZjc1OC00ZjJlLWExMmYtNzA2YTZmMDk4MDVjIjt9&amp;ac=weixin_23603680-f758-4f2e-a12f-706a6f09805c_DA_1381461843","pic_url":"http://img.zhuohun.com/userimg/585130/1313055598859519.jpg"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"上海市","keyname":"城市","key":"city"},{"value":"女","keyname":"性别","key":"gender"}],"taskName":"找美女","version":"undefined","msg_id":"5bf6e3e4-ed87-4720-85f6-e72717e2ce34","user_id":"undefined","query_type":"text"};
+    $(".wrapper").html(template.render("wrapper_beauty", response));
+  </script>
+
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>  
+</body>
+</html>
+

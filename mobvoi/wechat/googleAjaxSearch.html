@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>出门问问 - Google Search</title>
+    <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/h5-layout.1.01.css" >
+    <script src="http://onebox.oss.aliyuncs.com/js/zepto.1.0.min.js"></script>
+    <script src="http://www.google.com/jsapi"></script>
+  </head>
+
+
+
+  <body>
+    <div id="searchcontrol">Loading</div>
+    <script>
+      google.load('search', '1');
+      
+      function OnLoad() {
+        // Create a search control
+        var searchControl = new google.search.SearchControl();
+
+        // Add in a full set of searchers
+        searchControl.addSearcher(new google.search.WebSearch());
+
+        // tell the searcher to draw itself and tell it where to attach
+        searchControl.draw(document.getElementById("searchcontrol"));
+
+        // execute an inital search
+        searchControl.execute("足球");
+      }
+      google.setOnLoadCallback(OnLoad);
+    </script>   
+  </body>
+</html>

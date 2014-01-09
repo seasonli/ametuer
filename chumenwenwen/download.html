@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>下载出门问问安卓版</title>
+  <link rel="icon" href="http://chumenwenwen.net/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="http://chumenwenwen.net/img/favicon.ico" type="image/x-icon" />  
+  <link rel="stylesheet" href="http://chumenwenwen.net/css/layout.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-46226479-1', 'chumenwenwen.net');
+    ga('send', 'pageview');
+    var browser = {
+      versions: function() {
+        var u = navigator.userAgent;
+        return {
+          // Detective Desktop/Mobile
+          mobile: !!u.match(/AppleWebKit.*Mobile.*/), // Mobile
+
+          // Dectective Device
+          android: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1, // Android/UC Browser
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios
+          iPhone: u.indexOf("iPhone") > -1 , // iPhone/qqHD
+          iPad: u.indexOf("iPad") > -1, // iPad
+
+          // Detective Core
+          trident: u.indexOf("Trident") > -1, // IE Core
+          presto: u.indexOf("Presto") > -1, // Opera Core
+          webKit: u.indexOf("AppleWebKit") > -1, // Apple/Google Core
+          gecko: u.indexOf("Gecko") > -1 && u.indexOf("KHTML") == -1, // Firefox Core
+
+          // Detective Browser
+          chumenwenwen: u.indexOf("com.mobvoi.baiding") > -1, // chumenwenwen
+          qq: u.indexOf("QQ") > -1, // Wechat
+          wechat: u.indexOf("MicroMessenger") > -1, // Wechat
+          yixin: u.indexOf("YiXin") > -1, // Yixin
+          chrome: u.indexOf("Chrome") > -1, // Chrome
+          dolphin: function() { // Dolphin
+            try {
+              if(dolphin) {
+                return true;
+              }
+            } catch(err) {
+              return false;
+            }        
+          } (),
+        };
+      } (),
+      language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+    if(browser.versions.mobile == true) {
+      browser.type = "mobile";
+    } else {
+      browser.type = "desktop";
+    }
+    if(browser.versions.android == true) {
+      browser.os = "android";
+    } else if(browser.versions.ios == true) {
+      browser.os = "ios";
+    } else if(browser.versions.trident == true) {
+      browser.os = "wp";
+    } else {
+      browser.os = "others"
+    }
+    if(browser.versions.wechat == true) {
+      browser.browser = "wechat";
+    } else if(browser.versions.yixin == true) {
+      browser.browser = "yixin";
+    } else {
+      browser.browser = "others";
+    }    
+  </script>  
+</head>
+
+<body style="background: url(img/intro_narrow.png); background-size: 100%">
+  <div class="download">
+    <div class="download_pic">
+    </div>
+  </div>  
+  <script>
+    if(window.navigator.userAgent.indexOf("MicroMessenger") > -1) {
+      $(".download_pic").html('<img src="img/download_wechat.png" />');
+    } else {
+      $(".download_pic").html('<img src="img/download.png" />');
+      $(".download_pic").after('<div class="download_button"><button type="button" data-event="button">点击下载安卓客户端</button><p>支持安卓2.2系统及以上</p></div>');
+    }
+    if(window.location.href.split("task=")[1]) {
+      var task = window.location.href.split("task=")[1].split("&")[0];  
+    } else {
+      var task = "/";
+    }
+    $("button").on("click", function() {
+      ga("send", "event", "download", task, browser.type + "/" + browser.os + "/" + browser.browser);
+      window.location.href = "http://chumenwenwen.net/chumenwenwen.apk";
+    })
+    if(window.location.href.split("download=")[1] && browser.browser != "wechat") {
+      if(window.location.href.split("download=")[1].split("&")[0] == "instance") {
+        ga("send", "event", "download", task, browser.type + "/" + browser.os + "/wechat");
+        setTimeout('window.location.href = "http://apk.wdjcdn.com/2/05/c282bc3f112065cd848294773a86d052.apk"', 1000);
+      }
+    }
+
+    var CMWW = new chumenwenwen();
+    CMWW.share.init({title: "出门问问安卓应用火热上线", desc: "出门问问安卓应用火热上线", img: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png", url: window.location.href});
+    CMWW.share.wechatReady();
+  </script>
+</body>
+</html>

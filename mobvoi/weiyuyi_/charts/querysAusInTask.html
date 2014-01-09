@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Charts</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/charts.css">
+    <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/jquery.1.10.2.min.js"></script>
+    <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+    <script src="js/highstock.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/weiyuyi/production/assets/js/weiyuyi.urlPrefix.js"></script>
+  </head>
+
+  <body>
+    <div class="loading" id="loading">Loading...</div>
+    <div class="wrapper">
+      <div class="wrapper_left">
+        <div class="itempicker">
+          <div class="itempicker_checkbox"><!-- here to insert taskpicker --></div>
+          <div class="itempicker_interval"></div>
+          <button id="specific" class="btn btn-success itempicker_submit" type="button">Submit</button>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="wrapper_center">
+        <div id="container" style="width:100%; height:540px"></div>
+        <div class="btn-group rangepicker">
+          <!--<button id="today" class="btn">Today</button>-->
+          <button id="week" class="btn disabled">View of Week</button>
+          <button id="month" class="btn">View of month</button>
+          <button id="history" class="btn">History Statics</button>
+        </div>      
+      </div>
+      <div class="wrapper_right" id="checkbox_data">
+        <div class="datapicker"><!-- here to insert datapicker --></div>
+      </div>
+    </div>
+
+    <script type="text/html" id="itempicker_checkbox">
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Query</th>
+            <th>Percent</th>
+          </tr>
+        </thead>
+        <tbody>   
+          <tr>
+            <td>
+              <label class="checkbox">
+                <input type="checkbox" id="sum" data-status="on" checked />
+                  <strong>所有数据</strong>
+              </label>
+            </td>
+            <td><strong>{query}</strong></td>
+            <td></td>
+          </tr>      
+          {each response}
+            <tr>
+              <td>
+                <label class="checkbox">
+                  <input type="checkbox" id="{$value.name}" />
+                    {$value.nick_name}
+                </label>
+              </td>
+              <td>{$value.query}</td>
+              <td>{$value.percent}</td>
+            </tr>
+          {/each}
+        </tbody>   
+      </table>
+    </script>
+
+    <script type="text/html" id="datapicker">
+      <div id="datapicker">
+        {each datapicker}
+          <label class="radio"><input id="{ $value[0] }" type="radio" name="optionsRadios2" {if $index === 0} checked {/if} />{ $value[0] }</label>
+        {/each}
+      </div>
+    </script>
+
+    <script>
+      charts();
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_traffic_four">
+    <ul class="cards">
+      <li class="cards_img showMap layout-fff trafficMap" style="height: 320px">[[[{ header.map_option.items[0].content[0] }]]]</li>
+      <li class="cards_card gotoLink" data-link="{ body[0].link_url }">
+        { each body as val i }
+          <div class="cards_card_entire">
+            <p><span class="layout-16px">{ val.title }</span></p>
+            { each val.children as val1 i1 }
+              <p><span class="layout-666">{ val1.title }</span></p>
+              { each val1.content as val2 i2}
+                <p><span class="layout-12px layout-999">{ val2 }</span></p>
+              { /each}            
+            { /each }  
+          </div>
+          <div class="clear"></div>
+        { /each }
+      </li>
+    </ul>
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":[],"img_url":"http://img.ilukuang.com/lukuang/310000/3100000197.png","title":"沪闵高架","link_url":"http://api.ilukuang.com/trafficradio/mobileWeb/detail.action?roadID=3100000197","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[{"content":["莘庄立交->内环漕溪北路立交畅通","内环漕溪北路立交->光启公园拥堵，时速约12公里"],"img_url":"","title":"南向北","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["光启公园->莘庄立交畅通"],"img_url":"","title":"北向南","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}]},{"content":[],"img_url":"http://img.ilukuang.com/lukuang/310000/3100000196.png","title":"沪闵路","link_url":"http://api.ilukuang.com/trafficradio/mobileWeb/detail.action?roadID=3100000196","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[{"content":[],"img_url":"","title":"双向畅通","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.roadcondition@013b5717043b46717d55417f4c88e822","task":"public.roadcondition","query":"沪闵高价路况","task_name":"路况","appkey":"wechat_chumenwenwen","need_check_location":true,"params":[{"value":"沪闵","keyname":"道路","key":"location"}],"type":"traffic_four","recommendation_query":[],"search_query":"为您找到<font color='#21ad93'> 上海 <\/font><font color='#21ad93'>沪闵 <\/font>的路况","map_option":{"enable_traffic":true,"items":[{"content":["31.267048,121.478469"],"img_url":"","title":"上海沪闵","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"is_route":false,"has_header_map":true,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"listview","more":{"show_number":2,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":2,"start":0,"length":2},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"32a4dcac-2897-4cdc-8253-35a28a05fcfa","user_id":"undefined","query_type":"text","output":"app","is_show_header":false}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>
+

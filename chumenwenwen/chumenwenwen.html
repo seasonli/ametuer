@@ -1,0 +1,372 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>出门问问</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/layout.css?v=20131216" />
+  <script src="js/jquery.1.10.2.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/skrollr.min.js"></script>
+  <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
+  <script src="http://wandoujia.com/api/wdapi.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-46226479-1', 'chumenwenwen.net');
+    ga('send', 'pageview');
+    var browser = {
+      versions: function() {
+        var u = navigator.userAgent;
+        return {
+          // Detective Desktop/Mobile
+          mobile: !!u.match(/AppleWebKit.*Mobile.*/), // Mobile
+
+          // Dectective Device
+          android: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1, // Android/UC Browser
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // ios
+          iPhone: u.indexOf("iPhone") > -1 , // iPhone/qqHD
+          iPad: u.indexOf("iPad") > -1, // iPad
+
+          // Detective Core
+          trident: u.indexOf("Trident") > -1, // IE Core
+          presto: u.indexOf("Presto") > -1, // Opera Core
+          webKit: u.indexOf("AppleWebKit") > -1, // Apple/Google Core
+          gecko: u.indexOf("Gecko") > -1 && u.indexOf("KHTML") == -1, // Firefox Core
+
+          // Detective Browser
+          chumenwenwen: u.indexOf("com.mobvoi.baiding") > -1, // chumenwenwen
+          qq: u.indexOf("QQ") > -1, // Wechat
+          wechat: u.indexOf("MicroMessenger") > -1, // Wechat
+          yixin: u.indexOf("YiXin") > -1,
+          chrome: u.indexOf("Chrome") > -1, // Chrome
+          dolphin: function() { // Dolphin
+            try {
+              if(dolphin) {
+                return true;
+              }
+            } catch(err) {
+              return false;
+            }        
+          } (),
+        };
+      } (),
+      language: (navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+    if(browser.versions.mobile == true) {
+      browser.type = "mobile";
+    } else {
+      browser.type = "desktop";
+    }
+    if(browser.versions.android == true) {
+      browser.os = "android";
+    } else if(browser.versions.ios == true) {
+      browser.os = "ios";
+    } else if(browser.versions.trident == true) {
+      browser.os = "wp";
+    } else {
+      browser.os = "others"
+    }
+    if(browser.versions.wechat == true) {
+      browser.browser = "wechat";
+    } else if(browser.versions.yixin == true) {
+      browser.browser = "yixin";
+    } else {
+      browser.browser = "others";
+    }  
+  </script>
+</head>
+
+<body>
+  <div class="alert">
+    <div class="alert_info">
+      <div class="alert_info_content">
+        咦，怎么点不出去了？<br/></br>喜欢我们，就坚持戳右上角</br>选择 <span style="color: #bb2222">在浏览器中打开</span> </br>下载，瞬间搞定！
+      </div>
+    </div>
+  </div>
+  <div class="header">
+    <div class="header_">
+      <div class="header_logo"></div>
+      <div class="header_slogan">为手机搜索而生</div>  
+      <button type="button" class="header_company" onClick="window.open('http://www.mobvoi.com')">Mobvoi</button>
+      <button type="button" class="header_recruit" onClick="window.open('http://www.mobvoi.com/aboutus.html')">加入我们</button>
+    </div>
+  </div>
+  <div class="nav">
+    <div class="nav_">
+      <div class="nav_container">
+        <nav class="nav_container_icon groupcoupon" id="travel" data-900="width: 0px; height: 0px" data-1240="width: 48px; height: 48px" data-4680="width: 0px; height: 0px"></nav>
+        <br/>
+        <nav class="nav_container_icon hotel" id="music" data-900="width: 0px; height: 0px" data-1780="width: 48px; height: 48px" data-4680="width: 0px; height: 0px"></nav>
+        <br/>
+        <nav class="nav_container_icon restaurant" id="recipe" data-900="width: 0px; height: 0px" data-2320="width: 48px; height: 48px" data-4680="width: 0px; height: 0px"></nav>
+        <br/>
+        <nav class="nav_container_icon movie" id="movie" data-900="width: 0px; height: 0px" data-2860="width: 48px; height: 48px" data-4680="width: 0px; height: 0px"></nav>
+        <br/>
+        <nav class="nav_container_icon recipe" id="restaurant" data-900="width: 0px; height: 0px" data-3400="width: 48px; height: 48px" data-4680="width: 0px; height: 0px"></nav>
+        <br/>
+        <nav class="nav_container_icon music" id="hotel" data-900="width: 0px; height: 0px" data-3940="width: 48px; height: 48px" data-4680="width: 0px; height: 0px"></nav>
+        <br/>
+        <nav class="nav_container_icon travel" id="groupcoupon" data-900="width: 0px; height: 0px" data-4480="width: 48px; height: 48px" data-4680="width: 0px; height: 0px"></nav>
+        <br/>
+      </div>
+    </div>
+  </div>
+  <div class="intro">
+    <div class="intro_">
+      <div class="intro_title"></div>
+      <div class="intro_slogan"></div>
+      <div class="intro_btn-wrapper">
+        <button class="intro_btn" onClick="skipTo(0)">查看更多</button>
+        <button class="intro_btn" onClick='$("html, body").animate({scrollTop: document.documentElement.clientHeight + 540 * 7}, {duration: 1000, easing: "easeInOutQuint", complete: function() { allowSkip = true; }} )'>怎么使用</button>
+      </div>
+      <!--<a href="http://www.wandoujia.com/apps/com.mobvoi.baiding" target="_blank"><img src="img/wandoujia.png" style="display: block; position: relative; top: 70px; margin: 0 auto" /></a>-->
+      <div class="intro_device">
+        <img src="img/device.png" />
+        <div class="intro_device_txt">
+          <dd><span>上海</span><span>陆家嘴附近</span><span>100元</span><span>左右</span><span>的</span><span>自助餐</span></dd>
+          <dd><span>明天</span><span>会不会</span><span>下雨</span><span>，</span><span>温度</span><span>几度</span></dd>
+          <dd><span>我</span><span>想</span><span>买束花，</span><span>哪里</span><span>有</span><span>花店</span></dd>
+          <dd><span>有没有</span><span>热映</span><span>电影</span><span>的</span><span>团购</span><span>啊</span></dd>
+          <dd><span>今晚</span><span>我</span><span>想住</span><span>200元</span><span>以下的</span><span>快捷酒店</span></dd>
+          <dd><span>下周二</span><span>从北京</span><span>到</span><span>上海</span><span>的</span><span>飞机</span></dd>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper2">
+    <div class="wrapper2_">
+      <div class="wrapper2_pic"><img src="img/groupcoupon.png" data-0="opacity: 0" data-1240="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img src="img/hotel.png" data-1580="opacity: 0" data-1780="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img src="img/restaurant.png" data-2120="opacity: 0" data-2320="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img src="img/movie.png" data-2660="opacity: 0" data-2860="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img src="img/recipe.png" data-3200="opacity: 0" data-3400="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img src="img/music.png" data-3740="opacity: 0" data-3940="opacity: 1" /></div>  
+      <div class="wrapper2_pic"><img src="img/travel.png" data-4280="opacity: 0" data-4480="opacity: 1" /></div>
+      <div class="wrapper2_hand"></div>
+      <div class="wrapper2_floor"><span onClick="skipTo(7)">使用出门问问</span><button onClick="skipTo(-1)"></button></div>
+      <div class="wrapper2_brand" id="download">
+        <div class="wrapper2_brand_tab">
+          <img src="img/icon-android.png" />
+          <div class="wrapper2_brand_tab_title">Android客户端</div>
+          <div class="wrapper2_brand_tab_content">出门问问3.0火热上线，各大应用商店全面支持下载！</div>
+          <button data-event="button-apk">下载安卓APP</button>
+        </div>
+        <div class="wrapper2_brand_tab">
+          <img src="img/icon-weixinyixin.png" />
+          <div class="wrapper2_brand_tab_title">微信/易信端</div>
+          <div class="wrapper2_brand_tab_content">十大微信和易信公众账号。听得懂，查得到，你身边的智能语音搜索专家。</div>
+          <button data-event="button-wechatAndYixin">如何关注</button>
+        </div>
+        <div class="wrapper2_brand_tab">
+          <img src="img/icon-weibo.png" />
+          <div class="wrapper2_brand_tab_title">新浪微博</div>
+          <div class="wrapper2_brand_tab_content">@出门问问 或私信主页君 “想问的问题”，随时奉上精准答案。</div>
+          <button data-event="button-weibo">快去看看</button>
+        </div>
+        <div class="wrapper2_brand_copyright">
+          <div class="wrapper2_brand_copyright_company">Copyright ©2013 上海羽扇智信息科技有限公司</div>
+          <div class="wrapper2_brand_copyright_link">
+            <img src="img/360.png" /> <a href="zhushou360://type=apk&name=出门问问&icon=http://chumenwenwen.oss.aliyuncs.com/logo.png&url=http://shouji.360tpcdn.com/131202/a8e3679179ff1ec410451580487df878/com.mobvoi.baiding_303.apk">360一键安装</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/wdj.png" /> <a href="http://apk.wdjcdn.com/2/05/c282bc3f112065cd848294773a86d052.apk" name="出门问问" onclick="return wdapi_apkdl_m(this, 'source');" title="通过豌豆荚下载">豌豆荚一键安装</a>
+            <br/><a href="http://www.wandoujia.com/apps/com.mobvoi.baiding" target="_blank">豌豆荚</a>&nbsp;&nbsp;&nbsp;<a href="http://as.baidu.com/a/item?docid=5087682" target="_blank">百度手机助手</a>&nbsp;&nbsp;&nbsp;<a href="http://zs.91.com/" target="_blank">91助手</a>&nbsp;&nbsp;&nbsp;<a href="http://apk.hiapk.com/html/2013/11/2033619.html" target="_blank">安卓市场</a>&nbsp;&nbsp;&nbsp;<a href="http://android.myapp.com/android/appdetail.jsp?appid=850725&actiondetail=0&pageNo=1&clickpos=1&transactionid=1386151839793670&lmid=1022&softname=%E5%87%BA%E9%97%A8%E9%97%AE%E9%97%AE" target="_blank">应用宝</a>
+          </div>
+        </div> 
+      </div>           
+    </div>
+  </div>
+  <div class="wrapper">
+    <div class="wrapper_">
+      <div class="wrapper_bubble groupcoupon"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card"><img src="img/card-groupcoupon.png" /></div>
+      <div class="wrapper_content">
+        <p>●&nbsp;&nbsp;覆盖大众点评、美团、拉优惠数据</p>
+        <p>●&nbsp;&nbsp;支持地点、类别及具体商家问询</p>
+        <p>●&nbsp;&nbsp;团购、优惠券均不放过</p>
+        <p>●&nbsp;&nbsp;最新最火随心选</p>
+      </div>
+    </div>
+    <div class="wrapper_">
+      <div class="wrapper_bubble hotel"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card"><img src="img/card-hotel.png" /></div>
+      <div class="wrapper_content">
+        <p>●&nbsp;&nbsp;地址、商圈精准定位</p>
+        <p>●&nbsp;&nbsp;价位、酒店名称任你说</p>
+        <p>●&nbsp;&nbsp;挑选酒店、下单支付一气呵成</p>
+      </div>
+    </div>
+    <div class="wrapper_">
+      <div class="wrapper_bubble restaurant"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card"><img src="img/card-restaurant.png" /></div>
+      <div class="wrapper_content">
+        <p>●&nbsp;&nbsp;人均、菜系多种标签尽你问</p>
+        <p>●&nbsp;&nbsp;评分、电话餐、距离一看便知</p>
+        <p>●&nbsp;&nbsp;同步提供餐厅优惠券，包你不愁饕餮</p>
+      </div>
+    </div>
+    <div class="wrapper_">
+      <div class="wrapper_bubble movie"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card"><img src="img/card-movie.png" /></div>
+      <div class="wrapper_content">
+        <p>●&nbsp;&nbsp;具体电影搜索与热映电影推荐均支持</p>
+        <p>●&nbsp;&nbsp;附近电影院、选片支付选座一条龙</p>
+        <p>●&nbsp;&nbsp;心动折扣、优惠享不停</p>
+      </div>
+    </div>
+    <div class="wrapper_">
+      <div class="wrapper_bubble recpie"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card"><img src="img/card-recipe.png" /></div>
+      <div class="wrapper_content">
+        <p>●&nbsp;&nbsp;家常vs宴席 重口味vs小清新</p>
+        <p>●&nbsp;&nbsp;食材用料、具体步骤、美味诀窍</p>
+        <p>●&nbsp;&nbsp;主妇与煮男还在等什么</p>
+      </div>
+    </div>
+    <div class="wrapper_">
+      <div class="wrapper_bubble music"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card"><img src="img/card-music.png" /></div>
+      <div class="wrapper_content">
+        <p>●&nbsp;&nbsp;全面支持曲名、歌手的点播</p>
+        <p>●&nbsp;&nbsp;完美识别指定流派、音乐情绪</p>
+        <p>●&nbsp;&nbsp;火速更新最热新单，只做你的唱片机</p>
+      </div>
+    </div>
+    <div class="wrapper_">
+      <div class="wrapper_bubble travel"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card"><img src="img/card-travel.png" /></div>
+      <div class="wrapper_content">
+        <p>●&nbsp;&nbsp;共享千万游记及旅游攻略</p>
+        <p>●&nbsp;&nbsp;只为给你最佳推荐</p>
+        <p>●&nbsp;&nbsp;蚂蜂窝与出门问问荣誉出品</p>
+      </div>
+    </div>
+    <div class="wrapper_"></div>
+    <div class="wrapper_"></div>
+  </div>
+
+  <script>
+////////// Define Paramaters  
+    // Define ga.js
+    var scrollHeight = document.documentElement.clientHeight, scrollVal = -1, allowSkip = true;
+    var CMWW = new chumenwenwen();
+    CMWW.share.init({title: "出门问问，为手机搜索而生", desc: "出门问问，为手机搜索而生\n\n点击下载出门问问", img: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png", url: window.location.href});
+    CMWW.share.wechatReady();    
+
+////////// Intialize Event
+    resizeWindow();
+    (function () { // Typing effect
+      var selector = new Date().getTime() % 5;
+      $(".intro_device_txt dd")[selector].children[0].style.display = "inline-block";
+      setTimeout('$(".intro_device_txt dd")[' + selector + '].children[1].style.display = "inline-block"', 800);
+      setTimeout('$(".intro_device_txt dd")[' + selector + '].children[2].style.display = "inline-block"', 1700);
+      setTimeout('$(".intro_device_txt dd")[' + selector + '].children[3].style.display = "inline-block"', 2400);
+      setTimeout('$(".intro_device_txt dd")[' + selector + '].children[4].style.display = "inline-block"', 3200);
+      setTimeout('$(".intro_device_txt dd")[' + selector + '].children[5].style.display = "inline-block"', 4000);
+      setTimeout('$(".intro_device_txt dd")[' + selector + '].children[0].style.display = "none"; $(".intro_device_txt dd")[' + selector + '].children[1].style.display = "none"; $(".intro_device_txt dd")[' + selector + '].children[2].style.display = "none"; $(".intro_device_txt dd")[' + selector + '].children[3].style.display = "none"; $(".intro_device_txt dd")[' + selector + '].children[4].style.display = "none"; $(".intro_device_txt dd")[' + selector + '].children[5].style.display = "none"', 6000);
+      setTimeout(arguments.callee, 6500)
+    }) ()
+////////// Register Event    
+    window.onresize = resizeWindow;
+    document.getElementsByTagName("body")[0].onkeydown = function(e) {
+      if(e.keyCode >=32 && e.keyCode <= 40) {
+        return false;
+      }
+    }
+    window.onscroll = function() {
+      if(document.documentElement.clientWidth > 840) {
+        if(document.documentElement.scrollTop + document.body.scrollTop < 1440) {
+        $(".wrapper2").css({"position": "absolute", "top": "1440px"});
+        } else if(document.documentElement.scrollTop + document.body.scrollTop > 1440 && document.documentElement.scrollTop + document.body.scrollTop < 5759 - document.documentElement.clientHeight) {
+          $(".wrapper2").css({"position": "fixed", "top": "0px"});
+          $(".wrapper2_floor").css({"bottom": "0px"});
+        } else if(document.documentElement.scrollTop + document.body.scrollTop > 5759 - document.documentElement.clientHeight) {
+          $(".wrapper2").css({"position": "absolute", "top": 5759 - document.documentElement.clientHeight + "px"});
+        }
+      }
+    }
+    $("button").on("click", function() {
+      switch($(this).attr("data-event")) {
+        case "button-apk":
+          ga("send", "event", "click", "footer-button-apk", browser.type + "/" + browser.os + "/" + browser.browser);
+          if(window.navigator.userAgent.indexOf("MicroMessenger") > -1) {
+            $(".alert").show();
+            $("body").css("overflow", "hidden")
+            document.ontouchmove = function(e) {
+              return false;
+            }        
+          } else {
+            window.open("http://apk.wdjcdn.com/2/05/c282bc3f112065cd848294773a86d052.apk");
+            ga("send", "event", "download", "/", browser.type + "/" + browser.os + "/" + browser.browser);
+          }
+        break;
+        case "button-wechatAndYixin":
+        ga("send", "event", "click", "footer-button-wechatAndWeixin", browser.type + "/" + browser.os + "/" + browser.browser);
+          window.open("http://chumenwenwen.net/wechatAndYixin.html");
+        break;
+        case "button-weibo":
+          ga("send", "event", "click", "footer-button-weibo", browser.type + "/" + browser.os + "/" + browser.browser);
+          window.open("http://weibo.com/chumenwenwen");         
+        break;
+      }
+    })
+    $(".alert").click(function() {
+      $(this).hide();
+      document.ontouchmove = function(e) {
+        return true;
+      }           
+    })
+////////// Define Event
+    function skipTo(n) {
+      scrollVal = n;
+      if(n == -1) {
+        var set = 0;
+        $(".nav_container_icon").removeClass("bigger");
+        $(".nav_container_icon").addClass("zero");     
+      } else if(n > -1 && n < 7) {
+        var set = 1440 + 540 * n;
+        for(var i = 0; i < 7; i ++) {
+          $(".nav_container_icon").removeClass("zero");
+          if(i != n) {
+            $(".wrapper2_pic:eq(" + i + ")").fadeOut(1500);
+            $(".nav_container_icon:eq(" + i + ")").removeClass("bigger");
+          } else {
+            $(".wrapper2_pic:eq(" + i + ")").fadeIn(1500);
+            $(".nav_container_icon:eq(" + i + ")").addClass("bigger");
+          }
+        }
+      } else if(n == 7) {
+        var set = 9999;
+        $(".nav_container_icon").removeClass("bigger");
+        $(".nav_container_icon").addClass("zero");     
+      }
+      $("html, body").animate(
+        {scrollTop: set},
+        {duration: 1000, easing: "easeInOutQuint", complete: function() {
+          allowSkip = true;
+        }}
+      )         
+    }
+    function resizeWindow() {
+      scrollHeight = document.documentElement.clientHeight;
+      if(document.documentElement.clientWidth > 840) {
+        allowSkip = true;
+        $(".intro").css("background-size", "100% 100%")
+        $(".wrapper").css("top", "1440px");
+        $(".wrapper2_brand").css({"bottom": 0 - scrollHeight + 140 + "px", "height": scrollHeight - 140 + "px"});
+      } else {
+        allowSkip = false;
+        $(".intro").css("background-size", "100% " + document.documentElement.clientHeight + "px")
+        $(".wrapper").css("top", document.documentElement.clientHeight + "px");
+        $(".wrapper2").css({"position": "absolute", "top": document.documentElement.clientHeight + 3780 + "px"});
+        $(".wrapper2_brand").css({"bottom": "", "height": ""});
+      }
+      if(document.documentElement.clientWidth > 840) {
+        var s = skrollr.init({smoothScrolling: false, forceHeight: false});  
+        s.refresh();
+      }        
+    }
+  </script>
+  <script src="http://zhushou.360.cn/script/360mobilemgrdownload.js"></script>
+</body>
+</html>

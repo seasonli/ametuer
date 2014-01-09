@@ -1,0 +1,16 @@
+body {
+	background: #ffffff;
+}
+.layout-pink {
+	color: #d95757;
+}
+.layout-bgpink {
+	background: #d95757;
+}
+.layout-bgmeat {
+	background: #ffece1;
+}
+
+.cards_card { border: 0; }
+.gotoToggle { border-bottom: 1px dotted #cccccc; }
+.gotoToggled { border-bottom: 0; }

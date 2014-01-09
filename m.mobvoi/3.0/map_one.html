@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_map_one">
+    <ul class="cards">
+      <li class="cards_card">
+        <div class="cards_card_entire layout-16px">
+          <p><span>{ body[0].title }</span></p>
+        </div>
+        <div class="clear"></div>
+      </li>
+      <li class="cards_img showMap markMap layout-fff" style="height: 240px">[[[{ body[0].content[0] }, { body[0].content[1] }]]]</li>
+      <li class="cards_card">
+        <div class="cards_card_double left">
+          <p><button class="gotoMark layout-bwhite layout-left layout-blue layout-bold" type="button" data-point="{body[0].content[2]}, {body[0].content[0]}, {body[0].content[1]}">获取路线<img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" style="margin-left: 5px; height: 12px"></button></p>
+        </div>
+        <div class="clear"></div>
+      </li>    
+    </ul>
+  </script>
+
+  <script> 
+    var response = {"content":[{"direct":{"body":[{"content":["31.308912471391192","121.49982640557423","杨浦区武东路"],"img_url":"http://api.map.baidu.com/staticimage?center=121.49982640557423,31.308912471391192&width=600&height=400&zoom=14&markers=121.49982640557423,31.308912471391192&markerStyles=-1,http://onebox.oss.aliyuncs.com/img/my_location_indicator.png","title":"我在 杨浦区武东路","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.where@e59eb9291e5f9375a8a0096c2845f0cb","task":"public.where","query":"我在哪","task_name":"在哪里","appkey":"wechat_chumenwenwen","need_check_location":true,"params":[],"type":"map_one","recommendation_query":[],"search_query":"为您搜索到当前\"位置\"","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"listview","more":{"show_number":0,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":0,"start":0,"length":0},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"8273645d-2451-4d1d-9b7f-c8d1de3eb658","user_id":"undefined","query_type":"text","output":"app","is_show_header":false}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 打车</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/dectiveAgent.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_taxi">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">请输入打车信息</span></p>
+        </div>
+      </li>
+      <form onSubmit="return submitForm()" method="GET" action="{answer.order_info.book_url}">
+        <li class="cards_card">
+          <div class="cards_card_form left layout-green layout-17px">
+            <p><label>我在</label></p>
+          </div>
+          <div class="cards_card_form right">
+            <p>
+              <select name="city">
+                <option value="北京">北京</option>
+                <option value="天津">天津</option>
+                <option value="上海">上海</option>
+                <option value="深圳">深圳</option>
+              </select>
+            </p>
+          </div>
+          <div class="clear"></div>
+          <div class="cards_card_double left layout-center" onClick="changeType(1)">
+            <input name="type" value="1" type="hidden" />
+            <p><button id="type1" type="button">实时打车</button></p>
+          </div>
+          <div class="cards_card_double right layout-center" onClick="changeType(2)">
+            <p><button id="type2" type="button" class="inactive">预约打车</button></p>
+          </div>
+          <div class="clear"></div>
+          <div id="type"></div>
+        </li>
+        <input type="hidden" name="user_id" value="{answer.user_info.user_id}" />
+        <li class="cards_card">          
+          <div class="cards_card_form left layout-green layout-17px">
+            <p><label>手机</label></p>
+          </div>
+          <div class="cards_card_form right">
+            <p><input type="text" name="cellphone" value="{answer.user_info.phone}" /></p>
+          </div>
+          <div class="clear"></div>
+          <div class="cards_card_form left layout-green layout-17px">
+            <p><label>称呼</label></p>
+          </div>
+          <div class="cards_card_form right">
+            <p><input type="text" name="name" value="{answer.user_info.name}" /></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+        <li class="cards_card">
+          <div class="cards_card_form left layout-green layout-17px">
+            <p><label>出发地</label></p>
+          </div>
+          <div class="cards_card_form right">
+            <p><input type="text" name="start_address" value="{answer.order_info.start_address}" placeholder="出发地" /></p>
+          </div>
+          <div class="clear"></div>
+          <div class="cards_card_form left layout-green layout-17px">
+            <p><label>目的地</label></p>
+          </div>
+          <div class="cards_card_form right">
+            <p><input type="text" name="dest_address" value="{answer.order_info.dest_address}" placeholder="目的地" /></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+        <li class="cards_card">          
+          <div class="cards_card_entire">
+            <p><input type="text" name="reward" placeholder="小费，不填则为零"/></p>
+          </div>
+        </li>
+        <li class="cards_card result">
+          <div class="cards_card_entire">
+            <p><button type="submit">确认</button></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+      </form>
+    </ul>
+  </script>
+
+  <script type="text/html" id="wrapper_taxi_book">
+      <div class="cards_card_triple left">
+        <p>
+          <select name="book_date">
+            <option value="1">今天</option>
+            <option value="2">明天</option>
+          </select>
+        </p>
+      </div>
+      <div class="cards_card_triple center">
+        <p>
+          <select id="book_hour">
+            <option value="00">上午00点</option>
+            <option value="01">上午01点</option>
+            <option value="02">上午02点</option>
+            <option value="03">上午03点</option>
+            <option value="04">上午04点</option>
+            <option value="05">上午05点</option>
+            <option value="06">上午06点</option>
+            <option value="07">上午07点</option>
+            <option value="08">上午08点</option>
+            <option value="09">上午09点</option>
+            <option value="10">上午10点</option>
+            <option value="11">上午11点</option>
+            <option value="12">上午12点</option>
+            <option value="13">下午01点</option>
+            <option value="14">下午02点</option>
+            <option value="15">下午03点</option>
+            <option value="16">下午04点</option>
+            <option value="17">下午05点</option>
+            <option value="18">下午06点</option>
+            <option value="19">下午07点</option>
+            <option value="20">下午08点</option>
+            <option value="21">下午09点</option>
+            <option value="22">下午10点</option>
+            <option value="23">下午11点</option>
+          </select>
+        </p>
+      </div>   
+      <div class="cards_card_triple right">
+        <p>
+          <select id="book_minute">
+            <option value="00">00分</option>
+            <option value="10">10分</option>
+            <option value="20">20分</option>
+            <option value="30">30分</option>
+            <option value="40">40分</option>
+            <option value="50">50分</option>
+          </select>
+        </p>
+      </div>
+      <div class="clear"></div>
+  </script>
+
+  <script type="text/html" id="wrapper_taxi_result">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">{response.answer.content}</span></p>
+        </div>
+      </li>
+    </ul>
+  </script>
+
+  <script>
+    var response = {"status":"success","location":{"street":"武东路","province":"上海市","lng":121.49982640557423,"streetNumber":"undefined","sublocality":"杨浦区","lat":31.308912471391192,"city":"上海市","country":"中国"},"task":"public.taxi","query":"undefined","remote_ip":"192.168.10.16","answer":{"user_info":{"phone":"","name":"","city":"北京"},"order_info":{"dest_address":"世纪公园","start_address":"陆家嘴","book_url":"http://test-host:8080/mobvoibackendcontroller/search/book/taxi/?to=%E4%B8%96%E7%BA%AA%E5%85%AC%E5%9B%AD&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E6%9D%A8%E6%B5%A6%E5%8C%BA%2C%E6%AD%A6%E4%B8%9C%E8%B7%AF%2Cundefined%2C31.308912471391192%2C121.49982640557423&task=public.taxi&query=%E6%88%91%E6%83%B3%E6%89%93%E8%BD%A6%E4%BB%8E%E9%99%86%E5%AE%B6%E5%98%B4%E5%88%B0%E4%B8%96%E7%BA%AA%E5%85%AC%E5%9B%AD&remote_ip=192.168.10.16&msg_id=d5279bbc-9c72-4e1b-a919-0df7f66ac9ee&appkey=wechat_chumenwenwen&query_type=text&from=%E9%99%86%E5%AE%B6%E5%98%B4&output=json"}},"appkey":"wechat_chumenwenwen","params":[{"value":"陆家嘴","keyname":"出发地","key":"from"},{"value":"世纪公园","keyname":"目的地","key":"to"}],"taskName":"打车小秘","version":"undefined","msg_id":"d5279bbc-9c72-4e1b-a919-0df7f66ac9ee","user_id":"undefined","query_type":"text"};
+    if(response.answer.content) {
+      $(".wrapper").html(template.render("wrapper_taxi_result", response));
+    } else {
+      $(".wrapper").html(template.render("wrapper_taxi", response));
+      if(response.answer.user_info.city != "") {
+        $("[name='city']").val(response.answer.user_info.city);
+      }
+      if(browser.versions.android == true) {
+        $("[name='city']").addClass("outline");
+      }
+    }
+
+    function changeType(value) {
+      if(value == 1) {
+        $("[name='type']").val("1");
+        $("#type1").removeClass("inactive");
+        $("#type2").addClass("inactive");
+        $(".cards_card_triple").remove();
+      } else {
+        $("[name='type']").val("2");
+        $("#type2").removeClass("inactive");
+        $("#type1").addClass("inactive");
+        $("#type").html($("#wrapper_taxi_book").html());
+        var hour = new Date().getHours();
+        var minute = new Date().getMinutes();
+        if(minute >= 50) {
+          if(hour == 23) {
+            $("[name='book_date']").val(2);
+            $("#book_hour").val(0);
+            $("#book_minute").val(0);
+          } else {
+            hour ++;
+            $("#book_hour").val(hour);
+            $("#book_minute").val("00");
+          }
+        } else {
+          minute = parseInt(minute / 10) + 1 + "0";
+          $("#book_hour").val(hour);
+          $("#book_minute").val(minute);          
+        }
+      }
+    }
+    function submitForm() {
+      $("[name='cellphone']").val($.trim($("[name='cellphone']").val()));
+      $("[name='name']").val($.trim($("[name='name']").val()));
+      $("[name='start_address']").val($.trim($("[name='start_address']").val()));
+      $("[name='dest_address']").val($.trim($("[name='dest_address']").val()));
+      $("[name='reward']").val($.trim($("[name='reward']").val()));
+      if(parseInt($("[name='reward']").val()).toString() == "NaN") {
+        $("[name='reward']").val("0");
+      }
+      if(parseInt($("[name='cellphone']").val()).toString().length != 11) {
+        alert("请输入正确的11位手机号");
+        return false;
+      } else if($("[name='name']").val() == "") {
+        alert("请输入你的姓名");
+        return false;
+      } else if($("[name='start_address']").val() == "") {
+        alert("请输入出发地");
+        return false;
+      } else if($("[name='dest_address']").val() == "") {
+        alert("请输入目的地");
+        return false; 
+      } else if($("[name='city']").val() == "") {
+        alert("请输入你所在的城市");
+        return false; 
+      } else {
+        if($("[name='book_date']").val()) {
+          if($("[name='book_date']").val() == 1 && parseInt($("#book_hour").val() + ":" + $("#book_minute").val() + ":00") < parseInt(new Date().toLocaleTimeString())) {
+            alert("不要调皮选择一个过去的时间啦");
+            return false;
+          } else {
+            var book_time = $("#book_hour").val() + ":" + $("#book_minute").val() + ":00";
+            $("[name='book_date']").after("<input type='hidden' name='book_time' value='" + book_time + "' />");
+          }
+        } else {
+          $("form").append("<input type='hidden' name='book_date' value='1' /><input type='hidden' name='book_time' value='" + new Date().toLocaleTimeString() + "' />");
+        }
+        return true;
+      }
+    }
+  </script>
+</body>
+</html>

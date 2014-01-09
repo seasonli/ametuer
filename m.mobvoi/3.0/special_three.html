@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_special_three">
+    <ul class="cards">
+      { each body as val i }
+        <li class="cards_img layout-fff" style="position: relative">
+          <img src="{ val.img_url }" />
+          <p><span class="layout-18px layout-bold layout-fff" style="position: absolute; left: 5%; top: 40px">{ val.title }</span><span style="position: absolute; right: 5%; top: 65px">{ val.content[0] }</span></p>
+        </li>    
+        <li class="cards_card">
+          <div class="cards_card_double left layout-666">
+            <p><span>{ val.content[1] }</span></p>
+            <p><span>{ val.content[3] }</span></p>
+          </div>
+          <div class="cards_card_double right layout-666">
+            <p><span>{ val.content[2] }</span></p>
+            <p><span>{ val.content[4] }</span></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+        <li class="cards_card">
+          <div class="cards_card_entire">
+            { each body[i].children as val1 i1 }
+              <br/>
+              <p><span class="layout-16px">{ val1.title }</span></p>
+              <p><span class="layout-666 layout-12px">{ val1.content[0] }</span></p>
+            { /each }
+          </div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":["2013年11月22日","开运方向: 西南方","开运颜色: 烟白色","健康指数: 4分","幸运物: 三叶草挂饰","http://onebox.oss.aliyuncs.com/img/astro/gemini.png"],"img_url":"http://onebox.oss.aliyuncs.com/img/astro_bg.jpg","title":"双子座","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[{"content":["3分, 摆脱压力的束缚会感到轻闲很多，但生活上琐事还是让你有些头疼。"],"img_url":"","title":"心情","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["5分, 到处寻欢作乐！你机智幽默的言谈，会为你招来旺盛的异性缘！"],"img_url":"","title":"爱情运势","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["7分, 中餐找个没去过的店尝尝，或是没吃过的菜色等，感受到小幸运。"],"img_url":"","title":"财富运势","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["2分, 不想做事，总是东张西望，小心被领导抓到，还是乖乖做事吧。"],"img_url":"","title":"事业运势","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.constellation@135c9c8b830ecbf0b743f2c107d4f984","task":"public.constellation","query":"双子座运势","task_name":"查星座","appkey":"wechat_chumenwenwen","need_check_location":false,"params":[{"value":"双子座","keyname":"星座","key":"constellation"}],"type":"special_three","recommendation_query":[],"search_query":"双子座运势","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"scrollview","more":{"show_number":1,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":1,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"9057f127-42af-4c63-a3c3-38ef9aa02d02","user_id":"undefined","query_type":"text","output":"app","is_show_header":false}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+</body>
+</html>

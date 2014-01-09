@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>问问小伙伴 出门问问</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
+</head>
+
+<body>
+  <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/wechat-share.png" style="opacity: 0.5; position: absolute; top: 0%; left: 0; width: 100%" />
+  <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/wechat-inquire.png" style="position: absolute; top: 40%; left: 0; width: 80%" />
+  <script>
+    $.ajax({
+      async: true, // to make sure that render after getting all the data
+      type: "GET",
+      url: "http://m.mobvoi.com/api/log?" + window.location.href.split("?")[1],
+    });
+    (function () {
+      var dataForWechat = {
+        appId: "",
+        fakeid: "",
+        title: "我有个问题，你知道答案吗？",
+        desc: decodeURI(window.location.href.split("query=")[1].split("&")[0]),
+        MsgImg: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png",
+        TLImg: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png",
+        url: "http://wechat.weiyuyi.com/app/wechat-bec/resource/share_push.html?" + window.location.href.split("?")[1],
+      };
+      var shareInWechat = function () {
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+          WeixinJSBridge.invoke('sendAppMessage', {
+            "appid": dataForWechat.appId,
+            "title": dataForWechat.title,
+            "desc": dataForWechat.desc,
+            "img_url": dataForWechat.MsgImg,
+            "img_width": "",
+            "img_height": "",
+            "link": dataForWechat.url,          
+          });
+        });
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+          WeixinJSBridge.invoke('shareTimeline', {
+            "appid": dataForWechat.appId,
+            "title": dataForWechat.title + "\n" + dataForWechat.desc,
+            "desc": "",
+            "img_url": dataForWechat.TLImg,
+            "img_width": "",
+            "img_height": "",
+            "link": dataForWechat.url,        
+          });
+        });
+      };
+      if (document.addEventListener) {
+        document.addEventListener('WeixinJSBridgeReady', shareInWechat, false);
+      } else if (document.attachEvent) {
+        document.attachEvent('WeixinJSBridgeReady', shareInWechat);
+        document.attachEvent('onWeixinJSBridgeReady', shareInWechat);
+      }
+    }) ()
+  </script>
+</body>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
+</head>
+
+<body class="layout-bwhite">
+  <div class="wrapper" style="margin-top: 0">
+  <ul class="cards">
+    <li class="cards_card">
+      <div class="cards_card_entire">
+        <p><span id="nickname" class="layout-999" style="line-height: 40px">你的朋友在出门问问中提问</span></p>
+        <p><span id="query" class="layout-green layout-26px"></span></p>
+        <p><span id="address" class="layout-666"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/marker.png" style="height: 30px; vertical-align: bottom" /></span></p>
+      </div>
+    </li>
+    <li class="cards_card" style="border: 0">
+      <div class="cards_card_entire">
+        <p><input type="text" id="name" placeholder="我的名字" /></label></p>
+        <p><textarea id="content" style="height: 160px" placeholder="我的答案……"></textarea></p>
+      </div>
+      <div class="cards_card_double left">
+        <p></p>
+      </div>
+      <div class="cards_card_double right layout-right">
+        <p><button type="button" id="answer" class="layout-borange layout-w80pt">告诉TA</button></p>
+      </div>
+      <div class="clear"></div><br/><br/><br/>
+      <div class="cards_card_entire layout-666">
+        <p>出门问问是一款智能移动语音搜索引擎，无论在是最近近在咫尺的周边花店、餐厅、ATM，还是远在某处的电影酒店团购。问问你就知道！<span class="layout-green layout-bold" onClick="window.location.href='http://mobvoi-one-box.oss.aliyuncs.com/web/intro.html'">了解更多</span></p>
+      </div>
+      <div class="cards_card_entire layout-center">
+        <p><button type="button" class="layout-bgreen layout-w60pt" onClick='$("#like").show()'>关注出门问问</button></p>
+      </div>
+      <div class="clear"></div>
+    </li>
+  </ul>
+  </div>
+  <div style="display: none" id="share" onClick="$(this).hide()"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/share-white.png" /></div>
+  <div style="display: none" id="like" onClick="$(this).hide()"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/like-white.png" /></div>
+
+  <script>
+    $("#query").html(decodeURI(window.location.href.split("query=")[1].split("&")[0]));
+    $("title").prepend(decodeURI(window.location.href.split("query=")[1].split("&")[0]));
+    if(window.location.href.split("nickname=")[1]) {
+      $("#nickname").html($("#nickname").html().replace(/你的朋友/, decodeURI(window.location.href.split("nickname=")[1].split("&")[0])));
+    }
+    if(decodeURI(window.location.href.split("address=")[1].split("&")[0]).split("0")[0].replace(/%2C/g, "")) {
+      var addressArr = decodeURI(window.location.href.split("address=")[1].split("&")[0]).split("%2C");
+      $("#address").append((addressArr[0] + addressArr[1] + addressArr[2] + addressArr[3] + addressArr[4]));
+    }
+    if(((window.location.href.split("timestamp=")[1] - new Date()) / 1000) < - 432000) {
+      $("#wrapper").html('<div class="cards_card_entire"><p><label class="layout-bold">这个问题已经过期</label></p></div>');
+    }
+    (function () {
+      var dataForWechat = {
+        appId: "",
+        fakeid: "",
+        title: "智能语音搜索 出门问问",
+        desc: "听得懂 查得到 出门问一问",
+        MsgImg: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png",
+        TLImg: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png",
+        url: "http://mobvoi-one-box.oss.aliyuncs.com/web/intro.html",
+      };
+      var shareInWechat = function () {
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+          WeixinJSBridge.invoke('sendAppMessage', {
+            "appid": dataForWechat.appId,
+            "title": dataForWechat.title,
+            "desc": dataForWechat.desc,
+            "img_url": dataForWechat.MsgImg,
+            "img_width": "",
+            "img_height": "",
+            "link": dataForWechat.url,          
+          });
+        });
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+          WeixinJSBridge.invoke('shareTimeline', {
+            "appid": dataForWechat.appId,
+            "title": dataForWechat.title,
+            "desc": "",
+            "img_url": dataForWechat.TLImg,
+            "img_width": "",
+            "img_height": "",
+            "link": dataForWechat.url,        
+          });
+        });
+      };
+      if (document.addEventListener) {
+        document.addEventListener('WeixinJSBridgeReady', shareInWechat, false);
+      } else if (document.attachEvent) {
+        document.attachEvent('WeixinJSBridgeReady', shareInWechat);
+        document.attachEvent('onWeixinJSBridgeReady', shareInWechat);
+      }
+    }) ();
+
+    $("#answer").click(function () {
+      if($.trim($("#content").val()) != "") {
+        var content = {
+          user_id: window.location.href.split("user_id=")[1].split("&")[0], 
+          content: {
+            type: "text"
+          }
+        }
+        if($.trim($('#name').val()) != "") {
+          content.content.content = $.trim($('#name').val()) + " 回答了您的问题 “" + decodeURI(window.location.href.split("query=")[1].split("&")[0]) + "”\n“" + $.trim($('#content').val()) + "”\n";
+        } else {
+          content.content.content = "您的问题 “" + decodeURI(window.location.href.split("query=")[1].split("&")[0]) + "” 刚刚有了一个回答\n“" + $.trim($('#content').val());
+        }
+        if(parseInt(6 - (new Date() - parseInt(window.location.href.split("timestamp=")[1])) / 86400000) > 0 && parseInt(6 - (new Date() - parseInt(window.location.href.split("timestamp=")[1])) / 86400000) < 6) {
+          content.content.content += "（您的问题将在" + parseInt(6 - (new Date() - parseInt(window.location.href.split("timestamp=")[1])) / 86400000) + "天内关闭）";
+        }
+        $.ajax({
+          async: false,
+          type: "POST",
+          url: "/sync-api/" + window.location.href.split("weiyuyi_token=")[1].split("&")[0] + "/push_msg?app_type=wechat",
+          contentType: "application/json",
+          data: JSON.stringify(content),
+          dataType: "json",
+          success: function(res) {
+            alert("感谢您的回答，您的回答将即刻推送给您的朋友");
+            window.location.href = "http://mobvoi-one-box.oss.aliyuncs.com/web/intro.html";
+          },
+          error: function(res) {
+            alert("出错了！我们会尽快修复这个问题");
+          }
+        });
+      } else {
+        alert("请写下您的答案");
+      }
+    });
+  </script>
+</body>
+</html>

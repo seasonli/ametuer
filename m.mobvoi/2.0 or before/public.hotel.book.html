@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>酒店预定 出门问问</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.1.01.js"></script>
+</head>
+
+<body>
+  <div class="necker">
+  </div>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="necker">
+    <div class="banner dial" data-tel="{ answer.book_info.hotel_phone }">
+      <p><span class="layout-fleft layout-22px layout-bold" style="line-height: 22px; width: 80%">{ answer.book_info.hotel_name }</span><div class="clear"></div></p>
+      <p><span class="layout-16px">{ answer.book_info.star_name }</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="layout-12px">电话: { answer.book_info.hotel_phone }</span></p>
+      <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />
+    </div>
+    <div class="div2">
+      <div class="div2_div1 point">
+        <p><span>{ answer.book_info.hotel_address }</span><span class="layout-fright layout-right layout-666"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" style="width: 12px" /></span><div class="clear"></div></p>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/html" id="wrapper">
+    { if answer.latest_arrival_time }
+      <ul class="cards">    
+        <li class="cards_card">
+          <div class="cards_card_img left">
+            <p>
+              <img src="{ answer.book_info.room_img }" />
+            </p>   
+          </div> 
+          <div class="cards_card_img right">
+            <p><span class="layout-16px">{ answer.book_info.room_name }</span></p>
+            <p><span class="layout-orange layout-20px">￥{ answer.book_info.price }</span></p>
+            <p><span class="layout-666">{ answer.book_info.bed_type }</span></p>         
+            <p><span class="layout-12px layout-999">{ answer.book_info.room_description }</span></p>
+          </div>      
+          <div class="clear"></div>
+        </li>
+        <li class="cards_card">        
+          <div class="cards_card_quarter left">
+            <p><label class="layout-green">到店</label></p>
+          </div>
+          <div class="cards_card_quarter center">
+            <p><select id="checkin_month"></select>
+            </span></p>
+          </div>     
+          <div class="cards_card_quarter center">
+            <p>
+              <select id="checkin_day">
+              </select>
+            </p>
+          </div>
+          <div class="cards_card_quarter right">
+            <p>
+              <select id="checkin_time">
+                <option value="00:00:00">00:00</option>
+                <option value="01:00:00">01:00</option>
+                <option value="02:00:00">02:00</option>
+                <option value="03:00:00">03:00</option>
+                <option value="04:00:00">04:00</option>
+                <option value="05:00:00">05:00</option>
+                <option value="06:00:00">06:00</option>
+                <option value="07:00:00">07:00</option>
+                <option value="08:00:00">08:00</option>
+                <option value="09:00:00">09:00</option>
+                <option value="10:00:00">10:00</option>
+                <option value="11:00:00">11:00</option>
+                <option value="12:00:00">12:00</option>
+                <option value="13:00:00">13:00</option>
+                <option value="14:00:00">14:00</option>
+                <option value="15:00:00">15:00</option>
+                <option value="16:00:00">16:00</option>
+                <option value="17:00:00">17:00</option>
+                <option value="18:00:00">18:00</option>
+                <option value="19:00:00">19:00</option>
+                <option value="20:00:00">20:00</option>
+                <option value="21:00:00">21:00</option>
+                <option value="22:00:00">22:00</option>
+                <option value="23:00:00">23:00</option>
+                <option value="24:00:00">24:00</option>
+              </select>
+            </p>
+          </div>
+          <div class="clear"></div>
+          <div class="cards_card_quarter left">
+            <p><label class="layout-green">住店</label></p>
+          </div>
+          <div class="cards_card_quarter center">
+            <p>
+              <select id="checkout_during">
+                <option value="1">1 晚</option>
+                <option value="2">2 晚</option>
+                <option value="3">3 晚</option>
+                <option value="4">4 晚</option>
+                <option value="5">5 晚</option>
+                <option value="6">6 晚</option>
+                <option value="7">7 晚</option>
+                <option value="8">8 晚</option>
+                <option value="9">9 晚</option>
+                <option value="10">10 晚</option>
+                <option value="11">11 晚</option>
+                <option value="12">12 晚</option>
+                <option value="13">13 晚</option>
+                <option value="14">14 晚</option>
+                <option value="15">15 晚</option>
+                <option value="16">16 晚</option>
+                <option value="17">17 晚</option>
+                <option value="18">18 晚</option>
+                <option value="19">19 晚</option>
+              </select>
+            </p>
+          </div>
+          <div class="cards_card_double right layout-orange">
+            <p>&nbsp;&nbsp;&nbsp;<label id="checkout_date"></label><label>&nbsp;离店</label></p>
+            <p><label id="checkin_date" style="display: none"></label></p>
+          </div>
+          <div class="clear"></div>
+          <div class="cards_card_form left layout-green layout-16px">
+            <p><label>总价</label></p>
+          </div>
+          <div class="cards_card_form right layout-orange">
+            <p><label>￥</label><label id="price"></label></p>
+          </div>        
+          <div class="clear"></div>
+        </li>
+        { if answer.book_info.guarantee_rule_desc }
+          <li class="cards_card">
+            <div class="cards_card_entire layout-12px">
+              <p><span>{ answer.book_info.guarantee_rule_desc }</span></p>
+            </div>
+        { /if }     
+        </li>
+        <li class="cards_card">
+          <div class="cards_card_entire layout-12px layout-666">
+            <p><span>姓名与手机号仅用于短信客服确认，您的隐私不会被泄露，请放心填写。</span></p>
+          </div>
+          <div class="cards_card_form left layout-green layout-16px">
+            <p><label>姓名</label></p>
+          </div>
+          <div class="cards_card_form right">
+            <p><input type="text" id="username" value="{ answer.user_info.username }" /></p>
+          </div>
+          <div class="clear"></div>
+          <div class="cards_card_form left layout-green layout-16px">
+            <p><label>手机</label></p>
+          </div>
+          <div class="cards_card_form right">
+            <p><input type="number" id="phone" value="{ answer.user_info.phone }" /></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+        <li class="cards_card result">
+          <div class="cards_card_entire">
+            <p><button id="pay" type="button">确认预定</button></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+      </ul>
+    { else }
+      <ul class="cards">    
+        <li class="cards_card">
+          <div class="cards_card_entire">
+            <p><span>抱歉，该房间暂时无法预定</span></p>
+          </div>
+        </li>
+      </ul>
+    { /if }
+  </script>
+
+  <script>
+//    var response = ${content};
+    var response = {"location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.hotel","query":"undefined","remote_ip":"192.168.10.30","answer":{"user_info":{"phone":"","username":""},"latest_arrival_time":"2013-10-18 22:00:00","valid":"true","book_info":{"pay_url":"http://m.mobvoi.com/search/pay/hotel?starName=%E8%B1%AA%E5%8D%8E%E5%9E%8B%E9%85%92%E5%BA%97&remote_ip=192.168.10.30&query=%E9%99%84%E8%BF%915%E6%98%9F%E7%BA%A7%E9%85%92%E5%BA%97&cityCode=0201&appkey=abc&ratePlan=%E5%90%AB%E5%8F%8C%E6%97%A9&lng=121.481972337&hotelId=50201488&city=%E4%B8%8A%E6%B5%B7&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6%2F%E6%97%A0%E7%BA%BF&hotelAddress=%E9%BB%84%E6%B5%A6%E5%8C%BA%E9%87%91%E9%99%B5%E4%B8%9C%E8%B7%AF507%E5%8F%B7%EF%BC%88%E8%BF%91%E5%B9%BF%E8%A5%BF%E5%8D%97%E8%B7%AF%EF%BC%89&remoteIP=58.247.4.206&hotelName=%E4%B8%8A%E6%B5%B7%E5%AE%8F%E6%B3%89%E8%89%BE%E7%91%9E%E9%85%92%E5%BA%97&roomName=%E8%89%BE%E7%91%9E%E5%A5%97%E6%88%BF&hotelPhone=021-63366618&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2FE4%2F85%2Fo4YBAFIqcE6AbOJaAAAPfccQM1M375.png%3Fv%3D20121119172105&msg_id=1aec2e33-9088-4fd0-adca-759af08527b8&bedType=3%E5%BC%A0%E5%BA%8A-1%E5%BC%A0%E5%A4%A7%E5%BA%8A%E5%92%8C2%E5%BC%A0%E5%8D%95%E4%BA%BA%E5%BA%8A&output=json&baiduLng=121.48854650161591","arrival_date":"2013-11-18","star_name":"豪华型酒店","bed_type":"3张床-1张大床和2张单人床","lng":"121.481972337","baidu_lng":"121.48854650161591","hotel_address":"黄浦区金陵东路507号（近广西南路）","hotel_name":"上海宏泉艾瑞酒店","room_img":"http://www.elongstatic.com/gp1/M00/E4/85/o4YBAFIqcE6AbOJaAAAPfccQM1M375.png?v=20121119172105","room_description":"免费上网,宽带/无线","baidu_lat":"31.23332782713072","price":"2500","rate_plan":"含双早","room_name":"艾瑞套房","hotel_phone":"021-63366618","departure_date":"2013-11-21","lat":"31.227536678"}},"appkey":"abc","params":[{"value":"上海","keyname":"城市","key":"city"},{"value":"2013-10-16","keyname":"入住日期","key":"checkin"},{"value":"2013-10-17","keyname":"退房日期","key":"checkout"},{"value":"UNDEFINED","keyname":"排序条件","key":"ranking_condition"}],"taskName":"找酒店","version":"undefined","msg_id":"1aec2e33-9088-4fd0-adca-759af08527b8","user_id":"undefined","query_type":"book"};
+    $(".necker").html(template.render("necker", response));
+    $(".wrapper").html(template.render("wrapper", response));
+    if(browser.versions.android == true) {
+      $("select").parent().addClass("select").addClass("android");
+      $("[type='number']").addClass("android");
+    } else if(browser.versions.ios == true) {
+      $("select").parent().addClass("select").addClass("ios");
+    }
+    $(".dial").click(function() {
+      new chumenwenwen.dial($(this).attr("data-tel"), "");
+    })    
+    $(".point").click(function() {
+      new chumenwenwen.map.jumpToMap("point", [[response.answer.book_info.hotel_name, response.answer.book_info.baidu_lat, response.answer.book_info.baidu_lng]], "");
+    })
+    var year = new Date().getFullYear(), month = new Date().getMonth() + 1, nextMonth = new Date().getMonth() + 2, day = new Date().getDate();
+    var monthHTML = "";    
+    if(month < 12) {
+      monthHTML = '<option value="' + month + '">' + month + '月</option><option value="' + nextMonth + '">' + nextMonth + '月</option>'
+    } else {
+      monthHTML = '<option value="' + month + '">' + month + '月</option><option value="1">1月</option>';
+    }
+    $("#checkin_month").html(monthHTML);
+    formatDay(month + "");
+    $("#checkin_time").val(response.answer.latest_arrival_time.split(" ")[1]);
+    $("#checkin_month").val(parseInt(response.answer.book_info.arrival_date.split("-")[1]));
+    $("#checkin_day").val(parseInt(response.answer.book_info.arrival_date.split("-")[2]));
+    if((Date.parse(response.answer.book_info.departure_date.replace(/-/g, "/")) - Date.parse(response.answer.book_info.arrival_date.replace(/-/g, "/"))) / 86400000 > 19) {
+      $("#checkout_during").val(19);
+    } else {
+      $("#checkout_during").val((Date.parse(response.answer.book_info.departure_date.replace(/-/g, "/")) - Date.parse(response.answer.book_info.arrival_date.replace(/-/g, "/"))) / 86400000);
+    }
+    trackCheckin();
+    trackCheckout();
+    trackPrice();
+
+    $("#checkin_month").change(function() {
+      formatDay(this.value);
+      trackCheckin();
+      trackCheckout();
+      trackPrice();
+    })
+    $("#checkin_day").change(function() {
+      trackCheckin();
+      trackCheckout();
+      trackPrice();
+    })    
+    $("#checkout_during").change(function() {
+      trackCheckout();
+      trackPrice();
+    })
+
+    function formatDay(v) {
+      var dayHTML = "", dayMax = "";
+      switch(v) {
+        case "1":
+        case "3":
+        case "5":
+        case "7":
+        case "8":
+        case "10":
+        case "12":
+        dayMax = 31;
+        break;
+        case "4":
+        case "6":
+        case "9":
+        case "11":
+        dayMax = 30;
+        break;
+        case "2":
+        if((year / 4) - Math.round((year / 4)) == 0) {
+          dayMax = 29;
+        } else {
+          dayMax = 28;
+        }
+        break;        
+      }
+      var dayMin = "";
+      if(month == v) {
+        dayMin = day;
+      } else {
+        dayMin = 1;
+      }
+      for(i = dayMin; i <= dayMax; i ++) {
+        dayHTML += '<option value="' + i + '">' + i + '日</option>';
+      }   
+      $("#checkin_day").html(dayHTML);
+    }
+    function trackCheckin() {
+      var checkin_date;
+      if($("#checkin_month").val() == 1) {
+        year ++;
+      }
+      checkin_date = year + "-" + $("#checkin_month").val() + "-" + $("#checkin_day").val();
+      $("#checkin_date").html(checkin_date);
+    } 
+    function trackCheckout() {
+      var checkout_date = Date.parse(year + "/" + $("#checkin_month").val() + "/" + $("#checkin_day").val()) + $("#checkout_during").val() * 86400000;
+      checkout_date = new Date(checkout_date).getFullYear() + "-" + (new Date(checkout_date).getMonth() + 1) + "-" + new Date(checkout_date).getDate();
+      $("#checkout_date").html(checkout_date);
+    }
+    function trackPrice() {
+      $("#price").html(($("#checkout_during").val() * response.answer.book_info.price));
+    }
+
+    $("#pay").click(function() {
+      var username = $.trim($("#username").val());
+      var phone = $.trim($("#phone").val());
+      var arrivalDate = $("#checkin_date").html();
+      var departureDate = $("#checkout_date").html();
+      var latestArrivalTime = $("#checkin_date").html() + " " + $("#checkin_time").val();
+      var price = $("#price").html();
+      if(username.length < 2) {
+        alert("请输入您的全名");
+      } else if(phone.length != 11) {
+        alert("请输入正确的手机号");
+      } else if(Date.parse((latestArrivalTime.replace(/-/g, "/"))) - Date.parse(new Date()) < 0) {
+        alert("到店时间不能早于当前时间");
+      } else {
+        $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>请等待，正在为你处理</div></div></div>');
+        $.ajax({
+          async: false,
+          type: "GET",
+          url: response.answer.book_info.pay_url + "&arrivalDate=" + arrivalDate + "&departureDate=" + departureDate + "&name=" + username + "&phone=" + phone + "&latestArrivalTime=" + latestArrivalTime + "&price=" + price,
+          dataType: "json",
+          success: function(rawData) {
+            $(".alert").remove();
+            if (rawData.answer.status == "success") {
+              $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>预定成功</div></div><div class="alert_entire"><li>您已成功预定酒店，稍后会收到来自艺龙的短信确认</li><li>' + response.answer.book_info.hotel_name + '<br/>' + response.answer.book_info.room_name + '<br/><br/>总价：' + price + '<br/><br/>' + arrivalDate + ' ~ ' + departureDate + '<br/><br/>最晚到店日期<br/>' + latestArrivalTime + '</li></div></div>');
+            } else if (rawData.answer.status == "fail") {
+              $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>预定失败</div></div><div class="alert_entire"><li>' + rawData.answer.result + '</li></div></div>');
+            }
+          },
+          error: function() {
+            $(".alert").remove();
+            $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>预定失败</div></div><div class="alert_entire"><li>由于网络原因，预定失败</li></div></div>');
+          },
+        });
+      }
+    })
+  </script>
+</body>
+</html>

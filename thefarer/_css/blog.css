@@ -1,0 +1,23 @@
+/*blog.php */
+#blogs-container { float:left; padding:50px 0 100px 0; width:580px; }
+.blog { float:left; width:580px; margin:50px 0 0 0;  }
+	.blog_title { float:left; width:580px; font-size:16px; }
+	.blog_text { float:left; margin:20px 0 0 0; width:580px; color:#666;  }
+	.blog_page { float:left; margin:30px 0 0 0; width:580px; font-size:14px; }
+
+/* article.php */  
+#article-container { float:left; padding:50px 0 0 0; }
+.article  { float:left; width:600px; }
+.article_text { float:left; width:580px; }
+.article_replies { float:left; margin:50px 0 0 0; }
+	.article_reply { float:left; width:580px; padding:20px 0 30px 0; border-top:1px dotted #ccc; } 
+	.article_reply_avator img { float:left; margin:0 20px 0 0; width:50px; }
+	.article_reply_name { float:left; font-size:14px; width:340px; }
+	.article_reply_sign { float:left; width:170px; color:#ccc; } .article_reply span { float:right; margin:0 10px 0 0; }
+	.article_reply_text{ float:left; margin:10px 0 0 0; width:580px; }
+.article_page { float:left; margin:30px 0 0 0; width:580px; font-size:14px; }
+.article_input { float:left; margin:10px 0 0 0; width:580px; }
+
+
+
+

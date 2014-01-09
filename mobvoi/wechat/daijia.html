@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 代驾</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_daijia">
+    <ul class="cards">
+      { each answer[0].content as val i }
+        <li class="cards_card" onClick="window.location.href='{ val.url }'">
+         <div class="cards_card_img left">
+            <p>
+              <img class="layout-block" src="{ val.avatar }" />
+            </p>   
+          </div> 
+          <div class="cards_card_img right">
+            <p><span class="layout-19px">{ val.name }</span></p>
+            <p>
+              <span class="rating rating{ i } layout-fleft" data-rating="{ val.level }">
+                <span class="rating_indicator rating_indicator{ i }"></span>
+              </span>
+            </p>
+          </div>
+          <div class="cards_card_img right layout-999">
+            <br/>
+            <p><span>
+              { if val.distance < 5000 }
+                { (val.distance / 5000).toFixed(1) } km
+              { else }
+                > 5 km
+              { /if }
+            </span></p>
+          </div>        
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"session_id":"public.daijia@18e7352df58935720abec46b4bd0a32c","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.daijia","query":"找代价","remote_ip":"58.247.4.206","answer":[{"content":[{"domicile":"安徽","lng":"121.487816","avatar":"http://site.weidaijia.cn/static/user/2013/0911/user_1011597_13788863155230.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=UjZWMlQ1UTUNPFEyB2w=","id":"UjZWMlQ1UTUNPFEyB2w=","distance":788,"level":5,"name":"杨师傅","company":"","card":"412328196******914","year":6,"orders":26,"driver_id":"SH0342","lat":"31.227724","mobile":"13761553038"},{"domicile":"重庆","lng":"121.486265","avatar":"http://site.weidaijia.cn/static/user/2013/0729/user_1011597_13750894392383.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=VDABZV48B2YGN1U1Vz0=","id":"VDABZV48B2YGN1U1Vz0=","distance":1582,"level":5,"name":"王师傅","company":"","card":"512225197******972","year":8,"orders":60,"driver_id":"SH0212","lat":"31.248466","mobile":"18301962102"},{"domicile":"上海","lng":"121.450702","avatar":"http://site.weidaijia.cn/static/user/2013/0605/user_1011597_13704212432854.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=Wz8HY1IwBGNXbVYzA2A=","id":"Wz8HY1IwBGNXbVYzA2A=","distance":3527,"level":4,"name":"窦师傅","company":"","card":"310107196******054","year":11,"orders":69,"driver_id":"SH0034","lat":"31.24674","mobile":"13162410535"},{"domicile":"上海","lng":"121.485948","avatar":"http://site.weidaijia.cn/static/user/2013/0828/user_1011597_13776621728417.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=UDQBZQBiBWoBNwBjUTU=","id":"UDQBZQBiBWoBNwBjUTU=","distance":3990,"level":5,"name":"蔡师傅","company":"","card":"310109196******017","year":3,"orders":30,"driver_id":"SH0308","lat":"31.270142","mobile":"18918924010"},{"domicile":"辽宁","lng":"121.449838","avatar":"http://site.weidaijia.cn/static/user/2013/0704/user_1011597_13729285539365.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=UzdbP1EzBmUENV4 UzQ=","id":"UzdbP1EzBmUENV4+UzQ=","distance":4316,"level":4,"name":"来师傅","company":"","card":"211003198******811","year":4,"orders":37,"driver_id":"SH0139","lat":"31.259008","mobile":"15021811668"},{"domicile":"上海","lng":"121.470434","avatar":"http://site.weidaijia.cn/static/user/2013/0624/user_1011597_13720384589540.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=Wz8FYQdlCm9VY1Q1UDc=","id":"Wz8FYQdlCm9VY1Q1UDc=","distance":4655,"level":5,"name":"潘师傅","company":"","card":"310108198******535","year":7,"orders":48,"driver_id":"SH0098","lat":"31.274285","mobile":"18018536956"},{"domicile":"安徽","lng":"121.514218","avatar":"http://site.weidaijia.cn/static/user/2013/0904/user_1011597_13782797565778.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=BmJVMQBhUDYBMFQxBWU=","id":"BmJVMQBhUDYBMFQxBWU=","distance":4714,"level":5,"name":"张师傅","company":"","card":"342427198******481","year":4,"orders":44,"driver_id":"SH0326","lat":"31.268378","mobile":"13816592238"},{"domicile":"上海","lng":"121.443561","avatar":"http://site.weidaijia.cn/static/user/2013/0731/user_1011597_13752539564466.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=AGRTNwJgCmtRZwVlUjQ=","id":"AGRTNwJgCmtRZwVlUjQ=","distance":5146,"level":5,"name":"张师傅","company":"","card":"310102197******017","year":7,"orders":50,"driver_id":"SH0218","lat":"31.204408","mobile":"18916144760"},{"domicile":"上海","lng":"121.443261","avatar":"http://site.weidaijia.cn/static/user/2013/0531/13699763265391.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=AmZVMV48BmFRZQVoA2I=","id":"AmZVMV48BmFRZQVoA2I=","distance":5214,"level":3,"name":"龚师傅","company":"","card":"310230197******796","year":4,"orders":48,"driver_id":"SH0021","lat":"31.264853","mobile":"18930425238"},{"domicile":"上海","lng":"121.459926","avatar":"http://site.weidaijia.cn/static/user/2013/0813/user_1011597_13763858467389.png_small","url":"http://m.weidaijia.cn/m/w/driver.php?ref=cmww&id=AWVUMFc1AW9RYVczVzQ=","id":"AWVUMFc1AW9RYVczVzQ=","distance":5832,"level":5,"name":"唐师傅","company":"","card":"310107197******232","year":8,"orders":52,"driver_id":"SH0250","lat":"31.282194","mobile":"13661619327"}],"status":"success"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"代驾","keyname":"代驾类型","key":"daijia_type"}],"search_query":"为您找到附近\"代驾\"的师傅","taskName":"找代驾","version":"undefined","msg_id":"972c9e84-31f5-41a5-a755-6fe45a38965b","user_id":"undefined","query_type":"text"};
+    $(".wrapper").html(template.render("wrapper_daijia", response));
+    for(var i = 0; i < response.answer[0].content.length; i ++) {
+      var rating = $(".rating" + i).attr("data-rating") * 21.6;
+      $(".rating_indicator" + i).css("width", rating + "px");
+    }
+  </script>
+
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+      /* CSS Reset */
+      * { margin: 0; padding: 0; outline: 0; }
+      li, ul { list-style-type:none; }
+      input[type="text"] { display: inline-block; margin: 0; padding: 0 10px; height: 28px; }
+      input[type="submit"], input[type="button"], button { display: inline-block; margin: 0; padding: 0 10px; height: 30px; cursor: pointer; }
+      /* Common Set */
+      * { font-family: "Trebuchet MS", "Arial", "Helvetica", "Verdana", "sans-serif"; background: transparent; font-size: inherit 12px; color: inherit #333333; }
+      .clear { clear: both; }
+      /* Layout */
+      .necker { margin: 30px 0 0 0; padding: 10px 10px 0 10px; }
+      .alerter { margin: 0 10px 30px 10px; }
+      .wrapper { padding: 10px; }
+      .wrapper#group { display: none; }
+        .wrapper_title { padding-bottom: 10px; font-size: 20px; color: #666666; }
+        .wrapper_content { margin: 20px 0 0 0; height: 360px; overflow-y: scroll; }
+      .legger { margin: 10px; padding-top: 20px; }

@@ -1,0 +1,18 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, textarea { margin:0; padding:0; outline:0; border:0; font-family:inherit; font-size:100%; font-style:inherit; font-weight:inherit; font-weight:normal; background-color:transparent; }
+
+body{ background:#f3f8f1; line-height:20px; color:#333333; font-size:14px; font-family:arial, Microsoft Yahei; word-wrap:break-word; } 
+h1, h2, h3, h4, h5, h6 { font-weight:bold; }
+a { text-decoration:none; color:inherit; }
+
+.highlight { color:#41719c; font-weight:bold; }
+
+#book-top { padding:20px 3% 10px 3%; width:94%; background:#ffffff; }
+	#book_title { font-size:20px; }
+	#book_details { margin:5px 0 0 0; font-size:12px; color:#666; }
+#book-body { padding:0 3%; width:94%; }
+	#book_callno { padding:10px 0 20px 0; font-size:16px; }
+	#book_copies { padding:0 0 20px 0; border-bottom:1px solid #dddddd }
+	#book_addresses { padding:20px 0; }
+#footer { margin:50px 0 0 0; padding:10px 3%; width:94%; }
+	#footer_ecust { font-size:16px; color:#5ea600; }
+	#footer_author { margin:5px 0 0 0; font-size:12px; color:#666666; }

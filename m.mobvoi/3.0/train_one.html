@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="/css/chumenwenwen.2.0.css" >
+  <script src="/js/chumenwenwen.3.0.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+  </div>
+<!--  <script type="text/html" id="wrapper_train_one">
+    <ul class="cards">
+      <li class="cards_card layout-666" trainCalendar="true">
+        <div class="cards_card_triple left layout-left">
+          <p><span class="gotoChangeDate" data-params="&#123;
+            { each header.params as val i }
+              { if i != 0 }
+                ,
+              { /if }
+              "{ val.key }": "{ val.value }"
+            { /each }
+            , "task": "{ header.task }"
+            , "appkey": "{ header.appkey }"
+            , "version": "{ header.version }"
+            , "output": "html_page"
+          &#125;">< 前一天</span></p>      
+        </div>
+        <div class="cards_card_triple center layout-center">
+          <p><span>{ body[0].content[12] }</span></p>      
+        </div> 
+        <div class="cards_card_triple right layout-right">
+          <p><span class="gotoChangeDate">后一天　></span></p>     
+        </div>
+        <div class="clear"></div> 
+      </li>
+      { each body as val i }
+        <li class="cards_card">
+          <div class="cards_card_entire">
+            <p><span class="layout-16px">{ val.title }</span>&nbsp;&nbsp;&nbsp;<span class="layout-999 layout-bold">{ val.content[1] }</span></p>      
+          </div> 
+          <div class="cards_card_double left layout-16px">
+            <p><span class="layout-green">{ val.content[2] }</span> <span class="layout-bold">{ val.content[3] }</span></p>
+            <p><span>{ val.content[4] }</span> <span class="layout-bold">{ val.content[5] }</span></p>       
+          </div>
+          { if val.content[0] == "ticket_failed"}
+            <div class="cards_card_double right layout-center"><p><span class="layout-16px layout-999">获取余票失败</span></p></div>
+          { else if val.content[0] == "already_start"}
+            <div class="cards_card_double right layout-center"><p><span class="layout-16px layout-999">已发车</span></p></div>
+          { else if val.content[0] == "sold_out"}
+            <div class="cards_card_double right"><p><span>已售完</span></p></div>
+          { else if val.content[0] == "not_reservable"}
+            <div class="cards_card_double right"><p><span>不可预定</span></p></div>
+          { else if val.content[0] == "not_on_sale" }
+            <div class="cards_card_double right gotoJsCallJava">
+              <p><span onclick="jsCallJava(\'{ val.content[12].replace(/-/, "年").replace(/-/, "月") }从{ val.content[3] }开往{ val.content[5] }的{ val.title }开始售票。\', \'{ "/" + val.content[6].replace("月","/").replace("日"," ").replace("点开售",":00:00") }\')" class="layout-block layout-bgrey layout-round10 layout-12px" style="padding: 5px 0; width: 80%; text-align: center"><span class="layout-orange">{ val.content[6] }</span><br/><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/alarm.png" style="width: 12px; vertical-align: middle" /> 设置提醒</span></p>
+            </div>
+          { else }
+            <div class="cards_card_double right">
+              { if val.content[8] != "" }
+                <p><span>{ val.content[8] }</span>
+                  { if val.content[9] > 0 && val.content[9] < 41 }
+                    <span class="layout-fff layout-borange layout-padding3 layout-round10">&nbsp;{ val.content[9] }张&nbsp;</span>
+                  { else }
+                    <span>&nbsp;{ val.content[9] }张&nbsp;</span>
+                  { /if }
+                </p>
+              { /if }
+              { if val.content[10] != "" }
+                <p><span>{ val.content[10] }</span>
+                  { if val.content[11] > 0 && val.content[11] < 41 }
+                    <span class="layout-fff layout-borange layout-padding3 layout-round10">&nbsp;{ val.content[11] }张&nbsp;</span>
+                  { else }
+                    <span>&nbsp;{ val.content[11] }张&nbsp;</span>
+                  { /if }
+                </p>
+              { /if }
+            </div>
+          { /if }
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>-->
+  <script>
+    var response = 
+{"content":[{"direct":{"body":[{"content":["test content"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/web/img/train/train_springfestival_banner.jpg","title":"test","link_url":"http://mobvoi-one-box.oss.aliyuncs.com/web/train/train.guide.html","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"","query":"","appkey":"","need_check_location":false,"recommendation_query":[],"type":"market_three","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"version":"","schema":"scrollview","more":{"show_number":0,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"page":{"total":0,"start":0,"length":0},"user_id":"","query_type":"","pc_option":{"options":[]},"task":"","task_name":"","params":[],"search_query":"","source":"","address":"","msg_id":"","method":"","output":"","is_show_header":true}},"status":"","relevant":[{"body":[{"content":["not_on_sale","9小时24分","10:35","长沙","19:59","上海虹桥","","http://m.tieyou.com/buy/home.html?from=长沙&to=上海虹桥&yupiao=&ymd=20131228&checi=D107/D106&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes","","0","","","2013-12-28"],"img_url":"","title":"D107/D106动车","link_url":"http://touch.qunar.com/trainDetail.jsp?startstation=长沙&endstation=上海虹桥&searchType=twoStation&number=D107/D106","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["not_on_sale","6小时42分","13:29","长沙南","20:11","上海虹桥","","http://m.tieyou.com/buy/home.html?from=长沙南&to=上海虹桥&yupiao=&ymd=20131228&checi=G578/G575&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes","","0","","","2013-12-28"],"img_url":"","title":"G578/G575高铁","link_url":"http://touch.qunar.com/trainDetail.jsp?startstation=长沙南&endstation=上海虹桥&searchType=twoStation&number=G578/G575","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.train@b07dfab6fb31fb21b5575975dfcd2f3e","query":"2013年12月28日长沙到上海虹桥的火车","appkey":"wechat_chumenwenwen","need_check_location":false,"recommendation_query":[],"type":"train_one","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"version":"10010","schema":"listview","more":{"show_number":2,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"page":{"total":2,"start":0,"length":2},"user_id":"","query_type":"text","pc_option":{"options":[]},"task":"public.train","task_name":"查火车","params":[{"value":"长沙","keyname":"出发站","key":"from"},{"value":"上海虹桥站","keyname":"终点站","key":"to"},{"value":"2013年12月28日","keyname":"出发时间","key":"departure_time"},{"value":"火车","keyname":"火车类型","key":"train_type"}],"search_query":"为您找到<font color='#21ad93'> 2013年12月28日 <\/font>从<font color='#21ad93'> 长沙 <\/font>到<font color='#21ad93'> 上海虹桥 <\/font>的<font color='#21ad93'> 火车 <\/font>","source":"","address":"中国,上海市,上海,黄浦区,西藏南路,2号,31.234309729773,121.48479060028","msg_id":"cdb81cb6-24be-4b58-bf02-c80587e71ca3","method":"getBodyAnswer","output":"app","is_show_header":true}},{"body":[{"content":[],"img_url":"","title":" 12306铁路","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.train@b07dfab6fb31fb21b5575975dfcd2f3e","query":"2013年12月28日长沙到上海虹桥的火车","appkey":"wechat_chumenwenwen","need_check_location":false,"recommendation_query":[],"type":"source_one","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"version":"10010","schema":"scrollview","more":{"show_number":0,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"page":{"total":2,"start":0,"length":20},"user_id":"","query_type":"text","pc_option":{"options":[]},"task":"public.train","task_name":"查火车","params":[{"value":"长沙","keyname":"出发站","key":"from"},{"value":"上海虹桥站","keyname":"终点站","key":"to"},{"value":"2013年12月28日","keyname":"出发时间","key":"departure_time"},{"value":"火车","keyname":"火车类型","key":"train_type"}],"search_query":"","source":"","address":"中国,上海市,上海,黄浦区,西藏南路,2号,31.234309729773,121.48479060028","msg_id":"cdb81cb6-24be-4b58-bf02-c80587e71ca3","method":"","output":"app","is_show_header":true}}],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+
+
+
+  </script>
+  <script src="/js/chumenwenwen.renderHTML.3.0.js"></script>
+  <script>
+
+  </script>
+</body>
+</html>

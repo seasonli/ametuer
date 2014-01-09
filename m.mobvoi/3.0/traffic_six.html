@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_eav_one">
+    <ul class="cards">
+      <li class="cards_card">
+        <div class="cards_card_entire">
+          <p><span class="layout-orange">{ body[0].children[0].title }</span></p>
+          <p><span class="layout-12px layout-666">{ body[0].children[0].content[0] }</span></p>
+          <p><span class="layout-12px layout-666">{ body[0].children[0].content[1] }</span></p>
+        </div>
+      </li>
+    </ul>
+  </script>
+
+  <script type="text/html" id="wrapper_traffic_six">
+    <ul class="cards">
+      { each body as val i }
+        <li class="cards_card toggle gotoToggle" { if val.action.navigation.is_enable == true }style="border: 0"{ /if }>
+          <div class="cards_card_double left">
+            <p><span class="layout-16px layout-green">{ val.title }</span></p>
+          </div>
+          <div class="cards_card_right left">
+            <p><span class="layout-12px">{ val.content[1] }</span></p>
+          </div>
+          <div class="clear"></div>
+          <div class="cards_card_entire">
+            <p><span >{ val.content[0] }</span></p>
+            <p><span class="layout-999 layout-12px">{ val.content[2] }</span></p>
+          </div>
+        </li>
+        { if val.action.navigation.is_enable == true }
+          <li class="cards_card" style="padding: 0">
+            <div class="cards_card_triple left">
+              <p><button class="little dial gotoDial" data-tel={ val.action.phone }></button></p>    
+            </div> 
+            <div class="cards_card_triple center">
+              <p><button class="little point gotoMark" data-point="{ val.title }, { val.action.navigation.end_point.split(",")[0] }, { val.action.navigation.end_point.split(",")[1] }"></button></p>
+            </div>
+            <div class="cards_card_triple right">
+              <p><button class="little share gotoShareInWechat"></button></p>
+            </div>
+            <div class="clear"></div>
+          </li>
+        { /if }          
+        <li class="cards_toggle gotoToggled">
+          { each val.children as val1 i1 }
+            <div class="cards_card_entire">
+              <p><span class="layout-16px">{ val1.title }</span></p>
+              <p><span class="layout-12px layout-666">{ val1.content[0] }</span></p>
+              <p><span class="layout-12px layout-666">{ val1.content[1] }</span></p>
+              <br/>
+            </div>
+          { /each }
+        </li>
+      { /each }
+    </ul>    
+  </script>
+
+  <script>
+    response = {"content":[{"direct":{"body":[{"content":[],"img_url":"","title":"","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[{"content":["往小南门 最早一班 05:36 开","往世纪大道 最早一班 06:18 开"],"img_url":"","title":"9号线","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.subway@d46f1aed2cdcb47b66d4b2430b23fcf8","task":"public.subway","query":"商城路地铁站最早几点","task_name":"查地铁","appkey":"wechat_chumenwenwen","need_check_location":false,"params":[{"value":"商城路地铁站","keyname":"地铁站名","key":"name"}],"type":"eav_one","recommendation_query":[],"search_query":"","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"scrollview","more":{"show_number":0,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":1,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"a314e6f4-fd05-47dc-a7a0-32c7050f90c0","user_id":"undefined","query_type":"text","output":"app","is_show_header":true}},"status":"","relevant":[{"body":[{"content":["9号线 ","06:18 ~ 23:05","大于5000米","31.236336,121.522774"],"img_url":"","title":"商城路","link_url":"","action":{"is_show":true,"phone":"","share":{"content":"\n","img_url":"http://onebox.oss.aliyuncs.com/img/logo_icon.png","is_screen":false,"title":"商城路","download_url":"http://res.mobvoi.com/apk/chumenwenwen.apk","link_url":"http://m.mobvoi.com/search/pc/subway?city=%E4%B8%8A%E6%B5%B7&name=%E5%95%86%E5%9F%8E%E8%B7%AF&output=html_page","is_enable":true},"navigation":{"end_point":"31.236336,121.522774","start_point":"31.308912471391192,121.49982640557423","start":"中国上海市上海市杨浦区武东路","is_enable":true,"type":"驾车","coor_type":"BAIDU","end":"商城路地铁站"}},"res_url":"","children":[{"content":["小南门: 05:36 ~ 22:36\n世纪大道: 06:18 ~ 23:05"],"img_url":"","title":"9号线","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["山石久渡（浦东南路），东泰大楼，九间伴商城店\r\n公交：\r\n第一八佰伴(商城路浦东南路)：130路、630路、791路、938路\r\n新上海商业城(商城路站)：870路\r\n浦东南路商城路：82路、583路、783路、791路、798路、818路、981路、992路、隧道三线\r\n第一八佰伴(浦东南路商城路)：01路、314路、338路、339路、454路、607路、977路、沪南线、浦卫专线、隧道夜宵线"],"img_url":"","title":"4出口","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["南泉北路，商城路，正院上海公馆\r\n公交：\r\n第一八佰伴(商城路浦东南路)：130路、630路、791路、938路\r\n新上海商业城(商城路站)：870路\r\n南泉北路世纪大道：陆家嘴金融城2路、陆家嘴金融城3路、787路"],"img_url":"","title":"1出口","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.subway@d46f1aed2cdcb47b66d4b2430b23fcf8","task":"public.subway","query":"商城路地铁站最早几点","task_name":"查地铁","appkey":"wechat_chumenwenwen","need_check_location":true,"params":[{"value":"商城路地铁站","keyname":"地铁站名","key":"name"}],"type":"traffic_six","recommendation_query":[],"search_query":"为您找到<font color='#21ad93'> 商城路 <\/font>地铁站","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":true},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"expand_listview","more":{"show_number":1,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":1,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"a314e6f4-fd05-47dc-a7a0-32c7050f90c0","user_id":"undefined","query_type":"text","output":"app","is_show_header":true}}],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}};
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>

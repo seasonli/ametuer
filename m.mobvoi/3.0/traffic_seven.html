@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_traffic_seven">
+    <ul class="cards">
+      <li class="cards_card">
+        <div class="cards_card_double left">
+          <p><span class="layout-18px">{ body[0].title }</span></p>
+          <p><span class="layout-666"><img src="{ body[0].img_url }" style="width: 15px" /> { body[0].content[0] }</span></p>
+        </div>
+        <div class="cards_card_double right">
+          <p><span class="layout-fright layout-center layout-fff" style="width: 60px; line-height: 60px; font-size: 20px">{ body[0].content[1] }</span></p>
+        </div>        
+        <div class="clear"></div>
+      </li>
+      <li class="cards_card">
+        { each body[0].children as val i }
+          <div class="cards_card_entire layout-666">
+            <p><span>{ val.title }</span></p>
+          </div>
+          <div class="cards_card_entire">
+            <p><span class="layout-16px">{ val.content[0] }</span> <span class="layout-12px layout-666">{ val.content[1] } { val.content[2] }</span></p>
+            <p><span>{ body[0].content[2] }</span></p>
+          </div>
+        { /each }
+      </li>    
+    </ul>    
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":["海南航空 \\ 2013-11-22","计划"],"img_url":"http://onebox.oss.aliyuncs.com/img/flight/HU.png","title":"HU7602","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[{"content":["SHA","计划 20:40","实际 未知"],"img_url":"","title":"从上海虹桥","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["PEK","计划 23:00","实际 未知"],"img_url":"","title":"到北京","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.flight_info@809d8e4da6b5b5b9604b89d87f16afe0","task":"public.flight_info","query":"HU7602","task_name":"航班实时查询","appkey":"wechat_chumenwenwen","need_check_location":false,"params":[{"value":"HU7602","keyname":"航班号","key":"number"}],"type":"traffic_seven","recommendation_query":[],"search_query":"为您查询\"HU7602\"的航班信息","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"scrollview","more":{"show_number":1,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":1,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"c56b7141-6efd-4cc9-80b4-fab387af16e8","user_id":"undefined","query_type":"text","output":"app","is_show_header":true}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>
+

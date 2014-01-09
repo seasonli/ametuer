@@ -1,0 +1,7 @@
+(function() {
+	var script = document.createElement("script");
+	script.setAttribute("type", "text/html");
+	script.setAttribute("id", "wrapper_music_one");
+	script.innerHTML = '<ul class="cards"> { if body[0].img_url != "" } <li class="cards_img" style="position: relative; height: 220px"> <img src="{ body[0].img_url }" style="position: relative; width: 100%" /> <p><span style="position: absolute; bottom: 0; left: 0; padding: 10px 4%; width: 92%; opacity: 0.75; background: #454545; color: #ffffff" class="layout-16px">{ body[0].title } { body[0].content[0] }</span></p> <p><img class="gotoPlay" style="position: absolute; top: 60px; left: 40%; width: 72px; opacity: 0.75" src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/play-black.png" /><audio src="{ body[0].res_url }" preload="none">你的浏览器不支持该功能</audio></span></p> </li> { /if } { each body as val i } { if (i != 0 && i < 5) || body[0].img_url == "" } <li class="cards_card" style="min-height: 64px"> { if val.img_url != ""} <div class="cards_card_icon left"> <p><img src="{ val.img_url }" /></p> </div> { /if } <div class="cards_card_icon right layout-16px"> <p><span class="layout-666">{ val.title }</span></p> <p><span class="layout-999">{ val.content[0] }</span></p> </div> <div class="cards_card_fix"> <p> <img class="gotoPlay" src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/play-black.png" style="width: 48px" /><audio src="{ val.res_url }" preload="none">你的浏览器不支持该功能</audio> </p> </div> <div class="clear"></div> </li> { /if } { /each } </ul>';
+	document.head.appendChild(script);
+}) ()

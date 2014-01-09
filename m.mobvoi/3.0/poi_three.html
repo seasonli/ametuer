@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_poi_three">
+    <ul class="cards">
+      { each body as val i }
+        <li class="cards_card gotoLink" data-link="{ val.link_url }">
+          <div class="cards_card_img left">
+            <p><img src="{ val.img_url }" /></p>   
+          </div> 
+          <div class="cards_card_img right">
+            <p><span class="layout-16px">{ val.title }</span></p>
+          </div>
+          <div class="cards_card_img right">
+            { if val.content[0] != "" }
+              <p><span class="rating layout-fleft">{ val.content[0] }</span>
+              </p>
+            { /if }
+            <p><span class="layout-666 layout-fleft">{ val.content[1] }</span></p>
+            <div class="clear"></div>
+            <p><span class="layout-666">{ val.content[2] }</span></p>
+            <p><span class="layout-666">{ val.content[3] }</span></p>
+            <br/>
+            <p><span class="layout-999 layout-12px">{ val.content[4] }</span></p>
+          </div>    
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":["4.0","时长：90分钟","阿方索·卡隆","桑德拉·布洛克,乔治·克鲁尼,巴什尔·萨瓦吉","上映时间：2013-11-19"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-11-19-004958.57121848.jpg","title":"地心引力","link_url":"http://movie.m.mtime.com/126366/","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["4.0","时长：146分钟","弗朗西斯·劳伦斯","詹妮弗·劳伦斯,乔什·哈切森,利亚姆·海姆斯沃斯","上映时间：2013-11-21"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-11-05-105435.70887663.jpg","title":"饥饿游戏2：星火燎原","link_url":"http://movie.m.mtime.com/152776/","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.5","时长：116分钟","迪恩·派瑞萨特","布鲁斯·威利斯,海伦·米伦,约翰·马尔科维奇","上映时间：2013-11-15"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-11-05-142536.83284019.jpg","title":"赤焰战场2","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4608&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.0","时长：90分钟","江澄","袁成杰,谭卓,徐洁儿","上映时间：2013-11-15"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-10-17-152738.97777413.jpg","title":"步步追魂","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4756&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.0","时长：","毕国智","吴彦祖,姚晨,任达华","上映时间：2013-11-22"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-11-11-205410.97802610.jpg","title":"控制","link_url":"http://movie.m.mtime.com/164693/","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["2.5","时长：91分钟","许斌","路晨,冯波,周野芒","上映时间：2013-11-11"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-11-04-102623.91810493.jpg","title":"少女灵异日记","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4587&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["1.5","时长：95分钟","赵崇基","谢娜,汪东城,胡兵","上映时间：2013-11-15"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-11-04-102956.60615847.jpg","title":"我的男男男男朋友","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4557&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.5","时长：90分钟","赵晔","李治中,苏妙玲,黄孝传","上映时间：2013-11-22"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-10-24-160458.39826324.jpg","title":"暴躁天使","link_url":"http://movie.m.mtime.com/199921/","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.5","时长：112分钟","艾伦·泰勒","克里斯·海姆斯沃斯,娜塔莉·波特曼,汤姆·希德勒斯顿","上映时间：2013-11-08"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-10-18-090735.35703403.jpg","title":"雷神2：黑暗世界","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4367&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.5","时长：115分钟","米凯尔·哈弗斯特罗姆","西尔维斯特·史泰龙,阿诺·施瓦辛格,詹姆斯·卡维泽","上映时间：2013-11-04"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-10-23-173836.19821656.jpg","title":"金蝉脱壳","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4297&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.5","时长：91分钟","格恩迪·塔塔科夫斯基","亚当·桑德勒,赛琳娜·戈麦斯,史蒂夫·布西密","上映时间：2013-11-01"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-10-22-085036.56431114.jpg","title":"精灵旅社","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4199&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["3.5","时长：100分钟","韩晶","杜海涛,谢依霖,韩雪","上映时间：2013-11-01"],"img_url":"http://mobvoi-one-box.oss.aliyuncs.com/cinema/img31.mtime.cn-mt-2013-10-24-185723.21571714.jpg","title":"我为相亲狂","link_url":"http://m.dianyingyaoyao.com/movie.html?id=4191&channel=cmww&city=%E5%8D%97%E4%BA%AC&nogeo=1&geo=32.057236%2C118.778074","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.cinema@7998ff02fe47d8522e33dc8cd425a8f0","task":"public.cinema","query":"南京的电影","task_name":"查电影","appkey":"wechat_chumenwenwen","need_check_location":true,"params":[{"value":"南京","keyname":"城市","key":"city"},{"value":"电影","keyname":"类别","key":"type"}],"type":"poi_three","recommendation_query":[],"search_query":"为您找到最近在<font color='#21ad93'> 南京 <\/font>上映的热门电影","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"listview","more":{"show_number":5,"action":"jump","is_need":true},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":12,"start":0,"length":12},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"887ef4b1-575f-413f-af8a-c0db36e9ccfa","user_id":"undefined","query_type":"text","output":"app","is_show_header":true}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^m.thefarer.com$  
+RewriteRule ^(.+)/$ /m/$1/index.php [L]
+RewriteCond %{HTTP_HOST} ^m.thefarer.com$
+RewriteRule ^account/login/-(\w+).php$ /m/account/login/-$1.php [L]
+RewriteCond %{HTTP_HOST} ^m.thefarer.com$
+RewriteRule ^go/go/-(\w+).php$ /m/go/go/-$1.php [L]
+
+
+RewriteRule ^travel/go/(\d*)$ /travel/go/index.php?go=$1
+RewriteRule ^travel/go/talk/(\d*)$ /travel/go/talk/index.php?go=$1
+RewriteRule ^travel/go/live/(\d*)$ /travel/go/live/index.php?go=$1
+
+ErrorDocument 404 /_error/404.php
+
+RewriteRule ^(.*)/$ /$1/index.php

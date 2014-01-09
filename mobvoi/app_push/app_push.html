@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>app_push</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/bootstrap.min.2.3.2.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/jquery.1.10.2.min.js"></script>
+  <script src="http://www.weiyuyi.com/oss/assets/js/weiyuyi.urlPrefix.js"></script>
+</head>
+
+<body>
+  <div class="hero-unit" style="padding: 10px 0 10px 50px">
+    <h3>消息推送</h3>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span8">
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>Push To</legend>
+            <div class="control-group">
+              <label class="control-label">device_id</label>
+              <div class="controls">
+                <div id="device_id" style="padding: 10px 10px 5px 10px; border: 1px solid #cccccc; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px">
+                  <div id="device_id_container" style="float: left"></div>             
+                  <input id="device_id_input" type="text" placeholder="输入device_id，敲击回车" style="margin: 0; border: 0; -moz-box-shadow: 0 0 0 #777777; -webkit-box-shadow: 0 0 0 #777777; box-shadow: 0 0 0 #777777" />
+                </div>
+              </div>        
+            </div>
+          </fieldset>
+          <fieldset id="fieldset_notification">
+            <legend>Notification</legend>       
+            <div class="control-group">
+              <label class="control-label">Action</label>
+              <div class="controls">
+                <select id="action" class="span12">
+                  <option value="pcRequest">pcRequest</option>
+                  <option value="update">update</option>
+                  <option value="showWebPage">showWebPage</option>
+                  <option value="showAnswer">showAnswer</option>
+                  <option value="showMessageCenter">showMessageCenter</option>
+                </select>              
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">title</label>
+              <div class="controls">
+                <input id="title" type="text" class="span12" placeholder="标题">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">summary</label>
+              <div class="controls">
+                <input id="summary" type="text" class="span12" placeholder="内容">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">tip</label>
+              <div class="controls">
+                <input id="tip" type="text" class="span12" placeholder="notification bar 右上角文字">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">img_url</label>
+              <div class="controls">
+                <input id="img_url" type="text" class="span12" placeholder="图片url地址">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">link_url</label>
+              <div class="controls">
+                <input id="link_url" type="text" class="span12" placeholder="链接url地址">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="checkbox inline">
+                <input type="checkbox" id="is_show">是否显示在status bar
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" id="is_alarm">是否响铃
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" id="is_vibrate">是否震动
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" id="is_force_start">是否强制启动应用
+              </label>
+              <label class="checkbox inline">
+                <input type="checkbox" id="is_clear">是否能够从status bar中删除
+              </label>     
+            </div>  
+          </fieldset>     
+        </form>
+        <div class="span5">
+          <fieldset id="fieldset_content" style="position: relative">
+            <legend>Answer</legend><span id="addContent" style="position: absolute; top: 10px; right: 0; font-size: 36px; color: #1c871e; font-weight: bold; cursor: pointer">+</span></legend>
+          </fieldset>
+        </div>
+        <div class="span5">
+          <fieldset id="fieldset_pushMessage" style="position: relative">
+            <legend>PushMessage<span id="addPushMessage" style="position: absolute; top: 0; right: 0; font-size: 36px; color: #1c871e; font-weight: bold; cursor: pointer">+</span></legend>
+          </fieldset>
+        </div>           
+      </div>
+      <div class="span1">
+        &nbsp;
+      </div>
+      <div class="span2">
+        <legend>Contact List</legend>
+        <div id="contactList"></div>       
+      </div>
+    </div>
+  </div>
+  <form class="form-horizontal" id="postMessage" method="POST" enctype="application/json">
+    <div class="form-actions">
+      <div class="control-group">
+        <div class="controls">
+          <button type="button" class="btn btn-info btn-large">确认推送</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script>
+    (function() {
+      var contactList = [
+        { name: "yizhou", device_id: "1fadf0a88135fb2f007ccea4c90ed713"},
+        { name: "Jiliang", device_id: "6341e9ad0a8447ea31870332b6c657b7"},
+        { name: "duzhen", device_id: "c1c0c536a5538ebffcb3e0df7445b16e"},
+        { name: "jiamin", device_id: "5bf00b5d050f45a824e95d4d5c0dd4c9"},
+        { name: "jijun", device_id: "8cf04ff9a0110ae850f4dc572f4e3fcf"},
+        { name: "siyu1", device_id: "81f5cb50d8279c79e60ff2bc8343937b"},
+        { name: "siyu2", device_id: "56c0f0b2b8fc28ce2153449952826c6d"},
+        { name: "siyu3", device_id: "bd7c9ee35d7051cce154435f6ad42471"},
+        { name: "zhifei", device_id: "b3b4defb2327b2c4f7f615a23da06521"},
+        { name: "tiepi", device_id: "288fff296468a3b2285df237f2dcec4a"},
+        { name: "shiwei", device_id: "ef2a71202c6121fbea9bfe3bd0293742"},
+        { name: "junkun", device_id: "4a7f1d11210d47b2ce0e72f99de8608c"},
+        { name: "jiangxiao", device_id: "7863f90590195deda866173180328ba4"},
+        { name: "niki", device_id: "cfa10d9b01ae31c9dac5c003670f9378"},
+        { name: "chaofei", device_id: "1125ca8161c2f4c28839b430256324b3"},
+        { name: "yaguang", device_id: "f39cd004566fc6b0451731dffc543704"},
+        { name: "liqian", device_id: "6d13049c0e6ad5c8038a2b9eddc18d2f"}
+      ];
+      var _a = "";
+      for(var i in contactList) {
+        _a += '<label class="checkbox"><input id="checkbox_' + contactList[i].name + '" type="checkbox" value="' + contactList[i].device_id + '">' + contactList[i].name + '</label>';
+      }
+      $("#contactList").html(_a);
+    }) ()
+
+
+
+    document.getElementById("device_id_input").onkeydown = function(e) {
+      if(e.keyCode == 13 & $.trim($("#device_id_input").val()) != "") {
+        $("#device_id_container").append('<span id="' + $.trim($("#device_id_input").val()) + '" class="label label-info" style="margin: 0 10px 5px 0; line-height: 20px; font-size: 14px; cursor: pointer">' + $.trim($("#device_id_input").val()) + '</span>');
+        $("#device_id_input").val("");
+      } else if(e.keyCode == 8 && $(this).val() == "") {
+        $("#checkbox_" + $("#device_id_container span:last-child").html()).prop("checked", false);
+        $("#device_id_container span:last-child").remove();
+      }
+    }
+    $("#contactList :checkbox").click(function() {
+      if($(this).prop("checked") == true) {
+        $("#device_id_container").append('<span id="' + $(this).val() + '" class="label label-info" style="margin: 0 10px 5px 0; line-height: 20px; font-size: 14px; cursor: pointer">' + $(this).attr("id").split("_")[1] + '</span>');
+      } else {
+        $("#" + $(this).val()).remove();
+      }
+    })
+    $("#device_id_container").delegate("span", "click", function(){
+      $(this).remove();
+      $("#checkbox_" + $(this).html()).prop("checked", false);
+    })
+    $("#addPushMessage").click(function() {
+      $("#fieldset_pushMessage").append('<div class="pushMessage" style="padding: 20px 10px 0 10px; margin-bottom: 20px; border: 1px solid #d6d6d6; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; background: #f6f6f6"> <form class="form-horizontal"> <div class="control-group" style="position: relative"> title&nbsp;&nbsp;&nbsp; <input id="title" type="text" style="width: 50%" value="上官皱眉到此一游"><span class="closeCard" style="position: absolute; top: -10px; right: 0; font-size: 24px; color: #ba2222; font-weight: bold; cursor: pointer">x</span> </div> <div class="control-group"> content&nbsp;&nbsp;&nbsp; <input id="content" type="text" style="width: 50%" value="来一张厕纸"> </div> <div class="control-group"> img_url&nbsp;&nbsp;&nbsp; <input id="img_url" type="text" style="width: 50%" value="http://t3.baidu.com/it/u=150576928,2097973870&fm=23&gp=0.jpg"> </div> <div class="control-group">link_url&nbsp;&nbsp;&nbsp; <input value="http://mobvoi-one-box.oss.aliyuncs.com/weiyuyi/production/blogs/68.html" id="link_url" type="text" style="width: 50%"> </div> <div class="control-group"> task&nbsp;&nbsp;&nbsp; <input id="task" value="public.poi" type="text" style="width: 50%"> </div> <div class="control-group params"> params&nbsp;&nbsp;&nbsp; <input class="params_key" value="" type="text" style="width: 20%" placeholder="key"> <input class="params_value" type="text" style="width: 25%" placeholder="value">&nbsp;&nbsp;&nbsp;<span class="params_add">Add</span></div></form> </div>');
+    })
+    $("#fieldset_pushMessage").delegate(".params_add", "click", function() {
+      var _a = $(this).parent().html();
+      $(this).parent().after('<div class="control-group params">' + _a + "</div>");
+      $(this).remove();
+      $(this).parent().parent().find(".params:last-child").find("input").val("");
+    })
+    $("#fieldset_content").delegate(".closeCard", "click", function() {
+      $(this).parent().parent().parent().remove();
+    })
+    $("#addContent").click(function() {
+      $("#fieldset_content").append('<div class="content" style="position: relative; padding: 20px 10px 0 10px; margin-bottom: 20px; border: 1px solid #d6d6d6; border-radius: 10px; -webkit-border-radius: 10px; -moz-border-radius: 10px; background: #f6f6f6"> <form class="form-horizontal"><div class="control-group"><textarea id="content" style="width: 90%; height: 220px">[["问问出钱，你看大片","周末到，爽翻天！下载出门问问安卓应用，一人2张电影折价券～","http://mobvoi-one-box.oss.aliyuncs.com/weiyuyi/production/images/133.jpg","http://mobvoi-one-box.oss.aliyuncs.com/weiyuyi/production/blogs/68.html"]]</textarea><span class="closeCard" style="position: absolute; top: 10px; right: 10px; font-size: 24px; color: #ba2222; font-weight: bold; cursor: pointer">x</span></div></form> </div>');
+    })
+    $("#fieldset_pushMessage").delegate(".closeCard", "click", function() {
+      $(this).parent().parent().parent().remove();
+    })
+
+
+    var urlPrefix = "";
+    if(window.location.host != "push.mobvoi.com") {
+      urlPrefix = "/mobvoipushbackend";
+    }
+    document.getElementsByTagName("button")[0].onclick = function() {
+      var device_idArray = [];
+      $("#device_id_container span").each(function() {
+        device_idArray.push($(this).attr("id"));
+      })
+      var postObj = {
+        content: {
+          title: $("#fieldset_notification #title").val(),
+          summary: $("#fieldset_notification #summary").val(),
+          tip: $("#fieldset_notification #tip").val(),
+          action: $("#fieldset_notification #action").val(),
+          img_url: $("#fieldset_notification #img_url").val(),
+          link_url: $("#fieldset_notification #link_url").val(),
+          answer: {
+            cardList: []
+          },
+          messages: [],
+        },
+        devicelist: device_idArray
+      }
+      $("#fieldset_notification :checkbox").each(function() {
+        if($(this).prop("checked") == true) {
+          postObj.content[$(this).attr("id")] = true;
+        } else {
+          postObj.content[$(this).attr("id")] = false;
+        }
+      })
+      $("#fieldset_content .content").each(function() {
+        var tmp = {
+          card: []
+        };
+        tmp.card = eval($(this).find("#content").val());
+        postObj.content.answer.cardList.push(tmp);
+      })
+      $("#fieldset_pushMessage .pushMessage").each(function() {
+        var tmp = {
+          title: $(this).find("#title").val(),
+          content: $(this).find("#content").val(),
+          img_url: $(this).find("#img_url").val(),
+          link_url: $(this).find("#link_url").val(),
+          task: $(this).find("#task").val(),
+          params: []
+        }
+        $(this).find(".params").each(function() {
+          if($.trim($(this).find(".params_key").val()) != "" && $.trim($(this).find(".params_value").val()) != "") {
+            tmp.params.push({key: $.trim($(this).find(".params_key").val()), keyname: "", value: $.trim($(this).find(".params_value").val())});
+          }
+        })
+        postObj.content.messages.push(tmp);
+      })
+      console.dir(postObj);
+      $.ajax({
+        async: false,
+        type: "POST",
+        url: urlPrefix + "/user/push",
+        contentType: "application/json",
+        data: JSON.stringify(postObj),
+        dataType: "json",
+        success: function(res) {
+          alert("Success");
+        },
+        error: function(res) {
+          alert("Fail");
+        }
+      })
+    }  
+  </script>
+</body>
+</html>

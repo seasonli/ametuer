@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">  
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>出门问问</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />  
+  <link rel="stylesheet" href="css/layout.css?v=2.2" />
+  <script src="js/jquery.1.10.2.min.js?v=2.2"></script>
+  <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header_">
+      <div class="header_logo"></div>
+      <div class="header_slogan">为手机搜索而生</div>  
+      <button type="button" class="header_company" onClick="window.open('http://www.mobvoi.com')">Mobvoi</button>
+      <button type="button" class="header_recruit" onClick="window.open('http://www.mobvoi.com/aboutus.html')">加入我们</button>
+    </div>
+  </div>
+  <div class="howto">
+    <div class="howto_">
+      <div class="howto_pic"></div>
+      <div class="howto_content">
+        <p>如何在微信/易信上找到出门问问</p>
+        <p>1. 在微信上直接点按“添加朋友”——“查找公众号”，<br/>输入 "出门问问" 查找并关注</p>
+        <p>2. 在易信上打开公众号列表 —— 点按“搜索”，<br/>输入 "出门问问" 查找并关注</p>
+      </div>
+      <div class="clear"></div>
+      <div class="howto_qr">
+        你也可以扫描二维码来关注我们
+      </div>
+      <div class="howto_qrcode">
+        <img src="img/qrcode-weixin.png" />
+      </div>
+      <div class="howto_qrcode">
+        <img src="img/qrcode-yixin.png" />
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="howto__">
+      <div class="howto_icon"><img src="img/icon-weixinyixin_.png" style="width: 92px" /></div>
+      <div class="howto_subtitle">如何在微信/易信<br/>上找到出门问问</div>
+      <div class="clear"></div>
+      <div class="howto_text">
+        微信<br/>1. 直接点按“添加朋友”<br/>2.“查找公众号”<br/>3.输入 "出门问问" 查找并关注<br/><br/>易信<br/>1. 在易信上打开公众号列表 <br/>2.点按“搜索”<br/>  3.输入 "出门问问" 查找并关注
+      </div>
+      <div class="clear"></div>
+    </div>    
+  </div>  
+  <script>
+    $(".howto").css("height", document.documentElement.clientHeight + 60 + "px");
+    var CMWW = new chumenwenwen();
+    CMWW.share.init({title: "出门问问，为手机搜索而生", desc: "出门问问，为手机搜索而生\n\n点击下载出门问问", img: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png", url: "http://chumenwenwen.net"});
+    CMWW.share.wechatReady();
+  </script>
+</body>
+</html>

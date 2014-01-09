@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>writeBlog</title>
+    <script src="http://onebox.oss.aliyuncs.com/js/jquery.1.10.2.min.js"></script>
+    <link rel="stylesheet" href="http://www.weiyuyi.com/assets/application-c11a6bf2f1c04e0bd62acfa5f3e91ac9.css" />
+  </head>
+
+
+  <body>
+    <script src="/oss/assets/ueditor/ueditor.config.js"></script>
+    <script src="/oss/assets/ueditor/ueditor.all.min.js"></script>
+    <script src="/oss/assets/js/weiyuyi.urlPrefix.js"></script>
+    <div style="margin: 30px 0 0 0">
+      <form method="POST">
+        <input name="utf8" type="hidden" value="&#x2713;" />
+        <input class="hidden" name="blog[wechat_app_id]" type="hidden" />
+        <label>标题</label>
+        <input name="blog[title]" type="text" style="width: 400px" />
+        <label>Google Analytics Label</label>
+        <input id="label" type="text" style="width: 240px" />
+        <label for="editor">正文</label>
+        <script name="blog[content]" id="editor" type="text/plain" style="width: 450px; height: 480px"></script>
+        <div class="form-actions">
+          <input class="btn btn-primary" type="submit" value="确 认" />
+        </div>
+      </form>
+    </div>
+    <script>
+      var ue = UE.getEditor("editor");
+    </script>
+    <script src="/oss/assets/js/weiyuyi.blog.js"></script>
+  </body>
+
+
+  
+</html>

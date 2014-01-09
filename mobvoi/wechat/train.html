@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 火车</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+
+<body>
+  <div class="wrapper">
+  </div>
+</body>
+</html>
+
+<script type="text/html" id="wrapper_train">
+  <ul class="cards">
+    <li class="cards_card result">
+      <div class="cards_card_entire">
+        <p><span class="layout-444">为您搜索到 “{ query }”</span></p>
+        <p><span id="total" class="layout-999"> 条结果</span></p>
+      </div>
+    </li>
+  </ul>
+  <ul class="cards">
+    { each answer as val idx }
+      <li class="cards_card" onClick="window.location.href='{ val.detailLink }'">
+        <div class="cards_card_triple left layout-16px">
+          <p><span class="layout-999">{ val.type }</span></p>
+          <p><span class="layout-666">{ val.number }</span></p>          
+        </div> 
+        <div class="cards_card_triple center layout-16px">
+          <p><span class="layout-green">{ val.fromTime }</span> <span>{ val.fromStation }</span></p>
+          <p><span>{ val.toTime }</span> <span>{ val.toStation }</span></p>
+        </div>
+        <div class="cards_card_triple right layout-16px">
+          <p><span class="layout-orange">{ val.durationTime.split("小时")[0] }</span><span>小时</span><span class="layout-orange">{ val.durationTime.split("小时")[1].split("分")[0] }</span><span>分</span></p>
+        </div>        
+        <div class="clear"></div>
+      </li>
+    { /each }
+  </ul>
+</script>
+
+<script>
+  var response = {"session_id":"public.train@f33da1222ad090570aa0aec5d0256090","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.train","query":"上海到广州火车","remote_ip":"180.170.98.207","answer":[{"detailLink":"http://touch.qunar.com/trainDetail.jsp?startstation=上海南&endstation=广州&searchType=twoStation&number=K511","ticketLink":"http://m.tieyou.com/buy/home.html?from=上海南&to=广州&yupiao=&ymd=20130916&checi=K511&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes","toStation":"广州","number":"K511","fromTime":"10:40","date":null,"type":"快速","durationTime":"21小时2分","toTime":"07:42","fromStation":"上海南"},{"detailLink":"http://touch.qunar.com/trainDetail.jsp?startstation=上海南&endstation=广州&searchType=twoStation&number=T169","ticketLink":"http://m.tieyou.com/buy/home.html?from=上海南&to=广州&yupiao=&ymd=20130916&checi=T169&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes","toStation":"广州","number":"T169","fromTime":"11:13","date":null,"type":"特快","durationTime":"18小时27分","toTime":"05:40","fromStation":"上海南"},{"detailLink":"http://touch.qunar.com/trainDetail.jsp?startstation=上海&endstation=广州东&searchType=twoStation&number=T99A","ticketLink":"http://m.tieyou.com/buy/home.html?from=上海&to=广州东&yupiao=&ymd=20130916&checi=T99A&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes","toStation":"广州东","number":"T99A","fromTime":"18:20","date":null,"type":"特快","durationTime":"15小时57分","toTime":"10:17","fromStation":"上海"},{"detailLink":"http://touch.qunar.com/trainDetail.jsp?startstation=上海南&endstation=广州&searchType=twoStation&number=K527","ticketLink":"http://m.tieyou.com/buy/home.html?from=上海南&to=广州&yupiao=&ymd=20130916&checi=K527&seat=%E4%BA%8C%E7%AD%89%E5%BA%A7&go=Yes","toStation":"广州","number":"K527","fromTime":"19:29","date":null,"type":"快速","durationTime":"22小时33分","toTime":"18:02","fromStation":"上海南"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"上海去北京的火车","is_need":false},"params":[{"value":"上海","keyname":"出发站","key":"from"},{"value":"广州","keyname":"到达站","key":"to"},{"value":"火车","keyname":"火车类型","key":"type"}],"taskName":"查火车","version":"undefined","msg_id":"fd81c16f-7b5f-4c87-9da4-cae4e5950b0b","user_id":"undefined","query_type":"text"}
+
+  $(".wrapper").html(template.render("wrapper_train", response));
+  $("#total").prepend(response.answer.length)
+</script>
+
+<script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 周边</title>
+  <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/h5-layout.1.01.css" >
+  <script src="http://onebox.oss.aliyuncs.com/js/zepto.1.0.min.js"></script>
+  <script src="http://onebox.oss.aliyuncs.com/js/template.syntax.1.0.min.js"></script>
+</head>
+
+
+<body>
+  <div class="wrapper">
+  </div>
+</body>
+</html>
+
+<script type="text/html" id="wrapper_restaurant">
+  <ul class="cards">
+    <li class="cards_card result">
+      <div class="cards_card_entire">
+        <p><span class="layout-444">为您搜索到{ each params as val i } “{ val.value }” { /each }</span></p>
+        <p><span id="total" class="layout-999"> 条结果</span></p>
+      </div>
+    </li>
+  </ul>
+  <ul class="cards">
+    { each answer as val i }
+      <li class="cards_card" onClick="window.location.href='{ val.dp_url }'">
+       <div class="cards_card_img left">
+          <p>
+            <img class="layout-block" src="{ val.img_url }" />
+          </p>   
+        </div> 
+        <div class="cards_card_img right">
+          <p><span class="layout-17px">{ val.name }</span></p>
+          <p>
+            <span class="rating rating{ i } layout-fleft" data-rating="{ val.rating }">
+              <span class="rating_indicator rating_indicator{ i }"></span>
+            </span>
+          </p> 
+          <p><span class="layout-16px layout-999 layout-fright">人均￥{ val.price }</span></p>
+        </div>
+        <div class="cards_card_img right layout-999">
+          <p><span>{ each val.dp_category.split("|") as val1 i1 } { val1 } { /each }</span><span class="layout-fright">{ if val.my_distance > 0 }{ val.my_distance }米 { /if }</span></p>
+        </div>
+        <div class="clear"></div>
+      </li>
+    { /each }
+  </ul>
+</script>
+
+<script>
+  var response = {"session_id":"public.poi@69ab17edf59622d616faa430803f8484","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.poi","query":"附近招商银行","remote_ip":"180.170.98.207","answer":[{"detail_url":"","dp_id":"3844606","phone":"021-53850050","dp_category":"生活服务|银行","tag":"银行|人民广场","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844606","lng":121.486347,"8684_id":"","discount":0,"id":"000015418911997341424","my_distance":213,"price":0,"source":"dianping","rating_count":4,"opening_time":"","address":"黄浦区 延安东路700号(广西南路延安东路)","priority":0,"name":"招商银行(延东支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.235691,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"4509701","phone":"53821222-820|5382898","dp_category":"生活服务|银行","tag":"银行|人民广场","target_distance":-1,"dp_url":"http://m.dianping.com/shop/4509701","lng":121.486812,"8684_id":"","discount":0,"id":"000015418914576589775","my_distance":283,"price":0,"source":"dianping","rating_count":9,"opening_time":"","address":"卢湾区金陵东路569号汇都国际广场1楼(近西藏南路)","priority":0,"name":"招商银行(金陵东路支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.232436,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"2614921","phone":"021-63617886","dp_category":"生活服务|银行","tag":"银行|人民广场|南京东路","target_distance":-1,"dp_url":"http://m.dianping.com/shop/2614921","lng":121.48497,"8684_id":"","discount":0,"id":"000015418914406293439","my_distance":440,"price":0,"source":"dianping","rating_count":31,"opening_time":"","address":"黄浦区福州路646号(广西路口)","priority":0,"name":"招商银行(福州路支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.238262,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3844579","phone":"63583356-111|63750060","dp_category":"生活服务|银行","tag":"银行|人民广场","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844579","lng":121.479296,"8684_id":"","discount":0,"id":"000015418911900505247","my_distance":840,"price":0,"source":"dianping","rating_count":8,"opening_time":"","address":"黄浦区南京西路100号(长沙路凤阳路)","priority":0,"name":"招商银行(南西支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.240226,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3844558","phone":"021-53821866","dp_category":"生活服务|银行","tag":"银行|淮海路|新天地","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844558","lng":121.478561,"8684_id":"","discount":0,"id":"000015418912065253384","my_distance":887,"price":0,"source":"dianping","rating_count":34,"opening_time":"","address":"卢湾区淮海中路398号(淡水路淮海中路)","priority":0,"name":"招商银行(淮中支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.228383,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3844582","phone":"021-95555|53751110","dp_category":"生活服务|银行","tag":"银行|南京西路","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844582","lng":121.474719,"8684_id":"","discount":0,"id":"000015418911932912754","my_distance":1007,"price":0,"source":"dianping","rating_count":38,"opening_time":"","address":"静安区南京西路456号(成都北路南京西路)","priority":0,"name":"招商银行(人民广场支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.237095,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3844609","phone":"021-95555|63340658","dp_category":"生活服务|银行","tag":"银行|城隍庙","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844609","lng":121.495176,"8684_id":"","discount":0,"id":"000015418912096105692","my_distance":1129,"price":0,"source":"dianping","rating_count":9,"opening_time":"","address":"黄浦区河南南路378号(方浜中路河南南路)","priority":0,"name":"招商银行(豫园支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.229393,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"","phone":"","dp_category":"","tag":"","target_distance":-1,"lng":121.472608,"8684_id":"","discount":0,"id":"000015418915862503033","my_distance":1201,"price":0,"source":"aibang","rating_count":0,"opening_time":"","address":"静安区南京西路","priority":0,"name":"招商银行(南京西路支行)","third_tag":"","rating":0,"mobvoi_category_1":"金融保险服务","lat":31.237143,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"4226522","phone":"021-63523900|63529892","dp_category":"生活服务|银行","tag":"银行|外滩","target_distance":-1,"dp_url":"http://m.dianping.com/shop/4226522","lng":121.496269,"8684_id":"","discount":0,"id":"000015418914133774120","my_distance":1513,"price":0,"source":"dianping","rating_count":12,"opening_time":"","address":"黄浦区中山东一路16号(近九江路)","priority":0,"name":"招商银行(外滩支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.243725,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3844591","phone":"021-95555|62186857","dp_category":"生活服务|银行","tag":"银行|南京西路","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844591","lng":121.465829,"8684_id":"","discount":0,"id":"000015418912707874172","my_distance":1936,"price":0,"source":"dianping","rating_count":7,"opening_time":"","address":"静安区 新闸路847号(山海关路石门二路)","priority":0,"name":"招商银行(泰兴支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.240613,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3844594","phone":"021-51270782","dp_category":"生活服务|银行","tag":"银行|四川北路","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844594","lng":121.480839,"8684_id":"","discount":0,"id":"000015418912171907129","my_distance":2327,"price":0,"source":"dianping","rating_count":5,"opening_time":"","address":"虹口区天目东路258号(天目中路浙江北路)","priority":0,"name":"招商银行(天目支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.254945,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3816208","phone":"021-63041570","dp_category":"生活服务|银行","tag":"银行|打浦桥","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3816208","lng":121.478637,"8684_id":"","discount":0,"id":"000015418914518064860","my_distance":2553,"price":0,"source":"dianping","rating_count":9,"opening_time":"","address":"卢湾区丽园路1015号","priority":0,"name":"招商银行(丽园支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.211987,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"","phone":"","dp_category":"","tag":"","target_distance":-1,"lng":121.512733,"8684_id":"","discount":0,"id":"000015418916359353495","my_distance":2758,"price":0,"source":"aibang","rating_count":0,"opening_time":"","address":"崂山路316","priority":0,"name":"招商银行信用卡","third_tag":"","rating":0,"mobvoi_category_1":"金融保险服务","lat":31.2409,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"3844555","phone":"021-95555|64741583","dp_category":"生活服务|银行","tag":"银行|音乐学院","target_distance":-1,"dp_url":"http://m.dianping.com/shop/3844555","lng":121.460492,"8684_id":"","discount":0,"id":"000015418914101602579","my_distance":2761,"price":0,"source":"dianping","rating_count":13,"opening_time":"","address":"卢湾区淮海中路1155号(近汾阳路)","priority":0,"name":"招商银行(淮海支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.220758,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"4226516","phone":"021-58790443","dp_category":"生活服务|银行","tag":"银行|陆家嘴","target_distance":-1,"dp_url":"http://m.dianping.com/shop/4226516","lng":121.515376,"8684_id":"","discount":0,"id":"000015418914162875717","my_distance":3067,"price":0,"source":"dianping","rating_count":70,"opening_time":"","address":"浦东新区 陆家嘴东路161号(近陆家嘴环路)","priority":0,"name":"招商银行(陆家嘴支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"金融保险服务","lat":31.242991,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"","phone":"021-58790443","dp_category":"","tag":"","target_distance":-1,"lng":121.515666,"8684_id":"","discount":0,"id":"000015418916386481142","my_distance":3096,"price":0,"source":"aibang","rating_count":0,"opening_time":"","address":"陆家嘴东路161号","priority":0,"name":"招商银行分行营业部","third_tag":"","rating":0,"mobvoi_category_1":"金融保险服务","lat":31.243068,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"4281037","phone":"","dp_category":"生活服务|银行","tag":"银行|火车站","target_distance":-1,"dp_url":"http://m.dianping.com/shop/4281037","lng":121.458802,"8684_id":"","discount":0,"id":"000015418911140771748","my_distance":3172,"price":0,"source":"dianping","rating_count":4,"opening_time":"","address":"闸北区天目西路451-469号(长寿路天目西路)","priority":0,"name":"招商银行(天目西路支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"银行","lat":31.252163,"mobvoi_category_3":"","mobvoi_category_2":""},{"detail_url":"","dp_id":"","phone":"021-63041570","dp_category":"","tag":"","target_distance":-1,"lng":121.499047,"8684_id":"","discount":0,"id":"000015418916064288666","my_distance":3177,"price":0,"source":"aibang","rating_count":0,"opening_time":"","address":"卢湾区丽园路1015号","priority":0,"name":"招商银行丽园路支行","third_tag":"","rating":0,"mobvoi_category_1":"金融保险服务","lat":31.208497,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"","phone":"021-63081568","dp_category":"","tag":"","target_distance":-1,"lng":121.498328,"8684_id":"","discount":0,"id":"000015418916229951414","my_distance":3200,"price":0,"source":"aibang","rating_count":0,"opening_time":"","address":"黄浦区中山南路1867号","priority":0,"name":"招商银行上海中山支行","third_tag":"","rating":0,"mobvoi_category_1":"金融保险服务","lat":31.207995,"mobvoi_category_3":"","mobvoi_category_2":"银行"},{"detail_url":"","dp_id":"4232480","phone":"021-54051060","dp_category":"生活服务|银行","tag":"银行|音乐学院","target_distance":-1,"dp_url":"http://m.dianping.com/shop/4232480","lng":121.454036,"8684_id":"","discount":0,"id":"000015418915781804430","my_distance":3228,"price":0,"source":"dianping","rating_count":5,"opening_time":"","address":"徐汇区长乐路801号(长乐路常熟路)","priority":0,"name":"招商银行(长乐支行)(CMB)","third_tag":"","rating":3,"mobvoi_category_1":"银行","lat":31.222087,"mobvoi_category_3":"","mobvoi_category_2":""}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"招商银行","keyname":"名字","key":"poi_name"}],"taskName":"查周边","highlight_query":"为您找到附近的<span class=\"highlight\">招商银行<\/span>","version":"undefined","page":{"total":96,"start":0,"length":20},"msg_id":"b835164b-8198-4d87-b2b4-ddf32ec621c1","user_id":"undefined","query_type":"text"};
+
+  $(".wrapper").html(template.render("wrapper_restaurant", response));
+  $("#total").prepend(response.answer.length)
+
+  for (var i = 0; i < response.answer.length; i ++) {
+    var rating = $(".rating" + i).attr("data-rating") * 21.6;
+    $(".rating_indicator" + i).css("width", rating + "px");
+  }
+
+  // for share in wechat
+  $(function() {
+    var dataForWeixin = {
+      appId: "",
+      MsgImg: response.answer[0].content[0].pic_url,
+      TLImg: response.answer[0].content[0].pic_url,
+      url: window.location.href,
+      title: "我在出门问问找到了最新电影",
+      desc: "出门问问 - 电影",
+      fakeid: "",
+      callback: function () {}
+    };
+    (function () {
+      var onBridgeReady = function () {
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+          WeixinJSBridge.invoke('sendAppMessage', {
+            "appid": dataForWeixin.appId,
+            "img_url": dataForWeixin.MsgImg,
+            "img_width": "120",
+            "img_height": "120",
+            "link": dataForWeixin.url,
+            "desc": dataForWeixin.desc,
+            "title": dataForWeixin.title
+          }, function (res) {(dataForWeixin.callback) (); });
+        });
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+          (dataForWeixin.callback) ();
+          WeixinJSBridge.invoke('shareTimeline', {
+            "img_url": dataForWeixin.TLImg,
+            "img_width": "120",
+            "img_height": "120",
+            "link": dataForWeixin.url,
+            "desc": dataForWeixin.desc,
+            "title": dataForWeixin.title
+          }, function (res) {} );
+        });
+        WeixinJSBridge.on('menu:share:weibo', function (argv) {
+          WeixinJSBridge.invoke('shareWeibo', {
+            "content": dataForWeixin.title,
+              "url": dataForWeixin.url
+          }, function (res) {(dataForWeixin.callback) (); });
+        });
+        WeixinJSBridge.on('menu:share:facebook', function (argv) {
+          (dataForWeixin.callback) ();
+          WeixinJSBridge.invoke('shareFB', {
+            "img_url": dataForWeixin.TLImg,
+            "img_width": "120",
+            "img_height": "120",
+            "link": dataForWeixin.url,
+            "desc": dataForWeixin.desc,
+            "title": dataForWeixin.title
+          }, function (res) {});
+        });
+      };
+      if (document.addEventListener) {
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+      } else if(document.attachEvent) {
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+      }
+    }) ();
+  })
+</script>

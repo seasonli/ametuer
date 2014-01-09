@@ -1,0 +1,1 @@
+<?php require("../_config.php"); if (isset($_SESSION['ID'])==FALSE) { echo "-1"; die(); }  ?>

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_text_one">
+    <ul class="cards">
+      { each body as val i }    
+        <li class="cards_card gotoDial" data-tel="{ val.link_url.replace(/tel:/g, '').replace(/-/g, '').replace(/\(/g, '').replace(/\)/g, '').split(',')[0] }">
+          <br/>
+          <div class="cards_card_entire layout-666">
+            <p><span>{ val.title }</span></p>       
+          </div> 
+          <div class="cards_card_entire layout-999">
+            <p><span>{ val.content[0] }</span></p>  
+          </div>
+          { if val.res_url && val.res_url != "" }
+            <div class="cards_card_entire layout-right">
+              <p><span><img class="gotoVoice" src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/volume.png" style="width: 30px" /><audio id="audio" src="{ body[0].res_url }" preload="preload">您的浏览器不支持该功能</audio></span></p>
+            </div>
+          { /if }
+          <br/>
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":["Te quiero"],"img_url":"","title":"我爱你","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"http://mobvoi-one-box.oss.aliyuncs.com/translate/1385101415612.mp3","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.translate@d03cd2abf93797c9858aa01ba96b0f55","task":"public.translate","query":"我爱你西班牙语怎么说","task_name":"翻译","appkey":"wechat_chumenwenwen","need_check_location":false,"params":[{"value":"我爱你","keyname":"原文","key":"translate_content"},{"value":"西班牙语","keyname":"目标语言","key":"translate_target"}],"type":"text_one","recommendation_query":[],"search_query":"为您翻译\"我爱你\"成\"西班牙语\"","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"listview","more":{"show_number":1,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":1,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"d3d25f7f-0bfb-43fd-a923-6e05b47ac483","user_id":"undefined","query_type":"text","output":"app","is_show_header":false}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>

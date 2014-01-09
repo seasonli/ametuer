@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 优惠券</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+
+<body>
+  <img src="http://mobvoi-coupon.oss.aliyuncs.com/imgs/{ val.img }" style="width: 100%" />
+</body>
+</html>
+
+<script>
+  var response = {};
+  response.taskName = "优惠券";
+  response.query = "优惠券";
+  $("img").attr("src", "http://mobvoi-coupon.oss.aliyuncs.com/imgs/" + window.location.href.split("img=")[1])
+</script>
+
+<script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>

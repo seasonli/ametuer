@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 餐厅榜单</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_rankingboard">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">为您搜索到{ params[0].value }的美食</span></p>
+          <p><span id="total" class="layout-999">条结果</span></p>
+        </div>
+      </li>
+    </ul>  
+    <ul class="cards">
+      { each answer[0].result as val i }
+        <li class="cards_card" onClick="window.location.href='{ val.url }'">
+         <div class="cards_card_img left">
+            <p>
+              <img src="{ val.pic_url }" />
+            </p>   
+          </div> 
+          <div class="cards_card_img right">
+            <p><span class="layout-19px">{ val.title }</span></p>
+            { if answer[0].result[i].description && answer[0].result[i].description.length > 60 }
+              <p><span class="layout-666">{ answer[0].result[i].description.substr(0, 45) }……</span></p>
+            { /if }
+          </div>      
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"session_id":"public.rankingboard@ab11fb5c25d7c97494e2c72d5a5bf893","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.rankingboard","query":"上海有什么好吃的","remote_ip":"127.0.0.1, 58.247.4.206","answer":[{"result":[{"id":"2ob0C85D","mobvoi_update_at":"2013-08-08 18:07:03.0","mobvoi_user":"ricebook","title":"一个人的下午该去哪里呆着","source":"饭本","hit":"38","description":"咖啡馆、下午茶现在俨然成了&ldquo;喧闹&rdquo;的代名词，找个环境合适、食物合理的安静地方度过一下午，其实已并非易事。虽然听起来有些矫情，但不得不承认有时能一个人偶尔找个地方发发呆，好吃好喝一顿，或是安静地读一本书也是对自己最好的犒劳。","owner":"沈奇岚","pic_url":"http://img.seriousapps.cn/feed/8490012413144","url":"http://share.ricebook.com/ranklist.php?id=2ob0C85D","city":"上海"},{"id":"2rZDWcLL","mobvoi_update_at":"2013-08-08 18:07:03.0","mobvoi_user":"ricebook","title":"找点靠谱意大利菜","source":"饭本","hit":"106","description":"上海好的法国菜不容易找，意大利菜倒是有不错的水准。大概意大利人的一些口味很对中国人的胃口，就算有点改良与迎合也不会觉得突兀。不是有人说嘛：欧洲有另一个中国，名字叫意大利。","owner":"食家饭","pic_url":"http://img.seriousapps.cn/feed/8502572413181","url":"http://share.ricebook.com/ranklist.php?id=2rZDWcLL","city":"上海"},{"id":"2lIQddNT","mobvoi_update_at":"2013-08-08 18:07:03.0","mobvoi_user":"ricebook","title":"日料趴就是不能看荷包","source":"饭本","hit":"15","owner":"羌宇","pic_url":"http://img.seriousapps.cn/feed/8688003213843","url":"http://share.ricebook.com/ranklist.php?id=2lIQddNT","city":"上海"},{"id":"2iTHDNcb","mobvoi_update_at":"2013-08-08 18:07:03.0","mobvoi_user":"ricebook","title":"上海菜小馆子必去榜单","source":"饭本","hit":"30","owner":"卡卡mocha","pic_url":"http://img.seriousapps.cn/feed/8600544013876","url":"http://share.ricebook.com/ranklist.php?id=2iTHDNcb","city":"上海"},{"id":"2oHq2mft","mobvoi_update_at":"2013-08-08 18:07:03.0","mobvoi_user":"ricebook","title":"就着烟把饭给吃了","source":"饭本","hit":"14","description":"很多朋友来信问我，抽烟犯法吗？我说不犯，但招人嫌！为了不失去这些品类的朋友，以下特推荐说一不二，时不时与烟友联络感情的上好聚点。一口烟一口菜的，感情就都在饭里了。","owner":"Teppeion","pic_url":"http://img.seriousapps.cn/feed/8445302723632","url":"http://share.ricebook.com/ranklist.php?id=2oHq2mft","city":"上海"}],"status":"success"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"上海","keyname":"城市","key":"city"}],"taskName":"餐厅榜单","version":"undefined","msg_id":"d9d9df90-b383-4a40-bbc9-3ef4c30ccd49","user_id":"undefined","query_type":"text"};
+    $(".wrapper").html(template.render("wrapper_rankingboard", response));
+    $("#total").prepend(response.answer[0].result.length);
+  </script>
+
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>
+</body>
+</html>
+

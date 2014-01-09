@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 优惠券</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+
+<body>
+  <div class="wrapper">
+  </div>
+</body>
+</html>
+
+<script type="text/html" id="wrapper_coupon">
+  <ul class="cards">
+    <li class="cards_card result">
+      <div class="cards_card_entire">
+        <p><span id="shop" class="layout-444">为您搜索到 </span></p>
+        <p><span id="total" class="layout-999"> 条结果</span></p>
+      </div>
+    </li>
+    { each coupons as val i }
+      <li class="cards_card" onClick="window.location.href='http://mobvoi-coupon.oss.aliyuncs.com/showimg.html?img={ val.img }'">
+        <div class="cards_card_img left">
+          <p>
+            <img class="layout-block" src="http://mobvoi-coupon.oss.aliyuncs.com/imgs/thumbnail-{ val.img }" />
+          </p>   
+        </div> 
+        <div class="cards_card_img right">
+          <p><span class="layout-19px">{ val.title }</span></p><br/>
+          <p><span class="layout-17px layout-orange">￥{ val.price_now }</span></p>
+        </div>
+        <div class="clear"></div>
+      </li>
+    { /each }
+  </ul>
+</script>
+
+<script type="text/html" id="wrapper_coupon_shop">
+  <ul class="cards">
+    <li class="cards_card result">
+      <div class="cards_card_entire">
+        <p><span id="shop" class="layout-444">点击图片选择你需要的优惠券</span></p>
+      </div>
+    </li>
+    <li class="cards_card" onClick="window.location.href='?shop=肯德基'">
+      <img src="http://mobvoi-coupon.oss.aliyuncs.com/imgs/%E8%82%AF%E5%BE%B7%E5%9F%BA.jpg" style="width: 100%" />
+    </li>
+    <li class="cards_card" onClick="window.location.href='?shop=麦当劳'">
+      <img src="http://mobvoi-coupon.oss.aliyuncs.com/imgs/%E9%BA%A6%E5%BD%93%E5%8A%B3.jpg" style="width: 100%" />
+    </li>
+    <li class="cards_card" onClick="window.location.href='?shop=东方既白'">
+      <img src="http://mobvoi-coupon.oss.aliyuncs.com/imgs/%E4%B8%9C%E6%96%B9%E6%97%A2%E7%99%BD.jpg" style="width: 100%" />
+    </li>
+    <li class="cards_card" onClick="window.location.href='?shop=真功夫'">
+      <img src="http://mobvoi-coupon.oss.aliyuncs.com/imgs/%E7%9C%9F%E5%8A%9F%E5%A4%AB.jpg" style="width: 100%" />
+    </li>
+    <li class="cards_card" onClick="window.location.href='?shop=永和大王'">
+      <img src="http://mobvoi-coupon.oss.aliyuncs.com/imgs/%E6%B0%B8%E5%92%8C%E5%A4%A7%E7%8E%8B.jpg" style="width: 100%" />
+    </li>
+  </ul>
+</script>
+
+<script src="http://mobvoi-coupon.oss.aliyuncs.com/js/coupon.js"></script>
+
+<script>
+  var response = {};
+  response.coupons= [];
+  for(var i in coupons) {
+    if(coupons[i].shop == decodeURI(window.location.href.split("?shop=")[1])) {
+      response.coupons.push(coupons[i]);
+    }
+  }
+  response.taskName = "优惠券";
+  response.query = "优惠券";
+
+  if(decodeURI(window.location.href.split("?shop=")[1]) != "肯德基" && decodeURI(window.location.href.split("?shop=")[1]) != "麦当劳" && decodeURI(window.location.href.split("?shop=")[1]) != "东方既白" && decodeURI(window.location.href.split("?shop=")[1]) != "永和大王" && decodeURI(window.location.href.split("?shop=")[1]) != "真功夫") {
+    $(".wrapper").html(template.render("wrapper_coupon_shop", response));
+    
+  } else {
+    response.query = decodeURI(window.location.href.split("?shop=")[1]) + response.query;
+    $(".wrapper").html(template.render("wrapper_coupon", response));
+    $("#shop").append("“" + decodeURI(window.location.href.split("?shop=")[1]) + "优惠券”");
+    $("#total").prepend(response.coupons.length); 
+  }
+</script>
+
+<script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>

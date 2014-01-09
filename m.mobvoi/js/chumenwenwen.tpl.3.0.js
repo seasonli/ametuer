@@ -1,0 +1,1 @@
+// var host = "http://mobvoi-one-box.oss.aliyuncs.com/web/template";

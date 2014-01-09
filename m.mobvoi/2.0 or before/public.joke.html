@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalabel=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>查违章 出门问问</title> 
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+  <script src="http://onebox.oss.aliyuncs.com/js/urlPrefix-m.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.1.01.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_image">
+    <ul class="cards">
+      <li class="cards_img layout-center">
+        <img src="{ answer[1].content }" style="width: auto; width: 100%" />
+      </li> 
+    </ul>
+  </script>
+  <script type="text/html" id="wrapper_text">
+    <ul class="cards">
+      <li class="cards_card">
+        <div class="cards_card_entire layout-666">
+          <p><span>{ answer[0].content }</span></p>       
+        </div> 
+      </li> 
+    </ul>
+  </script>
+
+  <script>
+    //var response = ${content};
+    //var response = {"session_id":"public.joke@18fc51f3d8fdf97faaf1742229e98037","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.joke","query":"内涵图","remote_ip":"127.0.0.1, 58.247.4.206","answer":[{"content":"1.什么是坏人？白天脱裤子的男人，晚上不卸妆的女人。2.昨天看了你一眼，现在眼睛还疼呢！3.你打扮成这样.是对这个世界有什么不满么？4.你穿得很危险，但长得很安全。4.遇到你之前，我的世界是黑白的，遇到你之后，哇塞！全黑了\u20265.有时候我乐观得就像个屁一样，总以为自己能惊天动地。","status":"success","type":"text"},{"content":"http://mobvoi-one-box.oss.aliyuncs.com/joke/3b336edc-fe63-11e2-a543-94de80687496.jpg","status":"success","type":"image"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"图片","keyname":"类别","key":"category"}],"taskName":"找笑话","version":"undefined","msg_id":"14907824-9144-4943-9462-044378da3770","user_id":"undefined","query_type":"text"};
+    var response = {"session_id":"public.joke@84b56d628ec2e2a1f36e54ab7d7c6428","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.joke","query":"来个内涵图","remote_ip":"58.247.4.206","answer":[{"content":"一女的晚上跟男友打电话，这丫深情地说： \u201c亲爱的，无论你以后变傻了还是变笨了， 还是变老变丑了，我都会爱你不变的。\u201d \u201c要是我瘫痪了，半身不遂了呢？\u201d 这货沉默两秒\u201c上半身还是下半身？\u201d靠，半身\u2026\u2026","status":"success","type":"text"},{"content":"http://mobvoi-one-box.oss.aliyuncs.com/joke/5c134260-fe47-11e2-a543-94de80687496.jpg","status":"success","html_page_url":"http://m.mobvoi.com/search/qa?address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&task=public.joke&query=%E6%9D%A5%E4%B8%AA%E5%86%85%E6%B6%B5%E5%9B%BE&appkey=com.mobvoi.baiding&msg_id=680ee204-0334-43e0-a890-bae5a6048089&user_id=undefined&query_type=text&output=html_page&version=undefined","type":"image"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"图片","keyname":"类别","key":"category"}],"taskName":"找笑话","version":"undefined","msg_id":"680ee204-0334-43e0-a890-bae5a6048089","user_id":"undefined","query_type":"text"};
+    if(response.params.length > 0) {
+      $(".wrapper").html(template.render("wrapper_image", response));
+    } else {
+      $(".wrapper").html(template.render("wrapper_text", response));
+    }
+
+    // Render in Browser
+    if((browser.versions.mobile == true && browser.versions.chrome == true) || browser.versions.dolphin == true) {
+      $(".wrapper").before('<div class="header"><input id="query" class="header_input" type="text" placeholder="出门问问" /><nav id="querySearch" class="header_search" onTouchStart="$(this).addClass(\'touch\')" onTouchEnd="$(this).removeClass(\'touch\')"></nav></div>');
+      $(".wrapper").css({"margin-top": parseInt($(".wrapper").css("margin-top")) + 48 + "px"});
+      if(browser.versions.dolphin == true) {
+        $(".wrapper").after("<div class='footer'></div>");
+        $(".wrapper").css({"margin-bottom": parseInt($(".wrapper").css("margin-bottom")) + 48 + "px"});
+        $(".footer").prepend("<nav class='footer_center' id='dolphinSpeak'></nav>");
+        $(".footer_center").css({"background-image": "url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/speak.png)", "left": document.body.clientWidth / 2 - 20 + "px"});
+      }
+      new chumenwenwen.search("query", "querySearch", "test1085");
+      $("#query").val(response.query);
+    }    
+  </script>
+</body>
+</html>
+

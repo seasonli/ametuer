@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>火车票预定时间提醒</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/css/chumenwenwen.2.0.css" />
+  <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
+  <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/js/train.sale.datepicker.js"></script>
+  <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/js/train.station.common.js"></script>
+  <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/js/train.station.hot.js"></script>
+</head>
+<body style="background: #f8f8f8">
+	<div data-event="CMWW" style="background:url(../img/train/train_search.jpg) no-repeat; background-size: 100%">	
+	  <div class="wrapper" style="padding-top: 180px">  
+	    <ul class="form">
+	    	<div class="form_list">
+	    		<label class="layout-bold">出发地</label><input name="from_city" type="text" placeholder="例如 北京南站" />
+		    	<div class="form_list_suggestion" style="display: none"></div>
+	    	</div>
+	    	<hr class="form_hr" />
+	    	<div class="form_list">
+	    		<label class="layout-bold">目的地</label><input name="to_city" type="text" placeholder="例如 上海虹桥" />
+	    		<div class="form_list_suggestion" style="display: none"></div>
+	    	</div>
+	    	<hr class="form_hr" />
+	    	<div class="form_list">
+	    		<label class="layout-bold">出发日期</label><span class="gotoShowCalendar"><font style="color: #33b5e5">选择你的出发日期</font></span>
+	    		<input type="hidden" name="date" /> 
+	    	</div>
+	    	<hr class="form_hr" />
+	    	<div class="form_list">
+	    		<label class="layout-bold">车次</label><input name="train_number" type="text" placeholder="选填" />
+	    	</div>
+	    </ul>
+	    <ul class="form" style="border: 0">
+	    	<div class="form_list">
+	    		<button>查询预售期</button>
+	    	</div>
+	    </ul>
+	    <ul class="cards source">
+	    	<div class="cards_card entire layout-center" style="margin: -30px 7% 0 7%; border: 0; background: transparent; border-bottom: 1px dashed #cccccc">
+	    		<p><span class="layout-12px layout-666">预售期数据来自 12306</span></p>
+	    	</div>
+	    	<div class="cards_card entire" style="margin-top: 10px; padding: 0 7%; border: 0; background: transparent">
+	    		<a href="train.guide.html"><p><span class="layout-16px" style="color: #f32727">查看抢票攻略 >></span></p></a>
+	    	</div>
+	    </ul> 
+	  </div>
+	</div>
+
+	<script>
+		(function() {
+			if($('[name="date"]').val() != "") {
+				$(".gotoShowCalendar").html($('[name="date"]').val());
+			}
+			document.getElementsByTagName("button")[0].ontouchstart = function() {
+				document.getElementsByTagName("button")[0].style.backgroundColor = "#d43737";
+			}
+			document.getElementsByTagName("button")[0].ontouchend = function() {
+				document.getElementsByTagName("button")[0].style.backgroundColor = "#ef5a5a";
+			}			
+		})()
+
+		// Station Recommadation
+		$('[name="from_city"], [name="to_city"]').keyup(function() {
+			var stationSuggestion = [];
+			if($(this).val() != "") {
+				for(var i = 0; i < stationHotList.length; i ++) {
+					if(i % 4 != 1) {
+						if(stationSuggestion.length < 5) {
+							if(stationHotList[i].indexOf($.trim($(this).val()).toUpperCase()) == 0) {
+								stationSuggestion.push(stationHotList[parseInt(i / 4) * 4]);
+								i = parseInt(i / 4) * 4 + 3;
+							}
+						}
+					}
+				}
+				if(stationSuggestion.length < 5) {
+					for(var i = 0; i < stationCommonList.length; i ++) {
+						if(i % 4 != 1) {
+							if(stationSuggestion.length < 5) {
+								if(stationCommonList[i].indexOf($.trim($(this).val()).toUpperCase()) == 0) {
+									stationSuggestion.push(stationCommonList[parseInt(i / 4) * 4]);
+								}
+							}
+						}
+					}
+				}
+			} 
+			if(stationSuggestion.length > 0) {
+				$(this).parent().children(".form_list_suggestion").html("");
+				for(var i in stationSuggestion) {
+					$("<li>").html(stationSuggestion[i]).appendTo($(this).parent().children(".form_list_suggestion"));
+					if(i != stationSuggestion.length - 1) {
+						$("<hr>").appendTo($(".form_list_suggestion"));
+					}
+				}
+				$(this).parent().children(".form_list_suggestion").show();
+			} else {
+				$(this).parent().children(".form_list_suggestion").hide();
+			}
+		})
+		$("input").blur(function() {
+			$('[data-event="CMWW"]').delegate(".form_list_suggestion li", "click", function(e) {
+				$(this).parent().parent().children("input").eq(0).val($(this).html());
+				$(".form_list_suggestion").hide();
+			})
+			setTimeout('$(".form_list_suggestion").hide()', 100);
+		})
+
+
+
+		// Show Calendar
+		$(".gotoShowCalendar").click(function() {
+			$("<div>").addClass("dialog_bg")
+			.prependTo($("<div>")
+			.addClass("dialog")
+			.prependTo($('[data-event="CMWW"]')));
+			$("<div>").addClass("dialog_content").appendTo($(".dialog"));
+			$('[name="date"]').datepicker();
+			$(".dialog").addClass("show");
+			$(".dialog_bg").click(function() {
+				$(".dialog").removeClass("show");
+				setTimeout('$(".dialog").remove()', 500);
+			})
+		})
+		$('[name="date"]').change(function() {
+			$('.gotoShowCalendar').html($(this).val());
+		})
+		$('[data-event="CMWW"]').delegate(".calendar div", "click", function() {
+		  $(".dialog").removeClass("show");
+		  setTimeout('$(".dialog").remove()', 500);
+		})
+
+
+
+		// Search
+		$("button").click(function() {
+			if($.trim($('[name="from_city"]').val()) == "" || $.trim($('[name="to_city"]').val()) == "") {
+				new chumenwenwen().showDialog(0, "请输入出发/目的城市", []);
+			} else if(isNaN(new Date($(".gotoShowCalendar").html()).getTime()) == true) {
+				new chumenwenwen().showDialog(0, "请选择出发日期", []);
+			} else {
+				window.location.href = "http://m.mobvoi.com/search/pc/train" 
+				+ "?from=" + $.trim($('[name="from_city"]').val())
+				+ "&to=" + $.trim($('[name="to_city"]').val())
+				+ "&departure_time=0-24"
+				+ "&departure_date=" + $(".gotoShowCalendar").html()
+				+ "&train_number=" + $.trim($('[name="train_number"]').val())
+				+ "&output=html_page&version=10010"
+			}
+		})
+ </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_map_two">
+    <ul class="cards">
+      <li class="cards_card">
+        <div class="cards_card_entire layout-16px">
+          <p><span class="layout-bgreen layout-fff" style="margin-right: 5px; padding: 1px 2px">起</span><span style="margin-right: 20px">{ body[0].content[2] }</span><span class="layout-borange layout-fff" style="margin-right: 5px; padding: 1px 2px">终</span> <span>{ body[0].content[3] }</span></p>
+        </div>
+        <div class="clear"></div>
+        <div class="cards_card_entire layout-999 layout-12px">
+          <p><span>{ if body[0].content[9] != "" }{ body[0].content[9] }{ else }{ body[0].content[4] }{ /if }</span></p>
+        </div>
+      </li>
+      <li class="cards_img showMap routeMap layout-fff{ if body[0].content[12] == '躲避拥堵' } trafficMap{ /if }" style="height: 240px">[[[{ body[0].content[5].split(",")[0] }, { body[0].content[5].split(",")[1] }], [{ body[0].content[6].split(",")[0] }, { body[0].content[6].split(",")[1] }]]]</li>
+      <li class="cards_card">
+        <div class="cards_card_double left">
+          <p><button class="gotoNavigation layout-bwhite layout-left layout-blue layout-bold" type="button" data-point-from="{ body[0].content[0] }, { body[0].content[5].split(",")[0] }, { body[0].content[5].split(",")[1] }, { body[0].content[10] }" data-point-to="{ body[0].content[1] }, { body[0].content[6].split(",")[0] }, { body[0].content[6].split(",")[1] }, { body[0].content[11] }" data-point-mode="{ if body[0].content[7] == \'驾车\' }driving{ else if body[0].content[7] == \'步行\' }walking{ else }transit{ /if }"> { body[0].content[8] }<img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" style="margin-left: 5px; height: 12px"></button></p>
+        </div>
+        <div class="clear"></div>
+      </li>    
+    </ul>
+  </script>
+
+  <script>  
+    var response = {"content":[{"direct":{"body":[{"content":["上海市杨浦区武东路","上海市五角场","武东路","五角场","5分钟 2.9公里 打车15元","31.308912471391192,121.49982640557423","31.307234493229,121.52063140288","驾车","获取驾车路线","","上海市","上海市",""],"img_url":"http://api.map.baidu.com/staticimage?paths=121.49979323031%2C31.309014307024%3B121.49991369308%2C31.309353605483%3B121.51289330939%2C31.307951127864%3B121.51368121315%2C31.306646125213%3B121.52049495028%2C31.308724294177%3B121.52172904239%2C31.305820259443%3B121.5212206913%2C31.305653342189%3B121.52036424683%2C31.306902360403%3B121.52070326732%2C31.30704675271&height=400&bbox=121.51036424683%2C31.295653342189%3B121.53172904239001%2C31.319353605483002&markerStyles=-1%2Chttp%3A%2F%2Fonebox.oss.aliyuncs.com%2Fimg%2Fmy_location_indicator.png%7C-1%2Chttp%3A%2F%2Fonebox.oss.aliyuncs.com%2Fimg%2Fnavigation_indicator.png&markers=121.49981766422%2C31.308908251899%7C121.52063140288%2C31.307234493229&width=600&pathStyles=0x720ea5%2C18%2C0.4","title":"","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.navigation@87ac1317f6054596455342e41380212b","task":"public.navigation","query":"怎么去五角场","task_name":"查导航","appkey":"wechat_chumenwenwen","need_check_location":true,"params":[{"value":"五角场","keyname":"到达地","key":"to"},{"value":"驾车","keyname":"出行方式","key":"type"}],"type":"map_two","recommendation_query":[],"search_query":"为您找到\"上海市杨浦区武东路\" 到 \"上海市五角场\"的路线","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"listview","more":{"show_number":0,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":0,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"1ec50ded-d652-4349-8f9b-563cfd944032","user_id":"undefined","query_type":"text","output":"app","is_show_header":false}},"status":"","relevant":[],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+
+</body>
+</html>

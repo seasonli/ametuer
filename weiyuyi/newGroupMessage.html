@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Group Message</title>
+    <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/bootstrap.2.3.2.css" />
+    <script src="http://onebox.oss.aliyuncs.com/js/jquery.1.10.2.min.js"></script>
+  </head>
+
+
+
+  <body>
+    <link rel="stylesheet" href="/oss/assets/css/weiyuyi.groupMessage.css" />
+    <script src="/oss/assets/js/weiyuyi.urlPrefix.js"></script>
+    <div class="necker">
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="javascript:void(0)" onClick="$('.wrapper-text').show(); $('.wrapper-hybrid').hide(); $('.wrapper-onebox').hide(); $('.wrapper-app').hide(); $('.wrapper-message').hide(); $('.necker li').removeClass('active'); $(this).parent().addClass('active')">文字消息</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onClick="$('.wrapper-text').hide(); $('.wrapper-hybrid').show(); $('.wrapper-onebox').hide(); $('.wrapper-app').hide(); $('.wrapper-message').show(); $('.necker li').removeClass('active'); $(this).parent().addClass('active');">图文消息</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onClick="$('.wrapper-text').hide(); $('.wrapper-hybrid').hide(); $('.wrapper-onebox').show(); $('.wrapper-app').hide(); $('.wrapper-message').hide(); $('.necker li').removeClass('active'); $(this).parent().addClass('active')">Onebox</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onClick="$('.wrapper-text').hide(); $('.wrapper-hybrid').hide(); $('.wrapper-onebox').hide(); $('.wrapper-app').show(); $('.wrapper-message').show(); $('.necker li').removeClass('active'); $(this).parent().addClass('active')">showAnswer</a>
+        </li>
+      </ul>
+    </div>
+    <div class="wrapper wrapper-text"> 
+      <div class="wrapper_title">
+        <form method="POST" action="/group_messages" data-type="text">
+          <label>消息标题</label>
+          <input type="text" name="group_message[title]" style="width: 90%" />
+          <input type="hidden" name="group_message[wechat_app_id]" />
+          <input type="hidden" name="group_message[msg_type]" value="text" />
+          <label>正文</label>
+          <textarea name="group_message[content]" style="width: 90%; height: 240px; resize: none"></textarea>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">确 认</button>
+          </div>
+        </form>
+      </div>      
+    </div>
+    <div class="wrapper wrapper-hybrid" style="display: none">
+      <div class="wrapper_title">
+        <label>消息标题</label>
+        <input type="text" name="group_message[title]" style="width: 480px" />
+      </div>   
+    </div>
+    <div class="wrapper wrapper-onebox" style="display:none">
+      <div class="wrapper_title">
+        <form method="POST" action="/group_messages" data-type="onebox">
+          <label>消息标题</label>
+          <input type="text" name="group_message[title]" style="width: 480px" />
+          <label>Task</label>
+          <input type="text" name="group_message[task]" placeholder="public.restaurant" style="width: 480px" />
+          <input type="hidden" name="group_message[wechat_app_id]" />
+          <input type="hidden" name="group_message[msg_type]" value="onebox" />
+          <label>Query</label>
+          <input type="text" name="group_message[query]" style="width: 480px" />
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">确 认</button>
+          </div>
+        </form>
+      </div>
+    </div>  
+    <div class="wrapper wrapper-app" style="display: none">
+      <div class="wrapper_title">
+        <label>消息标题</label>
+        <input type="text" name="group_message[title]" style="width: 480px" />
+        <label>title</label>             
+        <input id="notification_title" type="text" class="span6" placeholder="标题">              
+        <label>summary</label>       
+        <input id="notification_summary" type="text" class="span6" placeholder="内容">
+        <label>img_url</label>         
+        <input id="notification_img_url" type="text" class="span6" placeholder="图片url地址">
+        <label>link_url</label>
+        <input id="notification_link_url" type="text" class="span6" placeholder="链接url地址">
+      </div>   
+    </div>
+    <div class="wrapper wrapper-message" style="display: none">
+      <div class="wrapper_cover">
+        <div class="wrapper_cover_article on">
+          <div class="wrapper_cover_article_top"></div>
+          <div class="wrapper_cover_article_grey"></div>
+          <img src="" alt="封面图片 720*400px" />
+          <div class="wrapper_cover_article_title"></div>
+          <div class="wrapper_cover_article_blog"></div>
+          <input name="item[title]" type="hidden" />
+          <input name="item[description]" type="hidden" />
+          <input name="item[blog]" type="hidden" />
+          <input name="item[image]" type="hidden" />
+        </div>
+        <div class="wrapper_cover_add" onClick="addArticle()">+ 添加一条</div>   
+      </div>
+      <div class="wrapper_content">
+        <fieldset>
+          <legend>标题</legend>
+          <input type="text" id="title" style="width: 520px" />
+        </fieldset>
+        <fieldset>
+          <legend>描述</legend>
+          <textarea id="description" style="width: 520px; height: 160px"></textarea>
+        </fieldset>
+        <fieldset>
+          <legend>封面</legend>
+          <label class="radio"><input type="radio" name="imageRadios" onClick='$("#imageId").show(); $("#imageUrl").val("").hide()' />从相册中选取</label>    
+          <div id="imageId" style="display: none; margin: 20px 0; padding: 10px; width: 400px; height: 200px; border: 1px solid #cccccc; overflow-y: scroll"></div>            
+          <label class="radio"><input type="radio" name="imageRadios" onClick='$("#imageId").hide(); $("#imageUrl").val("").show()' />原图链接</label>
+          <form id="imageUrl" style="display: none" class="form-inline">
+            <input type="text" id="imageUrlInput"> <button id="imageUrlConfirm" type="button" class="btn">确认</button>
+          </form>
+        </fieldset>
+        <fieldset>
+          <legend>正文</legend> 
+          <label class="radio">从模版中选取<input type="radio" name="blogRadios" onClick='$("#blogId").show(); $("#blogUrl").val("").hide()' /></label>
+          <select id="blogId" style="display: none"></select>
+          <label class="radio">原文链接<input type="radio" name="blogRadios" onClick='$("#blogId").hide(); $("#blogUrl").val("").show()' /></label>      
+          <form id="blogUrl" style="display: none" class="form-inline">
+            <input type="text" id="blogUrlInput"> <button id="blogUrlConfirm" type="button" class="btn">确认</button>
+          </form>
+        </fieldset>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="wrapper wrapper-hybrid" style="display: none">
+      <form method="POST" action="/group_messages" data-type="hybrid">
+        <input type="hidden" name="group_message[wechat_app_id]" />
+        <input type="hidden" name="group_message[msg_type]" value="hybrid" />
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">确 认</button>
+        </div>
+      </form>        
+    </div>
+    <div class="wrapper wrapper-app" style="display: none">
+      <form method="POST" action="/group_messages" data-type="app">
+        <input type="hidden" name="group_message[wechat_app_id]" />
+        <input type="hidden" name="group_message[msg_type]" value="showAnswer" />
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">确 认</button>
+        </div>
+      </form>       
+    </div>    
+    <script src="/oss/assets/js/weiyuyi.groupMessage.js"></script>
+  </body>
+
+  
+  
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 黄页</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_yellowpage">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">为您找到{ each params as val i} “{ params[i].value }”{ /each } 电话</span></p>
+          <p><span id="total" class="layout-999">条结果</span></p>
+        </div>
+      </li>
+      { each answer[0].content as val i}
+        <li class="cards_card">
+          <br/>
+          <div class="cards_card_entire">
+            <p><span>{ val.name }</span></p>       
+          </div> 
+          <div class="cards_card_entire layout-666">
+            <p><span id="dial_{ i }" class="dial" data-tel='{ val.tel.split(" ")[0] }'>{ val.tel.split(" ")[0] }</span></p>  
+          </div>
+          <br/>
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"session_id":"public.yellowpage@5c76f7e9e545c4613a672bbffb882b44","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.yellowpage","query":"人民广场附近的银行的电话","remote_ip":"127.0.0.1, 58.247.4.206","answer":[{"content":[{"address":"卢湾区人民大道200号","tel":"021-63581986","name":"浦发银行(人民大厦支行)(SPDB)"},{"address":"黄浦区黄陂北路279号(黄陂北路江阴路)","tel":"021-63272101","name":"中国邮政储蓄银行(人民公园邮局营业部)"},{"address":"黄浦区南京西路377号近黄陂北路(南京西路新昌路)","tel":"021-63273551","name":"中国工商银行(人民广场支行)(ICBC)"},{"address":"黄浦区威海路48号(近黄陂北路)","tel":"021-53857700","name":"民生银行(广场支行)(CMBC)"},{"address":"黄浦区黄陂北路227号(黄陂北路江阴路)","tel":"021-63750050","name":"光大银行(黄浦支行)"},{"address":"黄浦区兴仓路12号-20号(黄陂北路南京西路)","tel":"021-95533","name":"中国建设银行(仓桥支行)"},{"address":"静安区南京西路389号明天广场A座2楼(近黄陂北路)","tel":"021-63755858","name":"南洋商业银行(南京西路支行)"},{"address":"静安区南京西路388号仙乐斯广场1楼111-112室(近黄陂北路)","tel":"021-38886455","name":"汇丰银行(仙乐斯广场支行)(HSBC)"},{"address":"黄浦区南京西路240号(黄河路南京西路)","tel":"021-63180039","name":"浦发银行(大光明支行)(SPDB)"},{"address":"黄浦区 黄河路28号国际饭店内","tel":"021-95566","name":"中国银行(南京西路第二支行) 分店"},{"address":"上海市黄浦区南京西路170号","tel":"021-63595967","name":"中国银行"},{"address":"静安区南京西路388号仙乐斯广场内(近黄陂北路)","tel":"021-63753927","name":"交通银行南京西路支行"},{"address":"静安区南京西路128号(永新广场2楼)","tel":"021-63585555","name":"宁波银行上海分行"},{"address":"南京西路128号1-5楼","tel":"021-31158788","name":"宁波银行上海分行黄浦支行"},{"address":"静安区 南京西路456号1-2号(成都北路南京西路)","tel":"021-23216666","name":"渣打银行(浦西支行)(Standard Chartered Bank)"},{"address":"静安区南京西路456号(成都北路南京西路)","tel":"021-95555 53751110","name":"招商银行(人民广场支行)(CMB)"},{"address":"卢湾区重庆北路196号(近大沽路)","tel":"021-52863500","name":"上海银行(重庆北路支行)(BOS)"},{"address":"静安区南京西路388号仙乐斯广场内(近黄陂北路)","tel":"021-63582255","name":"交通银行(南京西路支行（市南）)(BC)"}],"status":200,"type":"poi"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"附近","keyname":"排序","key":"ranking_condition"},{"value":"人民广场","keyname":"商区","key":"location"},{"value":"银行","keyname":"类别","key":"category"}],"taskName":"查黄页","version":"undefined","msg_id":"91277e41-0404-4e2e-8b38-48221e03e6f7","user_id":"undefined","query_type":"text"};
+    $(".wrapper").html(template.render("wrapper_yellowpage", response));
+    $("#total").prepend(response.answer[0].content.length);
+    $(".dial").click(function() {
+      new chumenwenwen.dial(this.id, $(this).attr("data-tel"), response.appkey, 1);
+    })
+  </script>
+  
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>
+</body>
+</html>
+

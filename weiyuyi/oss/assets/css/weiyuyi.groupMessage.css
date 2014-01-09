@@ -1,0 +1,35 @@
+      /* CSS Reset */
+      * { margin: 0; padding: 0; outline: 0; word-break: break-all; }
+      li, ul { list-style-type:none; }
+      /* Common Set */
+      legend { margin: 10px 0 10px 0; padding: 8px 0; line-height: 20px; font-size: 16px; }
+      input[type="text"] { display: inline-block; padding: 0px 10px; height: 30px; }
+      input[type="checkbox"], input[type="radio"], { display: inline-block; margin: 0 10px 10px 0; }
+      textarea { padding: 5px 10px; }
+      select { display: inline-block; padding: 6px 10px; height: 30px; cursor: pointer; font-size: 12px; }
+        select option { padding: 5px 10px; font-size: 12px; }
+      button { display: inline-block; cursor: pointer; }
+      .clear { clear: both; }
+      /* Layout */
+      .necker { padding: 10px; }
+      .wrapper { padding: 10px; }
+        .wrapper_title { margin: 0 0 30px 0; font-size: 16px; }
+        .wrapper_cover { float: left; font-size: 12px; }
+          .wrapper_cover_article { position: relative; margin: 0 0 20px 0; width: 270px; border: 1px solid #cccccc; }
+            .wrapper_cover_article_grey { margin: 10px; width: 216px; height: 120px; background: #dddddd; }
+            .wrapper_cover_article img { position: absolute; top: 30px; left: 0; margin: 10px; max-width: 216px; max-height: 120px; background: #dddddd; }
+            .wrapper_cover_article_top { margin: 10px; }
+            .wrapper_cover_article_title { margin: 10px; }
+            .wrapper_cover_article_blog { margin: 10px; }
+          .wrapper_cover_article.small { position: relative; }
+            .wrapper_cover_article_grey.small { position: relative; top: 0; left: 170px; margin: 10px; width: 80px; height: 80px; background: #dddddd; }
+            .wrapper_cover_article.small img { position: absolute; top: 0; left: 170px; margin: 10px; max-width: 80px; max-height: 80px; background: #dddddd; }
+            .wrapper_cover_article_title.small { position: absolute; top: 0; left: 0; width: 160px; }
+            .wrapper_cover_article_remove.small { position: absolute; top: 0; right: 0; line-height: 10px; width: 10px; background: #ce5353; color: #ffffff; text-align: center; cursor: pointer; font-weight: bold; }
+            .wrapper_cover_article_remove.small:hover { background: #b62929; }
+          .wrapper_cover_article.on { -moz-box-shadow:0 0 2px #1d97dd; -webkit-box-shadow:0 0 2px #1d97dd; box-shadow:0 0 5px #1d97dd; }
+          .wrapper_cover_add { margin: 20px 0 20px 0; width: 270px; cursor: pointer; text-align: center; color: #666666; }
+          .wrapper_cover_add:hover { text-decoration: underline; }
+          .wrapper_cover_btn { margin: 0 0 20px 0; width: 270px; }
+        .wrapper_content { float: left; margin-left: 30px; padding: 20px; width: 540px; border: 1px solid #cccccc; background: #fcfcfc; }
+      #imageId img { width: 150px; }

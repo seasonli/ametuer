@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>LinkedIn</title>
+  <style>
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, select, option, input, textarea, button{ margin:0; padding:0; outline:0; border:0; font-family:inherit; font-size:100%; font-style:inherit; font-weight:inherit; font-weight:normal; background-color:transparent; font-family: Arial, Microsoft JhengHei, Microsoft YaHei; }
+    body { background: #eeeeee; font-size: 14px; color: #333333; line-height: 20px; }
+    li, ul { list-style-type:none; }
+    p { display: block; margin: 7px 0; }
+    img { vertical-align: sub; }
+    .clear { clear: both; width: 0; height: 0; }
+    .layout-666 { color: #666666; }
+    .wrapper { margin: 15px 3% 30px 3%; -moz-box-shadow: 0 0 3px #bbbbbb; -webkit-box-shadow: 0 0 3px #bbbbbb; box-shadow: 0 0 3px #bbbbbb; }
+      .cards { }
+        .cards_card { position: relative; padding: 7px 0; border-bottom: 1px solid #e3e3e3; background: #ffffff; }
+          .cards_card_icon.left { position: relative; float: left; padding: 0 2% 0 4%; width: 20%; }
+          .cards_card_icon.right { float: left; padding: 0 4% 0 2%; width: 68%; }
+  </style>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper">
+    <ul class="cards">
+      { each answer[0].company as val i }
+        <li class="cards_card" onClick="window.location.href='{ val.url }'">
+          <div class="cards_card_icon left">
+            <p><img src="{ val.picture_url }" /></p>
+          </div> 
+          <div class="cards_card_icon right">
+            <p>{ val.name }</p>
+            <p><span class="layout-666">{ val.industry }</span></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"session_id":"public.linkedin@d963b854d095dce571fde6394b800746","location":{"street":"武东路","province":"上海市","lng":121.49982640557423,"streetNumber":"undefined","sublocality":"杨浦区","lat":31.308912471391192,"city":"上海市","country":"中国"},"status":"success","task":"public.linkedin","query":"software","remote_ip":"58.247.4.206","answer":[{"valid":true,"more_url":"https://touch.www.linkedin.com/#search/people/software","company":[{"name":"Kapuca Software","industry":"Computer Software ","picture_url":"http://m.c.lnkd.licdn.com/mpr/mpr/p/5/000/1dd/0d3/0eb9668.png","url":"https://www.linkedin.com/company/2603960"},{"name":"Pabrica Software Ltd","industry":"Internet ","picture_url":"http://m.c.lnkd.licdn.com/mpr/mpr/p/7/005/00a/0d9/0b705d7.png","url":"https://www.linkedin.com/company/3301452"},{"name":"MGNN","industry":"Computer Software ","picture_url":"http://m.c.lnkd.licdn.com/mpr/mpr/p/6/000/24a/336/0a50832.png","url":"https://www.linkedin.com/company/3029602"},{"name":"Mainstream Development","industry":"Information Technology & Services ","picture_url":"http://m.c.lnkd.licdn.com/mpr/mpr/p/6/000/1f9/0fc/03d4c48.png","url":"https://www.linkedin.com/company/2924111"},{"name":"E-BCR","industry":"Management Consulting ","picture_url":"http://m.c.lnkd.licdn.com/mpr/mpr/p/4/000/161/215/23b9ed2.png","url":"https://www.linkedin.com/company/2581400"},{"name":"Cezanne Software","industry":"Computer Software ","picture_url":"http://m.c.lnkd.licdn.com/mpr/mpr/p/4/000/166/24b/2dc19c4.png","url":"https://www.linkedin.com/company/35864"},{"name":"MIE Solutions","industry":"Information Technology & Services ","picture_url":"http://m.c.lnkd.licdn.com/mpr/mpr/p/3/000/0ab/25e/1cb750f.png","url":"https://www.linkedin.com/company/271139"}],"type":"company"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"人脉","version":"undefined","msg_id":"2fa7f1d5-3e46-4190-a7aa-6de179ec8954","user_id":"oPWeJuOB8rLJHqBCZQXeJcZvaQug","query_type":"text"};
+    $(".wrapper").html(template.render("wrapper", response));
+  </script>
+</body>
+</html>

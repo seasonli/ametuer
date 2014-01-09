@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" >
+  <style>
+    img {
+      display: block; 
+    }
+    .swipe {
+      overflow: hidden;
+      visibility: hidden;
+      position: relative;
+    }
+    .swipe-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .swipe-wrap > div {
+      position: relative;
+      float: left;
+      width: 100%;
+      text-align: center;
+    }
+    .swipe-wrap > div > p {
+      line-height: 32px; font-size: 24px; color: #ffffff; font-weight: bold; text-shadow: 1px 1px 0 #333333; 
+    }
+  </style>
+  <script src="js/swipe.js"></script>
+</head>
+
+
+<body>
+  <ul class="cards">
+    <li id="showArea" class="cards_card" style="background: url(img/intro.jpg) no-repeat; background-size: 100% 100%">
+      <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/intro-title.png" style="margin: 30px auto 0 auto; width: 70%; max-width: 270px" />
+      <div style="margin: 30px auto 0 auto; color: #ffffff; font-size: 18px; font-weight: bold; text-align: center; text-shadow: 1px 1px 0 #333333">出门问问无处不在 问问你就知道！</div>
+      <div style="margin: -10px auto 0 auto">
+        <div id='slider' class='swipe'>
+          <div class='swipe-wrap'>
+            <div>
+              <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png" style="margin: 50px auto 30px auto; width: 40%; max-width: 150px" />
+              <p>出门问问 安卓版</p>
+              <p onClick="window.location.href='http://res.mobvoi.com/apk/chumenwenwen.apk'">点击下载</p>
+            </div>
+            <div>
+              <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/intro-wechat.png" style="margin: 50px auto 30px auto; width: 40%; max-width: 150px" />
+              <p>微信扫描二维码</p>
+              <p>或</p>
+              <p>搜索出门问问</p>
+            </div>
+            <div>
+              <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/intro-yixin.png" style="margin: 50px auto 30px auto;; width: 40%; max-width: 150px"/>
+              <p>易信扫描二维码</p>
+              <p>或</p>
+              <p>搜索出门问问</p>
+            </div>
+            <div>
+              <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/intro-weibo.png" style="margin: 50px auto 30px auto; width: 40%; max-width: 150px" />
+              <p>关注 出门问问 新浪微博</p>
+              <p>私信出门问问主页菌</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <script>
+    document.getElementById("showArea").style.height = document.documentElement.clientHeight + "px";
+    new Swipe(document.getElementById('slider'), {speed: 400, auto: 3000, continuous: true, disableScroll: false, stopPropagation: true});
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, input, textarea { margin:0; padding:0; outline:0; border:0; font-family:inherit; font-size:100%; font-style:inherit; font-weight:inherit; font-weight:normal; background-color:inherit; }
+
+body{color:#333;font-family:arial;word-wrap:break-word;} 
+
+.f-grey { color:#666; }
+
+a {text-decoration:none;color:#3377aa;} a:hover{text-decoration:none;background-color:#3377aa;color:#fff}
+.click-underline {color:#666;cursor:pointer;} .click-underline:hover {text-decoration:underline}
+
+/**************************************** form ****************************************/
+input { background:#fff url(point-ffffff.png); }
+textarea { padding:5px; border:1px solid #ccc; background:#fff url(point-w.png); font-size:12px; overflow:hidden; resize:none; }
+
+input[type="button"] { width:80px; line-height:28px; height:28px; cursor:pointer; border:0; color:#666; } 
+	input[type="button"].little { line-height:18px; height:18px; width:60px; } 
+	input[type="button"].green { background:url(point-5ca176.png); color:#fff; } input[type="button"].green:hover { color:#eee; }
+input[type="submit"] { width:80px; line-height:28px; height:28px; cursor:pointer; border:0; color:#666; } 
+	input[type="submit"].little { line-height:18px; height:18px; width:60px; } 
+	input[type="submit"].green { background:url(point-5ca176.png); color:#fff; } 
+	input[type="submit"].green:hover { color:#eee; }
+label { border:1px solid #ccc; } label:hover { border:1px solid #999; } 
+
+input[type="text"] { padding:0 5px; line-height:28px; height:28px; border:1px solid #ccc; background-color:#fff; } input[type="text"].little { line-height:18px; height:18px; }
+input[type="password"] { padding:0px 5px; line-height:28px; height:28px; border:1px solid #ccc; background-color:#fff; } input[type="password"].little { line-height:18px; height:18px; }
+input[type="file"] { padding:0 5px; line-height:30px; height:30px; border:1px solid #ccc; background-color:#fff; } input[type="file"].little{ line-height:20px; height:20px; }
+
+/**************************************** general ****************************************/
+.title { margin:20px 5px 5px 5px; color:#b81c1c; }
+.tail { margin:10px 5px 5px 5px; color:#4e8864; } .tail a { color:#4e8864; } .tail a:hover { background:#4e8864; color:#fff; }
+/**************************************** location ****************************************/
+#m_a_outer { position:relative; width:100%; } #m_a_outer a { color:#fff; background:inherit; }
+	#m_a_outer div { background:#4e8864; color:#fff; }
+	#m_a_outer div img { width:60px; margin:10px 0 10px 5px; }				
+#m_d_outer { position:relative; width:100%; }
+	.go { margin:10px 0 0 0; padding:0 5px; }
+		.go_title { }
+		.go_spots { color:#666; }
+		.go_start { color:#666; }
+		.go_text { margin:10px 0 30px 0; } .onego_text .on { background:#84c2b7; }
+		.go_replies {  }
+			.go_reply { margin:20px 0 0 0; }
+				.go_reply_name { background:#f0f6f3; }
+				.go_reply_text { }
+#m_z_outer { position:relative; width:100%; }
+	#m_z_outer div { margin:30px 0 0 0; padding:5px; border-top:1px solid #ccc; color:#666; }
+			

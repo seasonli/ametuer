@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>查团购 出门问问</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.urlPrefix.m.mobvoi.com.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.1.01.js"></script>
+</head>
+
+
+<body>
+  <div class="necker">
+    <div class="option">
+      <div class="option_catalog">
+        <ul class="option_catalog_title">展开分类</ul>
+        <ul class="option_catalog_list" style="z-index: 10">
+          <li>美食
+            <ul>
+              <li>美食</li>
+              <li>自助餐</li>
+              <li>西餐</li>
+              <li>火锅</li>
+              <li>日韩料理</li>
+              <li>蛋糕甜点</li>
+              <li>烧烤</li>
+              <li>川湘菜</li>
+              <li>江浙菜</li>
+              <li>粤菜</li>
+              <li>西北菜</li>
+              <li>东北菜</li>
+              <li>台湾菜</li>
+              <li>清真菜</li>
+              <li>海鲜</li>
+              <li>小吃快餐</li>
+              <li>咖啡</li>
+            </ul>
+          </li>
+          <li>酒店
+            <ul>
+              <li>酒店</li>
+              <li>经济型酒店</li>
+              <li>豪华酒店</li>
+            </ul>
+          </li>
+          <li>休闲娱乐
+            <ul>
+              <li>KTV</li>
+              <li>温泉</li>
+              <li>西餐</li>
+              <li>旅游</li>
+              <li>健身</li>
+              <li>足疗</li>
+              <li>按摩</li>
+              <li>桌游</li>
+              <li>电玩</li>
+              <li>密室逃脱</li>
+              <li>真人CS</li>
+            </ul>
+          </li>
+          <li>生活服务
+            <ul>
+              <li>摄影冲印</li>
+              <li>汽车</li>
+              <li>保健</li>
+              <li>眼镜</li>
+              <li>亲子</li>
+            </ul>
+          </li>
+          <li>丽人
+            <ul>
+              <li>美发</li>
+              <li>美甲</li>
+              <li>美容</li>
+              <li>瑜伽</li>
+              <li>舞蹈</li>
+            </ul>
+          </li>
+          <li>旅游
+            <ul>
+              <li>国内游</li>
+              <li>自助餐</li>
+              <li>境外游</li>
+              <li>景点</li>
+              <li>周边游</li>
+            </ul>
+          </li>
+          <li>购物
+            <ul>
+              <li>家居日用</li>
+              <li>食品</li>
+              <li>化妆品</li>
+              <li>数码家电</li>
+              <li>母婴</li>
+              <li>服装鞋帽</li>
+              <li>户外用品</li>
+              <li>图书</li>
+              <li>首饰</li>
+              <li>本地购物</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="option_search">
+        <input type="text" placeholder="在团购中找" />
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_groupon_result">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">为您搜索到 { each params as val idx } “{ val.value }” { /each } “团购”</span></p>
+          <p><span id="total" class="layout-999"> 条结果</span></p>
+        </div>
+      </li>
+    </ul>
+  </script>
+
+  <script type="text/html" id="wrapper_groupon">
+    <ul class="cards">
+      { each answer as val idx }
+        <li class="cards_card" onClick="window.location.href='{ val.detail_url }'">
+          <div class="cards_card_img left">
+            <img class="cards_card_img_flag" src="http://onebox.oss.aliyuncs.com/img/h5-flag-{ if val.source == "美团网"}meituan{else if val.source == "大众点评网"}dianping{else if val.source == "拉手网"}lashou{/if}-50x50.png" style="width: 50px" />
+            <p>
+              <img class="layout-block" src="{ val.pic_url }" />
+              <span class="layout-center layout-block layout-tblack layout-fff">{ val.sales_num }人</span>
+            </p>   
+          </div> 
+          <div class="cards_card_img right">
+            <p><span class="">{ val.seller }</span></p>
+            <p><span class="layout-999">{ val.deal_title }</span></p>
+            <p><span class="layout-orange layout-19px">￥{ val.discount }</span> <span class="layout-delete layout-999">￥{ val.price }</span> <span class="layout-999 layout-fright">{ if val.distance > 5000 }> 5{ else if val.distance <= 5000 }{ val.distance }{ /if } 米</span></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"session_id":"public.groupcoupon@2e43a76e2f154623f03ccabfb340d4f8","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.groupcoupon","query":"附近旅游团购","remote_ip":"58.247.4.206","answer":[{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/4611670.html","lng":121.47744482593892,"deal_category_2":"国内游","seller":"杭州西溪国家湿地公园","deal_title":"门票套票1张。观赏质朴的自然景观，体验深厚的文化积淀","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__6057694__2047041.jpg","city":"上海","discount":98,"sales_num":227,"distance":699,"price":145,"source":"美团网","end_time":1386604800000,"address":"黄浦区威海路12弄2号2楼","coupon_start_time":1386604800000,"name":"西溪国家湿地公园西区套票","start_time":1386604800000,"lat":31.2344803978637,"coupon_end_time":1386604800000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/4778204.html","lng":121.48046750807536,"deal_category_2":"国内游","seller":"西塘/无锡一日游","deal_title":"西塘/无锡一日游2选1，体验江南风情","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__7185303__9052563.jpg","city":"上海","discount":58,"sales_num":148,"distance":455,"price":208,"source":"美团网","end_time":1395936000000,"address":"杨浦区锦西路90号","coupon_start_time":1395936000000,"name":"西塘/无锡一日游2选1","start_time":1395936000000,"lat":31.236068537895978,"coupon_end_time":1395936000000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/2583279.html","lng":121.48060957078437,"deal_category_2":"国内游","seller":"西塘古镇/无锡一日游","deal_title":"西塘古镇一日游/无锡一日游2选1","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__8746280__4469491.jpg","city":"上海","discount":48,"sales_num":128,"distance":822,"price":188,"source":"美团网","end_time":1385481600000,"address":"浦东新区云山路1255号","coupon_start_time":1385481600000,"name":"西塘古镇/无锡一日游","start_time":1385481600000,"lat":31.240780728406047,"coupon_end_time":1385481600000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/2338424.html","lng":121.48007908827762,"deal_category_2":"国内游","seller":"上海一日游","deal_title":"上海一日游，无限畅玩体验","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__5559080__9150657.jpg","city":"上海","discount":118,"sales_num":97,"distance":828,"price":328,"source":"美团网","end_time":1394035200000,"address":"闸北区中山北路900号201室","coupon_start_time":1394035200000,"name":"手拉手旅行社上海一日游","start_time":1394035200000,"lat":31.240562618303215,"coupon_end_time":1394035200000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/1360380.html","lng":121.48046750807536,"deal_category_2":"国内游","seller":"苏州狮子林一日游","deal_title":"苏州狮子林一日游，中国四大园林之一","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p1.meituan.net-275.168-deal-__7185124__8403736.jpg","city":"上海","discount":28,"sales_num":86,"distance":455,"price":218,"source":"美团网","end_time":1395676800000,"address":"杨浦区锦西路90号","coupon_start_time":1395676800000,"name":"苏州狮子林一日游","start_time":1395676800000,"lat":31.236068537895978,"coupon_end_time":1395676800000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/5913717.html","lng":121.48007908827762,"deal_category_2":"国内游","seller":"西塘一日游","deal_title":"西塘一日游，体验江南水乡的魅力","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__9199263__8700765.jpg","city":"上海","discount":78,"sales_num":74,"distance":828,"price":180,"source":"美团网","end_time":1388419200000,"address":"闸北区中山北路900号201室","coupon_start_time":1388419200000,"name":"西塘一日游","start_time":1388419200000,"lat":31.240562618303215,"coupon_end_time":1388419200000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/5974146.html","lng":121.4816758980322,"deal_category_2":"景点","seller":"浪漫浦江游船票","deal_title":"游船票1张，快乐出游一起来","deal_category_1":"休闲娱乐","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p1.meituan.net-275.168-deal-__19632662__9800289.jpg","city":"上海","discount":85,"sales_num":56,"distance":652,"price":128,"source":"美团网","end_time":1388419200000,"address":"浦东新区张杨路642号（近崂山路）","coupon_start_time":1388419200000,"name":"浪漫浦江游船票","start_time":1388419200000,"lat":31.239536139916996,"coupon_end_time":1388419200000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/8317703.html","lng":121.48007908827762,"deal_category_2":"国内游","seller":"无锡太湖一日游","deal_title":"无锡太湖一日游，体验三国的魅力","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__9199263__4563659.jpg","city":"上海","discount":49,"sales_num":41,"distance":828,"price":180,"source":"美团网","end_time":1388419200000,"address":"闸北区中山北路900号201室","coupon_start_time":1388419200000,"name":"无锡太湖一日游","start_time":1388419200000,"lat":31.240562618303215,"coupon_end_time":1388419200000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/deal/2888398.html","lng":121.4816758980322,"deal_category_2":"国内游","seller":"上海一日游套票","deal_title":"上海一日游套票（内含都市观光车一日票），线路任选，3天有效","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__18169001__7544468.jpg","city":"上海","discount":165,"sales_num":34,"distance":652,"price":180,"source":"美团网","end_time":1388419200000,"address":"浦东新区陆家嘴环路1416号（味千拉面门口）","coupon_start_time":1388419200000,"name":"上海一日游套票","start_time":1388419200000,"lat":31.239536139916996,"coupon_end_time":1388419200000},{"detail_url":"http://dpurl.cn/p/is1s7Vx1Oh","lng":121.4820358906505,"deal_category_2":"游乐游艺","seller":"四季百果园","deal_title":"仅售130元,最高价值380元亲子旅游游一游景点4选1!0店通用!趁万物绽放时,带上宝宝出游吧!让他感受生命的美好!","deal_category_1":"景点郊游","pic_url":"http://t3.dpfile.com/tuan/20130609/243080_130152491930000000.jpg","city":"上海","discount":130,"sales_num":26,"distance":412,"price":380,"source":"大众点评网","end_time":1388246400000,"address":"朱家角镇盛家埭叶荡村369号","coupon_start_time":1388246400000,"name":"亲子旅游游一游景点4选1","start_time":1388246400000,"lat":31.237171649256428,"coupon_end_time":1388246400000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/4337321.html","lng":121.48060957078437,"deal_category_2":"国内游","seller":"苏杭2日游","deal_title":"苏杭2日游，10月1日至3日需另付120元，每日发团","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p1.meituan.net-275.168-deal-__15141595__8475654.jpg","city":"上海","discount":78,"sales_num":23,"distance":822,"price":388,"source":"美团网","end_time":1385308800000,"address":"浦东新区云山路1255号","coupon_start_time":1385308800000,"name":"苏杭2日游","start_time":1385308800000,"lat":31.240780728406047,"coupon_end_time":1385308800000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/7307320.html","lng":121.48464497535046,"deal_category_2":"景点","seller":"浦江夜游","deal_title":"龙船票1张，身未动心已远，不负好河山","deal_category_1":"休闲娱乐","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__24895909__3314008.jpg","city":"上海","discount":82,"sales_num":17,"distance":823,"price":128,"source":"美团网","end_time":1388419200000,"address":"黄浦区浙江中路379号418室","coupon_start_time":1388419200000,"name":"浦江夜游龙船票","start_time":1388419200000,"lat":31.24170898721909,"coupon_end_time":1388419200000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/7355009.html","lng":121.48635357538008,"deal_category_2":"国内游","seller":"上海一日游","deal_title":"上海一日游，带上好心情，出发吧","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__21715025__1001725.jpg","city":"上海","discount":128,"sales_num":16,"distance":775,"price":320,"source":"美团网","end_time":1410192000000,"address":"黄浦区南京路第一百货门口（西藏中路南京路路口）","coupon_start_time":1410192000000,"name":"上海一日游","start_time":1410192000000,"lat":31.241151066319865,"coupon_end_time":1410192000000},{"detail_url":"http://dpurl.cn/p/7B704S3l9p","lng":121.48074929466453,"deal_category_2":"景点郊游","seller":"麦吉柯魔术主题馆(正大店)","deal_title":"仅售130元,最高价值320元学一学项目2选1!0店通用!趁万物绽放之时,给你的宝宝一段奇妙的思想!","deal_category_1":"游乐游艺","pic_url":"http://t2.dpfile.com/tuan/20130609/242844_130152495710000000.jpg","city":"上海","discount":130,"sales_num":14,"distance":793,"price":320,"source":"大众点评网","end_time":1388332800000,"address":"陆家嘴西路168号正大广场6楼","coupon_start_time":1388332800000,"name":"亲子旅游学一学项目2选1","start_time":1388332800000,"lat":31.24054515300808,"coupon_end_time":1388332800000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/9131812.html","lng":121.4820358906505,"deal_category_2":"景点","seller":"上海城市规划展示馆门票","deal_title":"门票1张，快乐出游一起来","deal_category_1":"休闲娱乐","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__23283503__6921103.jpg","city":"上海","discount":25,"sales_num":5,"distance":412,"price":30,"source":"美团网","end_time":1388160000000,"address":"浦东新区杨高南路5678弄B13栋4楼","coupon_start_time":1388160000000,"name":"上海城市规划展示馆门票","start_time":1388160000000,"lat":31.237171649256428,"coupon_end_time":1388160000000},{"detail_url":"http://dpurl.cn/p/mLX341XAPs","lng":121.48332183918497,"deal_category_2":"","seller":"大通旅游(形象店分部)","deal_title":"仅售899元,价值1648元无锡灵山大佛宜兴凯宾斯基大酒店双人自驾2日自由行!节假日通用!春光明媚的日子里,带上洋溢的好心情,一起去踏青吧!","deal_category_1":"旅游","pic_url":"http://t2.dpfile.com/tuan/20130409/187209_130099771620000000.jpg","city":"上海","discount":899,"sales_num":4,"distance":358,"price":1648,"source":"大众点评网","end_time":1389888000000,"address":"西藏中路196号","coupon_start_time":1389888000000,"name":"无锡灵山大佛凯宾斯基大酒店自驾2日自由行","start_time":1389888000000,"lat":31.237278473070027,"coupon_end_time":1389888000000},{"detail_url":"http://dpurl.cn/p/3xCCvdaV40","lng":121.483783918423,"deal_category_2":"","seller":"巴士国旅(浦东南路分部)","deal_title":"仅售198元,价值260元常州嬉戏谷跟团一日游!每周六发班!丰富娱乐设施,刺激惊险的游乐项目,让你一天玩不够!","deal_category_1":"景点郊游","pic_url":"http://t2.s1.dpfile.com/pc/mc/4b0d97aa3a7a41312aaac6091ed4a505(450x280)/thumb.jpg","city":"上海","discount":198,"sales_num":2,"distance":379,"price":260,"source":"大众点评网","end_time":1388332800000,"address":"浦东南路587号","coupon_start_time":1388332800000,"name":"常州嬉戏谷跟团一日游","start_time":1388332800000,"lat":31.237605271121424,"coupon_end_time":1388332800000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/7167858.html","lng":121.4861100853236,"deal_category_2":"国内游","seller":"上海商悦青年会大酒店双人自由行","deal_title":"商悦酒店+浦江游or沙特、意大利馆门票","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__22482890__8012182.jpg","city":"上海","discount":599,"sales_num":0,"distance":176,"price":1736,"source":"美团网","end_time":1385740800000,"address":"浦东新区峨山路91弄陆家嘴软件园2号楼601室","coupon_start_time":1385740800000,"name":"飞票网上海双人自由行","start_time":1385740800000,"lat":31.23319426589552,"coupon_end_time":1385740800000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/1603145.html","lng":121.4820358906505,"deal_category_2":"景点","seller":"上海城市规划展示馆门票+上海科技馆门票","deal_title":"【网上预约】规划展示馆门票+上海科技馆门票","deal_category_1":"休闲娱乐","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p0.meituan.net-275.168-deal-__23283213__2138995.jpg","city":"上海","discount":79,"sales_num":0,"distance":412,"price":90,"source":"美团网","end_time":1388160000000,"address":"浦东新区杨高南路5678弄B13栋4楼","coupon_start_time":1388160000000,"name":"城市规划馆票+科技馆门票","start_time":1388160000000,"lat":31.237171649256428,"coupon_end_time":1388160000000},{"detail_url":"http://m.lashou.com/detail.php?id=7795373&union_pid=562505663&union_sign=56","lng":121.485018,"deal_category_2":"国内游","seller":"佳速旅行社","deal_title":"仅售988元，市场价1876元的三亚湾假日度假酒店浪漫双人自由行，【三亚三亚湾】2天1晚\u201c畅想假日、一价全包\u201d！三亚湾假日度假酒店入住1晚+24小时餐饮免费畅吃+spa按摩+机场接送机等！带着爱人来三亚体验浪漫之旅吧！","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/lashou/s1.lashouimg.com-zt-2013-10-12-si_138156228597402.jpg","city":"上海","discount":988,"sales_num":0,"distance":608,"price":1876,"source":"拉手网","end_time":1383148800000,"address":"上海市卢湾区普安路189号曙光大厦26楼D1座","coupon_start_time":1383148800000,"name":"三亚湾假日度假酒店：浪漫双人自由行，免费机场接送","start_time":1383148800000,"lat":31.228848,"coupon_end_time":1383148800000},{"detail_url":"http://m.lashou.com/detail.php?id=7795650&union_pid=562505663&union_sign=56","lng":121.485018,"deal_category_2":"周边游","seller":"佳速旅行社","deal_title":"仅售1168元，市场价6376元的蜈支洲双人2天1晚自助游，含：蜈支洲双人2天1晚自助游，入住蜈支洲岛珊瑚酒店自助早餐+每日下午餐点一次+每晚夜床点心+欢迎水果+儿童乐园！","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/lashou/s1.lashouimg.com-zt-2013-10-12-si_138156804459712.jpg","city":"上海","discount":1168,"sales_num":0,"distance":608,"price":6376,"source":"拉手网","end_time":1383148800000,"address":"上海市卢湾区普安路189号曙光大厦26楼D1座","coupon_start_time":1383148800000,"name":"蜈支洲：双人2天1晚自助游","start_time":1383148800000,"lat":31.228848,"coupon_end_time":1383148800000},{"detail_url":"http://m.lashou.com/detail.php?id=7795070&union_pid=562505663&union_sign=56","lng":121.485018,"deal_category_2":"国内游","seller":"佳速旅行社","deal_title":"仅售888元，市场价2900元的三亚半山半岛度假4人行，节假日通用，三亚半山半岛度假酒店高级海景双卧套房＋每日4成人加1儿童自助早餐＋健身房、PSP游戏室、户外泳池、儿童乐园、沙滩＋赠送2条海南特色礼品！","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/lashou/s1.lashouimg.com-zt-2013-10-10-si_138139963248402.jpg","city":"上海","discount":888,"sales_num":0,"distance":608,"price":2900,"source":"拉手网","end_time":1383148800000,"address":"上海市卢湾区普安路189号曙光大厦26楼D1座","coupon_start_time":1383148800000,"name":"三亚半山半岛度假：4人行，节假日通用","start_time":1383148800000,"lat":31.228848,"coupon_end_time":1383148800000},{"detail_url":"http://m.lashou.com/detail.php?id=7794297&union_pid=562505663&union_sign=56","lng":121.485018,"deal_category_2":"国内游","seller":"佳速旅行社","deal_title":"仅售980元，市场价3880元的玩转五指山套票1份，节假日通用，五指山亚泰雨林度假酒店雨林豪华别墅房1晚+2张五指山保护区门票+精美自助早餐+欢迎果盘+晚安牛奶、点心+2选1（赠送300元餐饮代金券/间/晚） ","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/lashou/s1.lashouimg.com-zt-2013-10-12-si_138156220218199.jpg","city":"上海","discount":980,"sales_num":0,"distance":608,"price":3880,"source":"拉手网","end_time":1388332800000,"address":"上海市卢湾区普安路189号曙光大厦26楼D1座","coupon_start_time":1388332800000,"name":"玩转五指山：套票1份，节假日通用","start_time":1388332800000,"lat":31.228848,"coupon_end_time":1388332800000},{"detail_url":"http://m.lashou.com/detail.php?id=7613940&union_pid=562505663&union_sign=56","lng":121.491194,"deal_category_2":"周边游","seller":"上海得嘉文化传媒中心","deal_title":"仅售98元，市场价120元的新富春山居游1人次，节假日通用，含画舫畅游富春江1次+新沙岛景区门票1张+竹筏漂流1次+环岛观光，参观新沙岛自然风光，体验纯朴农家生活！","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/lashou/s1.lashouimg.com-zt-201307-01-137267012777066900.jpg","city":"上海","discount":98,"sales_num":0,"distance":685,"price":120,"source":"拉手网","end_time":1398268800000,"address":"上海市黄浦区延安东路274号7楼","coupon_start_time":1398268800000,"name":"新富春山居游：1人次，节假日通用","start_time":1398268800000,"lat":31.237133,"coupon_end_time":1398268800000},{"detail_url":"http://r.union.meituan.com/url/visit/?a=1&key=9CK8wMXy2H5BQR4dpcqON6sxAZe0PUij&url=http://m.meituan.com/shanghai/deal/6430708.html","lng":121.48060957078437,"deal_category_2":"国内游","seller":"黄浦江源第一漂流","deal_title":"黄浦江源第一漂流+安吉中南百草原自由行","deal_category_1":"旅游","pic_url":"http://mobvoi-one-box.oss.aliyuncs.com/meituan/p1.meituan.net-275.168-deal-__12824994__5059040.jpg","city":"上海","discount":478,"sales_num":0,"distance":822,"price":1280,"source":"美团网","end_time":1383148800000,"address":"浦东新区云山路1255号","coupon_start_time":1383148800000,"name":"漂流+百草原自由行","start_time":1383148800000,"lat":31.240780728406047,"coupon_end_time":1383148800000}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"旅游景点","keyname":"类别","key":"category"}],"taskName":"找团购","highlight_query":"附近旅游团购","version":"undefined","page":{"total":100,"start":0,"length":25},"msg_id":"0bf588b4-9a07-492e-b781-7821ece1584e","user_id":"undefined","query_type":"text"};
+    $(".wrapper").html(template.render("wrapper_groupon_result", response));
+    $(".wrapper").append(template.render("wrapper_groupon", response));
+    $("#total").prepend(response.answer.length);
+    // Share in Wechat
+    (function () {
+      var dataForWechat = {
+        appId: "",
+        fakeid: "",
+        title: "查团购 出门问问",
+        desc: "我在出门问问找到了团购",
+        MsgImg: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png",
+        TLImg: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png",
+        url: window.location.href,
+      };
+      var shareInWechat = function () {
+        WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+          WeixinJSBridge.invoke('sendAppMessage', {
+            "appid": dataForWechat.appId,
+            "title": dataForWechat.title,
+            "desc": dataForWechat.desc,
+            "img_url": dataForWechat.MsgImg,
+            "img_width": "",
+            "img_height": "",
+            "link": dataForWechat.url,          
+          });
+        });
+        WeixinJSBridge.on('menu:share:timeline', function (argv) {
+          WeixinJSBridge.invoke('shareTimeline', {
+            "appid": dataForWechat.appId,
+            "title": dataForWechat.title,
+            "desc": "",
+            "img_url": dataForWechat.TLImg,
+            "img_width": "",
+            "img_height": "",
+            "link": dataForWechat.url,        
+          });
+        });
+      };
+      if (document.addEventListener) {
+        document.addEventListener('WeixinJSBridgeReady', shareInWechat, false);
+      } else if (document.attachEvent) {
+        document.attachEvent('WeixinJSBridgeReady', shareInWechat);
+        document.attachEvent('onWeixinJSBridgeReady', shareInWechat);
+      }
+    }) ();
+
+    $(window).scroll(function () {
+      if (response.page.start + response.page.length >= response.page.total) {
+        return;
+      }
+      else if ($(document).height() == $(window).height() + $(window).scrollTop()) {
+        document.documentElement.scrollTop = document.documentElement.scrollTop - 1; // prevent from loading twice
+        document.body.scrollTop = document.body.scrollTop - 1; // prevent from loading twice
+        $.ajax({
+          async: false,
+          type: "GET",
+          url: urlPrefix + "/search/page/groupcoupon?output=json&session_id=" + response.session_id + "&start=" + (response.page.start + response.page.length) + "&length=" + response.page.length,
+          dataType: "json",
+          success: function(rawData) {
+            response = rawData;
+            $(".wrapper").append(template.render("wrapper_groupon", response));
+          },
+        })
+      }
+    })
+    $(".option_catalog_title").click(function () {
+      $("body").prepend("<div class='alert' onClick='$(this).remove(); $(\".option_catalog_list\").hide()' style='display: block; background: transparent'></div>"); 
+      $(".option_catalog_list").show();
+      $(".option_catalog_list > li").click(function() {
+        $(".option_catalog_list > li").css("background-color", "#f3f3f3");
+      });
+    });
+    $(".option_search input").keyup(function (e) {
+      if($.trim($(this).val()) != "" && e.keyCode == "13") {
+        window.location.href = urlPrefix + "/search/pc/groupcoupon?task=public.groupcoupon&output=html_page&appkey=" + response.appkey + "&user_id=" + response.user_id + "&msg_id=" + response.msg_id + "&address=" + response.location.province + "," + response.location.province + "," + response.location.city + "," + response.location.sublocality + "," + response.location.street + "," + response.location.streetNumber + "," + response.location.lat + "," + response.location.lng + "," + "&category=" + $.trim($(this).val());
+      }
+    })
+  </script>
+</body>
+</html>
+

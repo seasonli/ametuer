@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <title>出门问问 - 旅游攻略</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/wechat/css/h5-layout.1.02.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/zepto.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/template.syntax.1.0.min.js"></script>
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/h5.js"></script>
+</head>
+
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_travelguide">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">为您搜索到 “{ query }”</span></p>
+          <p><span id="total" class="layout-999"> 条结果</span></p>
+        </div>
+      </li>
+    </ul>
+    <ul class="cards">
+      { each answer[0].content.data as val i }
+        <li class="cards_img" onClick="window.location.href='{ val.url }'">
+          <img src="{ val.image }" />
+        </li>    
+        <li class="cards_card" onClick="window.location.href='{ val.url }'">
+          <div class="cards_card_entire">
+            <p><span>{ val.summary.substr(0,40) }…</span></p>   
+          </div>
+          <div class="cards_card_double left layout-999">
+            <p><span>{ val.time }</span></p>   
+          </div>
+          <div class="cards_card_double right layout-999 layout-right">
+            <p><span>顶 { val.ding }</span></p>
+          </div>
+          <div class="clear"></div>
+        </li>
+      { /each }
+    </ul>
+  </script>
+
+  <script>
+    var response = {"session_id":"public.travelguide@b3a612e40814b54bdb04266b67b7a058","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.travelguide","query":"内蒙古游记","remote_ip":"58.247.4.206","answer":[{"content":{"mdd_image":"http://file4.mafengwo.net/M00/AD/F9/wKgBm04C9zbGnruFAAH6y4U94mI05.mdd.w600.jpeg","data":[{"summary":" 有谁想过，去锡林郭勒草原，一个周末能打一个来回？ 但是，我们做到了： 躺在如绸缎一样柔软的草原上，聆听草原那汩汩心跳的声响，抬头仰望白云从天上徐徐飘过。。。 推广一下 瞎鼓捣的新浪微博： http://weibo....","ding":992,"time":"2013-10-08 10:25:39","title":"来【克什克腾旗】实现属于夏天的憧憬，伏地聆听草原那汩汩的心跳","image":"http://file25.mafengwo.net/M00/DD/66/wKgB4lImviOARPyhAAtRwiwHqek78.groupinfo.w300.jpeg","url":"http://m.mafengwo.cn/i/2838639.html"},{"summary":" 从一个高的地方去远方 从低处回家 稍纵即逝的快乐 转动的车轮它载着我 偶然遇见月光倾泻的苍白色 彩色的路标 禁止通行的警告 天空之下 我们轻得像羽毛 双眼是盲目的最佳玩伴 还是选择了不选择的旅途 明媚的角落...","ding":1154,"time":"2013-09-19 21:20:04","title":"这个秋天，日光倾城--独自骑行内蒙的日子","image":"http://file4.mafengwo.net/M00/25/19/wKgBm04W6_W4f2sKAALKdBcc2L423.groupinfo.w300.jpeg","url":"http://m.mafengwo.cn/i/645750.html"},{"summary":" 每个人心中总有一处向往的地方 心有多远 路就有多远 打起背包 走 我们又在路上 我们都是旅行家 我们就是旅行的范儿 结伴一些陌生的行者 走在户外 摄在路上 洒脱每一天 \u2026\u2026. =前--言= 自2011年认识蚂蜂窝起 首贴...","ding":1004,"time":"2013-10-08 11:26:45","title":"【下一站包头】\u2014\u2014\u201c沙漠+黄河+草原\u201d结伴旅行记","image":"http://file20.mafengwo.net/M00/8E/CC/wKgB21AMqaqSwpgdAAq5o8cn27A46.groupinfo.w300.jpeg","url":"http://m.mafengwo.cn/i/945839.html"},{"summary":" 回来了，第一任务就是发帖了。看着文件夹里一千多张照片有点发怵，不过想来迟早都是死，晚死不如早死，索性早上7点就起床来干活。这个帖子就主要发花絮吧。9天的行程合并在一个帖子里，这样大家看起来会比较连贯...","ding":841,"time":"2013-08-23 10:09:12","title":"TT旅行第三季花絮","image":"http://file2.mafengwo.net/M00/7C/86/wKgBm04XQTrwkjUBAACtd2eQcAY00.groupinfo.w300.jpeg","url":"http://m.mafengwo.cn/i/647406.html"},{"summary":" 2013年6月10日至7月20日自驾行摄内蒙东部和黑龙江，开始10年自驾行摄中国的第四次出征。 第一次， 38天16800公里自驾行摄新疆 http://www.mafengwo.cn/i/798387.html 第二次， 56天13800公里自驾行摄云南 http:/...","ding":55,"time":"2013-10-07 23:25:20","title":"45天16500公里自驾行摄内蒙东部、黑龙江","image":"http://file20.mafengwo.net/M00/EC/32/wKgB3FIW6smAFECmAA1LJDaq66s53.groupinfo.w300.jpeg","url":"http://m.mafengwo.cn/i/1288724.html"}],"mdd_url":"http://m.mafengwo.cn/mdd/12720"},"status":"success","type":"note"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[{"value":"内蒙古","keyname":"目的地","key":"destination"},{"value":"游记","keyname":"类型","key":"type"}],"taskName":"旅游攻略","version":"undefined","msg_id":"bc54e7c6-62e7-4134-aad6-6e1a067532fb","user_id":"undefined","query_type":"text"};
+    $(".wrapper").html(template.render("wrapper_travelguide", response));
+    $("#total").prepend(response.answer[0].content.data.length)
+  </script>
+
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/wechat/js/wechatShare.js"></script>  
+</body>
+</html>
+

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title> 出门问问</title>
+  <link rel="stylesheet" href="../css/chumenwenwen.2.0.css" >
+  <script src="../js/chumenwenwen.3.0.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+  </div>
+
+  <script type="text/html" id="wrapper_eav_one">
+    <ul class="cards">
+      <li class="cards_card">
+        <div class="cards_card_entire">
+          <p><span class="layout-orange">{ body[0].children[0].title }</span></p>
+          <p><span class="layout-12px layout-666">{ body[0].children[0].content[0] }</span></p>
+          <p><span class="layout-12px layout-666">{ body[0].children[0].content[1] }</span></p>
+        </div>
+      </li>
+    </ul>
+  </script>
+
+  <script type="text/html" id="wrapper_special_one">
+    <ul class="cards">
+      <li class="cards_card">
+        <div class="cards_card_triple left">
+          <br/>
+          <p><span class="layout-666">{ body[0].content[5] } 今日</span></p>
+          <p><span class="{ if body[0].content[0] == "success" }layout-orange{ /if }">{ body[0].content[6] }</span></p>
+          <br/>
+          <p><span class="layout-22px layout-bold layout-666">{ body[0].title }</span></p>
+        </div>
+        <div class="cards_card_triple center layout-right">
+          <br/><br/>
+          <p><span class="layout-32px layout-bold layout-666">{ body[0].content[1] }°</span></p>
+          <p><span class="layout-18px layout-bold layout-999">{ body[0].content[2] }°</span></p>
+          <p><span>{ body[0].content[8] }</span></p>
+        </div>
+        <div class="cards_card_triple right layout-center">
+          <br/>
+          <p><img src="{ body[0].img_url }" style="width: 72px" /></p>   
+        </div>
+        <div class="clear"></div>
+        { each body as val i }
+          { if i != 0}
+            <div class="cards_card_five center layout-12px layout-666 layout-center">
+              <br/>
+              <p><span>{ val.content[5] }</span></p>
+              <p><span { if val.content[0] == "success" }class="layout-orange"{ /if }>{ val.content[6] }</span></p>
+              <p><img src="{ val.img_url }" style="width: 24px" /></p>
+              <p><span>{ val.content[1] }°</span></p>
+              <p><span class="layout-999">{ val.content[2] }°</span></p>
+            </div>
+          { /if }
+        { /each }
+        <div class="clear"></div>
+        <div class="cards_card_entire">
+          <p><span>今天较冷，建议着厚外套加毛衣等服装。年老体弱者宜着大衣、呢外套加羊毛衫。</span></p>
+          <p><span>紫外线指数</span><span class="layout-fright">最弱</span></p>
+          <p><span>紫外线指数</span><span class="layout-fright">最弱</span></p>
+          <p><span>紫外线指数</span><span class="layout-fright">最弱</span></p>
+          <p><span>紫外线指数</span><span class="layout-fright">最弱</span></p>
+          <p><span>紫外线指数</span><span class="layout-fright">最弱</span></p>
+        </div>
+      </li>
+    </ul>
+  </script>
+
+  <script>
+    var response = {"content":[{"direct":{"body":[{"content":[],"img_url":"","title":"","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[{"content":[""],"img_url":"","title":"抱歉！只能为您查到今天的PM2.5","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.weather@771146d54df35c14bb89683e82a19e2b","task":"public.weather","query":"明天空气质量","task_name":"查天气","appkey":"wechat_chumenwenwen","need_check_location":false,"params":[{"value":"明天","keyname":"时间","key":"time"}],"type":"eav_one","recommendation_query":[],"search_query":"","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"scrollview","more":{"show_number":0,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":1,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"28fe1e3e-82b4-4d62-9ba8-ae2ccb37ecb1","user_id":"undefined","query_type":"text","output":"app","is_show_header":true}},"status":"","relevant":[{"body":[{"content":["fail","13","19","东南风3-4级","多云","11-22","星期五","134","轻度污染","敏感人群症状易加剧，应尽量避免高强度户外锻炼，外出时做好防护措施。"],"img_url":"http://onebox.oss.aliyuncs.com/img/weather/cloudy_98_98.png","title":"上海","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["success","13","20","东南风3-4级","多云转小雨","11-23","星期六"],"img_url":"http://onebox.oss.aliyuncs.com/img/weather/cloudy_98_98.png","title":"上海","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["fail","8","17","东南风4-5级","中雨转阴","11-24","星期日"],"img_url":"http://onebox.oss.aliyuncs.com/img/weather/lightrain_48_48.png","title":"上海","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["fail","6","14","西北风4-5级","多云转晴","11-25","星期一"],"img_url":"http://onebox.oss.aliyuncs.com/img/weather/cloudy_98_98.png","title":"上海","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["fail","8","13","西风3-4级","多云","11-26","星期二"],"img_url":"http://onebox.oss.aliyuncs.com/img/weather/cloudy_98_98.png","title":"上海","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]},{"content":["fail","6","14","西北风3-4级","多云","11-27","星期三"],"img_url":"http://onebox.oss.aliyuncs.com/img/weather/cloudy_98_98.png","title":"上海","link_url":"","action":{"is_show":false,"phone":"","share":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"navigation":{"end_point":"","start_point":"","start":"","is_enable":false,"type":"驾车","coor_type":"BAIDU","end":""}},"res_url":"","children":[]}],"status":"success","error_msg":{"desc":"","exception":"","code":""},"header":{"session_id":"public.weather@771146d54df35c14bb89683e82a19e2b","task":"public.weather","query":"明天空气质量","task_name":"查天气","appkey":"wechat_chumenwenwen","need_check_location":false,"params":[{"value":"明天","keyname":"时间","key":"time"}],"type":"special_one","recommendation_query":[],"search_query":"","map_option":{"enable_traffic":false,"items":[],"is_route":false,"has_header_map":false,"has_map_marker":false},"error_msg":{"desc":"","exception":"","code":""},"version":"3.0.2","schema":"scrollview","more":{"show_number":0,"action":"jump","is_need":false},"share_option":{"content":"","img_url":"","is_screen":true,"title":"","download_url":"","link_url":"","is_enable":false},"source":"","page":{"total":1,"start":0,"length":1},"address":"中国,上海市,上海市,杨浦区,武东路,undefined,31.308912471391192,121.49982640557423","msg_id":"28fe1e3e-82b4-4d62-9ba8-ae2ccb37ecb1","user_id":"undefined","query_type":"text","output":"app","is_show_header":true}}],"error_msg":{"desc":"","exception":"","code":""}}],"status":"success","error_msg":{"desc":"","exception":"","code":""}}
+  </script>
+  
+  <script src="../js/chumenwenwen.renderHTML.3.0.js"></script>
+</body>
+</html>

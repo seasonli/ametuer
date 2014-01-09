@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>找酒店</title>
+<link rel="stylesheet" href="css/layout.css" >
+<script src="http://code.jquery.com/jquery-1.4.1.min.js"></script>
+<script src="http://onebox.oss.aliyuncs.com/js/template.js"></script>
+</head>
+
+<body>  
+  <div class="header"><div class="header_close"></div></div>
+  <div class="wrapper"></div>
+  <div class="notice">
+    <div class="notice_entire"></div>
+  </div>
+  <div class="alert" onClick="$(this).hide()">
+    <div class="alert_entire">
+      <div>请选择打开方式</div>
+    </div>
+    <div class="alert_entire">
+      <button id="bmap">百度地图</button>
+    </div>
+    <div class="alert_entire">
+      <button id="amap">高德地图</button>
+    </div>
+    <div class="alert_entire">
+      <button id="wmap">在网页中打开</button>
+    </div>   
+  </div>
+</body>
+</html>
+
+<script type="text/html" id="hotels_rooms_book">
+  <ul class="detail">
+    <div class="detail_entire center">
+      <img src="
+        {if book_info.room_img === '' || !book_info.room_img}
+          img/html-nullimage.png
+        {/if}
+        {book_info.room_img}
+      " />
+    </div>  
+    <div class="detail_entire center highlight">
+      {book_info.room_name}
+    </div>    
+    <div class="detail_entire center details">
+      {book_info.rate_plan}<br/>{book_info.hotel_address}
+    </div> 
+    <div class="detail_left">
+      <button class="address gotoMap" data-name="{book_info.hotel_name}" data-lat="{book_info.lat}" data-lng="{book_info.lng}" data-blat="{book_info.baidu_lat}" data-blng="{book_info.baidu_lng}"></button>
+    </div>
+    <div class="detail_right">
+      <button class="phone gotoCall" url="{book_info.hotel_phone}"></button>
+    </div>
+    <div class="clear"></div>
+ 
+      <div id="book">
+        <div class="detail_entire center">
+          <div class="alarm">该房间接受直接预定，你可以输入手机号快速预定</div>
+        </div>      
+        <div class="detail_entire">
+          <input type="number" placeholder="你的手机号码" id="phone" value="{user_info.phone}" />
+        </div>
+        <div class="detail_entire">
+          <input type="text" placeholder="你的姓名" id="name" value="{user_info.username}" />
+        </div>
+        <div class="detail_entire">
+          <button class="gotoPay submit" url="{book_info.pay_url}">提交</button>
+        </div>
+      </div>
+   
+    {if book_info.guarantee_rule_desc}
+      <div class="detail_entire">
+        <div class="alarm">{book_info.guarantee_rule_desc}</div>
+      </div>
+    {/if}
+  </ul>
+</script>
+
+<script>
+  var response = {"location":{"street":"武东路","province":"上海市","lng":121.49982640557423,"streetNumber":"undefined","sublocality":"杨浦区","lat":31.308912471391192,"city":"上海市","country":"中国"},"status":"success","task":"public.hotel","query":"undefined","remote_ip":"192.168.10.16","answer":{"user_info":{"phone":"","username":""},"valid":"true","book_info":{"pay_url":"http://dev:8080/mobvoibackendcontroller/search/pay/hotel?departureDate=2013-08-27&query=%E4%B8%8A%E6%B5%B7%E4%BB%B7%E6%A0%BC2000%E4%BB%A5%E5%86%85%E7%9A%84%E4%B8%89%E6%98%9F%E9%85%92%E5%BA%97&remote_ip=192.168.10.16&appkey=wechat_browser&ratePlan=%E5%90%AB%E5%8F%8C%E6%97%A9&lng=121.593323&hotelId=00201176&roomDesc=%E5%A4%A7%E5%BA%8A%2C%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6%2C%E6%99%AE%E9%80%9A%E6%A5%BC%E5%B1%82&hotelAddress=%E4%B8%8A%E6%B5%B7%E5%B8%82%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%E5%B7%A8%E5%B3%B0%E8%B7%AF279%E5%8F%B7%EF%BC%88%E8%BF%91%E5%88%A9%E6%B4%A5%E8%B7%AF%EF%BC%89&remoteIP=192.168.10.16&hotelName=%E4%B8%8A%E6%B5%B7%E7%A2%A7%E6%82%A6%E5%9F%8E%E5%B8%82%E9%85%92%E5%BA%97%EF%BC%88%E5%B7%A8%E5%B3%B0%E8%B7%AF%E5%BA%97%EF%BC%89%EF%BC%88%E5%8E%9F%E9%87%91%E6%A1%A5%E6%99%BA%E9%80%89%E5%81%87%E6%97%A5%E9%85%92%E5%BA%97%EF%BC%89&roomName=%E5%95%86%E5%8A%A1%E5%A4%A7%E5%BA%8A%E9%97%B4&hotelPhone=021-50559966&arrivalDate=2013-08-26&query_type=text&baiduLat=31.28641347435124&lat=31.280481&roomTypeId=0008&ratePlanId=79859&customerType=All&task=public.hotel&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A813.07.18%E8%87%B320.12.31+%E5%85%A5%E4%BD%8F+%E5%9C%A818%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A518%3A00%E7%82%B9%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&price=388&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E6%9D%A8%E6%B5%A6%E5%8C%BA%2C%E6%AD%A6%E4%B8%9C%E8%B7%AF%2Cundefined%2C31.308912471391192%2C121.49982640557423&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fimageapp%2Fhotels%2Fhotelimages%2F0201%2F00201176%2F5_67954527-5963-42b3-9726-0ddba7e8e019.png%3Fv%3D20130227110512&msg_id=70b4eb1f-4728-4810-a786-9fbafeef4dcc&bedType=%E5%A4%A7%E5%BA%8A&output=json&baiduLng=121.59982223247266","baidu_lat":"31.28641347435124","rate_plan":"含双早","guarantee_rule_desc":"担保条件：在13.07.18至20.12.31 入住 在18:00至6:00到店，需要您提供信用卡担保。客人入住日18:00点前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","room_name":"商务大床间","hotel_phone":"021-50559966","lng":"121.593323","baidu_lng":"121.59982223247266","hotel_address":"上海市浦东新区巨峰路279号（近利津路）","hotel_name":"上海","lat":"31.280481","room_img":"http://www.elongstatic.com/imageapp/hotels/hotelimages/0201/00201176/5_67954527-5963-42b3-9726-0ddba7e8e019.png?v=20130227110512"}},"appkey":"wechat_browser","params":[{"value":"2013-08-26","keyname":"入住日期","key":"checkin"},{"value":"2013-08-27","keyname":"退房日期","key":"checkout"}],"taskName":"找酒店","version":"undefined","msg_id":"70b4eb1f-4728-4810-a786-9fbafeef4dcc","user_id":"undefined","query_type":"text"};
+ 
+  $(".header").append(response.answer.book_info.hotel_name.substr(0,8) + " - " + response.answer.book_info.room_name);
+  $(".wrapper").html(template.render("hotels_rooms_book", response.answer));
+
+  var browser = {
+    versions: function(){
+      var u = navigator.userAgent, app = navigator.appVersion;
+      return {         //移动终端浏览器版本信息
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 , //是否为iPhone或者QQHD浏览器
+        iPad: u.indexOf('iPad') > -1, //是否iPad
+        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+      };
+    }(),
+    language: (navigator.browserLanguage || navigator.language).toLowerCase()
+  }
+
+  $(".gotoCall").click(function() {
+    window.location.href = "tel:" + $(this).attr("url");
+  })
+
+    $(".gotoMap").click(function() {
+      var name = $(this).attr("data-name"); var lat = $(this).attr("data-lat"); var lng = $(this).attr("data-lng"); var blat = $(this).attr("data-blat"); var blng = $(this).attr("data-blng"); 
+      var burl, aurl, wurl;
+      if(browser.versions.android == true) {
+        burl = "bdapp://map/place/search?query=" + name + "&location=" + blat + "," + blng + "&radius=10000&src=mobvoi|chumenwenwen";
+        aurl = "androidamap://viewMap?sourceApplication=chumenwenwen&poiname=" + name + "&lat=" + lat + "&lon=" + lng +"&dev=0";
+      }
+      else if(browser.versions.iPhone == true || browser.versions.iPad == true) {
+        burl = "baidumap://map/place/search?query=" + name + "&location=" + blat + "," + blng + "&radius=10000&src=mobvoi|chumenwenwen";
+        aurl = "iosamap://viewMap?sourceApplication=chumenwenwen&poiname=" + name + "&lat=" + lat + "&lon=" + lng +"&dev=0";
+      }
+      wurl =  "http://api.map.baidu.com/place/search?query=" + name + "&location=" + blat + "," + blng + "&radius=10000&output=html&src=mobvoi|chumenwenwen";
+      $("#bmap").attr("url", burl);
+      $("#amap").attr("url", aurl);
+      $("#wmap").attr("url", wurl);
+      $(".alert").show();
+      $(".alert button").click(function(){
+        window.location.href = $(this).attr("url");
+      });
+    });  
+
+  $(".gotoPay").click(function(){
+    var name = $("#name").attr("value");
+    var phone = $("#phone").attr("value");
+    if (name.length == 0) {
+      $(".notice_entire").html("请输入你的名字");
+      $(".notice").fadeIn(300);
+      setTimeout('$(".notice").fadeOut(300)', 2000);      
+    }
+    else if (phone.length != 11) {
+      $(".notice_entire").html("请输入正确的手机号码");
+      $(".notice").fadeIn(300);
+      setTimeout('$(".notice").fadeOut(300)', 2000);      
+    }
+    else {
+      var payUrl = $(this).attr("url") + "&name=" + name + "&phone=" + phone;
+      $.ajax({
+        async: false,
+        type: "GET",
+        url: payUrl,
+        dataType: "json",
+        success: function(rawData) {
+          if (rawData.answer.status == "success") {
+            $("#book").html('<div class="detail_entire center"><div class="alarm">预定成功！</div></div>')
+          } else if (rawData.answer.status == "error") {
+            $(".notice_entire").html(rawData.answer.result);
+            $(".notice").fadeIn(300);
+            setTimeout('$(".notice").fadeOut(300)', 2000);
+          }
+        },
+        error: function() {
+          $(".notice_entire").html("预定出现了一些问题，你可以拨打电话预定房间")
+          $(".notice").fadeIn(300);
+          setTimeout('$(".notice").fadeOut(300)', 2000);
+        },
+      });
+    }
+  });
+
+
+</script>
