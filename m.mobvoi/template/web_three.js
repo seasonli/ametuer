@@ -2,7 +2,7 @@
 	var script = document.createElement("script");
 	script.setAttribute("type", "text/html");
 	script.setAttribute("id", "wrapper_web_three");
-	script.innerHTML = '<iframe class="iframe" src="{ body[0].link_url.replace("www.baidu.com", "m.baidu.com").replace("?wd", "?word") }&pu=sz%401320_480&wpo=base"></iframe>';
+	script.innerHTML = '<iframe class="iframe" src="{ body[0].link_url }"></iframe>'; // .replace("www.baidu.com", "m.baidu.com").replace("?wd", "?word") }&pu=sz%401320_480&wpo=base"
 	document.head.appendChild(script);
 }) ()
 
