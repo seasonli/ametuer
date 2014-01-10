@@ -160,13 +160,17 @@ function chumenwenwen() {
     }
   }
 
-  this.pcRequest = function(ul, params) {
+  this.searchpcAjax = function(ul, params) {
+    $(".mask").show();
+    $(".mask").removeClass("hide");
+    $(".dialog").removeClass("show");
+    setTimeout('$(".dialog").remove()', 500);
     var QUERY = {};
     QUERY.protocol = "http://";
     QUERY.host = "m.mobvoi.com";
     QUERY.path = "/search/pc/" + params.task.split(".")[1];
     $.ajax({
-      async: false,
+      async: true,
       type: "GET",
       url: QUERY.protocol + QUERY.host + QUERY.path,
       data: params,
@@ -178,8 +182,8 @@ function chumenwenwen() {
           renderResponse(res.content[0].relevant[0], ul, "change");
         }
         renderStyle();
-        $(".dialog").removeClass("show");
-        setTimeout('$(".dialog").remove()', 500);
+        $(".mask").addClass("hide");
+        setTimeout('$(".mask").hide()', 500);
       }
     })    
   }
