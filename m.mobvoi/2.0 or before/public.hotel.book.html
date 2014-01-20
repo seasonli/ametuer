@@ -274,7 +274,7 @@
     }
     function trackCheckin() {
       var checkin_date;
-      if($("#checkin_month").val() == 1) {
+      if($("#checkin_month").val() < month) {
         year ++;
       }
       checkin_date = year + "-" + $("#checkin_month").val() + "-" + $("#checkin_day").val();

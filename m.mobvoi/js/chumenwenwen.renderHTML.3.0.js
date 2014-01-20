@@ -27,7 +27,7 @@ function renderResponse(responseObj, ul, method) {
       break;
     }
     // Render .showMap
-    if(responseObj.header.map_option.has_header_map == true) {
+    if(responseObj.header.is_show_header == true && responseObj.header.map_option.has_header_map == true) {
       var $ele_map = renderObj[ul].header.showMap(ul);
       $ele_map.prependTo($(".cards").eq(ul));
     }    

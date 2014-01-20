@@ -453,7 +453,6 @@ function showMap(v) {
       level: 15,
       resizeEnable: true,
       dragEnable: false,
-      zoomEnable: false,
       doubleClickZoom: false,
       scrollWheel: false,
       touchZoom: false,
