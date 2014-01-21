@@ -12,82 +12,43 @@
 	  <script src="js/backbone.0.5.3.min.js"></script>   
 	</head>
 	<body>
-    <section id='UserInput'>
-        <fieldset>
-            <legend>Enter a name and click say hello!</legend>
-            <input type="text" name="hello" placeholder="your friend name" value="veera" /> &#160; <button>Say hello</button>
-        </fieldset>
-    </section>
-    <ol id="HelloList"/>
+		<button id="check">报到</button>  
+		<ul id="world-list">  
+		</ul>  
 		<script>
-
-	
-	var UserInputView = Backbone.View.extend({
-		
-		el : '#UserInput',
-		
-		initialize : function() {
-			this.helloListView = new HelloListView();
-		},
-		
-		events : {
-			'click button' : 'addToHelloCollection'
-		},
-
-		addToHelloCollection : function(e) {
-			var hello = new Hello({
-				name : this.$('input').val()
-			});
-			this.helloListView.collection.add(hello);
-		}
-	});
-
-	var Hello = Backbone.Model.extend({
-		initialize : function() {
-			this.name = 'name'
-		}
-	});
-
-	var HelloView = Backbone.View.extend({
-		tagName : 'li',
-		render : function() {
-			$(this.el).html('Hello ' + this.model.get('name'));
-			return this;
-		}
-	});
-
-	var HelloList = Backbone.Collection.extend({
-		model : Hello
-	});
-
-	var HelloListView = Backbone.View.extend({
-		
-		el : '#HelloList',
-		
-		initialize : function() {
-			_.bindAll(this, 'render', 'appendToHelloUL');
-			this.collection = new HelloList();
-			this.collection.bind('add', this.appendToHelloUL);
-		},
-		
-		render:function(){
-
-			$.each(this.collection.models, function(i, helloModel){
-				self.appendToHelloUL(helloModel);
-			});
-		},
-		
-		appendToHelloUL : function(helloModel) {
-			var helloView = new HelloView({
-				model : helloModel
-			});
-			$(this.el).append(helloView.render().el);
-		}
-	});
-
-	new UserInputView();
-
-
+	    var World = Backbone.Model.extend({  
+	      //创建一个World的对象，拥有name属性  
+	      name: null  
+	    });  
+	      
+	    var Worlds = Backbone.Collection.extend({  
+	        //World对象的集合  
+	        initialize: function (models, options) {  
+	            this.bind("add", options.view.addOneWorld);  
+	        }  
+	    });  
+	      
+	    var AppView = Backbone.View.extend({  
+	        el: $("body"),  
+	        initialize: function () {  
+	            //构造函数，实例化一个World集合类，并且以字典方式传入AppView的对象  
+	            this.worlds = new Worlds(null, { view : this })  
+	        },  
+	        events: {  
+	            "click #check":  "checkIn",   //事件绑定，绑定Dom中id为check的元素  
+	        },  
+	        checkIn: function () {  
+	            var world_name = prompt("请问，您是哪星人?");  
+	            if(world_name == "") world_name = '未知';  
+	            var world = new World({ name: world_name });  
+	            this.worlds.add(world);  
+	        },  
+	        addOneWorld: function(model) {  
+	            $("#world-list").append("<li>这里是来自 <b>" + model.get('name') + "</b> 星球的问候：hello world！</li>");  
+	        }  
+	    });  
+	    //实例化AppView  
+	    var appview = new AppView;  
 		</script>
 	</body>
 </html>
