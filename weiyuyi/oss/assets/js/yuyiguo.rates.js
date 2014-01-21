@@ -75,7 +75,7 @@ $.ajax({
         option.series[0].data = [];
         option.series[0].name = idx;
         for(var idx1 in res[idx]) {
-          option.xAxis.categories.unshift(idx1);
+          option.xAxis.categories.unshift(idx1.substr(5, 9));
           if(idx == "pattern_error_rate") {
             option.series[0].data.unshift(parseFloat(((res[idx][idx1] + res.eav_error_rate[idx1] + res.normalization_error_rate[idx1]) * 100).toFixed(2)));
           } else {
