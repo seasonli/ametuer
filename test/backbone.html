@@ -16,16 +16,14 @@
 		<ul id="world-list">  
 		</ul>  
 		<script>
-	    var World = Backbone.Model.extend({  
-	      //创建一个World的对象，拥有name属性  
+	    var World = Backbone.Model.extend({  // Model
 	      name: null  
 	    });  
 	      
-	    var Worlds = Backbone.Collection.extend({  
-	        //World对象的集合  
-	        initialize: function (models, options) {  
-	            this.bind("add", options.view.addOneWorld);  
-	        }  
+	    var Worlds = Backbone.Collection.extend({  // Collection
+	      initialize: function(models, options) {  
+	        this.bind("add", options.view.addOneWorld);  
+	      }  
 	    });  
 	      
 	    var AppView = Backbone.View.extend({  
