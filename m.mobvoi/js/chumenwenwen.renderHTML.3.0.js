@@ -228,7 +228,7 @@ $('[data-event="CMWW"]').delegate(".gotoVoice", "click", function() {
 })
 // Sort List
 $('[data-event="CMWW"]').delegate(".gotoSortList", "click", function() {
-  CMWW.searchpcAjax($('[data-title="请选择排序方式"]').parent().parent().parent().parent().index(), JSON.parse($(this).attr("data-params").replace(/'/g, '"')))
+  CMWW.searchpc(/*$('[data-title="请选择排序方式"]').parent().parent().parent().parent().index(), */JSON.parse($(this).attr("data-params").replace(/'/g, '"')))
 })   
 //if(browser.versions.wechat == true) {
 //  CMWW.share.init({title: responseObj.header.task_name + " 出门问问", desc: "我在出门问问找到了 “" + responseObj.header.query + "”", img: "http://mobvoi-one-box.oss.aliyuncs.com/web/img/logo-white.png", url: window.location.href});
