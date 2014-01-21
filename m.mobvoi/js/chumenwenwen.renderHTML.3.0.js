@@ -189,16 +189,16 @@ $('[data-event="CMWW"]').delegate(".gotoShowDialog", "click", function() {
 })
 $('[data-event="CMWW"]').delegate(".gotoDial", "click", function() {
   if($(this).attr("data-tel") && $.trim($(this).attr("data-tel")) != "") {
-    new chumenwenwen().jump.dial($.trim($(this).attr("data-tel")));
+    CMWW.jump.dial($.trim($(this).attr("data-tel")));
   }
 })
 $('[data-event="CMWW"]').delegate(".gotoMark", "click", function() {
   if($(this).attr("data-point") && $(this).attr("data-point") != "") {
-    new chumenwenwen().jump.mark([eval("[" + "'" + $.trim($(this).attr("data-point").split(",")[0]) + "','" + $.trim($(this).attr("data-point").split(",")[1]) + "','" + $.trim($(this).attr("data-point").split(",")[2]) + "']")]);
+    CMWW.jump.mark([eval("[" + "'" + $.trim($(this).attr("data-point").split(",")[0]) + "','" + $.trim($(this).attr("data-point").split(",")[1]) + "','" + $.trim($(this).attr("data-point").split(",")[2]) + "']")]);
   }
 })
 $('[data-event="CMWW"]').delegate(".gotoNavigation", "click", function() {
-  new chumenwenwen().jump.navigation([eval("[" + "'" + $.trim($(this).attr("data-point-from").split(",")[0]) + "','" + $.trim($(this).attr("data-point-from").split(",")[1]) + "','" + $.trim($(this).attr("data-point-from").split(",")[2]) + "','" + $.trim($(this).attr("data-point-from").split(",")[3]) + "']"), eval("[" + "'" + $.trim($(this).attr("data-point-to").split(",")[0]) + "','" + $.trim($(this).attr("data-point-to").split(",")[1]) + "','" + $.trim($(this).attr("data-point-to").split(",")[2]) + "','" + $.trim($(this).attr("data-point-to").split(",")[3]) + "']"), $.trim($(this).attr("data-point-mode"))]);
+  CMWW.jump.navigation([eval("[" + "'" + $.trim($(this).attr("data-point-from").split(",")[0]) + "','" + $.trim($(this).attr("data-point-from").split(",")[1]) + "','" + $.trim($(this).attr("data-point-from").split(",")[2]) + "','" + $.trim($(this).attr("data-point-from").split(",")[3]) + "']"), eval("[" + "'" + $.trim($(this).attr("data-point-to").split(",")[0]) + "','" + $.trim($(this).attr("data-point-to").split(",")[1]) + "','" + $.trim($(this).attr("data-point-to").split(",")[2]) + "','" + $.trim($(this).attr("data-point-to").split(",")[3]) + "']"), $.trim($(this).attr("data-point-mode"))]);
 }); 
 $(".gotoShareInWechat").click(function() {
   $("body").prepend('<div id="share" onClick="$(this).remove()"><img src="http://mobvoi-one-box.oss.aliyuncs.com/html/img/share.png" /></div>');
