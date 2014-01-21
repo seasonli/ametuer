@@ -1,6 +1,6 @@
 // judge net environment
 var urlPrefix, appId;
-if (window.location.host == "localhost.mobvoi") {
+if (window.location.host == "localhost.weiyuyi") {
   urlPrefix = "/y";
 } else {
   urlPrefix = "";

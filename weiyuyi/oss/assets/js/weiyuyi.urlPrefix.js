@@ -1,6 +1,6 @@
 // judge net environment
 var url = {};
-if (window.location.host == "localhost.mobvoi" || window.location.host == "localhost.weiyuyi") {
+if (window.location.host == "localhost.weiyuyi") {
 	url.prefix = "/w";
 	url.id = 2;
 }
