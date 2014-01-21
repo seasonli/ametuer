@@ -344,7 +344,7 @@ function chumenwenwen() {
 
 
 /********** Render Header **********/
-function render(responseObj) {
+function Render(responseObj) {
   this.header = {
     init: function() {
       var $li = $("<li>").addClass("cards_card result");

@@ -9,7 +9,7 @@
 
 
 function renderResponse(responseObj, ul, method) {
-  renderObj[ul] = new render(responseObj);
+  renderObj[ul] = new Render(responseObj);
   // Load Template
   var script = document.createElement("script");
   script.src = "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); 
