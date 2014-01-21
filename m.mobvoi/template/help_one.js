@@ -5,7 +5,7 @@
 	document.head.appendChild(script);
 }) ()
 
-render.prototype.callback = {
+Render.prototype.callback = {
 	help_one: function(ul) {
 		window.location.href = "http://mobvoi-one-box.oss.aliyuncs.com/wechat/help/help.html";
 	}

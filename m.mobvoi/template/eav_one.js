@@ -6,7 +6,7 @@
 	document.head.appendChild(script);
 }) ()
 
-render.prototype.callback = {
+Render.prototype.callback = {
 	eav_one: function(ul) {
 		$(".wrapper").children("*").eq(ul).find("li.cards_card div.cards_card_entire p span").each(function() {
       $(this).html($(this).html().replace(/&lt;/g, "<").replace(/&gt;/g, ">"));

@@ -6,7 +6,7 @@
 	document.head.appendChild(script);
 }) ()
 
-render.prototype.callback = {
+Render.prototype.callback = {
 	web_one: function(ul) {
 		window.location.href = $(".wrapper").children("*").eq(ul).html();
 	}

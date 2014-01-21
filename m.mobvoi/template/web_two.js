@@ -6,7 +6,7 @@
 	document.head.appendChild(script);
 }) ()
 
-render.prototype.callback = {
+Render.prototype.callback = {
 	web_two: function(ul) {
 		$(".wrapper").children("*").eq(ul).css("height", $(window).height() - 45 + "px");
 	}
