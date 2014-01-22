@@ -19,14 +19,18 @@
     </script>
     <script>
 	    var Model = Backbone.Model.extend({
-	      name: null
+	      defaults: {
+		      name: "defaults",
+		      id: 0,
+		      gender: "none"	      	
+	      }
 	    });
 	    
 	    var Collection = Backbone.Collection.extend({
 	      initialize: function(options) {
 	      	// Add事件callback
-	        this.bind("add", function() {
-	        	alert();
+	        this.bind("add", function(model) {
+	        	alert(model.get("gender"));
 	        });
 	      }
 	    });
