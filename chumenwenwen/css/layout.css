@@ -73,7 +73,7 @@ body { font-family: Microsoft JhengHei, Microsoft Yahei, SimHei, Arial; }
         .wrapper2_brand_copyright_link { float: right; margin: 5px 30px 0; line-height: 25px; font-size: 14px; color: #eeeeee; text-align: right; }
           .wrapper2_brand_copyright_link img { vertical-align: middle; }
 
-.howto { position: relative; top: 0; left: 0; width: 100%; background: url(../img/shattered.png); }
+.howto { position: relative; top: 0; left: 0; width: 100%; background: url(../img/shattered.png) #d9d9d9; }
   .howto_ { position: relative; top: 120px; margin: 0 auto; width: 900px; }
     .howto_pic { float: left; width: 196px; height: 196px; background: url(../img/icon-weixinyixin.png); }
     .howto_content { float: left; margin-left: 100px; }

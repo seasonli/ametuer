@@ -89,22 +89,59 @@ function chumenwenwen() {
   }
 
   this.showDialog = function(title, listArr) {
-    var tpl = '<div class="dialog"><div class="dialog_bg"></div><div class="dialog_content"><div class="dialog_content_title">' + title + '</div>';
+    var $div = $("<div>").addClass("dialog");
+    $div.append($("<div>").addClass("dialog_bg"));
+    $div.append($("<div>").addClass("dialog_content"));
+    $div.find(".dialog_content").append($("<div>").addClass("dialog_content_title").html(title));
     if(listArr.length > 0) {
-      listArr[1] = JSON.parse(listArr[1].replace(/'/g, '"'));  
-      listArr[2] = JSON.parse(listArr[2].replace(/'/g, '"'));  
       for(var i in listArr[1]) {
-        tpl += '<hr/><div class="dialog_content_text ' + listArr[0] + '" data-params="' + JSON.stringify(listArr[2][i]).replace(/"/g, "'") + '">' + listArr[1][i] + '</div>';
+        $div.find(".dialog_content").append($("<hr/>"));
+        $div.find(".dialog_content").append($("<div>").addClass("dialog_content_text").addClass(listArr[0]));
+        $div.find(".dialog_content_text").eq(i).attr("data-params", JSON.stringify(listArr[2][i]).replace(/"/g, "'")).html(listArr[1][i]);
       }
     }
-    tpl += '</div></div>';
-    $('[data-event="CMWW"]').prepend(tpl);
+    $('[data-event="CMWW"]').prepend($div);
     setTimeout('$(".dialog").addClass("show")', 50);
     // Close Dialog
     $(".dialog_bg").click(function() {
       $(".dialog").removeClass("show");
       setTimeout('$(".dialog").remove()', 500);
     });   
+  }
+
+  this.jump.dial = function(a) {
+    if(browser.versions.chumenwenwen) {
+      window.location.href = "tel:" + a;
+    } else {
+      var $div = $("<div>").addClass("dialog");
+      $div.append($("<div>").addClass("dialog_bg"));
+      $div.append($("<div>").addClass("dialog_content"));
+      $div.find(".dialog_content").append($("<div>").addClass("dialog_content_title").html("拨打电话"));
+      $div.find(".dialog_content").append($("<hr/>"));
+      $div.find(".dialog_content").append($("<div>").addClass("dialog_content_text").addClass("gotoLink").attr("data-link", "tel:" + a).html(a));
+      $('[data-event="CMWW"]').prepend($div);
+      setTimeout('$(".dialog").addClass("show")', 50);
+      // Close Dialog
+      $(".dialog_bg").click(function() {
+        $(".dialog").removeClass("show");
+        setTimeout('$(".dialog").remove()', 500);
+      });
+    }
+  }
+
+  this.jump.share = function() {
+    var $div = $("<div>").addClass("dialog");
+    $div.append($("<div>").addClass("dialog_bg"));
+    $div.append($("<div>").addClass("dialog_content"));
+    $div.find(".dialog_content").append($("<div>").addClass("dialog_content_title").html("分享给朋友"));
+    $div.find(".dialog_content").append($("<hr/>")).append($("<div>").addClass("dialog_content_text").addClass("gotoLink").attr("data-link", "").html("发送短信"));
+    $('[data-event="CMWW"]').prepend($div);
+    setTimeout('$(".dialog").addClass("show")', 50);
+    // Close Dialog
+    $(".dialog_bg").click(function() {
+      $(".dialog").removeClass("show");
+      setTimeout('$(".dialog").remove()', 500);
+    });    
   }
 
   this.jump.navigation = function(pointArr) {
@@ -140,24 +177,6 @@ function chumenwenwen() {
     }
     tpl += '<div class="alert_entire"><li onClick="window.location.href=\'http://api.map.baidu.com/marker?location=' + pointArr[0][1] + ',' + pointArr[0][2] + '&title=' + pointArr[0][0] + '&content=' + pointArr[0][0] +'&src=mobvoi|chumenwenwen&output=html\'">在网页中打开</li></div></div>'
     $("body").prepend(tpl); 
-  }
-
-  this.jump.dial = function(a) {
-    if(browser.versions.chumenwenwen) {
-      window.location.href = "tel:" + a;
-    } else {
-      var $dialog_content_text = $("<div>").addClass("dialog_content_text gotoLink").attr("data-link", "tel:" + a).html(a);
-      var $dialog_content_title = $("<div>").addClass("dialog_content_title").html("拨打电话");
-      var $dialog_content = $("<div>").addClass("dialog_content").append($dialog_content_title).append("<hr>").append($dialog_content_text);
-      var $dialog = $("<div>").addClass("dialog").append($("<div>").addClass("dialog_bg")).append($dialog_content);
-      $('[data-event="CMWW"]').prepend($dialog);
-      setTimeout('$(".dialog").addClass("show")', 50);
-      // Close Dialog
-      $(".dialog_bg").click(function() {
-        $(".dialog").removeClass("show");
-        setTimeout('$(".dialog").remove()', 500);
-      });
-    }
   }
 
   this.searchpcAjax = function(ul, params) {
@@ -409,9 +428,9 @@ function renderStyle() {
       $(this).html('<span class="rating_indicator" style="width: ' + $(this).html() * 21.6 + 'px">32</span>');
     }
   })
-  if(browser.versions.wechat == false) { // Render .gotoShareInWechat
-    $('.gotoShareInWechat').remove();
-  }
+//  if(browser.versions.wechat == false) { // Render .gotoShareInWechat
+//    $('.gotoShareInWechat').remove();
+//  }
   $(".gotoDial").each(function() {
     if($(this).attr("data-tel") == "") {
       $(this).addClass("grey")
