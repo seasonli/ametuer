@@ -205,7 +205,7 @@ $('[data-event="CMWW"]').delegate(".gotoNavigation", "click", function() {
 });
 
 $('[data-event="CMWW"]').delegate(".gotoShare", "click", function() {
-  CMWW.jump.share();
+  CMWW.jump.share($(this).attr("data-title"), $(this).attr("data-desc"), $(this).attr("data-url"), $(this).attr("data-img"));
 });
 
 $(".gotoShareInWechat").click(function() {

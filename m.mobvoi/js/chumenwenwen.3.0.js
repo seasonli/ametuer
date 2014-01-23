@@ -118,7 +118,7 @@ function chumenwenwen() {
       $div.append($("<div>").addClass("dialog_content"));
       $div.find(".dialog_content").append($("<div>").addClass("dialog_content_title").html("拨打电话"));
       $div.find(".dialog_content").append($("<hr/>"));
-      $div.find(".dialog_content").append($("<div>").addClass("dialog_content_text").addClass("gotoLink").attr("data-link", "tel:" + a).html(a));
+      $div.find(".dialog_content").append($("<div>").addClass("dialog_content_text").html(a).attr("onClick", "window.location.href = 'tel:" + a + "'"));
       $('[data-event="CMWW"]').prepend($div);
       setTimeout('$(".dialog").addClass("show")', 50);
       // Close Dialog
@@ -129,12 +129,13 @@ function chumenwenwen() {
     }
   }
 
-  this.jump.share = function() {
+  this.jump.share = function(title, desc, url, img) {
     var $div = $("<div>").addClass("dialog");
     $div.append($("<div>").addClass("dialog_bg"));
     $div.append($("<div>").addClass("dialog_content"));
     $div.find(".dialog_content").append($("<div>").addClass("dialog_content_title").html("分享给朋友"));
-    $div.find(".dialog_content").append($("<hr/>")).append($("<div>").addClass("dialog_content_text").addClass("gotoLink").attr("data-link", "").html("发送短信"));
+    $div.find(".dialog_content").append($("<hr/>")).append($("<div>").addClass("dialog_content_text gotoLink").attr("data-link", "").html("发送短信"));
+    $div.find(".dialog_content").append($("<hr/>")).append($("<div>").addClass("dialog_content_text gotoLink").attr("onClick", "window.open('http://connect.qq.com/widget/shareqq/index.html?url=" + url + "&url=" + url + "&desc=" + desc.replace(/\n/g, " ") + "&pics=" + img + "&site=chumenwenwen', '', 'height=640, width=960, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')").html("发送给QQ好友"));
     $('[data-event="CMWW"]').prepend($div);
     setTimeout('$(".dialog").addClass("show")', 50);
     // Close Dialog
@@ -428,9 +429,6 @@ function renderStyle() {
       $(this).html('<span class="rating_indicator" style="width: ' + $(this).html() * 21.6 + 'px">32</span>');
     }
   })
-//  if(browser.versions.wechat == false) { // Render .gotoShareInWechat
-//    $('.gotoShareInWechat').remove();
-//  }
   $(".gotoDial").each(function() {
     if($(this).attr("data-tel") == "") {
       $(this).addClass("grey")
