@@ -134,7 +134,7 @@ function chumenwenwen() {
     $div.append($("<div>").addClass("dialog_bg"));
     $div.append($("<div>").addClass("dialog_content"));
     $div.find(".dialog_content").append($("<div>").addClass("dialog_content_title").html("分享给朋友"));
-    $div.find(".dialog_content").append($("<hr/>")).append($("<div>").addClass("dialog_content_text gotoLink").html("发送短信").attr("onClick", "window.open('sms:?body=" + title + "\n\n" + desc + "')"));
+    $div.find(".dialog_content").append($("<hr/>")).append($("<div>").addClass("dialog_content_text gotoLink").html("发送短信").attr("onClick", "window.location.href = 'sms:?body=" + title + " " + desc.replace(/\n/g, " ") + "'"));
     $div.find(".dialog_content").append($("<hr/>")).append($("<div>").addClass("dialog_content_text gotoLink").html("发送给QQ好友").attr("onClick", "window.open('http://connect.qq.com/widget/shareqq/index.html?url=" + url + "&url=" + url + "&desc=" + desc.replace(/\n/g, " ") + "&pics=" + img + "&site=chumenwenwen', '', 'height=640, width=960, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')"));
     $('[data-event="CMWW"]').prepend($div);
     setTimeout('$(".dialog").addClass("show")', 50);

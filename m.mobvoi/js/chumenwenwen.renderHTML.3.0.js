@@ -11,9 +11,8 @@
 function renderResponse(responseObj, ul, method) {
   renderObj[ul] = new Render(responseObj);
   // Load Template
-  /*http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web*/
   var script = document.createElement("script");
-  script.src = "/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); 
+  script.src = "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); 
   document.head.appendChild(script);
   script.onload = function() {
 
