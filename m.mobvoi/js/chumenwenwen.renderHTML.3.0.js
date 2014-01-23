@@ -11,8 +11,9 @@
 function renderResponse(responseObj, ul, method) {
   renderObj[ul] = new Render(responseObj);
   // Load Template
+  /*http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web*/
   var script = document.createElement("script");
-  script.src = "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); 
+  script.src = "/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); 
   document.head.appendChild(script);
   script.onload = function() {
 
@@ -185,7 +186,9 @@ $('[data-event="CMWW"]').delegate(".gotoLink", "click", function() {
   }
 })
 $('[data-event="CMWW"]').delegate(".gotoShowDialog", "click", function() {
-  CMWW.showDialog($(this).attr("data-title"), [$(this).attr("data-list-class"), $(this).attr("data-list-html"), $(this).attr("data-list-params")])
+  var data_list_html = JSON.parse($(this).attr("data-list-html").replace(/'/g, '"'));
+  var data_list_params = JSON.parse($(this).attr("data-list-params").replace(/'/g, '"'));
+  CMWW.showDialog($(this).attr("data-title"), [$(this).attr("data-list-class"), data_list_html, data_list_params]);
 })
 $('[data-event="CMWW"]').delegate(".gotoDial", "click", function() {
   if($(this).attr("data-tel") && $.trim($(this).attr("data-tel")) != "") {
@@ -199,7 +202,12 @@ $('[data-event="CMWW"]').delegate(".gotoMark", "click", function() {
 })
 $('[data-event="CMWW"]').delegate(".gotoNavigation", "click", function() {
   CMWW.jump.navigation([eval("[" + "'" + $.trim($(this).attr("data-point-from").split(",")[0]) + "','" + $.trim($(this).attr("data-point-from").split(",")[1]) + "','" + $.trim($(this).attr("data-point-from").split(",")[2]) + "','" + $.trim($(this).attr("data-point-from").split(",")[3]) + "']"), eval("[" + "'" + $.trim($(this).attr("data-point-to").split(",")[0]) + "','" + $.trim($(this).attr("data-point-to").split(",")[1]) + "','" + $.trim($(this).attr("data-point-to").split(",")[2]) + "','" + $.trim($(this).attr("data-point-to").split(",")[3]) + "']"), $.trim($(this).attr("data-point-mode"))]);
-}); 
+});
+
+$('[data-event="CMWW"]').delegate(".gotoShare", "click", function() {
+  CMWW.jump.share($(this).attr("data-title"), $(this).attr("data-desc"), $(this).attr("data-url"), $(this).attr("data-img"));
+});
+
 $(".gotoShareInWechat").click(function() {
   $("body").prepend('<div id="share" onClick="$(this).remove()"><img src="http://mobvoi-one-box.oss.aliyuncs.com/html/img/share.png" /></div>');
   if($(window).height() > $(document).height()) {
