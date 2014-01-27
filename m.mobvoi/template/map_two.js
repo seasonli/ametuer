@@ -1,7 +1,7 @@
 (function() {
 	var style = document.createElement("link");
 	style.setAttribute("rel", "stylesheet");
-	style.setAttribute("href", "/css/chumenwenwen.navigation.css");
+	style.setAttribute("href", "http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.navigation.css");
 	document.head.appendChild(style);
 	var script = document.createElement("script");
 	script.setAttribute("type", "text/html");
