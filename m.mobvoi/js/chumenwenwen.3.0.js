@@ -18,6 +18,7 @@ document.write('<div class="mask"></div>');
 document.write('<script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>');
 document.write('<script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>');
 document.write('<script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/detectiveBrowser.2.0.js"></script>');
+document.write('<script src="http://api.map.baidu.com/api?v=2.0&ak=342fa60a35f6c77db6449090a7007787"></script>');
 
 
 
