@@ -12,7 +12,7 @@ function renderResponse(responseObj, ul, method) {
   renderObj[ul] = new Render(responseObj);
   // Load Template
   var script = document.createElement("script");
-  script.src = "/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); // http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web
+  script.src = "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString();
   document.head.appendChild(script);
   script.onload = function() {
 
