@@ -12,7 +12,7 @@ function renderResponse(responseObj, ul, method) {
   renderObj[ul] = new Render(responseObj);
   // Load Template
   var script = document.createElement("script");
-  script.src = "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); 
+  script.src = "/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); // http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web
   document.head.appendChild(script);
   script.onload = function() {
 
@@ -96,7 +96,7 @@ function renderResponse(responseObj, ul, method) {
     // Render Callback
     if(typeof(renderObj[ul].callback) == "object") {
       if(typeof(renderObj[ul].callback[responseObj.header.type]) == "function") {
-        renderObj[ul].callback[responseObj.header.type](ul);
+        renderObj[ul].callback[responseObj.header.type](ul, responseObj);
       }
     }    
     // Render Next Response If Exists
