@@ -39,6 +39,10 @@ Render.prototype.callback = {
 		var map = new BMap.Map("showBdMap_" + ul);
 		map.centerAndZoom(origin, 12);
 		map.enableScrollWheelZoom();
+		map.enableContinuousZoom();
+		if(responseObj.body[0].content[12] == "躲避拥堵") {
+			map.addTileLayer(new BMap.TrafficLayer());
+		}
 
 		////////// Event 
 		// Change Type of Navigation
@@ -279,7 +283,15 @@ Render.prototype.callback = {
 			        $("#sub > div").append($("<hr/>"));
 			        $div = $("<div>").addClass("cards_card_mark left");
 			        $div.append($("<p>"));
-			        $div.children("p").append($("<span>").html(parseInt(i) + 1));
+			        if(transitDesc[$(this).index()][i].indexOf("乘坐") >= 0) {
+			        	$div.children("p").append($("<span>").html($("<img>")
+			        		.attr("src", "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/img/navigation/type_transit_on.png")
+			        		.attr("style", "width: 20px; vertical-align: middle")));
+			        } else {
+			        	$div.children("p").append($("<span>").html($("<img>")
+			        		.attr("src", "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/img/navigation/type_walking_on.png")
+			        		.attr("style", "width: 20px; vertical-align: middle")));
+			        }
 			        $("#sub > div").append($div);
 			        $div = $("<div>").addClass("cards_card_mark right");
 			        $div.append($("<p>"));
