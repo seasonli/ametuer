@@ -72,8 +72,8 @@ Render.prototype.callback = {
 		  var div = document.createElement("div");
 		  div.classList.add("layout-round5");
 		  div.style.cursor = "pointer";
-		  div.style.width = "42px";
-		  div.style.height = "42px";
+		  div.style.width = "48px";
+		  div.style.height = "48px";
 		  div.style.border = "1px solid #d6d6d6"
 		  div.style.backgroundImage = "url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/navigation/mylocation.png)";
 		  div.style.backgroundSize = "22px 22px";
