@@ -206,15 +206,6 @@ $('[data-event="CMWW"]').delegate(".gotoNavigation", "click", function() {
 $('[data-event="CMWW"]').delegate(".gotoShare", "click", function() {
   CMWW.jump.share($(this).attr("data-title"), $(this).attr("data-desc"), $(this).attr("data-url"), $(this).attr("data-img"));
 });
-
-$(".gotoShareInWechat").click(function() {
-  $("body").prepend('<div id="share" onClick="$(this).remove()"><img src="http://mobvoi-one-box.oss.aliyuncs.com/html/img/share.png" /></div>');
-  if($(window).height() > $(document).height()) {
-    $("#share").css("height", $(window).height() + "px");
-  } else {
-    $("#share").css("height", $(document).height() + "px");
-  }
-})
 $('[data-event="CMWW"]').delegate(".gotoPlay", "click", function() {
   if($(this).parent().find("audio")[0].paused) {
     $("audio").each(function(i) {
