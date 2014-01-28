@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>出门问问 发红包啦</title>
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.2.0.css" >
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/train.guide.css" >
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
+</head>
+<body>
+  <div data-event="CMWW">
+    <div class="necker">
+      <ul><li class="cards_img" ><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/train/train_springfestival_banner0.jpg" /></li></ul>
+    </div>
+    <div class="wrapper">
+      <ul class="cards noshadow layout-16px" >
+        <li class="cards_card layout-bgmeat layout-round10">
+          <div class="cards_card_entire layout-18px">
+            <p><span class="layout-bold layout-round10 layout-bgpink layout-fff" style="padding-left: 2px; padding-right: 2px">&nbsp;?&nbsp;</span>&nbsp;&nbsp;<span class="layout-bold">铁路常识</span></p>       
+          </div>
+        </li>  
+        <li class="cards_card toggle gotoToggle">
+          <div class="cards_card_entire">
+            <p><span>1、如何购买车票？</span></p>       
+            <a href="http://weixin.qq.com/g/hystVW7qsebKG2SkgvnG">test</a>
+          </div>
+        </li>    
+        <li class="cards_toggle gotoToggled">
+          <div class="cards_card_entire">
+            <p><span>三种方式：铁路售票窗口（包括铁路车站售票窗口、自动售票机和铁路客票代售点）购买、电话订票、互联网订票</span></p>
+            <p><span class="layout-pink">购买儿童票、学生票、残疾军人或伤残人民警察优待票（简称“残疾军人票”）、残疾人专用票额车票时，应当符合相关规定和凭证。</span></p>
+          </div>
+        </li>
+        <li class="cards_card toggle gotoToggle">
+          <div class="cards_card_entire">
+            <p><span>2、在互联网购票后，如何换取纸质车票？</span></p>       
+          </div>
+        </li>    
+        <li class="cards_toggle gotoToggled">
+          <div class="cards_card_entire">
+            <p><span>（1）使用二代居民身份证购票但乘车站或下车站不具备二代居民身份证检票条件的。<br/>（2）使用二代居民身份证购票但进站检票时无法出示二代居民身份证原件或二代居民身份证无法在自动检票机上识读的。<br/>（3）使用二代居民身份证以外的其他有效身份证件购票。<br/>（4）使用同行成年人有效身份证件信息购买儿童票的。<br/>（5）购买学生票、残疾军人票的。<br/>（6）按所购车票的乘车日期、车次在中途站进站乘车的。
+  </span></p>
+            <p><span class="layout-pink">旅客换取纸质车票后，不能再在网站办理改签、退票手续，应凭纸质车票办理检票、验票、改签、退票等手续。</span></p>
+          </div>
+        </li>
+        <li class="cards_card toggle gotoToggle">
+          <div class="cards_card_entire">
+            <p><span>3、什么情况下可以办理车票变更手续？</span></p>       
+          </div>
+        </li>    
+        <li class="cards_toggle gotoToggled">
+          <div class="cards_card_entire">
+            <p><span>（1）特殊情况经购票地车站或票面乘车站站长同意的，可在开车后2小时内办理；持动车组列车车票的旅客改乘当日其他动车组列车时不受开车后2小时内限制。团体旅客不应晚于开车前48小时。<br/>（2）12306.cn网站或车站售票窗口办理改签手续。购票后没有换取纸质车票且不晚于开车前2小时的可以在12306.cn网站办理。已经换取纸质车票或者在开车前2小时内的只能在车站到安装有银行POS机的售票窗口办理<br/>（3）一张车票只能办理一次改签。车票改签后，旅客取消旅行的，可以按规定退票，但因特殊情况在购票地车站或票面乘车站开车后改签的车票不予退票。</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    $('[data-event="CMWW"]').delegate(".gotoToggle", "click", function() {
+      if ($(this).next().css("display") == "none") {
+        $(".gotoToggle").removeClass("arrowup");
+        $(this).addClass("arrowup");
+        $(".gotoToggled").hide();
+        $(this).next().css("display", "block");
+      } else {
+        $(this).removeClass("arrowup");
+        $(this).next().css("display", "none");
+      }   
+    })  
+  </script>
+</body>
+</html>
