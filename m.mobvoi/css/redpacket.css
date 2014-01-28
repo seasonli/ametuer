@@ -1,0 +1,38 @@
+body {
+	background: #fc4434;
+}
+
+.cards {
+	background: #ffffff;
+}
+.cards_card { 
+	background: transparent;
+	border: 0;
+}
+.cards_card > hr {
+	margin: 0 5%;
+	border-top: 0;
+	border-bottom: 1px dashed #cccccc;
+}
+.cards_card > div {
+}
+.cards_card > div > p {
+	margin: 15px 0;
+}
+.cards_card > .cards_card_icon > p {
+	margin: 0;
+	padding: 0;
+}
+
+.layout-red {
+	color: #de0e0e;
+}
+.layout-green {
+	color: #0d9976;
+}
+.layout-italic {
+	font-style: italic;
+}
+.layout-underline {
+	text-decoration: underline;
+}
