@@ -19,6 +19,12 @@ body {
 .cards_card > div > p {
 	margin: 15px 0;
 }
+.cards_card > .cards_card_icon.left {
+	position: relative; float: left; padding: 0 2% 0 4%; width: 22%;
+}
+.cards_card > .cards_card_icon.right {
+	float: left; padding: 0 4% 0 2%; width: 66%;
+}
 .cards_card > .cards_card_icon > p {
 	margin: 0;
 	padding: 0;
