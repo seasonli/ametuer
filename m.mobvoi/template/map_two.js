@@ -70,7 +70,7 @@ Render.prototype.callback = {
 		MyLocation.prototype = new BMap.Control();
 		MyLocation.prototype.initialize = function(map) {
 		  var div = document.createElement("div");
-		  div.classList.add("layout-round5");
+		  div.className = div.className + " layout-round5";
 		  div.style.cursor = "pointer";
 		  div.style.width = "48px";
 		  div.style.height = "48px";
