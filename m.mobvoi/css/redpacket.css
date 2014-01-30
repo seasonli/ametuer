@@ -20,10 +20,10 @@ body {
 	margin: 15px 0;
 }
 .cards_card > .cards_card_icon.left {
-	position: relative; float: left; padding: 0 2% 0 4%; width: 24%;
+	position: relative; float: left; padding: 0 2% 0 4%; width: 30%;
 }
 .cards_card > .cards_card_icon.right {
-	float: left; padding: 0 4% 0 2%; width: 64%;
+	float: left; padding: 0 4% 0 2%; width: 58%;
 }
 .cards_card > .cards_card_icon > p {
 	margin: 0;
