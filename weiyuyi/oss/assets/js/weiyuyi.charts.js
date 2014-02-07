@@ -1,5 +1,17 @@
 function charts() {
-  
+  //  ---------- Set parameter ----------
+  var par = {};
+  var intialize = {};
+  switch("tasks") {
+    case "tasks":
+      par.url = {};
+      par.url.item = url.prefix + "/wechat_apps/" + url.id + "/widgets.json?flush_ready=true";
+      par.url.request = url.prefix + "/wechat_apps/" + url.id + "/wechat_logs_count.json?flush_ready=true";
+      par.url.event = url.prefix + "/big_tables.json?flush_ready=true";
+      par.datapicker = [["Query", "line"], ["Active Users", "line"]];
+      par.tab = "tasks";
+    break;
+  }
 
   // ---------- Define Charts Option ---------- 
   var option = {};
@@ -310,7 +322,7 @@ function charts() {
     })
   }
 
-  $(".rangepicker button").click(function(){ // Choose range (today, this week, this month, etc)
+  $(".rangepicker button").click(function() { // Choose range (today, this week, this month, etc)
     $(this).parent().find("button").removeClass("disabled");
     $(this).addClass("disabled");
     query.range = this.id;
@@ -319,7 +331,7 @@ function charts() {
     })
   })
 
-  $(".viewpicker button").click(function(){ // Choose range (today, this week, this month, etc)
+  $(".viewpicker button").click(function() { // Choose range (today, this week, this month, etc)
     $(this).parent().find("button").removeClass("disabled");
     $(this).addClass("disabled");
     query.view = this.id;
@@ -331,7 +343,7 @@ function charts() {
       option.subtitle.text = "percent";
       $(".itempicker #sum").hide();
     }
-    $("#loading").fadeIn(300, function(){
+    $("#loading").fadeIn(300, function() {
       defineData();
     })
   })
