@@ -199,6 +199,7 @@ select { padding: 0 4% 0 4%; height: 20px; width: 100%; font-size: 16px;
 
 	.iframe { margin: 0 3% 20px 3%; width: 94%; -moz-box-shadow: 0 0 3px #bbbbbb; -webkit-box-shadow: 0 0 3px #bbbbbb; box-shadow: 0 0 3px #bbbbbb; background: #ffffff; }
 	.cards { margin: 0 3% 20px 3%; -moz-box-shadow: 0 0 3px #bbbbbb; -webkit-box-shadow: 0 0 3px #bbbbbb; box-shadow: 0 0 3px #bbbbbb; }
+	.cards.main { margin: -30px 0 0 0; }
 	.cards.source { margin-top: -10px; margin-bottom: 70px; -moz-box-shadow: 0 0 0; -webkit-box-shadow: 0 0 0; box-shadow: 0 0 0; }
 	.cards.noshadow { -moz-box-shadow: 0 0 0; -webkit-box-shadow: 0 0 0; box-shadow: 0 0 0; }
 		.cards_card { position: relative; padding: 7px 0; border-bottom: 1px solid #e3e3e3; background: #ffffff; }
@@ -231,6 +232,8 @@ select { padding: 0 4% 0 4%; height: 20px; width: 100%; font-size: 16px;
 			.cards_card_icon.left { position: relative; float: left; padding: 0 2% 0 4%; width: 20%; }
 				.cards_card_icon.left img { width: 100%; }
 			.cards_card_icon.right { float: left; padding: 0 4% 0 2%; width: 68%; }
+			.cards_card_mark.left { position: relative; float: left; padding: 0 2% 0 4%; width: 6%; }
+			.cards_card_mark.right { float: left; padding: 0 4% 0 2%; width: 82%; }			
 			.cards_card_fix { position: absolute; top: 10%; right: 10%; }
 		.cards_toggle { display: none; padding: 7px 0; border-bottom: 1px solid #e3e3e3; background: #f8f8f8; }
 			.cards_toggle_entire { padding: 0 4%; }

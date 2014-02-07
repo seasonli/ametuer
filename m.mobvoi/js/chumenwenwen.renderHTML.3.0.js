@@ -12,7 +12,7 @@ function renderResponse(responseObj, ul, method) {
   renderObj[ul] = new Render(responseObj);
   // Load Template
   var script = document.createElement("script");
-  script.src = "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString(); 
+  script.src = "http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/web/template/" + responseObj.header.type + ".js?random=" + new Date().toLocaleString();
   document.head.appendChild(script);
   script.onload = function() {
 
@@ -96,7 +96,7 @@ function renderResponse(responseObj, ul, method) {
     // Render Callback
     if(typeof(renderObj[ul].callback) == "object") {
       if(typeof(renderObj[ul].callback[responseObj.header.type]) == "function") {
-        renderObj[ul].callback[responseObj.header.type](ul);
+        renderObj[ul].callback[responseObj.header.type](ul, responseObj);
       }
     }    
     // Render Next Response If Exists
@@ -206,15 +206,6 @@ $('[data-event="CMWW"]').delegate(".gotoNavigation", "click", function() {
 $('[data-event="CMWW"]').delegate(".gotoShare", "click", function() {
   CMWW.jump.share($(this).attr("data-title"), $(this).attr("data-desc"), $(this).attr("data-url"), $(this).attr("data-img"));
 });
-
-$(".gotoShareInWechat").click(function() {
-  $("body").prepend('<div id="share" onClick="$(this).remove()"><img src="http://mobvoi-one-box.oss.aliyuncs.com/html/img/share.png" /></div>');
-  if($(window).height() > $(document).height()) {
-    $("#share").css("height", $(window).height() + "px");
-  } else {
-    $("#share").css("height", $(document).height() + "px");
-  }
-})
 $('[data-event="CMWW"]').delegate(".gotoPlay", "click", function() {
   if($(this).parent().find("audio")[0].paused) {
     $("audio").each(function(i) {

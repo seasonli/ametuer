@@ -1,0 +1,18 @@
+#sub { display: none; position: absolute; top: 120px; left: 0; width: 100%; background: #e6e6e6; } 
+	#sub > div { margin: 10px 3% 30px 3%; border: 1px solid #cccccc; background: #ffffff; }
+	#sub > div > div { } 
+	#sub > div > div > p { margin: 15px 0; } 
+	#sub > div hr { margin: 0 5% 0 14%; border: 0; border-bottom: 1px solid #e3e3e3; border-top: 0; }
+#toggle { position: absolute; top: 9px; right: 3%; background: #4683ff; } 
+	#toggle.on { background: #ffffff; color: #4683ff; }
+#mainer { position: absolute; top: 120px; left:0; padding-top: 10px; width: 100%; background: #e6e6e6} 
+	#mainer .cards_card { margin: 0 3% 10px 3%; }
+	#mainer .cards_card img { margin-right: 2px; width: 14px; vertical-align: middle; }
+#typeSwitcher { position: absolute; bottom: 10px; right: 4%; } 
+	#typeSwitcher button { margin: 0 0 0 20px; width: 24px; height: 24px; background-size: 24px 24px; }
+	.driving { background-image:url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/navigation/type_driving.png); }
+	.transit { background-image:url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/navigation/type_transit.png); }
+	.walking { background-image:url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/navigation/type_walking.png); } 
+	.driving.light { background-image:url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/navigation/type_driving_on.png); } 
+	.transit.light { background-image:url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/navigation/type_transit_on.png); } 
+	.walking.light { background-image:url(http://mobvoi-one-box.oss.aliyuncs.com/web/img/navigation/type_walking_on.png); }

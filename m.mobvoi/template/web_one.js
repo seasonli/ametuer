@@ -8,6 +8,6 @@
 
 Render.prototype.callback = {
 	web_one: function(ul) {
-		window.location.href = $(".wrapper").children("*").eq(ul).html();
+		window.location.href = $(".wrapper").children("*").eq(ul).html().replace(/&amp;/g, "&");
 	}
 }

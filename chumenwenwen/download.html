@@ -94,12 +94,12 @@
     }
     $("button").on("click", function() {
       ga("send", "event", "download", task, browser.type + "/" + browser.os + "/" + browser.browser);
-      window.location.href = "http://chumenwenwen.net/chumenwenwen.apk";
+      window.location.href = "http://res.mobvoi.com/apk/chumenwenwen.apk";
     })
     if(window.location.href.split("download=")[1] && browser.browser != "wechat") {
       if(window.location.href.split("download=")[1].split("&")[0] == "instance") {
         ga("send", "event", "download", task, browser.type + "/" + browser.os + "/wechat");
-        setTimeout('window.location.href = "http://apk.wdjcdn.com/2/05/c282bc3f112065cd848294773a86d052.apk"', 1000);
+        setTimeout('window.location.href = "http://res.mobvoi.com/apk/chumenwenwen.apk"', 1000);
       }
     }
 
