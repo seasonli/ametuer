@@ -6,12 +6,10 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="format-detection" content="telephone=no" />
-
-  <title>酒店预定 出门问问</title>
-  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" >
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.1.01.js"></script>
+  <title>出门问问 酒店预定</title>
+  <link rel="stylesheet" href="/css/chumenwenwen.2.0.css" >
+  <link rel="stylesheet" href="/css/hotel.css" >
+  <script src="/js/chumenwenwen.3.0.js"></script>
 </head>
 
 <body>
@@ -21,13 +19,13 @@
   </div>
 
   <script type="text/html" id="necker">
-    <div class="banner dial" data-tel="{ answer.book_info.hotel_phone }">
+    <div class="banner gotoDial" data-tel="{ answer.book_info.hotel_phone }">
       <p><span class="layout-fleft layout-22px layout-bold" style="line-height: 22px; width: 80%">{ answer.book_info.hotel_name }</span><div class="clear"></div></p>
       <p><span class="layout-16px">{ answer.book_info.star_name }</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="layout-12px">电话: { answer.book_info.hotel_phone }</span></p>
       <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />
     </div>
     <div class="div2">
-      <div class="div2_div1 point">
+      <div class="div2_div1 gotoMark">
         <p><span>{ answer.book_info.hotel_address }</span><span class="layout-fright layout-right layout-666"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" style="width: 12px" /></span><div class="clear"></div></p>
       </div>
     </div>
@@ -183,7 +181,9 @@
 
   <script>
 //    var response = ${content};
-    var response = {"location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.hotel","query":"undefined","remote_ip":"192.168.10.30","answer":{"user_info":{"phone":"","username":""},"latest_arrival_time":"2013-10-18 22:00:00","valid":"true","book_info":{"pay_url":"http://m.mobvoi.com/search/pay/hotel?starName=%E8%B1%AA%E5%8D%8E%E5%9E%8B%E9%85%92%E5%BA%97&remote_ip=192.168.10.30&query=%E9%99%84%E8%BF%915%E6%98%9F%E7%BA%A7%E9%85%92%E5%BA%97&cityCode=0201&appkey=abc&ratePlan=%E5%90%AB%E5%8F%8C%E6%97%A9&lng=121.481972337&hotelId=50201488&city=%E4%B8%8A%E6%B5%B7&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6%2F%E6%97%A0%E7%BA%BF&hotelAddress=%E9%BB%84%E6%B5%A6%E5%8C%BA%E9%87%91%E9%99%B5%E4%B8%9C%E8%B7%AF507%E5%8F%B7%EF%BC%88%E8%BF%91%E5%B9%BF%E8%A5%BF%E5%8D%97%E8%B7%AF%EF%BC%89&remoteIP=58.247.4.206&hotelName=%E4%B8%8A%E6%B5%B7%E5%AE%8F%E6%B3%89%E8%89%BE%E7%91%9E%E9%85%92%E5%BA%97&roomName=%E8%89%BE%E7%91%9E%E5%A5%97%E6%88%BF&hotelPhone=021-63366618&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2FE4%2F85%2Fo4YBAFIqcE6AbOJaAAAPfccQM1M375.png%3Fv%3D20121119172105&msg_id=1aec2e33-9088-4fd0-adca-759af08527b8&bedType=3%E5%BC%A0%E5%BA%8A-1%E5%BC%A0%E5%A4%A7%E5%BA%8A%E5%92%8C2%E5%BC%A0%E5%8D%95%E4%BA%BA%E5%BA%8A&output=json&baiduLng=121.48854650161591","arrival_date":"2013-11-18","star_name":"豪华型酒店","bed_type":"3张床-1张大床和2张单人床","lng":"121.481972337","baidu_lng":"121.48854650161591","hotel_address":"黄浦区金陵东路507号（近广西南路）","hotel_name":"上海宏泉艾瑞酒店","room_img":"http://www.elongstatic.com/gp1/M00/E4/85/o4YBAFIqcE6AbOJaAAAPfccQM1M375.png?v=20121119172105","room_description":"免费上网,宽带/无线","baidu_lat":"31.23332782713072","price":"2500","rate_plan":"含双早","room_name":"艾瑞套房","hotel_phone":"021-63366618","departure_date":"2013-11-21","lat":"31.227536678"}},"appkey":"abc","params":[{"value":"上海","keyname":"城市","key":"city"},{"value":"2013-10-16","keyname":"入住日期","key":"checkin"},{"value":"2013-10-17","keyname":"退房日期","key":"checkout"},{"value":"UNDEFINED","keyname":"排序条件","key":"ranking_condition"}],"taskName":"找酒店","version":"undefined","msg_id":"1aec2e33-9088-4fd0-adca-759af08527b8","user_id":"undefined","query_type":"book"};
+    var response = {"answer":{"book_info":{"arrival_date":"2014-02-08","baidu_lat":"25.047752285348327","baidu_lng":"102.70440202840223","bed_type":"双床（120cm*200cm）","booking_rule_desc":"","departure_date":"2014-02-09","guarantee_rule_desc":"担保条件：在14.01.03至14.12.31 入住 在22:00至6:00到店，需要您提供信用卡担保。客人入住日18:00点前可以变更取消，之后无法变更取消，如未入住，将扣除全额房费作为违约金。\n","hotel_address":"五华区大观街33号（大观街大观商业城南门旁）","hotel_name":"昆明蔡将军酒店（大观店）","hotel_phone":"0871-63335400","pay_url":"http://m.mobvoi.com/search/pay/hotel?starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&query=%E8%BF%99%E9%99%84%E8%BF%91%E7%9A%84%E9%85%92%E5%BA%97&appkey=debug&cityCode=2501&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&hotelId=22501022&version=10010&city=%E6%98%86%E6%98%8E&gcjLng=102.69795&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6&hotelAddress=%E4%BA%94%E5%8D%8E%E5%8C%BA%E5%A4%A7%E8%A7%82%E8%A1%9733%E5%8F%B7%EF%BC%88%E5%A4%A7%E8%A7%82%E8%A1%97%E5%A4%A7%E8%A7%82%E5%95%86%E4%B8%9A%E5%9F%8E%E5%8D%97%E9%97%A8%E6%97%81%EF%BC%89&hotelName=%E6%98%86%E6%98%8E%E8%94%A1%E5%B0%86%E5%86%9B%E9%85%92%E5%BA%97%EF%BC%88%E5%A4%A7%E8%A7%82%E5%BA%97%EF%BC%89&roomName=%E6%A0%87%E9%97%B4&hotelPhone=0871-63335400&user_id=&query_type=pay&baiduLat=25.047752285348327&roomTypeId=0001&bookingRuleDesc=&gcjLat=25.041632&ratePlanId=117636&customerType=Chinese&task=public.hotel&device_id=&need_recommend=false&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A814.01.03%E8%87%B314.12.31+%E5%85%A5%E4%BD%8F+%E5%9C%A822%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A518%3A00%E7%82%B9%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E5%85%A8%E9%A2%9D%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&address=%2C%2C%E6%98%86%E6%98%8E%E5%B8%82%2C%2C%2C%2C25.0483%2C102.705&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2FE6%2F47%2Fo4YBAFIhujqAdf_OAAAPKQX8Auc826.png%3Fv%3D20120309062016&msg_id=&bedType=%E5%8F%8C%E5%BA%8A%EF%BC%88120cm*200cm%EF%BC%89&method=&output=json&baiduLng=102.70440202840223","price":"218","rate_plan":"不含早","room_description":"免费上网,宽带","room_img":"http://www.elongstatic.com/gp1/M00/E6/47/o4YBAFIhujqAdf_OAAAPKQX8Auc826.png?v=20120309062016","room_name":"标间","star_name":"经济型酒店"},"latest_arrival_time":"2014-02-08 17:00:00","user_info":{"phone":"","username":""},"valid":"true"},"appkey":"debug","location":{"city":"昆明市","country":"undefined","lat":25.0483,"lng":102.705,"province":"undefined","street":"undefined","streetNumber":"undefined","sublocality":"undefined"},"msg_id":"undefined","params":[{"key":"city","keyname":"城市","value":"昆明"},{"key":"checkin","keyname":"入住日期","value":"2014-02-08"},{"key":"checkout","keyname":"退房日期","value":"2014-02-09"}],"query":"undefined","query_type":"book","remote_ip":"undefined","status":"success","task":"public.hotel","taskName":"找酒店","user_id":"undefined","version":"10010"}
+
+    var CMWW = new chumenwenwen();
     $(".necker").html(template.render("necker", response));
     $(".wrapper").html(template.render("wrapper", response));
     if(browser.versions.android == true) {
@@ -192,12 +192,15 @@
     } else if(browser.versions.ios == true) {
       $("select").parent().addClass("select").addClass("ios");
     }
-    $(".dial").click(function() {
-      new chumenwenwen.dial($(this).attr("data-tel"), "");
+    
+    // Events
+    $(".gotoDial").click(function() {
+      CMWW.jump.dial($(this).attr("data-tel"));
     })    
-    $(".point").click(function() {
-      new chumenwenwen.map.jumpToMap("point", [[response.answer.book_info.hotel_name, response.answer.book_info.baidu_lat, response.answer.book_info.baidu_lng]], "");
+    $(".gotoMark").click(function() {
+      CMWW.jump.mark([[response.answer.book_info.hotel_name, response.answer.book_info.baidu_lat, response.answer.book_info.baidu_lng]]);
     })
+
     var year = new Date().getFullYear(), month = new Date().getMonth() + 1, nextMonth = new Date().getMonth() + 2, day = new Date().getDate();
     var monthHTML = "";    
     if(month < 12) {
