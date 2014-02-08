@@ -121,8 +121,6 @@ var CMWW = new chumenwenwen(), mapObj = {
   point: []
 }, renderObj = [];
 // Wrap a Container to Solve the Strange Action Handler in iOS Safari
-// All Action Below Register on This Container
-$(".wrapper").wrap('<div data-event="CMWW"></div>');
 
 // Render Response
 if(typeof(response) == "object") {
