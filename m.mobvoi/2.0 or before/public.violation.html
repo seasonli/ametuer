@@ -6,12 +6,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="format-detection" content="telephone=no" />
-
-  <title>查违章 出门问问</title> 
-  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" />
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.1.01.js"></script>
+  <title>出门问问 查违章</title> 
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.2.0.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
 </head>
 
 <body>
@@ -160,43 +157,40 @@
 
     var verify = {};
 
-    var response = ${content};
-    
+//    var response = ${content};
+    var response = {"session_id":"public.violation@1cef9959e48b4d8c4996e20cdd91a39e","location":{"street":"武东路","province":"上海市","lng":121.49982640557423,"streetNumber":"undefined","sublocality":"杨浦区","lat":31.308912471391192,"city":"上海市","country":"中国"},"status":"success","task":"public.violation","query":"违章","remote_ip":"124.127.127.175","answer":[{"content":"user not found","status":404,"request":"html_city","url":"http://m.mobvoi.com/search/pc/violation?hphm=&appkey=wechat_browser&classno=&version=10000&city=&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E6%9D%A8%E6%B5%A6%E5%8C%BA%2C%E6%AD%A6%E4%B8%9C%E8%B7%AF%2Cundefined%2C31.308912471391192%2C121.49982640557423&hpzl=&registno=&request=html_city&msg_id=&engineno=&user_id=&query_type=pcc&cityname=&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"10000","msg_id":"","user_id":"","query_type":""};
+
     switch (response.answer[0].status) {
       case 404: // 未建立用户档案->显示表单
-      $(".wrapper").html($("#wrapper_violation_create").html());
+        $(".wrapper").html($("#wrapper_violation_create").html());
       break;
       case 200: // 查询成功
-      if (response.answer[0].content != "update html") { // 查询成功->显示结果
-        $(".wrapper").html(template.render("wrapper_violation_result", response));
-        if (response.answer[0].content.resultcode == "200") {
-          if (response.answer[0].content.result.lists.length > 0) {
-            $("#total").prepend(response.answer[0].content.result.lists.length);
-          } else {
-            $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">没有您的违章信息</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')
+        if (response.answer[0].content != "update html") { // 查询成功->显示结果
+          $(".wrapper").html(template.render("wrapper_violation_result", response));
+          if (response.answer[0].content.resultcode == "200") {
+            if (response.answer[0].content.result.lists.length > 0) {
+              $("#total").prepend(response.answer[0].content.result.lists.length);
+            } else {
+              $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">没有您的违章信息</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')
+            }
+          } else { // example 6
+            $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">' + response.answer[0].content.reason + '</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')  // example6
           }
-        } else { // example 6
-          $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">' + response.answer[0].content.reason + '</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')  // example6
+        } else { // 更新表单
+          $(".wrapper").html($("#wrapper_violation_create").html());
+          $("#cityname").val(response.answer[0].info.cityname); 
+          $('[name="cityname"]').val(response.answer[0].info.cityname); 
+          initialDetail(response.answer[0].info.cityname); 
+          $('[name="request"]').val("update");
+          $('[name="hphm"]').val(response.answer[0].info.hphm);
+          $('[name="hpzl"]').val(response.answer[0].info.hpzl);
         }
-      } else { // 更新表单
-        $(".wrapper").html($("#wrapper_violation_create").html());
-        $("#cityname").val(response.answer[0].info.cityname); 
-        $('[name="cityname"]').val(response.answer[0].info.cityname); 
-        initialDetail(response.answer[0].info.cityname); 
-        $('[name="request"]').val("update");
-        $('[name="hphm"]').val(response.answer[0].info.hphm);
-        $('[name="hpzl"]').val(response.answer[0].info.hpzl);
-      }
-      break;
+        break;
       case 403: // 重复创建用户
-      $(".wrapper").html(template.render("wrapper_violation_complied", response)); // example 5
-      break;
-      case 500:
-      case 501:
-      case 502:
-      case 503:
-      $(".wrapper").html(template.render("wrapper_violation_error", response));
-      break;
+        $(".wrapper").html(template.render("wrapper_violation_complied", response)); // example 5
+        break;
+      default: // other error code
+        $(".wrapper").html(template.render("wrapper_violation_error", response));
     }
     $("#form").attr("action", urlPrefix + "/search/pc/violation");
     $('[name="user_id"]').val(response.user_id);
