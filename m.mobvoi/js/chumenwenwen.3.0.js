@@ -38,7 +38,7 @@ function getGoogleLocation(lat, lng) {
 // Offer chumenwenwen HTML js api
 function chumenwenwen() {
   // All Action Below Register on This Container
-  $("body").children().eq(0).wrap('<div data-event="CMWW"></div>');
+  $("<div>").attr("data-event", "CMWW").wrapInner($("body").children()).appendTo($("body"));
   var share = {};
   this.share = {};
   this.share.init = function(params) {
