@@ -181,7 +181,7 @@
             if (response.answer[0].content.result.lists.length > 0) {
               $("#total").prepend(response.answer[0].content.result.lists.length);
             } else {
-              $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">没有您的违章信息</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')
+              $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">您目前没有违章记录</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')
             }
           } else { // example 6
             $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">' + response.answer[0].content.reason + '</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')  // example6
