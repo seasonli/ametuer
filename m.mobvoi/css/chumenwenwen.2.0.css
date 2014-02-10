@@ -100,6 +100,11 @@ select { padding: 0 4% 0 4%; height: 20px; width: 100%; font-size: 16px;
 		background: -o-linear-gradient(top, #f6f6f6, #cccccc);
 		background: linear-gradient(to bottom, #f6f6f6, #cccccc);
 	}
+	
+.necker { background: #e6e6e6; }
+	.necker p { margin: 10px 0; }
+	.banner { position: relative; margin: 0 0 10px 0; padding: 10px 4% 5px 4%; background: #21ac94; color: #ffffff; text-shadow: 1px 1px 1px #666666; }
+		.banner img { position: absolute; right: 3%; top: 20px; }
 
 .wrapper { padding-top: 30px; }
 	.form { 
