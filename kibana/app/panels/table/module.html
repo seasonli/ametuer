@@ -210,43 +210,70 @@
   </div>
 </div>
 <script>
+  function downloadFile(url, query, rows, fileName) {
+    var str = "";
+    for(var i in rows) {
+      if(i == 0) {
+        str += rows[i];
+      } else {
+        str += ("," + rows[i]);
+      }
+    }
+    $.ajax({
+      async: false,
+      type: "POST",
+      url: url,
+      contentType: "application/json",
+      data: query,
+      dataType: "json",
+      success: function(res) {
+        for(var i in res.hits.hits) {
+          for(var j in rows) {
+            switch(rows[j]) {
+              case "location.lon":
+              case "location.lat":
+                if(j == 0) {
+                  str += ("\n" + res.hits.hits[i]._source.location[rows[j].split(".")[1]]);
+                } else {
+                  str += ("," + res.hits.hits[i]._source.location[rows[j].split(".")[1]]);
+                }
+                break;
+              default: 
+                if(j == 0) {
+                  str += ("\n" + res.hits.hits[i]._source[rows[j]]);
+                } else {
+                  str += ("," + res.hits.hits[i]._source[rows[j]]);
+                }
+            }
+          }
+        }
+        var aLink = document.createElement('a');
+        var blob = new Blob([str]);
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click");
+        aLink.download = fileName;
+        aLink.href = URL.createObjectURL(blob);
+        aLink.dispatchEvent(evt);        
+      }, 
+      error: function(res) {
+        alert("fail");
+      }
+    })
+  }
+
   $("#exportCSV").click(function() {
   	var target = $(this).parents(".panelCont").find(".row-button.extra.ng-scope span").attr("data-target");
   	var rows = [];
   	$(this).parents(".panelCont").find(".table-hover.table.table-condensed thead tr th.ng-scope").each(function() {
   		rows.push($(this).find(".pointer.ng-binding").html().replace(/\n/g, "").replace(/ /g, "").replace(/\<.*/, ""));
   	})
-
   	var url = $(target).find("pre").html().replace(/\n/g, "").replace(/ /g, "").match(/http.*pretty/);
   	var query = $(target).find("pre").html().replace(/\n/g, "").replace(/ /g, "").replace(/^.*d'/, "").replace(/'/g, "");
-  	
-  	var obj = [];
-		$.ajax({
-		  async: false,
-		  type: "POST",
-		  url: url,
-		  contentType: "application/json",
-		  data: query,
-		  dataType: "json",
-		  success: function(res) {
-		    for(var i in res.hits.hits) {
-		    	obj[i] = {};
-		    	for(var j in rows) {
-		    		switch(rows[j]) {
-		    			case "location.lon":
-		    			case "location.lat":
-		    				obj[i][rows[j]] = res.hits.hits[i]._source.location[rows[j].split(".")[1]];
-		    				break;
-		    			default: 
-		    				obj[i][rows[j]] = res.hits.hits[i]._source[rows[j]];
-		    		}
-		    	}
-		    }
-		    console.dir(obj);
-		  }, 
-		  error: function(res) {
-		  	alert("fail");
-		  }
-		})
+    var fileName = prompt("数据导出CSV文件，为文件取名", "");
+    if(fileName != null && fileName != "") {
+      downloadFile(url, query, rows, fileName + ".csv");
+    } else {
+      downloadFile(url, query, rows, "untitled.csv");
+    }
   })
 </script>
