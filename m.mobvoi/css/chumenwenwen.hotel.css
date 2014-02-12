@@ -1,1 +1,7 @@
-
+.div1 { }
+	.div1_left { float: left; margin: 0 1.5% 0 3%; width: 61%; }
+		.div1_left_div1 { margin: 0 0 5px 0; padding: 0 10px; border: 1px solid #cccccc; background: #f3f3f3; }
+	.div1_right { float: right; margin: 0 3% 5px 1.5%; width: 30%; }
+		.div1_right img { float: right; height: 88px; }
+.div2 { padding: 0 0 5px 0; background: #e6e6e6; }
+	.div2_div1 { margin: 0 3% 0 3%; padding: 0 3%; border: 1px solid #cccccc; background: #f3f3f3; }
