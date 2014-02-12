@@ -38,7 +38,7 @@
         </div>
       </li>
     </ul>
-    { if answer.latest_arrival_time }
+    { if answer.valid }
       <ul class="cards">    
         <li class="cards_card">
           <div class="cards_card_img left">
@@ -156,7 +156,7 @@
               <p><label>住店人</label></p>
             </div>
             <div class="cards_card_form right">
-              <p><input type="text" class="customers" value="{ answer.user_info.username }" placeholder="每间房须填写一位住店人" /></p>
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" placeholder="每间房须填写一人" /></p>
             </div>
             <div class="clear"></div>  
           </div>
@@ -165,7 +165,7 @@
               <p><label>住店人</label></p>
             </div>
             <div class="cards_card_form right">
-              <p><input type="text" class="customers" value="{ answer.user_info.username }" /></p>
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" placeholder="每间房须填写一人" /></p>
             </div>
             <div class="clear"></div>  
           </div>
@@ -174,7 +174,7 @@
               <p><label>住店人</label></p>
             </div>
             <div class="cards_card_form right">
-              <p><input type="text" class="customers" value="{ answer.user_info.username }" /></p>
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" placeholder="每间房须填写一人" /></p>
             </div>
             <div class="clear"></div>  
           </div>
@@ -183,7 +183,7 @@
               <p><label>住店人</label></p>
             </div>
             <div class="cards_card_form right">
-              <p><input type="text" class="customers" value="{ answer.user_info.username }" /></p>
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" placeholder="每间房须填写一人" /></p>
             </div>
             <div class="clear"></div>  
           </div>
@@ -250,8 +250,8 @@
 
   <script>
 //    var response = ${content};
-    var response = {"answer":{"book_info":{"arrival_date":"2014-02-12","baidu_lat":"30.586593793686387","baidu_lng":"114.28765502853176","bed_type":"大床（180cm*200cm）","booking_rule_desc":"您预订了N间房，请您提供不少于N位的入住客人姓名\n","departure_date":"2014-02-13","guarantee_rule_desc":"担保条件：在11.08.29至50.12.31 入住 如果在19:00至6:00到店，或预订房量超过4间，需要您提供信用卡担保。客人入住日18:00点前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","hotel_address":"江汉区前进一路燕马新村7号（京汉大道与前进一路交叉口）","hotel_name":"7天连锁酒店（武汉京汉大道前进一路店）","hotel_phone":"027-85864998","pay_url":"http://m.mobvoi.com/search/pay/hotel?starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&query=%E6%AD%A6%E6%B1%89%E5%9B%BD%E9%99%85%E4%BC%9A%E5%B1%95%E4%B8%AD%E5%BF%83%E9%99%84%E8%BF%91%E6%9C%89%E6%B2%A1%E6%9C%89%E5%AE%BE%E9%A6%86&appkey=debug&cityCode=1801&ratePlan=%E5%90%AB%E6%97%A9&hotelId=31801200&version=10010&city=%E6%AD%A6%E6%B1%89&gcjLng=114.281120896&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6&hotelAddress=%E6%B1%9F%E6%B1%89%E5%8C%BA%E5%89%8D%E8%BF%9B%E4%B8%80%E8%B7%AF%E7%87%95%E9%A9%AC%E6%96%B0%E6%9D%917%E5%8F%B7%EF%BC%88%E4%BA%AC%E6%B1%89%E5%A4%A7%E9%81%93%E4%B8%8E%E5%89%8D%E8%BF%9B%E4%B8%80%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%EF%BC%89&hotelName=7%E5%A4%A9%E8%BF%9E%E9%94%81%E9%85%92%E5%BA%97%EF%BC%88%E6%AD%A6%E6%B1%89%E4%BA%AC%E6%B1%89%E5%A4%A7%E9%81%93%E5%89%8D%E8%BF%9B%E4%B8%80%E8%B7%AF%E5%BA%97%EF%BC%89&roomName=%E5%95%86%E5%8A%A1%E5%A4%A7%E5%BA%8A%E6%88%BF&hotelPhone=027-85864998&user_id=&query_type=pay&baiduLat=30.586593793686387&roomTypeId=0003&bookingRuleDesc=%E6%82%A8%E9%A2%84%E8%AE%A2%E4%BA%86N%E9%97%B4%E6%88%BF%EF%BC%8C%E8%AF%B7%E6%82%A8%E6%8F%90%E4%BE%9B%E4%B8%8D%E5%B0%91%E4%BA%8EN%E4%BD%8D%E7%9A%84%E5%85%A5%E4%BD%8F%E5%AE%A2%E4%BA%BA%E5%A7%93%E5%90%8D%0A&gcjLat=30.580786703&ratePlanId=127848&customerType=Chinese&task=public.hotel&device_id=&need_recommend=false&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A811.08.29%E8%87%B350.12.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A819%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%874%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A518%3A00%E7%82%B9%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%2C%E6%B5%A6%E5%9F%8E%E8%B7%AF%2C%2C31.235267851523%2C121.51697499967&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fhotels%2Fpic%2Froom_no.png&msg_id=&bedType=%E5%A4%A7%E5%BA%8A%EF%BC%88180cm*200cm%EF%BC%89&method=&output=json&baiduLng=114.28765502853176","price":"197","rate_plan":"含早","room_description":"免费上网,宽带","room_img":"http://www.elongstatic.com/hotels/pic/room_no.png","room_name":"商务大床房","star_name":"经济型酒店"},"earliest_arrival_time":"2014-02-12 16:00:00","latest_arrival_time":"2014-02-12 17:00:00","user_info":{"phone":"","username":""},"valid":"true"},"appkey":"debug","location":{"city":"上海市","country":"中国","lat":31.235267851523,"lng":121.51697499967,"province":"上海","street":"浦城路","streetNumber":"undefined","sublocality":"浦东新区"},"msg_id":"undefined","params":[{"key":"city","keyname":"城市","value":"武汉"},{"key":"checkin","keyname":"入住日期","value":"2014-02-12"},{"key":"checkout","keyname":"退房日期","value":"2014-02-13"}],"query":"undefined","query_type":"book","remote_ip":"undefined","status":"success","task":"public.hotel","taskName":"找酒店","user_id":"undefined","version":"10010"}
-
+    var response = {"answer":{"book_info":{"arrival_date":"2014-02-13","baidu_lat":"31.233168527188223","baidu_lng":"121.48816946681954","bed_type":"大床（150cm*200cm）","booking_rule_desc":"您预订了N间房，请您提供不少于N位的入住客人姓名\n预定此产品需要将手机号码提供给酒店\n","departure_date":"2014-02-14","guarantee_rule_desc":"担保条件：在14.01.13至15.05.31 入住 如果在18:00至6:00到店，或预订房量超过3间，需要您提供信用卡担保。客人入住日前1日前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","hotel_address":"黄浦区金陵东路531号（近广西南路）","hotel_name":"如家快捷酒店（上海人民广场金陵东路店）","hotel_phone":"021-63111178","pay_url":"http://m.mobvoi.com/search/pay/hotel?starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&query=%E4%B8%8A%E6%B5%B7%E6%98%8E%E5%A4%A9%E6%9C%89%E4%BB%80%E4%B9%88%E5%BF%AB%E6%8D%B7%E9%85%92%E5%BA%97&appkey=debug&cityCode=0201&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&hotelId=20201469&version=10010&city=%E4%B8%8A%E6%B5%B7&gcjLng=121.481596827&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6%2C%E5%8F%AF%E6%97%A0%E7%83%9F%E5%A4%84%E7%90%86&hotelAddress=%E9%BB%84%E6%B5%A6%E5%8C%BA%E9%87%91%E9%99%B5%E4%B8%9C%E8%B7%AF531%E5%8F%B7%EF%BC%88%E8%BF%91%E5%B9%BF%E8%A5%BF%E5%8D%97%E8%B7%AF%EF%BC%89&hotelName=%E5%A6%82%E5%AE%B6%E5%BF%AB%E6%8D%B7%E9%85%92%E5%BA%97%EF%BC%88%E4%B8%8A%E6%B5%B7%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E9%87%91%E9%99%B5%E4%B8%9C%E8%B7%AF%E5%BA%97%EF%BC%89&roomName=%E7%89%B9%E6%83%A0%E5%A4%A7%E5%BA%8A%E6%88%BF&hotelPhone=021-63111178&user_id=&query_type=pay&baiduLat=31.233168527188223&roomTypeId=0003&bookingRuleDesc=%E6%82%A8%E9%A2%84%E8%AE%A2%E4%BA%86N%E9%97%B4%E6%88%BF%EF%BC%8C%E8%AF%B7%E6%82%A8%E6%8F%90%E4%BE%9B%E4%B8%8D%E5%B0%91%E4%BA%8EN%E4%BD%8D%E7%9A%84%E5%85%A5%E4%BD%8F%E5%AE%A2%E4%BA%BA%E5%A7%93%E5%90%8D%0A%E9%A2%84%E5%AE%9A%E6%AD%A4%E4%BA%A7%E5%93%81%E9%9C%80%E8%A6%81%E5%B0%86%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E6%8F%90%E4%BE%9B%E7%BB%99%E9%85%92%E5%BA%97%0A&gcjLat=31.227371539&ratePlanId=206746&customerType=All&task=public.hotel&device_id=&need_recommend=false&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A814.01.13%E8%87%B315.05.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A818%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%873%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A5%E5%89%8D1%E6%97%A5%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&address=%2C%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%2C%2C%2C31.2309%2C121.512&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2FBC%2F9F%2Fo4YBAFIgkbmAI--PAAANi8jBwBw902.png%3Fv%3D20130306142822&msg_id=&bedType=%E5%A4%A7%E5%BA%8A%EF%BC%88150cm*200cm%EF%BC%89&method=&output=json&baiduLng=121.48816946681954","price":"229","rate_plan":"不含早","room_description":"免费上网,宽带,可无烟处理","room_img":"http://www.elongstatic.com/gp1/M00/BC/9F/o4YBAFIgkbmAI--PAAANi8jBwBw902.png?v=20130306142822","room_name":"特惠大床房","star_name":"经济型酒店"},"latest_arrival_time":"2014-02-13 16:00:00","earliest_arrival_time":"2014-02-13 15:00:00","user_info":{"phone":"","username":""},"valid":true},"appkey":"debug","location":{"city":"上海市","country":"undefined","lat":31.2309,"lng":121.512,"province":"undefined","street":"undefined","streetNumber":"undefined","sublocality":"undefined"},"msg_id":"undefined","params":[{"key":"city","keyname":"城市","value":"上海"},{"key":"checkin","keyname":"入住日期","value":"2014-02-12"},{"key":"checkout","keyname":"退房日期","value":"2014-02-13"}],"query":"undefined","query_type":"book","remote_ip":"undefined","status":"success","task":"public.hotel","taskName":"找酒店","user_id":"undefined","version":"10010"}
+    
     var CMWW = new chumenwenwen();
     $(".wrapper").html(template.render("wrapper", response));
     if(browser.versions.android == true) {
@@ -410,27 +410,32 @@
             customers += customer;
           } else {
             customerFlag = false;
-            CMWW.showDialog("遗漏了住店人姓名", ["", ["遗漏了住店人姓名"], [""]]);    
+            CMWW.showDialog("遗漏了住店人姓名", "");
+            return false;
           }
         }
       });
       if(customerFlag) {
         if(username.length < 2) {
-          CMWW.showDialog("请输入您的全名", ["", ["请输入您的全名"], [""]]);
+          CMWW.showDialog("请输入您的全名", "");
         } else if(phone.length != 11) {
           CMWW.showDialog("请输入正确的手机号", "");
-        } else if(Date.parse((latestArrivalTime.replace(/-/g, "/"))) - Date.parse(new Date()) < 0) {
+        } else if(Date.parse((earliestArrivalTime.replace(/-/g, "/"))) - Date.parse(new Date()) < 0) {
           CMWW.showDialog("到店时间不能早于当前时间", "");
         } else {
           CMWW.showDialog("请等待，正在为你处理", "");
           $.ajax({
             async: false,
             type: "GET",
-            url: response.answer.book_info.pay_url + "&arrivalDate=" + arrivalDate 
+            // response.answer.book_info.pay_url
+            url: "onlineDev30000/mobvoibackendcontroller/search/pay/hotel?starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&query=%E4%B8%8A%E6%B5%B7%E6%98%8E%E5%A4%A9%E6%9C%89%E4%BB%80%E4%B9%88%E5%BF%AB%E6%8D%B7%E9%85%92%E5%BA%97&appkey=debug&cityCode=0201&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&hotelId=20201469&version=10010&city=%E4%B8%8A%E6%B5%B7&gcjLng=121.481596827&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6%2C%E5%8F%AF%E6%97%A0%E7%83%9F%E5%A4%84%E7%90%86&hotelAddress=%E9%BB%84%E6%B5%A6%E5%8C%BA%E9%87%91%E9%99%B5%E4%B8%9C%E8%B7%AF531%E5%8F%B7%EF%BC%88%E8%BF%91%E5%B9%BF%E8%A5%BF%E5%8D%97%E8%B7%AF%EF%BC%89&hotelName=%E5%A6%82%E5%AE%B6%E5%BF%AB%E6%8D%B7%E9%85%92%E5%BA%97%EF%BC%88%E4%B8%8A%E6%B5%B7%E4%BA%BA%E6%B0%91%E5%B9%BF%E5%9C%BA%E9%87%91%E9%99%B5%E4%B8%9C%E8%B7%AF%E5%BA%97%EF%BC%89&roomName=%E7%89%B9%E6%83%A0%E5%A4%A7%E5%BA%8A%E6%88%BF&hotelPhone=021-63111178&user_id=&query_type=pay&baiduLat=31.233168527188223&roomTypeId=0003&bookingRuleDesc=%E6%82%A8%E9%A2%84%E8%AE%A2%E4%BA%86N%E9%97%B4%E6%88%BF%EF%BC%8C%E8%AF%B7%E6%82%A8%E6%8F%90%E4%BE%9B%E4%B8%8D%E5%B0%91%E4%BA%8EN%E4%BD%8D%E7%9A%84%E5%85%A5%E4%BD%8F%E5%AE%A2%E4%BA%BA%E5%A7%93%E5%90%8D%0A%E9%A2%84%E5%AE%9A%E6%AD%A4%E4%BA%A7%E5%93%81%E9%9C%80%E8%A6%81%E5%B0%86%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E6%8F%90%E4%BE%9B%E7%BB%99%E9%85%92%E5%BA%97%0A&gcjLat=31.227371539&ratePlanId=206746&customerType=All&task=public.hotel&device_id=&need_recommend=false&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A814.01.13%E8%87%B315.05.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A818%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%873%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A5%E5%89%8D1%E6%97%A5%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&address=%2C%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%2C%2C%2C31.2309%2C121.512&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2FBC%2F9F%2Fo4YBAFIgkbmAI--PAAANi8jBwBw902.png%3Fv%3D20130306142822&msg_id=&bedType=%E5%A4%A7%E5%BA%8A%EF%BC%88150cm*200cm%EF%BC%89&method=&output=json&baiduLng=121.48816946681954"
+              + "&arrivalDate=" + arrivalDate 
               + "&departureDate=" + departureDate
               + "&name=" + username
               + "&phone=" + phone
               + "&earliestArrivalTime=" + earliestArrivalTime
+              + "numOfRooms=" + numOfRooms
+              + "customers=" + customers 
               + "&price=" + price,
             dataType: "json",
             success: function(rawData) {
