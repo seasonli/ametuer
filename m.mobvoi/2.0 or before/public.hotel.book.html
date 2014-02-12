@@ -13,25 +13,32 @@
 </head>
 
 <body>
-  <div class="necker">
+  <div class="wrapper" style="margin-top: -30px">
   </div>
-  <div class="wrapper">
-  </div>
-
-  <script type="text/html" id="necker">
-    <div class="banner gotoDial" data-tel="{ answer.book_info.hotel_phone }">
-      <p><span class="layout-fleft layout-22px layout-bold" style="line-height: 22px; width: 80%">{ answer.book_info.hotel_name }</span><div class="clear"></div></p>
-      <p><span class="layout-16px">{ answer.book_info.star_name }</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="layout-12px">电话: { answer.book_info.hotel_phone }</span></p>
-      <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />
-    </div>
-    <div class="div2">
-      <div class="div2_div1 gotoMark">
-        <p><span>{ answer.book_info.hotel_address }</span><span class="layout-fright layout-right layout-666"><img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" style="width: 12px" /></span><div class="clear"></div></p>
-      </div>
-    </div>
-  </script>
 
   <script type="text/html" id="wrapper">
+    <ul class="banner gotoDial" data-tel="{ answer.book_info.hotel_phone }">    
+      <li class="cards_card" style="background: #21ac94; border: 0">
+        <div class="cards_card_entire">
+          <p><span class="layout-fleft layout-22px layout-bold layout-ellipsis" style="line-height: 22px; width: 80%">{ answer.book_info.hotel_name }</span><div class="clear"></div></p>
+          <p><span class="layout-16px">{ answer.book_info.star_name }</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="layout-12px">电话: { answer.book_info.hotel_phone }</span></p>
+          <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />
+        </div>   
+        </div>
+      </li>
+    </ul>
+    <ul class="cards gotoMark">
+      <li class="cards_card">
+        <div class="cards_card_entire">
+          <p>
+            <span>{ answer.book_info.hotel_address }</span>
+            <span class="layout-fright layout-right layout-666">
+              <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/gps.png" style="width: 12px" />
+            </span>
+          </p>   
+        </div>
+      </li>
+    </ul>
     { if answer.latest_arrival_time }
       <ul class="cards">    
         <li class="cards_card">
@@ -50,16 +57,18 @@
         </li>
         <li class="cards_card">        
           <div class="cards_card_quarter left">
-            <p><label class="layout-green">到店</label></p>
+            <p>
+              <label class="layout-green">到店</label>
+            </p>
           </div>
           <div class="cards_card_quarter center">
-            <p><select id="checkin_month"></select>
-            </span></p>
+            <p>
+              <select id="checkin_month"></select>
+            </p>
           </div>     
           <div class="cards_card_quarter center">
             <p>
-              <select id="checkin_day">
-              </select>
+              <select id="checkin_day"></select>
             </p>
           </div>
           <div class="cards_card_quarter right">
@@ -99,6 +108,17 @@
           </div>
           <div class="cards_card_quarter center">
             <p>
+              <select id="numOfRooms">
+                <option value="1">1 间</option>
+                <option value="2">2 间</option>
+                <option value="3">3 间</option>
+                <option value="4">4 间</option>
+                <option value="5">5 间</option>
+              </select>
+            </p>
+          </div>
+          <div class="cards_card_quarter center">
+            <p>
               <select id="checkout_during">
                 <option value="1">1 晚</option>
                 <option value="2">2 晚</option>
@@ -122,18 +142,68 @@
               </select>
             </p>
           </div>
-          <div class="cards_card_double right layout-orange">
-            <p>&nbsp;&nbsp;&nbsp;<label id="checkout_date"></label><label>&nbsp;离店</label></p>
-            <p><label id="checkin_date" style="display: none"></label></p>
-          </div>
           <div class="clear"></div>
-          <div class="cards_card_form left layout-green layout-16px">
-            <p><label>总价</label></p>
+          <div>
+            <div class="cards_card_form left layout-green layout-16px">
+              <p><label>住店人</label></p>
+            </div>
+            <div class="cards_card_form right">
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" /></p>
+            </div>
+            <div class="clear"></div>  
           </div>
-          <div class="cards_card_form right layout-orange">
-            <p><label>￥</label><label id="price"></label></p>
-          </div>        
-          <div class="clear"></div>
+          <div>
+            <div class="cards_card_form left layout-green layout-16px">
+              <p><label>住店人</label></p>
+            </div>
+            <div class="cards_card_form right">
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" placeholder="每间房须填写一位住店人" /></p>
+            </div>
+            <div class="clear"></div>  
+          </div>
+          <div>
+            <div class="cards_card_form left layout-green layout-16px">
+              <p><label>住店人</label></p>
+            </div>
+            <div class="cards_card_form right">
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" /></p>
+            </div>
+            <div class="clear"></div>  
+          </div>
+          <div>
+            <div class="cards_card_form left layout-green layout-16px">
+              <p><label>住店人</label></p>
+            </div>
+            <div class="cards_card_form right">
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" /></p>
+            </div>
+            <div class="clear"></div>  
+          </div>
+          <div>
+            <div class="cards_card_form left layout-green layout-16px">
+              <p><label>住店人</label></p>
+            </div>
+            <div class="cards_card_form right">
+              <p><input type="text" class="customers" value="{ answer.user_info.username }" /></p>
+            </div>
+            <div class="clear"></div>  
+          </div>
+          <div class="cards_card_entire layout-right">
+            <p>
+              <span id="checkin_date" class="layout-bold"></span>
+              ~
+              <span id="checkout_date" class="layout-bold"></span>
+              &nbsp;
+              <span class="layout-bold">2</span>
+              间
+              <span class="layout-bold">2</span>
+              晚
+            </p>
+            <p class="layout-16px">
+              <span>总价：</span><span id="price" class="layout-bold layout-orange"></span>
+              元
+            </p>
+          </div>
         </li>
         { if answer.book_info.guarantee_rule_desc }
           <li class="cards_card">
@@ -161,7 +231,7 @@
           </div>
           <div class="clear"></div>
         </li>
-        <li class="cards_card result">
+        <li class="cards_card">
           <div class="cards_card_entire">
             <p><button id="pay" type="button">确认预定</button></p>
           </div>
@@ -169,7 +239,7 @@
         </li>
       </ul>
     { else }
-      <ul class="cards">    
+      <ul class="cards">
         <li class="cards_card">
           <div class="cards_card_entire">
             <p><span>抱歉，该房间暂时无法预定</span></p>
@@ -181,10 +251,9 @@
 
   <script>
 //    var response = ${content};
-    var response = {"answer":{"book_info":{"arrival_date":"2014-02-08","baidu_lat":"25.047752285348327","baidu_lng":"102.70440202840223","bed_type":"双床（120cm*200cm）","booking_rule_desc":"","departure_date":"2014-02-09","guarantee_rule_desc":"担保条件：在14.01.03至14.12.31 入住 在22:00至6:00到店，需要您提供信用卡担保。客人入住日18:00点前可以变更取消，之后无法变更取消，如未入住，将扣除全额房费作为违约金。\n","hotel_address":"五华区大观街33号（大观街大观商业城南门旁）","hotel_name":"昆明蔡将军酒店（大观店）","hotel_phone":"0871-63335400","pay_url":"http://m.mobvoi.com/search/pay/hotel?starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&query=%E8%BF%99%E9%99%84%E8%BF%91%E7%9A%84%E9%85%92%E5%BA%97&appkey=debug&cityCode=2501&ratePlan=%E4%B8%8D%E5%90%AB%E6%97%A9&hotelId=22501022&version=10010&city=%E6%98%86%E6%98%8E&gcjLng=102.69795&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6&hotelAddress=%E4%BA%94%E5%8D%8E%E5%8C%BA%E5%A4%A7%E8%A7%82%E8%A1%9733%E5%8F%B7%EF%BC%88%E5%A4%A7%E8%A7%82%E8%A1%97%E5%A4%A7%E8%A7%82%E5%95%86%E4%B8%9A%E5%9F%8E%E5%8D%97%E9%97%A8%E6%97%81%EF%BC%89&hotelName=%E6%98%86%E6%98%8E%E8%94%A1%E5%B0%86%E5%86%9B%E9%85%92%E5%BA%97%EF%BC%88%E5%A4%A7%E8%A7%82%E5%BA%97%EF%BC%89&roomName=%E6%A0%87%E9%97%B4&hotelPhone=0871-63335400&user_id=&query_type=pay&baiduLat=25.047752285348327&roomTypeId=0001&bookingRuleDesc=&gcjLat=25.041632&ratePlanId=117636&customerType=Chinese&task=public.hotel&device_id=&need_recommend=false&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A814.01.03%E8%87%B314.12.31+%E5%85%A5%E4%BD%8F+%E5%9C%A822%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A518%3A00%E7%82%B9%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E5%85%A8%E9%A2%9D%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&address=%2C%2C%E6%98%86%E6%98%8E%E5%B8%82%2C%2C%2C%2C25.0483%2C102.705&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fgp1%2FM00%2FE6%2F47%2Fo4YBAFIhujqAdf_OAAAPKQX8Auc826.png%3Fv%3D20120309062016&msg_id=&bedType=%E5%8F%8C%E5%BA%8A%EF%BC%88120cm*200cm%EF%BC%89&method=&output=json&baiduLng=102.70440202840223","price":"218","rate_plan":"不含早","room_description":"免费上网,宽带","room_img":"http://www.elongstatic.com/gp1/M00/E6/47/o4YBAFIhujqAdf_OAAAPKQX8Auc826.png?v=20120309062016","room_name":"标间","star_name":"经济型酒店"},"latest_arrival_time":"2014-02-08 17:00:00","user_info":{"phone":"","username":""},"valid":"true"},"appkey":"debug","location":{"city":"昆明市","country":"undefined","lat":25.0483,"lng":102.705,"province":"undefined","street":"undefined","streetNumber":"undefined","sublocality":"undefined"},"msg_id":"undefined","params":[{"key":"city","keyname":"城市","value":"昆明"},{"key":"checkin","keyname":"入住日期","value":"2014-02-08"},{"key":"checkout","keyname":"退房日期","value":"2014-02-09"}],"query":"undefined","query_type":"book","remote_ip":"undefined","status":"success","task":"public.hotel","taskName":"找酒店","user_id":"undefined","version":"10010"}
+    var response = {"answer":{"book_info":{"arrival_date":"2014-02-12","baidu_lat":"30.586593793686387","baidu_lng":"114.28765502853176","bed_type":"大床（180cm*200cm）","booking_rule_desc":"您预订了N间房，请您提供不少于N位的入住客人姓名\n","departure_date":"2014-02-13","guarantee_rule_desc":"担保条件：在11.08.29至50.12.31 入住 如果在19:00至6:00到店，或预订房量超过4间，需要您提供信用卡担保。客人入住日18:00点前可以变更取消，之后无法变更取消，如未入住，将扣除第一晚房费作为违约金。\n","hotel_address":"江汉区前进一路燕马新村7号（京汉大道与前进一路交叉口）","hotel_name":"7天连锁酒店（武汉京汉大道前进一路店）","hotel_phone":"027-85864998","pay_url":"http://m.mobvoi.com/search/pay/hotel?starName=%E7%BB%8F%E6%B5%8E%E5%9E%8B%E9%85%92%E5%BA%97&query=%E6%AD%A6%E6%B1%89%E5%9B%BD%E9%99%85%E4%BC%9A%E5%B1%95%E4%B8%AD%E5%BF%83%E9%99%84%E8%BF%91%E6%9C%89%E6%B2%A1%E6%9C%89%E5%AE%BE%E9%A6%86&appkey=debug&cityCode=1801&ratePlan=%E5%90%AB%E6%97%A9&hotelId=31801200&version=10010&city=%E6%AD%A6%E6%B1%89&gcjLng=114.281120896&roomDesc=%E5%85%8D%E8%B4%B9%E4%B8%8A%E7%BD%91%2C%E5%AE%BD%E5%B8%A6&hotelAddress=%E6%B1%9F%E6%B1%89%E5%8C%BA%E5%89%8D%E8%BF%9B%E4%B8%80%E8%B7%AF%E7%87%95%E9%A9%AC%E6%96%B0%E6%9D%917%E5%8F%B7%EF%BC%88%E4%BA%AC%E6%B1%89%E5%A4%A7%E9%81%93%E4%B8%8E%E5%89%8D%E8%BF%9B%E4%B8%80%E8%B7%AF%E4%BA%A4%E5%8F%89%E5%8F%A3%EF%BC%89&hotelName=7%E5%A4%A9%E8%BF%9E%E9%94%81%E9%85%92%E5%BA%97%EF%BC%88%E6%AD%A6%E6%B1%89%E4%BA%AC%E6%B1%89%E5%A4%A7%E9%81%93%E5%89%8D%E8%BF%9B%E4%B8%80%E8%B7%AF%E5%BA%97%EF%BC%89&roomName=%E5%95%86%E5%8A%A1%E5%A4%A7%E5%BA%8A%E6%88%BF&hotelPhone=027-85864998&user_id=&query_type=pay&baiduLat=30.586593793686387&roomTypeId=0003&bookingRuleDesc=%E6%82%A8%E9%A2%84%E8%AE%A2%E4%BA%86N%E9%97%B4%E6%88%BF%EF%BC%8C%E8%AF%B7%E6%82%A8%E6%8F%90%E4%BE%9B%E4%B8%8D%E5%B0%91%E4%BA%8EN%E4%BD%8D%E7%9A%84%E5%85%A5%E4%BD%8F%E5%AE%A2%E4%BA%BA%E5%A7%93%E5%90%8D%0A&gcjLat=30.580786703&ratePlanId=127848&customerType=Chinese&task=public.hotel&device_id=&need_recommend=false&guaranteeRuleDesc=%E6%8B%85%E4%BF%9D%E6%9D%A1%E4%BB%B6%EF%BC%9A%E5%9C%A811.08.29%E8%87%B350.12.31+%E5%85%A5%E4%BD%8F+%E5%A6%82%E6%9E%9C%E5%9C%A819%3A00%E8%87%B36%3A00%E5%88%B0%E5%BA%97%EF%BC%8C%E6%88%96%E9%A2%84%E8%AE%A2%E6%88%BF%E9%87%8F%E8%B6%85%E8%BF%874%E9%97%B4%EF%BC%8C%E9%9C%80%E8%A6%81%E6%82%A8%E6%8F%90%E4%BE%9B%E4%BF%A1%E7%94%A8%E5%8D%A1%E6%8B%85%E4%BF%9D%E3%80%82%E5%AE%A2%E4%BA%BA%E5%85%A5%E4%BD%8F%E6%97%A518%3A00%E7%82%B9%E5%89%8D%E5%8F%AF%E4%BB%A5%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95%E5%8F%98%E6%9B%B4%E5%8F%96%E6%B6%88%EF%BC%8C%E5%A6%82%E6%9C%AA%E5%85%A5%E4%BD%8F%EF%BC%8C%E5%B0%86%E6%89%A3%E9%99%A4%E7%AC%AC%E4%B8%80%E6%99%9A%E6%88%BF%E8%B4%B9%E4%BD%9C%E4%B8%BA%E8%BF%9D%E7%BA%A6%E9%87%91%E3%80%82%0A&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E6%B5%A6%E4%B8%9C%E6%96%B0%E5%8C%BA%2C%E6%B5%A6%E5%9F%8E%E8%B7%AF%2C%2C31.235267851523%2C121.51697499967&roomImgUrl=http%3A%2F%2Fwww.elongstatic.com%2Fhotels%2Fpic%2Froom_no.png&msg_id=&bedType=%E5%A4%A7%E5%BA%8A%EF%BC%88180cm*200cm%EF%BC%89&method=&output=json&baiduLng=114.28765502853176","price":"197","rate_plan":"含早","room_description":"免费上网,宽带","room_img":"http://www.elongstatic.com/hotels/pic/room_no.png","room_name":"商务大床房","star_name":"经济型酒店"},"earliest_arrival_time":"2014-02-12 16:00:00","latest_arrival_time":"2014-02-12 17:00:00","user_info":{"phone":"","username":""},"valid":"true"},"appkey":"debug","location":{"city":"上海市","country":"中国","lat":31.235267851523,"lng":121.51697499967,"province":"上海","street":"浦城路","streetNumber":"undefined","sublocality":"浦东新区"},"msg_id":"undefined","params":[{"key":"city","keyname":"城市","value":"武汉"},{"key":"checkin","keyname":"入住日期","value":"2014-02-12"},{"key":"checkout","keyname":"退房日期","value":"2014-02-13"}],"query":"undefined","query_type":"book","remote_ip":"undefined","status":"success","task":"public.hotel","taskName":"找酒店","user_id":"undefined","version":"10010"}
 
     var CMWW = new chumenwenwen();
-    $(".necker").html(template.render("necker", response));
     $(".wrapper").html(template.render("wrapper", response));
     if(browser.versions.android == true) {
       $("select").parent().addClass("select").addClass("android");
@@ -201,16 +270,22 @@
       CMWW.jump.mark([[response.answer.book_info.hotel_name, response.answer.book_info.baidu_lat, response.answer.book_info.baidu_lng]]);
     })
 
-    var year = new Date().getFullYear(), month = new Date().getMonth() + 1, nextMonth = new Date().getMonth() + 2, day = new Date().getDate();
+    var year = new Date().getFullYear(), 
+      month = new Date().getMonth() + 1,
+      day = new Date().getDate();
     var monthHTML = "";    
     if(month < 12) {
-      monthHTML = '<option value="' + month + '">' + month + '月</option><option value="' + nextMonth + '">' + nextMonth + '月</option>'
+      monthHTML = '<option value="' + month + '">' + month + '月</option><option value="' + (month + 1) + '">' + (month + 1) + '月</option>'
     } else {
       monthHTML = '<option value="' + month + '">' + month + '月</option><option value="1">1月</option>';
     }
+    
+    // Definite Form HTML
     $("#checkin_month").html(monthHTML);
-    formatDay(month + "");
-    $("#checkin_time").val(response.answer.latest_arrival_time.split(" ")[1]);
+    $("#checkin_day").html(formatDay(month + ""));
+
+    // Intialize Form Value
+    $("#checkin_time").val(response.answer.earliest_arrival_time.split(" ")[1]);
     $("#checkin_month").val(parseInt(response.answer.book_info.arrival_date.split("-")[1]));
     $("#checkin_day").val(parseInt(response.answer.book_info.arrival_date.split("-")[2]));
     if((Date.parse(response.answer.book_info.departure_date.replace(/-/g, "/")) - Date.parse(response.answer.book_info.arrival_date.replace(/-/g, "/"))) / 86400000 > 19) {
@@ -218,25 +293,6 @@
     } else {
       $("#checkout_during").val((Date.parse(response.answer.book_info.departure_date.replace(/-/g, "/")) - Date.parse(response.answer.book_info.arrival_date.replace(/-/g, "/"))) / 86400000);
     }
-    trackCheckin();
-    trackCheckout();
-    trackPrice();
-
-    $("#checkin_month").change(function() {
-      formatDay(this.value);
-      trackCheckin();
-      trackCheckout();
-      trackPrice();
-    })
-    $("#checkin_day").change(function() {
-      trackCheckin();
-      trackCheckout();
-      trackPrice();
-    })    
-    $("#checkout_during").change(function() {
-      trackCheckout();
-      trackPrice();
-    })
 
     function formatDay(v) {
       var dayHTML = "", dayMax = "";
@@ -273,8 +329,40 @@
       for(i = dayMin; i <= dayMax; i ++) {
         dayHTML += '<option value="' + i + '">' + i + '日</option>';
       }   
-      $("#checkin_day").html(dayHTML);
+      return dayHTML;
     }
+
+    trackCheckin();
+    trackCheckout();
+    trackRoomNum();
+    trackPrice();
+
+
+
+
+    $("#checkin_month").change(function() {
+      formatDay(this.value);
+      trackCheckin();
+      trackCheckout();
+      trackPrice();
+    })
+    $("#checkin_day").change(function() {
+      trackCheckin();
+      trackCheckout();
+      trackPrice();
+    })    
+    $("#checkout_during").change(function() {
+      trackCheckout();
+      trackPrice();
+    })
+    $("#numOfRooms").change(function() {
+      trackRoomNum();
+      trackPrice();
+    })
+    $(".customers").eq(0).keyup(function() {
+      $("#username").val($(this).val());
+    })
+
     function trackCheckin() {
       var checkin_date;
       if($("#checkin_month").val() < month) {
@@ -288,43 +376,82 @@
       checkout_date = new Date(checkout_date).getFullYear() + "-" + (new Date(checkout_date).getMonth() + 1) + "-" + new Date(checkout_date).getDate();
       $("#checkout_date").html(checkout_date);
     }
-    function trackPrice() {
-      $("#price").html(($("#checkout_during").val() * response.answer.book_info.price));
+    function trackRoomNum() {
+      var customerNum = parseInt($("#numOfRooms").val());
+      $(".customers").parent().parent().parent().css("display", "none");
+      for(var i = 0; i < customerNum; i ++) {
+        $(".customers").eq(i).parent().parent().parent().css("display", "block");
+      }
     }
+    function trackPrice() {
+      $("#checkout_date").next().html($("#numOfRooms").val());
+      $("#checkout_date").next().next().html($("#checkout_during").val());    
+      $("#price").html(($("#numOfRooms").val() * $("#checkout_during").val() * response.answer.book_info.price));
+    }
+
+
 
     $("#pay").click(function() {
       var username = $.trim($("#username").val());
       var phone = $.trim($("#phone").val());
       var arrivalDate = $("#checkin_date").html();
       var departureDate = $("#checkout_date").html();
-      var latestArrivalTime = $("#checkin_date").html() + " " + $("#checkin_time").val();
+      var earliestArrivalTime = $("#checkin_date").html() + " " + $("#checkin_time").val();
+      var numOfRooms = $("#numOfRooms").val();
+      var customers = "";
       var price = $("#price").html();
-      if(username.length < 2) {
-        alert("请输入您的全名");
-      } else if(phone.length != 11) {
-        alert("请输入正确的手机号");
-      } else if(Date.parse((latestArrivalTime.replace(/-/g, "/"))) - Date.parse(new Date()) < 0) {
-        alert("到店时间不能早于当前时间");
-      } else {
-        $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>请等待，正在为你处理</div></div></div>');
-        $.ajax({
-          async: false,
-          type: "GET",
-          url: response.answer.book_info.pay_url + "&arrivalDate=" + arrivalDate + "&departureDate=" + departureDate + "&name=" + username + "&phone=" + phone + "&latestArrivalTime=" + latestArrivalTime + "&price=" + price,
-          dataType: "json",
-          success: function(rawData) {
-            $(".alert").remove();
-            if (rawData.answer.status == "success") {
-              $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>预定成功</div></div><div class="alert_entire"><li>您已成功预定酒店，稍后会收到来自艺龙的短信确认</li><li>' + response.answer.book_info.hotel_name + '<br/>' + response.answer.book_info.room_name + '<br/><br/>总价：' + price + '<br/><br/>' + arrivalDate + ' ~ ' + departureDate + '<br/><br/>最晚到店日期<br/>' + latestArrivalTime + '</li></div></div>');
-            } else if (rawData.answer.status == "fail") {
-              $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>预定失败</div></div><div class="alert_entire"><li>' + rawData.answer.result + '</li></div></div>');
-            }
-          },
-          error: function() {
-            $(".alert").remove();
-            $("body").prepend('<div onclick="$(this).remove()" class="alert layout-16px" style="display: block"><div class="alert_entire"><div>预定失败</div></div><div class="alert_entire"><li>由于网络原因，预定失败</li></div></div>');
-          },
-        });
+      var customerFlag = true;
+      $(".customers").each(function(i) {
+        if($(this).parent().parent().parent().css("display") != "none") {
+          if(i != 0) {
+            customers += ",";
+          }
+          var customer = $(this).val().match(/[\u4e00-\u9fa5]+/);
+          if(customer != null) {
+            customers += customer;
+          } else {
+            customerFlag = false;
+            CMWW.showDialog("遗漏了住店人姓名", ["", ["遗漏了住店人姓名"], [""]]);    
+          }
+        }
+      });
+      if(customerFlag) {
+        if(username.length < 2) {
+          CMWW.showDialog("请输入您的全名", ["", ["请输入您的全名"], [""]]);
+        } else if(phone.length != 11) {
+          CMWW.showDialog("请输入正确的手机号", "");
+        } else if(Date.parse((latestArrivalTime.replace(/-/g, "/"))) - Date.parse(new Date()) < 0) {
+          CMWW.showDialog("到店时间不能早于当前时间", "");
+        } else {
+          CMWW.showDialog("请等待，正在为你处理", "");
+          $.ajax({
+            async: false,
+            type: "GET",
+            url: response.answer.book_info.pay_url + "&arrivalDate=" + arrivalDate 
+              + "&departureDate=" + departureDate
+              + "&name=" + username
+              + "&phone=" + phone
+              + "&earliestArrivalTime=" + earliestArrivalTime
+              + "&price=" + price,
+            dataType: "json",
+            success: function(rawData) {
+              $(".dialog").remove();
+              if (rawData.answer.status == "success") {
+                CMWW.showDialog("预定成功", ["content", [
+                  "稍后会收到来自艺龙的短信确认", 
+                  response.answer.book_info.hotel_name + "<br/>" + response.answer.book_info.room_name,
+                  "总价：" + price + "<br/><br/>" + arrivalDate + " ~ " + departureDate
+                ], ["", "", ""]]);
+              } else if (rawData.answer.status == "fail") {
+                CMWW.showDialog("预定失败", ["content", [rawData.answer.result], [""]]);
+              }
+            },
+            error: function() {
+              $(".dialog").remove();
+              CMWW.showDialog("预定失败", ["content", ["由于网络原因，预定失败"], [""]]);
+            },
+          });
+        }
       }
     })
   </script>

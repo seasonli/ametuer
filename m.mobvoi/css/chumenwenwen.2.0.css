@@ -69,7 +69,7 @@ select { padding: 0 4% 0 4%; height: 20px; width: 100%; font-size: 16px;
 .layout-borange { background: #ff2c09; } .layout-bgrass { background: #7bcf20; } .layout-bgreen { background: #21ac94; } .layout-bblue { background: #33b5e5; } .layout-bwhite { background: #ffffff; } .layout-bgrey { background: #eeeeee; } .layout-bggrey { background: #dddddd; }
 
 .layout-padding3 { padding: 3px; } .layout-padding5 { padding: 5px; } .layout-padding10 { padding: 10px; }
-
+.layout-ellipsis { white-space:nowrap; overflow:hidden; text-overflow: ellipsis; }
 
 .layout-tblack { background: url(../img/point-b50.png); }
 .layout-delete { text-decoration: line-through; }
@@ -103,34 +103,13 @@ select { padding: 0 4% 0 4%; height: 20px; width: 100%; font-size: 16px;
 	
 .necker { background: #e6e6e6; }
 	.necker p { margin: 10px 0; }
-	.banner { position: relative; margin: 0 0 10px 0; padding: 10px 4% 5px 4%; background: #21ac94; color: #ffffff; text-shadow: 1px 1px 1px #666666; }
+	.banner { position: relative; margin: 0 0 20px 0; padding: 10px 0 5px 0; background: #21ac94; color: #ffffff; text-shadow: 1px 1px 1px #666666; }
 		.banner img { position: absolute; right: 3%; top: 20px; }
 
 .wrapper { padding-top: 30px; }
-	.form { 
-		margin: 0 10% 30px 10%; 
-		width: 80%; 
-		border: 1px solid #cccccc;
-		border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
-		background: #f6f6f6; 
-	}
-		.form_list {
-			position: relative;
-			padding: 0; 
-			width: 100%; 
-		}
-			.form_list_suggestion {
-				z-index: 1;
-				position: absolute;
-				top: 55px;
-				right: 0%;
-				padding: 0; 
-				width: 70%;
-				moz-box-shadow: 1px 1px 3px #bbbbbb; -webkit-box-shadow: 1px 1px 3px #bbbbbb; box-shadow: 1px 1px 3px #bbbbbb;
-				border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; 
-				background: #eeeeee;
-				text-align: center;
-			}
+	.form { margin: 0 10% 30px 10%; width: 80%;  border: 1px solid #cccccc; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; background: #f6f6f6; }
+		.form_list { position: relative; padding: 0; width: 100%; }
+			.form_list_suggestion { z-index: 1; position: absolute; top: 55px; right: 0%; padding: 0; width: 70%; moz-box-shadow: 1px 1px 3px #bbbbbb; -webkit-box-shadow: 1px 1px 3px #bbbbbb; box-shadow: 1px 1px 3px #bbbbbb; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; background: #eeeeee; text-align: center; }
 				.form_list_suggestion li {	
 					padding: 7px 0;
 					width: 100%;
@@ -254,8 +233,9 @@ select { padding: 0 4% 0 4%; height: 20px; width: 100%; font-size: 16px;
 	.dialog_content { z-index: 22; opacity: 0.5; position: absolute; top: 5%; left: 10%; width: 80%; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; background: #e3e3e3; 
 		transition: 0.5s; -moz-transition: 0.5s; -webkit-transition: 0.5s; -o-transition: 0.5s; }
 	.show .dialog_content { visibility: visible; opacity: 1; top: 10%; }
-		.dialog_content_title { margin: 0 5%; line-height: 60px; font-size: 20px; font-weight: bold; color: #666666; }
-		.dialog_content_text { margin: 0 5%; line-height: 50px; text-align: center; font-size: 20px; color: #5a5a5a; }
+		.dialog_content_title { margin: 0 5%; padding: 20px 0; font-size: 20px; font-weight: bold; color: #666666; }
+		.dialog_content_text { margin: 0 5%; padding: 8px 0; text-align: center; font-size: 20px; color: #5a5a5a; }
+		.dialog_content_text.content { font-size: 14px; text-align: left; }	
 			.dialog_content_text img { }
 		.datepicker { float: left; margin: 0 auto; width: 100%; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; background: #ffffff; }
 			.datepicker .nav { float: left; padding: 7px 0; width: 100%; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; background: #f5f5f5; border-bottom: 1px solid #cccccc; color: #777777; }
