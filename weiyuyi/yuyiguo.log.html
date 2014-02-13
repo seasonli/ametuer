@@ -6,9 +6,8 @@
     <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/bootstrap.2.3.2.css" />
     <link rel="stylesheet" href="/oss/assets/css/yuyiguo.log.css" />
     <script src="/oss/assets/js/jquery.1.10.2.min.js"></script>
-    <script src="/oss/assets/js/underscore.1.3.1.min.js"></script>
-    <script src="/oss/assets/js/backbone.0.5.3.min.js"></script>
-    <script src="/oss/assets/js/yuyiguo.log.js"></script>
+    <script src="/oss/assets/js/underscore.1.6.0.min.js"></script>
+    <script src="/oss/assets/js/backbone.1.0.0.min.js"></script>
   </head>
   <body>
     <div class="container-fluid wrapper">
@@ -23,38 +22,39 @@
       <div class="mark row-fluid">
         <div class="span6">
         </div>
-        <div class="mark_comment span6">
-          <form class="form-horizontal">
-            <label class="mark_comment_rank radio">
-              <input type="radio">&nbsp;&nbsp;&nbsp;正确       
-            </label>
-            <label class="mark_comment_rank radio">
-              <input type="radio">&nbsp;&nbsp;&nbsp;待定
-              <label class="mark_comment_rank_reason checkbox">
-                <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 1
+        <script type="text/template" id="mark_comment">
+          <div class="mark_comment span6">
+            <form class="form-horizontal">
+              <label class="mark_comment_rank radio">
+                <input type="radio">&nbsp;&nbsp;&nbsp;正确       
               </label>
-              <label class="mark_comment_rank_reason checkbox">
-                <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 2
-              </label>    
-            </label>
-            <label class="mark_comment_rank radio">
-              <input type="radio">&nbsp;&nbsp;&nbsp;错误
-              <label class="mark_comment_rank_reason checkbox">
-                <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 1
+              <label class="mark_comment_rank radio">
+                <input type="radio">&nbsp;&nbsp;&nbsp;待定
+                <label class="mark_comment_rank_reason checkbox">
+                  <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 1
+                </label>
+                <label class="mark_comment_rank_reason checkbox">
+                  <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 2
+                </label>    
               </label>
-              <label class="mark_comment_rank_reason checkbox">
-                <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 2
+              <label class="mark_comment_rank radio">
+                <input type="radio">&nbsp;&nbsp;&nbsp;错误
+                <label class="mark_comment_rank_reason checkbox">
+                  <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 1
+                </label>
+                <label class="mark_comment_rank_reason checkbox">
+                  <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 2
+                </label>
+                <label class="mark_comment_rank_reason checkbox">
+                  <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 3
+                </label>
               </label>
-              <label class="mark_comment_rank_reason checkbox">
-                <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 3
-              </label>
-            </label>
-            <input type="text" class="span12" placeholder="Comment..." />
-          </form>          
-        </div>
+              <input type="text" class="span12" placeholder="Comment..." />
+            </form>          
+          </div>
+        </script>
       </div>
-    </div>    
-  </body>
-  <script>
-  </script>
+    </div>
+      
+  </body><script src="/oss/assets/js/yuyiguo.log.js"></script>  
 </html>

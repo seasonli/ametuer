@@ -12,9 +12,20 @@ var Collection = Backbone.Collection.extend({
 	model: Model
 });
 
-var View = Backbone.View.extend(function() {
-
+var View = Backbone.View.extend({
+	initialize: function() {
+		this.render();
+	},
+	render: function() {
+		var html = _.template($("#mark_comment").html(), {});
+		$(".mark").append(html);
+	},
+	events: {
+		"click input": "toggleCommentRank" 
+	},
+	toggleCommentRank: function(event) {
+		alert("toggle");
+	}
 });
 
-var model = new Model;
-console.log(model.get("rank"));
+var view = new View({el: $(".mark")[0]});
