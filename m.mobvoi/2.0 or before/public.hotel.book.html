@@ -38,7 +38,7 @@
         </div>
       </li>
     </ul>
-    { if answer.valid == "true" }
+    { if answer.valid == true }
       <ul class="cards">    
         <li class="cards_card">
           <div class="cards_card_img left">
@@ -283,7 +283,7 @@
     $("#checkin_day").html(formatDay(month + ""));
 
     // Intialize Form Value
-    $("#checkin_time").val(response.answer.latest_arrival_time.split(" ")[1]);
+    $("#checkin_time").val(response.answer.earliest_arrival_time.split(" ")[1]);
     $("#checkin_month").val(parseInt(response.answer.book_info.arrival_date.split("-")[1]));
     $("#checkin_day").val(parseInt(response.answer.book_info.arrival_date.split("-")[2]));
     if((Date.parse(response.answer.book_info.departure_date.replace(/-/g, "/")) - Date.parse(response.answer.book_info.arrival_date.replace(/-/g, "/"))) / 86400000 > 19) {
