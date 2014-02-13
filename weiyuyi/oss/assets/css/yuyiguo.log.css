@@ -1,0 +1,6 @@
+.wrapper { margin: 30px auto 0 auto; width: 960px; }
+
+.mark { margin: 50px 0 0 0; }
+	.mark_comment { padding: 0 10px; }
+		.mark_comment_rank { margin: 0 0 10px 0; padding-bottom: 15px; }
+			.mark_comment_rank_reason { margin: 10px 0 0 15px; }
