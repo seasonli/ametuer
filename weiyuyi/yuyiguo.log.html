@@ -23,31 +23,38 @@
         <div class="span6">
         </div>
         <script type="text/template" id="mark_comment">
-          <div class="mark_comment span6">
+          <div class="mark_comment span6 well">
             <form class="form-horizontal">
-              <label class="mark_comment_rank radio">
-                <input type="radio">&nbsp;&nbsp;&nbsp;正确       
+              <label class="mark_comment_title">
+                <h4>Comment</h4>   
               </label>
               <label class="mark_comment_rank radio">
-                <input type="radio">&nbsp;&nbsp;&nbsp;待定
-                <label class="mark_comment_rank_reason checkbox">
-                  <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 1
-                </label>
-                <label class="mark_comment_rank_reason checkbox">
-                  <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 2
-                </label>    
+                <input type="radio" name="mark_comment_rank">&nbsp;&nbsp;&nbsp;正确       
+              </label>
+              <label class="mark_comment_rank radio">
+                <input type="radio" name="mark_comment_rank">&nbsp;&nbsp;&nbsp;待定
+                <div>
+                  <label class="mark_comment_rank_reason checkbox">
+                    <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 1
+                  </label>
+                  <label class="mark_comment_rank_reason checkbox">
+                    <input type="checkbox">&nbsp;&nbsp;&nbsp;待定原因 2
+                  </label>
+                </div>
               </label>
               <label class="mark_comment_rank radio">
                 <input type="radio">&nbsp;&nbsp;&nbsp;错误
-                <label class="mark_comment_rank_reason checkbox">
-                  <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 1
-                </label>
-                <label class="mark_comment_rank_reason checkbox">
-                  <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 2
-                </label>
-                <label class="mark_comment_rank_reason checkbox">
-                  <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 3
-                </label>
+                <div>
+                  <label class="mark_comment_rank_reason checkbox">
+                    <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 1
+                  </label>
+                  <label class="mark_comment_rank_reason checkbox">
+                    <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 2
+                  </label>
+                  <label class="mark_comment_rank_reason checkbox">
+                    <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 3
+                  </label>
+                </div>
               </label>
               <input type="text" class="span12" placeholder="Comment..." />
             </form>          

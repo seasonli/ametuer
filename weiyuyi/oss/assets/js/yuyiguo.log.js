@@ -1,18 +1,17 @@
-var Model = Backbone.Model.extend({
+var MarkCommentModel = Backbone.Model.extend({
 	initialize: function() {
-		console.log("Successfully import one query")
+		//
 	},
 	defaults: {
-		rank: 0,
-		comment: "No comments"
+		//
 	}
 });
 
-var Collection = Backbone.Collection.extend({
-	model: Model
+var MarkCommentCollection = Backbone.Collection.extend({
+	model: MarkCommentModel
 });
 
-var View = Backbone.View.extend({
+var MarkCommentView = Backbone.View.extend({
 	initialize: function() {
 		this.render();
 	},
@@ -21,11 +20,12 @@ var View = Backbone.View.extend({
 		$(".mark").append(html);
 	},
 	events: {
-		"click input": "toggleCommentRank" 
+		"click [name='mark_comment_rank']": "toggleMarkCommentRank" 
 	},
-	toggleCommentRank: function(event) {
-		alert("toggle");
+	toggleMarkCommentRank: function(event) {
+		alert()
+		$(this).parent().children("div").show();
 	}
 });
 
-var view = new View({el: $(".mark")[0]});
+var markCommentView = new MarkCommentView({el: $(".mark")[0]});
