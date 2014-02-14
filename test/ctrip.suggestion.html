@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>ctrip.suggestion.html</title>
+  <script>
+  	var cQuery = {};
+  </script>
+  <script src="/ctrip.suggestion.js"></script>
+</head>
+<body>
+  <!--
+  	175@Ankang|安康|AKA||AK|-||
+		1658@Atushi|阿图什|||ATS|-喀什|23|
+		2229@Anning|安宁|||AN|-昆明|80|
+	-->
+	<script>
+		var airportObj = [];
+		var rawObj = cQuery.jsonpResponse.data.split("@");
+		for(var i in rawObj) {
+			var rawDetailObj = rawObj[i].split("|");
+			airportObj[i] = {};
+			airportObj[i].name_py = rawDetailObj[0];
+			airportObj[i].name = rawDetailObj[1];
+			airportObj[i].code = rawDetailObj[2];
+			airportObj[i].alias = rawDetailObj[3];
+			airportObj[i].initails = rawDetailObj[4];
+			airportObj[i].neighbourAirport = rawDetailObj[5];
+			airportObj[i].distance = rawDetailObj[6];
+			airportObj[i].id = rawDetailObj[7];
+		}
+		document.write(JSON.stringify(airportObj));
+	</script>
+</body>
+</html>

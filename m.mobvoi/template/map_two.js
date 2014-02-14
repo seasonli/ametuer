@@ -11,7 +11,10 @@
 }) ()
 
 Render.prototype.callback = {
-	map_two: function(ul, responseObj) {
+	map_two: function(ul, responseObj) { 
+		// definate "ul = 0"
+		var ul = 0;
+
 		$("ul").eq(ul).find(".showBdMap").attr("id", "showBdMap_" + ul);
 		
 		// Adjust Height
