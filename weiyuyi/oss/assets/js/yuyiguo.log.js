@@ -1,31 +1,38 @@
-var MarkCommentModel = Backbone.Model.extend({
+var ReviewModel = Backbone.Model.extend({
 	initialize: function() {
 		//
 	},
 	defaults: {
 		//
 	}
-});
+})
 
-var MarkCommentCollection = Backbone.Collection.extend({
-	model: MarkCommentModel
-});
+var ReviewCollection = Backbone.Collection.extend({
+	model: ReviewModel
+})
 
-var MarkCommentView = Backbone.View.extend({
+var ReviewView = Backbone.View.extend({
 	initialize: function() {
 		this.render();
 	},
 	render: function() {
-		var html = _.template($("#mark_comment").html(), {});
-		$(".mark").append(html);
+		var html = _.template($("#reviewTpl").html(), {});
+		$(".wrapper_content").append(html);
+		this.actions();
+	},
+	actions: function() {
+		if(!$(this).prop("checked")) {
+			$("[name='review_ranks']").click(function() {
+				$("[name='review_ranks']").parent().children("div").hide();
+				$("[name='review_ranks']").parent().children("div").find("[type='checkbox']").prop("checked", false);
+				$(this).parent().children("div").show();
+			})
+		}
 	},
 	events: {
-		"click [name='mark_comment_rank']": "toggleMarkCommentRank" 
+		//
 	},
-	toggleMarkCommentRank: function(event) {
-		alert()
-		$(this).parent().children("div").show();
-	}
+
 });
 
-var markCommentView = new MarkCommentView({el: $(".mark")[0]});
+var reviewView = new ReviewView({el: $(".review")[0]});
