@@ -16,12 +16,15 @@
   </div>
 
   <script type="text/html" id="wrapper">
-    <ul class="banner gotoDial" data-tel="{ phone.split(",")[0] }"> 
+    <ul class="banner gotoDial" data-tel="{ phone.split(",")[0] }">    
       <li class="cards_card" style="background: #21ac94; border: 0">
-        <div class="banner gotoDial" data-tel="{ phone.split(",")[0] }">
-          <p><span class="layout-fleft layout-22px layout-bold" style="line-height: 22px; width: 80%">{ name }</span><div class="clear"></div></p>
-          { if phone != "" }<p><span class="layout-12px">电话: { phone }</span></p>
-          <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />{ /if }
+        <div class="cards_card_entire">
+          <p><span class="layout-fleft layout-22px layout-bold layout-ellipsis" style="line-height: 22px; width: 80%">{ name }</span><div class="clear"></div></p>
+          { if phone != "" }
+            <p><span class="layout-12px">电话: { phone }</span></p>
+          { /if }
+          <img src="http://mobvoi-one-box.oss.aliyuncs.com/web/img/phone.png" style="width: 32px" />
+        </div>   
         </div>
       </li>
     </ul>
@@ -37,7 +40,7 @@
 
   <script> 
 //    var response = ${content}
-    var response = {"parking":"","detail_url":"http://api.map.baidu.com/place/detail?uid=a7c56ee079c81db0a3acc4fa&output=html&source=placeapi_v2","phone":"12","dp_category":"","lng":121.486245,"baidu_lng":121.486245,"ali_lat":0,"id":"baidu-a7c56ee079c81db0a3acc4fa","baidu_lat":31.235713,"opening_time":"","priority":0,"description":"","name":"中国建设银行第一支行","third_tag":"","my_lng":121.48479060128,"lat":31.235713,"mobvoi_category_3":"","ali_lng":0,"main_tag":"","mobvoi_category_2":"","dp_id":"","my_lat":31.234309729773,"8684_id":"","discount":0,"my_distance":208,"price":0,"traffic":"","source":"baidu","rating_count":0,"address":"黄浦区延安东路700号","rating":0,"mobvoi_category_1":"","secondary_tag":""};
+    var response = {"parking":"","detail_url":"http://api.map.baidu.com/place/detail?uid=7388dffd0036bbebd2ff23ba&output=html&source=placeapi_v2","phone":"024-62103619","dp_category":"","lng":123.40803,"baidu_lng":123.40803,"ali_lat":0,"id":"baidu-7388dffd0036bbebd2ff23ba","baidu_lat":41.794422,"opening_time":"","priority":0,"description":"","name":"中国工商银行中华路支行","third_tag":"","my_lng":116.974,"lat":41.794422,"mobvoi_category_3":"","ali_lng":0,"main_tag":"金融银行","mobvoi_category_2":"","dp_id":"","my_lat":35.4181,"8684_id":"","discount":0,"my_distance":903340,"price":0,"traffic":"","source":"baidu","rating_count":0,"address":"同泽南街28号","rating":0,"mobvoi_category_1":"","secondary_tag":""};
     
     $(".wrapper").html(template.render("wrapper", response));
 
@@ -45,11 +48,6 @@
       map: [],
       point: []
     }, renderObj = [];
-    (function() {
-      var $div = $("<div>").attr("data-event", "CMWW").append($(".necker").prop("outerHTML") + $(".wrapper").prop("outerHTML"));
-      $(".necker, .wrapper").remove();
-      $("body").prepend($div);
-    }) ()
 
     renderStyle();
 
@@ -63,14 +61,6 @@
         new chumenwenwen().jump.mark([eval("[" + "'" + $.trim($(this).attr("data-point").split(",")[0]) + "','" + $.trim($(this).attr("data-point").split(",")[1]) + "','" + $.trim($(this).attr("data-point").split(",")[2]) + "']")]);
       }
     });
-    $('[data-event="CMWW"]').delegate(".gotoLink", "click", function() {
-      if($.trim($(this).attr("data-link")) != "") {
-        window.location.href = $(this).attr("data-link");
-      }
-    })    
-    if(browser.versions.chumenwenwen == false) {
-      new chumenwenwen().brower();
-    }
   </script>
 </body>
 </html>
