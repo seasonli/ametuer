@@ -1,6 +1,6 @@
 .necker { background: #e6e6e6; }
 	.necker p { margin: 10px 0; }
-	.banner { position: relative; margin: 0 0 10px 0; padding: 10px 0 5px 0; background: #21ac94; color: #ffffff; text-shadow: 1px 1px 1px #666666; }
+	.banner { position: relative; margin: 0 0 10px 0; padding: 10px 4% 5px 4%; background: #21ac94; color: #ffffff; text-shadow: 1px 1px 1px #666666; }
 		.banner img { position: absolute; right: 3%; top: 20px; }
 	.div1 { margin: 20px 0 0 0; }
 		.div1_left { float: left; margin: 0 1.5% 0 3%; width: 61%; }
