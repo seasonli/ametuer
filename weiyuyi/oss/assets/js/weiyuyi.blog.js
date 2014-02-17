@@ -8,13 +8,13 @@ if(window.location.href.indexOf("edit") > 0) {
 	  type: "GET",
 	  url: "/blogs/" + url.id + ".json",
 	  dataType: "json",
-	  success: function(rawData) {
-	  	$("[name='blog[wechat_app_id]']").val(rawData.wechat_app_id)
-	    $("[name='blog[title]']").val(rawData.title);
-	    var a = rawData.content.replace(/<script.*?>.*?<\/script>/ig, '');
-	    if(rawData.content.split('ga("send", "event", "download", "')[1]) {
+	  success: function(res) {
+	  	$("[name='blog[wechat_app_id]']").val(res.wechat_app_id);
+	    $("[name='blog[title]']").val(res.title);
+	    if(res.content.split('ga("send", "event", "download", "')[1]) {
 	    	$("#track").prop("checked", true);
-	    }		
+	    }
+	    var a = res.content.replace(/<script.*?>.*?<\/script>/ig, '');
 	    setTimeout("ue.setContent('" + a + "')", 1000);
 	  },
 	});
