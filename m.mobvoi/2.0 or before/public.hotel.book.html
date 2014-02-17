@@ -369,7 +369,7 @@
       pricePerRoomFlag = false;
       $.ajax({
         async: true,
-        type: "POST",
+        type: "GET",
         url: response.answer.book_info.price_get_url,
         data: {
           arrivalDate: $("#checkin_date").html(),
