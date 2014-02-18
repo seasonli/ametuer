@@ -176,13 +176,13 @@
   </div>
   <div class="wrapper2">
     <div class="wrapper2_">
-      <div class="wrapper2_pic"><img src="img/groupcoupon.png" data-0="opacity: 0" data-1240="opacity: 1" /></div>
-      <div class="wrapper2_pic"><img src="img/hotel.png" data-1580="opacity: 0" data-1780="opacity: 1" /></div>
-      <div class="wrapper2_pic"><img src="img/restaurant.png" data-2120="opacity: 0" data-2320="opacity: 1" /></div>
-      <div class="wrapper2_pic"><img src="img/movie.png" data-2660="opacity: 0" data-2860="opacity: 1" /></div>
-      <div class="wrapper2_pic"><img src="img/recipe.png" data-3200="opacity: 0" data-3400="opacity: 1" /></div>
-      <div class="wrapper2_pic"><img src="img/music.png" data-3740="opacity: 0" data-3940="opacity: 1" /></div>  
-      <div class="wrapper2_pic"><img src="img/travel.png" data-4280="opacity: 0" data-4480="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img data-0="opacity: 0" data-1240="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img data-1580="opacity: 0" data-1780="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img data-2120="opacity: 0" data-2320="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img data-2660="opacity: 0" data-2860="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img data-3200="opacity: 0" data-3400="opacity: 1" /></div>
+      <div class="wrapper2_pic"><img data-3740="opacity: 0" data-3940="opacity: 1" /></div>  
+      <div class="wrapper2_pic"><img data-4280="opacity: 0" data-4480="opacity: 1" /></div>
       <div class="wrapper2_hand"></div>
       <div class="wrapper2_floor"><span onClick="skipTo(7)">使用出门问问</span><button onClick="skipTo(-1)"></button></div>
       <div class="wrapper2_brand" id="download">
@@ -217,7 +217,7 @@
   <div class="wrapper">
     <div class="wrapper_">
       <div class="wrapper_bubble groupcoupon"><img src="img/bubble_blank.png" /></div>
-      <div class="wrapper_card"><img src="img/card-groupcoupon.png" /></div>
+      <div class="wrapper_card groupcoupon"></div>
       <div class="wrapper_content">
         <p>●&nbsp;&nbsp;覆盖大众点评、美团、拉优惠数据</p>
         <p>●&nbsp;&nbsp;支持地点、类别及具体商家问询</p>
@@ -227,7 +227,7 @@
     </div>
     <div class="wrapper_">
       <div class="wrapper_bubble hotel"><img src="img/bubble_blank.png" /></div>
-      <div class="wrapper_card"><img src="img/card-hotel.png" /></div>
+      <div class="wrapper_card hotel"></div>
       <div class="wrapper_content">
         <p>●&nbsp;&nbsp;地址、商圈精准定位</p>
         <p>●&nbsp;&nbsp;价位、酒店名称任你说</p>
@@ -236,7 +236,7 @@
     </div>
     <div class="wrapper_">
       <div class="wrapper_bubble restaurant"><img src="img/bubble_blank.png" /></div>
-      <div class="wrapper_card"><img src="img/card-restaurant.png" /></div>
+      <div class="wrapper_card restaurant"></div>
       <div class="wrapper_content">
         <p>●&nbsp;&nbsp;人均、菜系多种标签尽你问</p>
         <p>●&nbsp;&nbsp;评分、电话餐、距离一看便知</p>
@@ -245,7 +245,7 @@
     </div>
     <div class="wrapper_">
       <div class="wrapper_bubble movie"><img src="img/bubble_blank.png" /></div>
-      <div class="wrapper_card"><img src="img/card-movie.png" /></div>
+      <div class="wrapper_card movie"></div>
       <div class="wrapper_content">
         <p>●&nbsp;&nbsp;具体电影搜索与热映电影推荐均支持</p>
         <p>●&nbsp;&nbsp;附近电影院、选片支付选座一条龙</p>
@@ -253,8 +253,8 @@
       </div>
     </div>
     <div class="wrapper_">
-      <div class="wrapper_bubble recpie"><img src="img/bubble_blank.png" /></div>
-      <div class="wrapper_card"><img src="img/card-recipe.png" /></div>
+      <div class="wrapper_bubble recipe"><img src="img/bubble_blank.png" /></div>
+      <div class="wrapper_card recipe"></div>
       <div class="wrapper_content">
         <p>●&nbsp;&nbsp;家常vs宴席 重口味vs小清新</p>
         <p>●&nbsp;&nbsp;食材用料、具体步骤、美味诀窍</p>
@@ -263,7 +263,7 @@
     </div>
     <div class="wrapper_">
       <div class="wrapper_bubble music"><img src="img/bubble_blank.png" /></div>
-      <div class="wrapper_card"><img src="img/card-music.png" /></div>
+      <div class="wrapper_card music"></div>
       <div class="wrapper_content">
         <p>●&nbsp;&nbsp;全面支持曲名、歌手的点播</p>
         <p>●&nbsp;&nbsp;完美识别指定流派、音乐情绪</p>
@@ -272,7 +272,7 @@
     </div>
     <div class="wrapper_">
       <div class="wrapper_bubble travel"><img src="img/bubble_blank.png" /></div>
-      <div class="wrapper_card"><img src="img/card-travel.png" /></div>
+      <div class="wrapper_card travel"></div>
       <div class="wrapper_content">
         <p>●&nbsp;&nbsp;共享千万游记及旅游攻略</p>
         <p>●&nbsp;&nbsp;只为给你最佳推荐</p>
@@ -400,7 +400,14 @@
       scrollHeight = document.documentElement.clientHeight;
       if(document.documentElement.clientWidth > 840) {
         allowSkip = true;
-        $(".intro").css("background-size", "100% 100%")
+        $(".wrapper2_pic").eq(0).find("img").attr("src", "img/groupcoupon.png");
+        $(".wrapper2_pic").eq(1).find("img").attr("src", "img/hotel.png");
+        $(".wrapper2_pic").eq(2).find("img").attr("src", "img/restaurant.png");
+        $(".wrapper2_pic").eq(3).find("img").attr("src", "img/movie.png");
+        $(".wrapper2_pic").eq(4).find("img").attr("src", "img/recipe.png");
+        $(".wrapper2_pic").eq(5).find("img").attr("src", "img/music.png");
+        $(".wrapper2_pic").eq(6).find("img").attr("src", "img/travel.png");
+        $(".intro").css("background-size", "100% 100%");
         $(".wrapper").css("top", "1440px");
         $(".wrapper2_brand").css({"bottom": 0 - scrollHeight + 140 + "px", "height": scrollHeight - 140 + "px"});
       } else {

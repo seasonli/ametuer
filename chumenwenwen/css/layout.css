@@ -102,16 +102,22 @@ body { font-family: Microsoft JhengHei, Microsoft Yahei, SimHei, Arial; }
       .header_logo { top: 6px; }
       .header_slogan { top: 12px; }
       .header button { display: none; }
-  .intro { position: absolute; background-image: url(../img/intro_narrow.png); }
+  .intro { position: absolute; background-image: url(../img/intro_narrow.jpg); }
     .intro_btn-wrapper :first-child { display: none; }
     .intro_btn-wrapper :last-child { background: #17a58d; display: block; color: #ffffff; }
     .intro_device { display: none; }
   .nav { display: none; }
   .wrapper { top: 1360px; }
-    .wrapper_ { width: 100%; }
+    .wrapper_ { width: 100%; background: #dddddd; }
       .wrapper_bubble { position: relative; left: 0; top: 0%; }
-      .wrapper_card { display: block; position: relative; top: 0%; margin: 0 auto; width: 250px; color: #454545; font-size: 18px; }
-        .wrapper_card img { width: 100%; -moz-box-shadow: 1px 1px 3px #777777; -webkit-box-shadow: 1px 1px 3px #777777; box-shadow: 9px 9px 0px #b6b6b6; }
+      .wrapper_card { display: block; position: relative; top: 0%; margin: 0 auto; width: 240px; background-image: url(../img/cards.jpg); background-size: 240px; }
+        .wrapper_card.groupcoupon { height: 120px; background-position: 0 0; }
+        .wrapper_card.hotel { height: 172px; background-position: 0 -120px; }
+        .wrapper_card.restaurant { height: 135px; background-position: 0 -293px; }
+        .wrapper_card.movie { height: 157px; background-position: 0 -428px; }
+        .wrapper_card.recipe { height: 117px; background-position: 0 -585px; }
+        .wrapper_card.music { height: 165px; background-position: 0 -702px; }
+        .wrapper_card.travel { height: 219px; background-position: 0 -868px; }
       .wrapper_content { position: relative; left: 0; top: 5%; margin: 0 auto; }
   .wrapper2 { position: absolute; top: 4680px; }
     .wrapper2_ { width: 100%; }
