@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>yuyiguo log</title>
+    <link rel="stylesheet" href="http://onebox.oss.aliyuncs.com/css/bootstrap.2.3.2.css" />
+    <link rel="stylesheet" href="/oss/assets/css/yuyiguo.log.css" />
+    <script src="/oss/assets/js/jquery.1.10.2.min.js"></script>
+    <script src="/oss/assets/js/underscore.1.6.0.min.js"></script>
+    <script src="/oss/assets/js/backbone.1.0.0.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid wrapper">
+      <div id="query" class="row-fluid">
+        <div class="span7">
+          <input type="text" class="span12 search-query" placeholder="Query" />
+        </div>
+        <div class="span5">
+          <input type="text" class="span12 search-query" placeholder="Location" />
+        </div>
+      </div>
+      <div class="wrapper_content row-fluid">
+       
+          <div class="mark span7 well">
+            <form class="form-horizontal">
+              <div class="mark_title well">
+                语音
+                <button type="button" class="btn btn-info btn-small">Play</button>
+              </div>
+              <div class="mark_result well">
+                <iframe src="http://m.mobvoi.com/search/qa/?query=%E9%99%84%E8%BF%91%E5%A5%BD%E5%90%83%E7%9A%84%E9%83%BD%E6%9C%89%E4%BB%80%E4%B9%88&task=public.restaurant&appkey=debug&address=%E4%B8%AD%E5%9B%BD,%E5%8C%97%E4%BA%AC%E5%B8%82,%E5%8C%97%E4%BA%AC%E5%B8%82,%E8%A5%BF%E5%9F%8E%E5%8C%BA,%E6%96%87%E6%B4%A5%E8%A1%97,,39.93,116.396&output=html_page&version=10010"></iframe>
+              </div>
+              <div class="mark_input">
+                <input type="text" name="mark_ranks" class="span12" placeholder="Show your answer..." />
+              </div>
+              <div class="mark_selection">
+                <button type="button" class="btn">第1个建议结果</button>
+                <button type="button" class="btn">第2个建议结果</button>
+                <button type="button" class="btn">第3个建议结果</button>
+                <button type="button" class="btn">第4个建议结果</button>
+                <div style="clear: both"></div>
+              </div>
+              <div class="mark_selection">
+                <select class="span12">
+                  <option>选项 1</option>
+                  <option>选项 2</option>
+                  <option>选项 3</option>
+                  <option>选项 4</option>
+                  <option>选项 5</option>
+                  <option>选项 6</option>
+                </span>
+              </div>
+            </form>
+          
+        </div>
+        <script type="text/template" id="reviewTpl">
+          <div class="review span5 well">
+            <form class="form-horizontal">
+              <div class="review_title well">
+                Comment  
+              </div>
+              <div class="review_rank">
+                <label class="radio well">
+                  <input type="radio" name="review_ranks" />&nbsp;&nbsp;&nbsp;正确       
+                </label>
+                <label class="radio well">
+                  <input type="radio" name="review_ranks" />&nbsp;&nbsp;&nbsp;待定
+                  <div>
+                    <label class="review_rank_reason checkbox">
+                      <input type="checkbox" />&nbsp;&nbsp;&nbsp;待定原因 1
+                    </label>
+                    <label class="review_rank_reason checkbox">
+                      <input type="checkbox" />&nbsp;&nbsp;&nbsp;待定原因 2
+                    </label>
+                  </div>
+                </label>
+                <label class="radio well">
+                  <input type="radio" name="review_ranks">&nbsp;&nbsp;&nbsp;错误
+                  <div>
+                    <label class="review_rank_reason checkbox">
+                      <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 1
+                    </label>
+                    <label class="review_rank_reason checkbox">
+                      <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 2
+                    </label>
+                    <label class="review_rank_reason checkbox">
+                      <input type="checkbox">&nbsp;&nbsp;&nbsp;错误原因 3
+                    </label>
+                  </div>
+                </label>
+              </div>
+              <textarea type="text" class="review_comment span12" placeholder="Comment..."></textarea>
+            </form>          
+          </div>
+        </script>
+      </div>
+    </div>
+      
+  </body><script src="/oss/assets/js/yuyiguo.log.js"></script>  
+</html>
