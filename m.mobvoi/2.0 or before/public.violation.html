@@ -6,13 +6,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="format-detection" content="telephone=no" />
-
-  <title>查违章 出门问问</title> 
-  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.1.02.css" />
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/zepto.1.0.min.js"></script>
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
-  <script src="http://onebox.oss.aliyuncs.com/js/urlPrefix-m.js"></script>
-  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.1.01.js"></script>
+  <title>出门问问 查违章</title> 
+  <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/chumenwenwen.2.0.css" />
+  <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/chumenwenwen.3.0.js"></script>
 </head>
 
 <body>
@@ -149,54 +145,65 @@
     </ul>
   </script>
 
+  <script type="text/html" id="wrapper_violation_timeout">
+    <ul class="cards">
+      <li class="cards_card result">
+        <div class="cards_card_entire">
+          <p><span class="layout-444">抱歉，请求超时，您可以刷新页面重试</span></p>
+        </div>
+      </li>   
+    </ul>
+  </script>
+
   <script>
+    // Judge Net Environment
+    if (window.location.host == "localhost.m.mobvoi") {
+      var urlPrefix = "/m.mobvoi";
+    } else if (window.location.host == "m.mobvoi.com") {
+      var urlPrefix = "";
+    } else {
+      var urlPrefix = "/mobvoibackendcontroller";
+    }    
+
     var verify = {};
 
-    var response = {"session_id":"public.violation@9bafff9ffa15d233bf5d74087bea4ded","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.violation","query":"查违章","remote_ip":"127.0.0.1","answer":[{"content":"user not found","status":404,"request":"html_city","url":"http://m.mobvoi.com/search/pc/violation?hphm=&appkey=wechat_browser&classno=&city=&version=undefined&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&hpzl=&registno=&request=html_city&msg_id=35018a94-322c-4e76-9bef-6a4306c94a50&engineno=&user_id=viola&query_type=pcc&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"35018a94-322c-4e76-9bef-6a4306c94a50","user_id":"viola","query_type":"text"};
-    // var response = {"session_id":"public.violation@b3f190f314a9e89968d17dcb510fa27b","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.violation","query":"查违章","remote_ip":"127.0.0.1","answer":[{"content":{"result":{"hphm":"贵AVG902","hpzl":"02","province":"GZ","lists":[{"area":"沪昆高速公路1806公里500米","money":"100","fen":"6","code":"16361","date":"2013-04-19 11:46:00","act":"驾驶中型以上载客载货汽车、校车、危险物品运输车辆以外的其他机动车在高速公路上行驶超过规定时速20%以上未达到50%的"},{"area":"北环西路","money":"200","fen":"0","code":"10393","date":"2012-09-12 15:30:00","act":"机动车违反规定停放、临时停车且驾驶人不在现场，妨碍其它车辆、行人通行的"},{"area":"清水江路","money":"200","fen":"3","code":"13440","date":"2012-08-24 09:47:00","act":"机动车违反禁令标志指示的"},{"area":"上瑞线2460公里700米","money":"200","fen":"0","code":"10393","date":"2012-08-22 09:05:00","act":"机动车违反规定停放、临时停车且驾驶人不在现场，妨碍其它车辆、行人通行的"},{"area":"贵溪路与瑞金路交叉口","money":"-","fen":"-","code":"80130","date":"2012-07-31 14:05:00","act":"在禁止通行的时间、路段、车道内行驶的"},{"area":"花阁路","money":"200","fen":"0","code":"10393","date":"2012-07-17 11:30:00","act":"机动车违反规定停放、临时停车且驾驶人不在现场，妨碍其它车辆、行人通行的"},{"area":"中华路与延安路交叉口","money":"-","fen":"-","code":"80130","date":"2012-06-19 19:04:00","act":"在禁止通行的时间、路段、车道内行驶的"},{"area":"都司路与中华南路交叉口北南","money":"100","fen":"2","code":"82060","date":"2012-04-13 11:40:00","act":"违反警令、禁止、警告标志、标线的"},{"area":"中华北路与沙河街交叉口","money":"-","fen":"-","code":"80130","date":"2013-05-21 16:39:00","act":"在禁止通行的时间、路段、车道内行驶的"}],"city":"GZ"},"reason":"查询成功","resultcode":"200"},"status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E8%B4%B5AVG902&appkey=undefined&classno=&version=undefined&city=GZ&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%2C%E9%BB%84%E6%B5%A6%E5%8C%BA%2C%E8%A5%BF%E8%97%8F%E5%8D%97%E8%B7%AF%2C2%E5%8F%B7%2C31.234309729773%2C121.48479060028&hpzl=02&registno=&request=html_update&msg_id=undefined&engineno=180914&user_id=undefined&query_type=pcc&cityname=%E8%B4%B5%E5%B7%9E&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"42fdc0c0-4f73-47c4-8e58-fd57b994d5e4","user_id":"violation1","query_type":"text"};
-    // var response = {"session_id":"public.violation@d7a42c0fb1f25e9cc5a606afcf842c0d","location":{"street":"undefined","province":"undefined","lng":0,"streetNumber":"undefined","sublocality":"undefined","lat":0,"city":"undefined","country":"undefined"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"58.247.4.206","answer":[{"content":"update html","status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E8%B4%B5AVG902&appkey=undefined&classno=180914&version=undefined&city=SC_CD&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=undefined&engineno=&user_id=violation_test2&query_type=pcc&cityname=%E6%88%90%E9%83%BD&output=html_page","info":{"need":{"lastdigitofclassno":6,"classno":"180914"},"hpzl":"02","hphm":"贵AVG902","cityname":"成都","city":"SC_CD"}}],"appkey":"undefined","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"undefined","user_id":"violation_test2","query_type":"pcc"};
-    // var response = {"session_id":"public.violation@20ff0aa2b236dec8282ee881994d8102","location":{"street":"undefined","province":"undefined","lng":0,"streetNumber":"undefined","sublocality":"undefined","lat":0,"city":"undefined","country":"undefined"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"127.0.0.1","answer":[{"content":"update html","status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E9%84%82AFK912&appkey=wechat_browser&classno=50795&version=undefined&city=FB&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=6cc9c29b-3bcd-4acd-af85-f8c94d123047&engineno=&user_id=violation4&query_type=pcc&cityname=%E6%AD%A6%E6%B1%89&output=html_page","info":{"need":{"lastdigitofclassno":5,"classno":"50795"},"hpzl":"02","hphm":"鄂AFK912","cityname":"武汉","city":"FB"}}],"appkey":"wechat_browser","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"6cc9c29b-3bcd-4acd-af85-f8c94d123047","user_id":"violation4","query_type":"pcc"};
-    // var response = {"session_id":"public.violation@2a0bbf9d2f2f6f74c5bf9c728591285c","location":{"street":"undefined","province":"undefined","lng":0,"streetNumber":"undefined","sublocality":"undefined","lat":0,"city":"undefined","country":"undefined"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"127.0.0.1","answer":[{"content":"duplicate user","status":403,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=33333333333&appkey=wechat_browser&classno=&version=undefined&city=SH&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=35018a94-322c-4e76-9bef-6a4306c94a50&engineno=333333333333333333&user_id=viola&query_type=pcc&cityname=%E4%B8%8A%E6%B5%B7&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"35018a94-322c-4e76-9bef-6a4306c94a50","user_id":"viola","query_type":"undefined"};
-    // var response = {"session_id":"public.violation@4b33f16566c93526d5620165973abafa","location":{"street":"西藏南路","province":"上海市","lng":121.48479060028,"streetNumber":"2号","sublocality":"黄浦区","lat":31.234309729773,"city":"上海","country":"中国"},"status":"success","task":"public.violation","query":"违章","remote_ip":"127.0.0.1","answer":[{"content":{"result":[],"reason":"车辆识别代号匹配错误，请仔细核对！","resultcode":"203"},"status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=%E9%99%95a655q8&appkey=wechat_browser&classno=lvvda12a69d116354&version=undefined&city=SX_XA&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=12b89e0b-05e3-49c6-9555-bc014e94c26b&engineno=&user_id=violation11&query_type=pcc&cityname=%E8%A5%BF%E5%AE%89&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"20dd2017-f632-4545-ba91-06a25fa6bec4","user_id":"violation11","query_type":"text"}
-    // var response = {"session_id":"public.violation@3192f52b8afc57ac90825ea3fbcef5f4","location":{"street":"undefined","province":"undefined","lng":0,"streetNumber":"undefined","sublocality":"undefined","lat":0,"city":"undefined","country":"undefined"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"127.0.0.1, 58.247.4.206","answer":[{"content":{"result":[],"reason":"错误的车牌号码","resultcode":"204"},"more":"http://m.mobvoi.com/search/pc/violation?hphm=213123&appkey=wechat_browser&classno=&version=undefined&city=SH&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=get&msg_id=35018a94-322c-4e76-9bef-6a4306c94a50&engineno=engine&user_id=violasda&query_type=pcc&cityname=%E4%B8%8A%E6%B5%B7&output=html_page","status":200,"request":"html_update","url":"http://m.mobvoi.com/search/pc/violation?hphm=213123&appkey=wechat_browser&classno=&version=undefined&city=SH&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=02&registno=&request=html_update&msg_id=35018a94-322c-4e76-9bef-6a4306c94a50&engineno=engine&user_id=violasda&query_type=pcc&cityname=%E4%B8%8A%E6%B5%B7&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"undefined","msg_id":"35018a94-322c-4e76-9bef-6a4306c94a50","user_id":"violasda","query_type":"undefined"};
-    // var response = {"session_id":"public.violation@fba8c68c87e7da470218aa312d693ca1","location":{"street":"undefined","province":"undefined","lng":0,"streetNumber":"undefined","sublocality":"undefined","lat":0,"city":"undefined","country":"undefined"},"status":"success","task":"public.violation","query":"undefined","remote_ip":"undefined","answer":[{"content":"creat html","status":200,"request":"html_create","url":"http://m.mobvoi.com/search/pc/violation?hphm=&appkey=debug&classno=&version=3.0.2.1&city=SH&address=undefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2Cundefined%2C0.0%2C0.0&hpzl=&registno=&request=html_create&msg_id=40a02443-bda5-4174-aa05-aadd42f8da62&engineno=&user_id=0c8b03da24ed0e68e795f5db16bfed55&query_type=pcc&cityname=%E4%B8%8A%E6%B5%B7&output=html_page","info":{"need":{"lastdigitofengineno":0,"engineno":""},"hpzl":"","hphm":"","cityname":"上海","city":"SH"}}],"appkey":"debug","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"3.0.2.1","msg_id":"40a02443-bda5-4174-aa05-aadd42f8da62","user_id":"0c8b03da24ed0e68e795f5db16bfed55","query_type":"pcc"};
-
+//    var response = ${content};
+    var response = {"session_id":"public.violation@1cef9959e48b4d8c4996e20cdd91a39e","location":{"street":"武东路","province":"上海市","lng":121.49982640557423,"streetNumber":"undefined","sublocality":"杨浦区","lat":31.308912471391192,"city":"上海市","country":"中国"},"status":"success","task":"public.violation","query":"违章","remote_ip":"124.127.127.175","answer":[{"content":"user not found","status":404,"request":"html_city","url":"http://m.mobvoi.com/search/pc/violation?hphm=&appkey=wechat_browser&classno=&version=10000&city=&address=%E4%B8%AD%E5%9B%BD%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E4%B8%8A%E6%B5%B7%E5%B8%82%2C%E6%9D%A8%E6%B5%A6%E5%8C%BA%2C%E6%AD%A6%E4%B8%9C%E8%B7%AF%2Cundefined%2C31.308912471391192%2C121.49982640557423&hpzl=&registno=&request=html_city&msg_id=&engineno=&user_id=&query_type=pcc&cityname=&output=html_page"}],"appkey":"wechat_chumenwenwen","location_option":{"content":"","is_need":false},"params":[],"taskName":"查违章","version":"10000","msg_id":"","user_id":"","query_type":""};
 
     switch (response.answer[0].status) {
       case 404: // 未建立用户档案->显示表单
-      $(".wrapper").html($("#wrapper_violation_create").html());
+        $(".wrapper").html($("#wrapper_violation_create").html());
       break;
       case 200: // 查询成功
-      if (response.answer[0].content != "update html") { // 查询成功->显示结果
-        $(".wrapper").html(template.render("wrapper_violation_result", response));
-        if (response.answer[0].content.resultcode == "200") {
-          if (response.answer[0].content.result.lists.length > 0) {
-            $("#total").prepend(response.answer[0].content.result.lists.length);
-          } else {
-            $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">没有您的违章信息</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')
+        if (response.answer[0].content != "update html") { // 查询成功->显示结果
+          $(".wrapper").html(template.render("wrapper_violation_result", response));
+          if (response.answer[0].content.resultcode == "200") {
+            if (response.answer[0].content.result.lists.length > 0) {
+              $("#total").prepend(response.answer[0].content.result.lists.length);
+            } else {
+              $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">您目前没有违章记录</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')
+            }
+          } else { // example 6
+            $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">' + response.answer[0].content.reason + '</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')  // example6
           }
-        } else { // example 6
-          $("ul").html('<li class="cards_card result"><div class="cards_card_entire"><p><span class="layout-444">' + response.answer[0].content.reason + '</span></p></div></li><li class="cards_card"><div class="cards_card_entire"><p><button onClick="window.location.href=\'' + response.answer[0].url + '\'" class="layout-bgreen layout-fff">点击更新我的车牌信息</button></p></div></li>')  // example6
+        } else { // 更新表单
+          $(".wrapper").html($("#wrapper_violation_create").html());
+          $("#cityname").val(response.answer[0].info.cityname); 
+          $('[name="cityname"]').val(response.answer[0].info.cityname); 
+          initialDetail(response.answer[0].info.cityname); 
+          $('[name="request"]').val("update");
+          $('[name="hphm"]').val(response.answer[0].info.hphm);
+          $('[name="hpzl"]').val(response.answer[0].info.hpzl);
         }
-      } else { // 更新表单
-        $(".wrapper").html($("#wrapper_violation_create").html());
-        $("#cityname").val(response.answer[0].info.cityname); 
-        $('[name="cityname"]').val(response.answer[0].info.cityname); 
-        initialDetail(response.answer[0].info.cityname); 
-        $('[name="request"]').val("update");
-        $('[name="hphm"]').val(response.answer[0].info.hphm);
-        $('[name="hpzl"]').val(response.answer[0].info.hpzl);
-      }
-      break;
+        break;
       case 403: // 重复创建用户
-      $(".wrapper").html(template.render("wrapper_violation_complied", response)); // example 5
-      break;
-      case 500:
-      case 501:
-      case 502:
-      case 503:
-      $(".wrapper").html(template.render("wrapper_violation_error", response));
-      break;
+        $(".wrapper").html(template.render("wrapper_violation_complied", response)); // example 5
+        break;
+      case 505: // 超时
+        $(".wrapper").html(template.render("wrapper_violation_timeout", response)); // example 5
+        break;        
+      default: // other error code
+        $(".wrapper").html(template.render("wrapper_violation_error", response));
     }
     $("#form").attr("action", urlPrefix + "/search/pc/violation");
     $('[name="user_id"]').val(response.user_id);
@@ -262,7 +269,7 @@
                   $("#wrapperInput").append('<div class="cards_card_form left"><p><label>' + placeholder + '</label></p></div><div class="cards_card_form right"><p><input name="' + idx + '" type="text" /></p></div>');
                 }
               }
-              $("#wrapperInput").append('<div class="clear"></div>')
+              $("#wrapperInput").append('<div class="clear"></div>');
             }
           },
         })
@@ -307,7 +314,7 @@
                   $("#wrapperInput").append('<div class="cards_card_form left"><p><label>' + placeholder + '</label></p></div><div class="cards_card_form right"><p><input value="' + response.answer[0].info.need[idx1] + '" name="' + idx + '" type="text" /></p></div>');
                 }
               }
-              $("#wrapperInput").append('<div class="clear"></div>')
+              $("#wrapperInput").append('<div class="clear"></div>');
             }
           },
         })
@@ -332,5 +339,3 @@
   </script>
 </body>
 </html>
-
-

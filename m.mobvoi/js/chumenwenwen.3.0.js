@@ -37,6 +37,8 @@ function getGoogleLocation(lat, lng) {
 
 // Offer chumenwenwen HTML js api
 function chumenwenwen() {
+  // All Action Below Register on This Container
+  $("<div>").attr("data-event", "CMWW").wrapInner($("body").children().not("script")).appendTo($("body"));
   var share = {};
   this.share = {};
   this.share.init = function(params) {
@@ -180,34 +182,6 @@ function chumenwenwen() {
     }
     tpl += '<div class="alert_entire"><li onClick="window.location.href=\'http://api.map.baidu.com/marker?location=' + pointArr[0][1] + ',' + pointArr[0][2] + '&title=' + pointArr[0][0] + '&content=' + pointArr[0][0] +'&src=mobvoi|chumenwenwen&output=html\'">在网页中打开</li></div></div>'
     $("body").prepend(tpl); 
-  }
-
-  this.searchpcAjax = function(ul, params) {
-    $(".mask").show();
-    $(".mask").removeClass("hide");
-    $(".dialog").removeClass("show");
-    setTimeout('$(".dialog").remove()', 500);
-    var QUERY = {};
-    QUERY.protocol = "http://";
-    QUERY.host = "m.mobvoi.com";
-    QUERY.path = "/search/pc/" + params.task.split(".")[1];
-    $.ajax({
-      async: true,
-      type: "GET",
-      url: QUERY.protocol + QUERY.host + QUERY.path,
-      data: params,
-      dataType: "json",
-      success: function(res) {
-        if(res.content[0].direct.header.type != "eav_one" && res.content[0].direct.header.type != "tip_one" && res.content[0].direct.header.type != "guide_one") {
-          renderResponse(res.content[0].direct, ul, "change");
-        } else {
-          renderResponse(res.content[0].relevant[0], ul, "change");
-        }
-        renderStyle();
-        $(".mask").addClass("hide");
-        setTimeout('$(".mask").hide()', 500);
-      }
-    })    
   }
   
   this.searchpc = function(params) {
@@ -444,19 +418,19 @@ function renderStyle() {
 }
 
 function initMap() {
-  $(".cards").each(function() {
+  $(".cards").each(function(i) {
     if($(this).find(".showMap").html()) {
-      $(".cards").eq($(this).index()).find(".showMap").attr("id", "showMap_" + $(this).index());
-      showMap($(this).index());
-      if($(".cards").eq($(this).index()).find(".markMap").html()) {
-        markMap($(this).index());
+      $(".cards").eq(i).find(".showMap").attr("id", "showMap_" + i);
+      showMap(i);
+      if($(".cards").eq(i).find(".markMap").html()) {
+        markMap(i);
       } 
-      if($(".cards").eq($(this).index()).find(".routeMap").html()) {
+      if($(".cards").eq(i).find(".routeMap").html()) {
         var start_xy, end_xy
-        routeMap($(this).index());
+        routeMap(i);
       }
-      if($(".cards").eq($(this).index()).find(".trafficMap").html()) {
-        trafficMap($(this).index());
+      if($(".cards").eq(i).find(".trafficMap").html()) {
+        trafficMap(i);
       }
     }
   })
