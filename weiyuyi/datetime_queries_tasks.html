@@ -2,17 +2,18 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Charts</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/charts.css">
+    <title>datetime - queries(cities)</title>
+    <link rel="stylesheet" href="http://mobvoi-one-box.oss.aliyuncs.com/web/css/bootstrap.min.2.3.2.css">
     <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/jquery.1.10.2.min.js"></script>
-    <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
-    <script src="js/highstock.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="http://mobvoi-one-box.oss-cn-hangzhou.aliyuncs.com/weiyuyi/production/assets/js/weiyuyi.urlPrefix.js"></script>
   </head>
 
+
+
   <body>
+    <link rel="stylesheet" href="/oss/assets/css/charts.css" />
+    <script src="/oss/assets/js/weiyuyi.urlPrefix.js"></script>
+    <script src="http://mobvoi-one-box.oss.aliyuncs.com/web/js/template.syntax.1.0.min.js"></script>
+    <script src="/oss/assets/js/highstock.js"></script>
     <div class="loading" id="loading">Loading...</div>
     <div class="wrapper">
       <div class="wrapper_left">
@@ -72,7 +73,6 @@
         </tbody>   
       </table>
     </script>
-
     <script type="text/html" id="datapicker">
       <div id="datapicker">
         {each datapicker}
@@ -80,10 +80,12 @@
         {/each}
       </div>
     </script>
-
+    <script src="/oss/assets/js/weiyuyi.charts.js"></script>
     <script>
       charts();
     </script>
+
+
 
   </body>
 </html>
